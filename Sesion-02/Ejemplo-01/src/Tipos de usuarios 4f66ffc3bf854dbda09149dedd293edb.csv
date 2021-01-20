@@ -1,0 +1,4 @@
+﻿Tipo,Explicación
+owner (propietario),Es el usuario que creó y posee un archivo/directorio.
+group (grupo),Todos los usuarios que son miembros del mismo grupo.
+others (otros),Todos los demás usuarios del sistema que no son propietarios ni miembros del grupo.
