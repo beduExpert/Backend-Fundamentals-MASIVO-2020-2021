@@ -36,4 +36,4 @@ Con la estructura creada en el [Reto 1](../Reto-01/Readme.md) realiza las siguie
     console.log(`Fecha actual: ${fecha}`)
     ```
 
-[`Atrás: Ejemplo 2`](../Ejemplo-02) | [`Siguiente: Ejemplo 3`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-01/Ejemplo-03)
+[`Atrás: Ejemplo 2`](../Ejemplo-02) | [`Siguiente: Ejemplo 3`](../Ejemplo-03)

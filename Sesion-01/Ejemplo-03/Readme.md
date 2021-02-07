@@ -60,4 +60,4 @@ Si todo ha sido exitoso ahora tendremos un nuevo ***comando*** instalado en nues
 <img src="img/Untitled.png" width="650px">
 
 
-[`Atrás: Reto-02`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-01/Reto-02) | [`Siguiente: Reto-03`](../Reto-03)
+[`Atrás: Reto-02`](../Reto-02) | [`Siguiente: Reto-03`](../Reto-03)

@@ -20,4 +20,4 @@
 
 <img src="https://i.redd.it/chibzcm23y411.png" width="550">
 
-[`Atrás: Ejemplo 03`](../Ejemplo-03)
+[`Atrás: Ejemplo 03`](../Ejemplo-03) | [`Siguiente: Reto-01`](../README.md)
