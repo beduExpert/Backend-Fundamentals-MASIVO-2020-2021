@@ -61,7 +61,7 @@ Primero se instala el paquete `toilet`.
 
 ``` 
 sudo apt-get install toilet 			#Linux
-brew install toilet 					#Mac
+brew install toilet 				#Mac
 ```
 
 Se ejecuta el siguiente comando:
@@ -70,7 +70,7 @@ Se ejecuta el siguiente comando:
 toilet -f mono9 -F gay Bedu
 ```
 
-![console-bedu](img/toilet-bedu)
+![console-bedu](img/toilet-bedu.png)
 
 
 
@@ -84,7 +84,7 @@ Ejecuta el comando:
 telnet towel.blinkenlights.nl
 ```
 
-![console-bedu](img/toilet-bedu)
+![console-bedu](img/starwars.png)
 
 Para salir pulsa `Ctrl+]` 
 
