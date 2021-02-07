@@ -11,7 +11,7 @@
 
 # 🤖 La consola 
 
-<img src="console.jpg" align="right" width="250">
+<img src="img/console.jpg" align="right" width="250">
 
 Las interfaces gráficas (GUI) de los programas nos permiten utilizarlos interactuando con ventanas, botones, iconos, etc. Sin embargo, esta forma de interacción con la computadora es relativamente nueva. En los primeros días los ordenadores no tenían esas bonitas interfaces que estamos tan acostumbrados a usar y si nosotres queríamos darle una instrucciones a la computadora, esto se hacia mediante la linea de comando. 
 
@@ -73,7 +73,6 @@ toilet -f mono9 -F gay Bedu
 ![console-bedu](img/toilet-bedu.png)
 
 
-
 ---
 
 ### 📼 Ver películas 
@@ -86,26 +85,12 @@ telnet towel.blinkenlights.nl
 
 ![console-bedu](img/starwars.png)
 
-Para salir pulsa `Ctrl+]` 
+>💡**Nota:**
+>
+> Para salir pulsa `Ctrl+]` 
 
 ---
 
-
-<!-- # 🕵 Ejemplos:
-
-- [`Ejemplo 01: Navegación (File system)`](Ejemplo-01/#navegación-file-system)
-
-- [`Ejemplo 02: Editando Archivos`](Ejemplo-02/#editando-archivos)
-
-- [`Ejemplo 03: Instalando paquetes`](Ejemplo-03/#instalando-paquetes)
-
-# 💻 Retos:
-
-- [`Reto 01: Creación de carpetas`](Reto-01/#reto-1)
-
-- [`Reto 02: Ediciones de archivos`](Reto-02/#reto-2)
-
-- [`Reto 03: Instalación de paquetes`](Reto-02/#reto-3) -->
 
 # 🛡 Postwork
 
