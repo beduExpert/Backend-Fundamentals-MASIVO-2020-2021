@@ -16,7 +16,10 @@
 
 - Para actualizar la fuente oficial de dónde se descargaran los paquetes utilizaremos el **siguiente comando:**
 
-`sudo apt-get update`
+```
+sudo apt-get update			#Linux
+brew update 				#Mac
+```
 
 <img src="img/Screen_Shot_2020-03-21_at_16.33.43.png" width="650px">
 
@@ -31,11 +34,20 @@ Al utilizar el prefijo **sudo**, estamos dando el permiso a nuestro gestor de pa
 
 ### Sintaxis:
 
+Para Linux:
+
 `[sudo] apt-get install [nombre del paquete o paquetes separados por espacio]`
+
+Para Mac:
+
+`brew install [nombre del paquete o paquetes separados por espacio]`
 
 **Instalaremos** un paquete simple llamado **cowsay** ejecutando el siguiente comando:
 
-`sudo apt-get install cowsay`
+```
+sudo apt-get install cowsay			#Linux
+brew install cowsay				#Mac
+```
 
 En caso de que nos pida **confirmación para continuar ingresaremos la opción**  `Y` y presionamos **enter.**
 
