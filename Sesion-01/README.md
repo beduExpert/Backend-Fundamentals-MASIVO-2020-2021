@@ -11,7 +11,7 @@
 
 # 🤖 La consola 
 
-<img src="https://lh3.googleusercontent.com/proxy/BBqdjaR4Oxt7W07A_WNES8TfejCDcWK620L1frIedBSCwvbSXG6Cwliu0gRer96tUsnrS_PVPZZsVD7enrA" align="right" width="250">
+<img src="console.jpg" align="right" width="250">
 
 Las interfaces gráficas (GUI) de los programas nos permiten utilizarlos interactuando con ventanas, botones, iconos, etc. Sin embargo, esta forma de interacción con la computadora es relativamente nueva. En los primeros días los ordenadores no tenían esas bonitas interfaces que estamos tan acostumbrados a usar y si nosotres queríamos darle una instrucciones a la computadora, esto se hacia mediante la linea de comando. 
 
