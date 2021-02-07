@@ -4,8 +4,6 @@
 
 - Utilizar la terminal, sus principales ventajas y comandos.
 - Editar archivos e instalar paquetes en el sistema operativo por medio de la consola.
-- Conocer la terminal y sus principales ventajas con respecto a las interfaces gráficas.
-- Ejecutar los primeros comandos.
 
 --- 
 
@@ -29,7 +27,6 @@ Las ventajas de la consola son:
 - Permite automatizar procesos ⚙️
 - Es mas rápida que las GUI ⚡️
 - Tenemos un historial de los comandos que ejecutamos 💾
-- Es vintage 📻
 - Nos vemos cool 😎
 
 ## ¿Qué podemos hacer desde la consola? ... Todo 
