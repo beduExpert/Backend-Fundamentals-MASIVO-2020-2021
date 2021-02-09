@@ -4,4 +4,4 @@
 
 Con los accesos que te proporciona lx expertx, crea tu propio archivo con tu nombre en el servidor siguiendo los pasos del ejemplo.
 
-[`Atrás: Ejemplo 03`](../Ejemplo-03) | [`Siguiente: Ejemplo 03`](../README.md)
+[`Atrás: Ejemplo 03`](../Ejemplo-03) | [`Siguiente: Home`](../README.md)
