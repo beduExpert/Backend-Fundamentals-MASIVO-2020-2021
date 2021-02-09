@@ -11,7 +11,7 @@
 
 <img src="img/console.jpg" align="right" width="250">
 
-Las interfaces gráficas (GUI) de los programas nos permiten utilizarlos interactuando con ventanas, botones, iconos, etc. Sin embargo, esta forma de interacción con la computadora es relativamente nueva. En los primeros días los ordenadores no tenían esas bonitas interfaces que estamos tan acostumbrados a usar y si nosotres queríamos darle una instrucciones a la computadora, esto se hacia mediante la linea de comando. 
+Las interfaces gráficas (GUI) de los programas nos permiten utilizarlos interactuando con ventanas, botones, iconos, etc. Sin embargo, esta forma de interacción con la computadora es relativamente nueva. En los primeros días los ordenadores no tenían esas bonitas interfaces que estamos tan acostumbradxs a usar y si nosotrxs queríamos darle una instrucciones a la computadora, esto se hacia mediante la linea de comando. 
 
 La consola o terminal es una interfaz que permite acceder a la linea de comando de nuestra computadora. Es decir, es una programa mediante el cual podemos escribir instrucciones para que la computadora las ejecute y, si es el caso, muestre los resultados o mensajes.
 
