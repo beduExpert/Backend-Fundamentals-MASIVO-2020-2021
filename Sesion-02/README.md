@@ -27,8 +27,15 @@ Mientras que el software controla el acceso que tienen lxs usuarixs a los archiv
 
 Todo este proceso se hace utilizando el modelo **clientx/servidor**.
 
+## Proceso
+
+Cuando entramos al navegador y colocamos la dirección de nuestro sitio web favorito, el navegador hace el siguiente proceso para encontrar la página que le pedimos:
+
+1. Con la url, identifica la dirección IP del servidor en el que se *hostea* el sitio que le pedimos
+1. Hace una solicitud de los archivos necesarios con el protocolo HTTP 
+1. El servidor acepta la petición, busca los archivos y los envía como respuesta
+
 ![](img/proceso.jpg)
-![](img/web-server.png)
 
 ## Conceptos clave para utilizar un servidor
 
