@@ -15,7 +15,7 @@ Las interfaces gráficas (GUI) de los programas nos permiten utilizarlos interac
 
 La consola o terminal es una interfaz que permite acceder a la linea de comando de nuestra computadora. Es decir, es una programa mediante el cual podemos escribir instrucciones para que la computadora las ejecute y, si es el caso, muestre los resultados o mensajes.
 
-## Pero ... ¿Por qué usar la linea de comando? 🤨
+## Pero ... ¿Por qué usar la linea de comandos? 🤨
 
 Las computadoras fueron creadas para liberarnos del trabajo manual. Pero muchas veces hacemos tareas que terminan siendo muy tediosas moviendo el mouse a un lugar y dando click y luego a otro y de nuevo click y otro y repetir lo mismo de nuevo ... 
 
