@@ -123,4 +123,4 @@ REST es un acrónimo para **RE**presentational **S**tate **T**ransfer, un estilo
 
     ![img/Untitled.png](img/Untitled.png)
     
-[`Atrás: Sesión 04`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-04) | [`Siguiente: Ejemplo 02`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-04/Ejemplo-02)
+[`Atrás: Sesión 04`](../README.md) | [`Siguiente: Ejemplo 02`](../Ejemplo-02)

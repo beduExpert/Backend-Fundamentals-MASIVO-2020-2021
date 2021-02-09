@@ -22,4 +22,4 @@ Repite el proceso con solicitudes.
 
 
 
-[`Atrás: Reto 03`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-04/Reto-03)
+[`Atrás: Reto 03`](../Reto-03) | [`Siguiente: Sesión 04`](../README.md)
