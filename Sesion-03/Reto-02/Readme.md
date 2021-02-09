@@ -6,4 +6,4 @@ Escribe mínimo **3 historias de usuario** para definir los requerimientos de la
 
 ![https://miro.medium.com/max/2732/1*OXgRHuX1LBXOcWEUL8-oUQ.png](https://miro.medium.com/max/2732/1*OXgRHuX1LBXOcWEUL8-oUQ.png)
 
-[`Atrás: Ejemplo 02`](../Ejemplo-02) | [`Siguiente: Ejemplo 03`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-03/Ejemplo-03)
+[`Atrás: Ejemplo 02`](../Ejemplo-02) | [`Siguiente: Ejemplo 03`](../Ejemplo-03)
