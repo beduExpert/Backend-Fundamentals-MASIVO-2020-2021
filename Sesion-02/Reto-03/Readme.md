@@ -2,6 +2,6 @@
 	
 ## Reto 3
 
-Con los accesos que te proporciona el experto, crea tu propio archivo con tu nombre en el servidor siguiendo los pasos del ejemplo.
+Con los accesos que te proporciona lx expertx, crea tu propio archivo con tu nombre en el servidor siguiendo los pasos del ejemplo.
 
-[`Atrás: Ejemplo 03`](../Ejemplo-03)
+[`Atrás: Ejemplo 03`](../Ejemplo-03) | [`Siguiente: Ejemplo 03`](../README.md)

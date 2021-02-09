@@ -12,4 +12,4 @@
 <img src="https://static.gospelidea.com/uploads/2018/03/chmod.png" width="650">
 <img src="https://www.redeszone.net/app/uploads/2017/01/otorgar-permisos-fichero-o-carpeta-linux.png" width="450">        
 
-[`Atrás: Ejemplo 01`](../Ejemplo-01) | [`Siguiente: Ejemplo 02`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-02/Ejemplo-02)
+[`Atrás: Ejemplo 01`](../Ejemplo-01) | [`Siguiente: Ejemplo 02`](../Ejemplo-02)

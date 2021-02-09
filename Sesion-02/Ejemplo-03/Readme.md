@@ -6,7 +6,7 @@ Utilizar el servidor remoto al que hemos accesado con los comandos aprendidos de
 
 **Requisitos:**
 
-- El experto debe proveer un servidor con Apache corriendo y con una dirección o ip pública, así cómo  las respectivas credenciales.
+- Lx expertx debe proveer un servidor con Apache corriendo y con una dirección o ip pública, así cómo  las respectivas credenciales.
 
 - Estar conectado al servidor remoto.
 
@@ -63,4 +63,4 @@ Para salir del servidor y cerrar la conexión ejecutaremos el comando `exit`.
 
 -------
 
-[`Atrás: Reto-02`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-02/Reto-02) | [`Siguiente: Reto-03`](../Reto-03)
+[`Atrás: Reto-02`](../Reto-02) | [`Siguiente: Reto-03`](../Reto-03)

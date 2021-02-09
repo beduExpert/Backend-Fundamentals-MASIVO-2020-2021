@@ -6,7 +6,7 @@ Conocer SSH y conectarnos a un servidor remoto.
 
 **Requisitos**
 
-El experto debe proveer la dirección del servidor y el archivo de la llave con la cual nos conectaremos.
+Lx expertx debe proveer la dirección del servidor y el archivo de la llave con la cual nos conectaremos.
 
 ## Desarrollo
 
@@ -26,7 +26,7 @@ Ejecutaremos el comando `chmod`
 
 ![img/Untitled%201.png](img/Untitled%201.png)
 
-3. Conectarnos con ssh por medio de la dirección y el usuario de nuestro servidor remoto
+3. Conectarnos con ssh por medio de la dirección y lx usuarix de nuestro servidor remoto
 
 **Sintaxis:**
 
@@ -46,4 +46,4 @@ Si todo salió bien podremos ver algo como esto
 
 -------
 
-[`Atrás: Reto 01`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-02/Reto-01) | [`Siguiente: Reto-02`](../Reto-02)
+[`Atrás: Reto 01`](../Reto-01) | [`Siguiente: Reto-02`](../Reto-02)
