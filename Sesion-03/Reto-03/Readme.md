@@ -42,4 +42,4 @@ Crea las 3 clases restantes en javascript para representar nuestros modelos. Rec
 >Para la finalidad de este curso asumiremos que AdoptaPet contará con una arquitectura cliente-servidor y con equipos independientes de frontend y backend.
 Para que el sistema que desarrolle frontend se comunique con nuestro backend crearemos una *"interfaz"* o API en la siguiente sesión.
 
-[`Atrás: Ejemplo 03`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-03/Ejemplo-03)
+[`Atrás: Ejemplo 03`](../Ejemplo-03) | [`Siguiente: Sesión 03`](../README.md)

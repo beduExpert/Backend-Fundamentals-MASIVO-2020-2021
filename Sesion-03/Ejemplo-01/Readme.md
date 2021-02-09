@@ -70,5 +70,5 @@ Una vez ejecutada la petición, obtendremos una respuesta `200` si todo ha salid
 
 -------
 
-[`Atrás: Sesión 03`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-03) | [`Siguiente: Reto-01`](../Reto-01)
+[`Atrás: Sesión 03`](../README.md) | [`Siguiente: Reto-01`](../Reto-01)
 

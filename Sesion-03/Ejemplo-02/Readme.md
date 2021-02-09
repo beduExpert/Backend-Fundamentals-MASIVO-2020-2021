@@ -42,4 +42,4 @@ Y son utilizadas por varias metodologías para poder comprender mejor los requer
 <img src="img/story.png" alt="PostItHistoriaUsuario" width="550" > 
 
 
-[`Atrás: Reto 01`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-03/Reto-01) | [`Siguiente: Reto 02`](../Reto-02)
+[`Atrás: Reto 01`](../Reto-01) | [`Siguiente: Reto 02`](../Reto-02)
