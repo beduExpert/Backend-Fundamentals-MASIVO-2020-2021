@@ -14,13 +14,13 @@ En todos esos momentos estamos usando API's sin darnos cuenta.
 
 ### Y a todo esto ¿Qué es una API? 
 
-Una API (Aplication Prgramming Interface) es un intermediario que le permite a dos aplicaciones interactuar entre sí.
+Una API (Application Programming Interface) es un intermediario que le permite a dos aplicaciones interactuar entre sí.
 
 Es una aplicación que toma las peticiones hechas por lx clientx y le dice al sistema que es lo que tiene que hacer, cuando obtiene una respuesta en se la regresa al usuarix.
 
 ![](img/api2.png)
 
-## ¿Para que sirve una API?
+### ¿Para que sirve una API?
 
 Alguna vez te has preguntado como puedes comprar algo por internet sin que una persona genere directamente tu orden. Es decir, como es posible que la aplicación de amazon se comunique con mi banco para hacerme un cobro y al mismo tiempo también interactue con un proveedor para que me manden mi pedido.
 
