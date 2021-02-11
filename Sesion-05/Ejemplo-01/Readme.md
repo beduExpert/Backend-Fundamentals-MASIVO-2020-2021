@@ -10,20 +10,6 @@ Contar con almacenamiento suficiente y conexión a internet para instalar MySQL.
 
 ## Desarrollo
 
-**¿Qué es una base de datos?**
-
-El término base de datos se remonta a 1963. Una base de datos se puede definir como un conjunto de información relacionada que se encuentra agrupada ó estructurada. 
-
-**¿Qué es un base de datos relacional?**
-
-Son bases de datos que almacenan información relacionándola por medio de tablas con columnas para la definición de atributos y filas para definir valores donde cada tabla represente a una entidad u objeto y cada columna a un atributo de esta entidad. Por lo general cada dato de una tabla cuenta con un identificador único, con el cual puede relacionarse con uno o más datos.
-
-Los fundamentos de las bases de datos relacionales son la teoría de conjuntos.
-
-**¿Qué es MySQL?**
-
-MySQL es un sistema para gestionar bases de datos que cuenta con una amplia popularidad.
-
 ## Instalar MySQL server
 
 ### Instalación en Ubuntu
@@ -71,4 +57,4 @@ docker exec -it mysql-db mysql -p
 2. Selecciona tu sistema operativo y descarga el archivo `.dmg`. Para instalar de esta manera tal vez sea necesario crear una cuenta en Oracle.
 3. Ejecuta el `.dmg` y sigue los pasos.
 
-[`Atrás: Sesión 05`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-05) | [`Siguiente: Ejemplo 02`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-05/Ejemplo-02)
+[`Atrás: Sesión 05`](../README.md) | [`Siguiente: Ejemplo 02`](../Ejemplo-02)

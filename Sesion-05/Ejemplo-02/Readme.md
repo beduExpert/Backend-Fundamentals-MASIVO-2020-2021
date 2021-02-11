@@ -98,4 +98,4 @@ El modelo entidad-relación se basa en los conceptos: entidad, tipo de entidad, 
 
     ![img/Screen_Shot_2020-06-14_at_21.23.16.png](img/Screen_Shot_2020-06-14_at_21.23.16.png)
 
-[`Atrás: Ejemplo 01`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-05/Ejemplo-01) | [`Siguiente: Reto 01`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-05/Reto-01)
+[`Atrás: Ejemplo 01`](../Ejemplo-01) | [`Siguiente: Reto 01`](../Reto-01)
