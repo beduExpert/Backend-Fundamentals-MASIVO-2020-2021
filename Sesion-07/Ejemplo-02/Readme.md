@@ -158,6 +158,6 @@ Obtendremos una respuesta como está:
   "__v": 0
 }
 ```
-7. Recomendación: [`Pasa al Ejemplo 3:`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-07/Ejemplo-03)
+7. Recomendación: [`Pasa al Ejemplo 3:`](../Ejemplo-03)
 
-[`Atrás: Reto 01`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-07/Ejemplo-03) | [`Siguiente: Reto 02`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-07/Reto-02)
+[`Atrás: Reto 01`](../Reto-01) | [`Siguiente: Reto 02`](../Reto-02)

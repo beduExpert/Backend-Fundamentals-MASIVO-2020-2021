@@ -202,6 +202,6 @@ Aquí está el resultado de una solicitud que ha sido aceptada:
 ```
 - Así nuestros usuarios podrán ponerse en contacto y concretar la adopción de su nuevo amigo.
 
-6. Recomendación: [`Pasa al Reto 2:`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-07/Reto-02)
+6. Recomendación: [`Pasa al Reto 2:`](../Reto-02)
 
-[`Atrás: Reto 02`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-07/Reto-02) | [`Siguiente: Reto 03`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-07/Reto-03)
+[`Atrás: Reto 02`](../Reto-02) | [`Siguiente: Reto 03`](../Reto-03)

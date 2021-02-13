@@ -430,6 +430,6 @@ Nota:
     ```
 - Analiza el código, observa en que endpoints será necesario el <b>JWT</b> (Su contenido definirá si un usuario tiene o no autorización sobre el endpoint, así como que información puede ver. )
 
-8. Recomendación: [`Pasa al Reto 1:`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-07/Reto-01)
+8. Recomendación: [`Pasa al Reto 1:`](../Reto-01)
 
-    [`Atrás: Sesión 07`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-07) | [`Siguiente: Reto 01`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-07/Reto-01)
+    [`Atrás: Sesión 07`](../README.md) | [`Siguiente: Reto 01`](../Reto-01)
