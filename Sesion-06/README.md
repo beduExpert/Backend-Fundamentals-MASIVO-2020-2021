@@ -2,36 +2,48 @@
 
 🎯 **Objetivo:**
 
-- Reconocer carácterísticas de las bases de datos NoSQL, configurar y utilizar MongoDB.
+- Reconocer características de las bases de datos NoSQL, configurar y utilizar MongoDB.
 - Comprender en qué casos es conveniente utilizar esta B.D. y cómo usarla. 
 
-### Secciones:
+## 🧮 Bases de datos no relacionales (NoSQL) 
 
-## 🛠 Prework
+<img src="img/nosql.jpg.webp" align="right" width="250">
 
-**Objetivo:**
+NoSQL es un enfoque de diseño de bases de datos que nos permite crear esquemas mas flexibles para el almacenamiento de datos en comparación con las tradicionales tablas de SQL. 
 
-- Conocer los fundamentos de las bases de datos no relacionales
+Las bases de dato no relacionales fueron presentadas en 1998 por Carl Strozz, sin embargo ha sido recientemente que han adquirido mayor popularidad y esto se debe principalmente a que vivimos en una era de **Cloud**, **Big Data** y **web** con información difícil de estandarizar que debe viajar a gran velocidad. 
 
-**SQL vs NoSQL ¿Cuál debo usar?**
+NoSQL significa *Not Only SQL*, no es nada en contra de SQL 😅. Esto es importante pues muchos modelos de bases de datos no relacionales soportan SQL. 
 
-SQL es un sistema de gestión de bases de datos relacional, multihilo y multiusuario con más de seis millones de instalaciones; usado por muchos sitios web grandes y populares, como Wikipedia, Google (no para búsquedas), Facebook, Twitter, Flickr, y YouTube...[`leer mas`](Prework/#prework)
+## 🧵 Tipos de DB NoSQL
 
-## 🕵 Ejemplos:
+- **De documentos** Se almacenan los datos en estructuras llamadas documentos, estos contienen casa atributo como pares de clave-valor.
+
+- **De grafos**  se utilizan para almacenar información sobre redes de datos, como las conexiones sociales.
+
+- **De clave-valor** son las bases de datos NoSQL más simples. Cada elemento de la base de datos se almacena como un nombre de atributo junto con su valor.
+
+- **Orientadas a columnas** estas bases de datos permiten realizar consultas en grandes conjuntos de datos y almacenan los datos en columnas, en lugar de filas.
+
+![](img/schemas.png)
+
+## 🍃 MongoDB 
+
+MongoBD es un gestor de bases de datos no relacionales basada en documentos. Utiliza sintaxis de JSON para modelar su esquema.
+
+### Clusters
 
 - [`Ejemplo 1: Creando un cluster en MongoDB Atlas`](Ejemplo-01/#ejercicio-1)
+- [`Reto 01: Crear un clúster en MongoDB Atlas`](Reto-01/#reto-1)
+- [`Reto 02: Conectar un clúster en MongoDB Atlas`](Reto-02/#reto-2)
+
+### Fundamentos de MongoDB 
 
 - [`Ejemplo 2: Comprender los fundamentos de MongoDB`](Ejemplo-02/#ejemplo-2)
-
-- [`Ejemplo 3: métodos proporcionados por MongoDB para realizar operaciones CRUD`](Ejemplo-03/#ejemplo-3)
-
-## 💻 Retos:
-
-- [`Reto 01: Crear un clúster en MongoDB Atlas`](Reto-01/#reto-1)
-
-- [`Reto 02: Conectar un clúster en MongoDB Atlas](Reto-02/#reto-2)
-
 - [`Reto 03: Modelo embebido y referencial`](Reto-03/#reto-3)
+- [`Ejemplo 3: métodos proporcionados por MongoDB para realizar operaciones CRUD`](Ejemplo-03/#ejemplo-3)
+- [`Reto 04: TBA`](Reto-04/#reto-4)
+
 
 ## 🛡 Postwork
 

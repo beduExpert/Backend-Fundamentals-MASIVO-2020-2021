@@ -174,4 +174,4 @@ mongodb+srv://introabd:<password>@cluster0.kbuns.mongodb.net/<dbname>
 
 6. De aquí en adelante, utiliza MongoDB Compass para ratificar las configuraciones realizadas desde MongoDB Shell.
 
-[`Atrás: Sesión 06`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-06) | [`Siguiente: Reto 01`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-06/Reto-01)
+[`Atrás: Sesión 06`](../README.md) | [`Siguiente: Reto 01`](../Reto-01)

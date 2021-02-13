@@ -425,4 +425,4 @@ En el ejemplo anterior utilizamos MongoDB Compass. En este ejemplo, estaremos tr
 
         ```
 
-[`Atrás: Reto 03`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-06/Reto-03) | [`Siguiente: Reto 04`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-06/Reto-04)
+[`Atrás: Reto 03`](../Reto-03) | [`Siguiente: Reto 04`](../Reto-04)

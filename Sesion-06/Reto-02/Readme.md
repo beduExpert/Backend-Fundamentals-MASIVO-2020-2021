@@ -24,4 +24,4 @@ MongoDB server version: 4.2.8
 MongoDB Enterprise Cluster0-shard-0:PRIMARY>
 ```
 
-[`Atrás: Reto 01`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-06/Reto-01) | [`Siguiente: Ejemplo 02`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-06/Ejemplo-02)
+[`Atrás: Reto 01`](../Reto-01) | [`Siguiente: Ejemplo 02`](../Ejemplo-02)

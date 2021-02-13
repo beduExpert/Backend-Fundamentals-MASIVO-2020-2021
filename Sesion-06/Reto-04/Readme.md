@@ -20,4 +20,4 @@
 2. Crea documentos para las diferentes colecciones de Adoptapet.
 3. Practica los diferentes métodos de las operaciones CRUD para Adoptapet.
 
-[`Atrás: Ejemplo 03`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-06/Ejemplo-03)
+[`Atrás: Ejemplo 03`](../Ejemplo-03) | [`Siguiente: Sesión 06`](../README.md)
