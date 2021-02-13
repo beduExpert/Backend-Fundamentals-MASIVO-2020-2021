@@ -4,7 +4,7 @@
 
 + Para este curso **se recomienda tener** de preferencia **Sistema Operativo Linux**(**[Ubuntu](https://ubuntu.com)** como distribución de preferencia) o **[Mac OS](https://www.apple.com/mx/macos/what-is/)**, **no se recomienda Windows**,no por que no sea bueno, si no por que podemos tener dificultades con los comandos que estaremos ocuparemos en las siguientes sesiones.
 + Si tienes como **Sistema Operativo Windows**, no te preocupes😉, puedes trabajar con **Ubuntu** y para ello existen hay varias opciones si **no quieres instalar un Sistema Operativo desde cero**. Puedes utilizar una máquina virtual.
-+ Si usas **[Mac OS]** no necesitas una máquina virtual pues el sistema operativo también es basado en **Unix** por lo que se puede seguir el material del curso en este. Pero tienes que instalar un gestor de paquetes que nos permita trabajar desde la terminal, se recomienda utilizar [**Homebrew**](https://brew.sh/index_es).
++ Si usas **Mac OS** no necesitas una máquina virtual pues el sistema operativo también es basado en **Unix** por lo que se puede seguir el material del curso en este. Pero tienes que instalar un gestor de paquetes que nos permita trabajar desde la terminal, se recomienda utilizar [**Homebrew**](https://brew.sh/index_es).
 
 ### 💡 Nota:
 
