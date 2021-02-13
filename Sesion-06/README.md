@@ -7,7 +7,7 @@
 
 ## 🧮 Bases de datos no relacionales (NoSQL) 
 
-<img src="img/nosql.jpg.webp" align="right" height="250">
+<img src="img/nosql.jpg.webp" align="right" height="200">
 
 NoSQL es un enfoque de diseño de bases de datos que nos permite crear esquemas mas flexibles para el almacenamiento de datos en comparación con las tradicionales tablas de SQL. 
 
