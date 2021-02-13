@@ -5,7 +5,7 @@
 - Comprender la utilidad de un ORM. 
 - Modelar e Integrar nuestra API basada en Express con una base de datos por medio de Mongoose para MongoDB.
 
-## Interactuar con la base de datos
+## 📡 Interactuar con la base de datos
 
 Hay dos opciones.
 
