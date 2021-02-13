@@ -44,3 +44,5 @@ Para configurar un dominio personalizado con Heroku primero debemos de tener un 
 
 5. Espera a que los cambios se vean reflejados.
 6. Una vez hecho esto accede al dominio de tu API
+
+[`Atrás: Reto 02`](../Reto-02) | [`Siguiente: Reto 03`](../Reto-03)

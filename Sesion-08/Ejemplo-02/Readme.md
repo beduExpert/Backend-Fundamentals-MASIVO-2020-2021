@@ -61,3 +61,5 @@ En el método de deployment elige Github y conecta tu cuenta de Github.
     Si todo está bien configurado, verás un mensaje como el siguiente:
 
     ![img/Untitled%206.png](img/Untitled%206.png)
+
+[`Atrás: Reto 01`](../Reto-02) | [`Siguiente: Reto 02`](../Reto-02)
