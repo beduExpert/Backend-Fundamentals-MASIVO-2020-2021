@@ -43,26 +43,26 @@ Listaremos animales haciendo peticiones a una API pública:
 
 El cuerpo de la petición estará en formato JSON y será cómo el siguiente:
 
-    ```jsx
-    {
-      "id": 989898,
-      "category": {
-        "id": 0,
-        "name": "dogs"
-      },
-      "name": "El Firulais",
-      "photoUrls": [
-      "https://i.pinimg.com/474x/63/96/a2/6396a292169efeb4651278196a81bb6b.jpg"
-      ],
-      "tags": [
-        {
-          "id": 4242,
-          "name": "memes"
-        }
-      ],
-      "status": "available"
-    }
-    ```
+```jsx
+{
+   "id": 989898,
+    "category": {
+      "id": 0,
+      "name": "dogs"
+    },
+    "name": "El Firulais",
+    "photoUrls": [
+    "https://i.pinimg.com/474x/63/96/a2/6396a292169efeb4651278196a81bb6b.jpg"
+    ],
+    "tags": [
+      {
+        "id": 4242,
+        "name": "memes"
+      }
+    ],
+    "status": "available"
+}
+```
 
 Una vez ejecutada la petición, obtendremos una respuesta `200` si todo ha salido bien
 
