@@ -41,7 +41,7 @@ Listaremos animales haciendo peticiones a una API pública:
 
 <img src="img/Untitled2.png" width="700">
 
-    El cuerpo de la petición estará en formato JSON y será cómo el siguiente:
+El cuerpo de la petición estará en formato JSON y será cómo el siguiente:
 
     ```jsx
     {
