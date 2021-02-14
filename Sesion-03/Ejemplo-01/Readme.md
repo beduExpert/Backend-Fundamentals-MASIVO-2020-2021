@@ -64,6 +64,8 @@ El cuerpo de la petición estará en formato JSON y será cómo el siguiente:
 }
 ```
 
+Consulta la [Documentación](https://petstore.swagger.io/#/) de la API, para que veas como funcionan los servicios de ésta.
+
 Una vez ejecutada la petición, obtendremos una respuesta `200` si todo ha salido bien
 
 <img src="img/Untitled3.png" width="900">
