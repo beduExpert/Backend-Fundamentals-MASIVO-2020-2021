@@ -80,7 +80,7 @@ El comando `chown` nos permite cambiar de propietarix a un archivo
 
 `chown [owner/group owner] [nombre del archivo]`
 
-Si tenemos un archivo **«demo.txt»** y queremos que lx propietarix del archivo sea **«juan»** y que lx propietarix del grupo sea **«clientes»**, usaríamos este comando:
+Si tenemos un archivo **«demo.txt»** y queremos que el propietario del archivo sea **«juan»** y que el propietari del grupo sea **«clientes»**, usaríamos este comando:
 
 ```
 chown juan:clientes demo.txt
@@ -116,7 +116,7 @@ chmod 746 hola.sh
 
 Donde **7** es la **suma de los valores numéricos** de los permisos para el propietarix, **4** para el **grupo** y **6** para el **público en general**.
 
-Así que tendríamos un archivo dónde lx propietarix tiene todos los permisos, el grupo solamente puede leer y otros únicamente pueden leer y escribir.
+Así que tendríamos un archivo dónde el propietarix tiene todos los permisos, el grupo solamente puede leer y otrxs únicamente pueden leer y escribir.
 
 Si quisieramos **cambiar** los permisos de un **folder** junto con todos los archivos que contiene, podemos utilizar la opción `-R` para aplicar el comando de manera recursiva.
 
