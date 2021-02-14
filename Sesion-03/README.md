@@ -7,6 +7,8 @@
 
 ## 📜 Requerimientos de un proyecto
 
+<img src="img/scrum_board.svg" alt="PostItHistoriaUsuario" align="right" width="450" > 
+
 Los requerimientos nos dicen como desarrolladorxs que es lo que tenemos que tomar en cuenta a la hora de crear una aplicación o programa. Son las especificaciones que nos proporciona el cliente sobre que espera del software que vamos a desarrollar.
 
 Describen a muy alto nivel las especificaciones y funcionalidades del sistema. 
