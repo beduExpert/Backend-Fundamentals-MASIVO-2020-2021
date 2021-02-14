@@ -1,6 +1,6 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 03: Arquitectura de software`](../README.md) >[`Ejemplo-03`](../Ejemplo-03) > `Reto 3`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 03: Arquitectura de software`](../README.md) >[`Ejemplo-02`](../Ejemplo-03) > `Reto 2`
 	
-### Reto 3
+### Reto 2
 
 Crea las 3 clases restantes en javascript para representar nuestros modelos. Recuerda preguntarte para cada clase
 

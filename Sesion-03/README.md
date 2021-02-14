@@ -5,6 +5,35 @@
 - Gestionar usuarios y permisos de archivos, cómo conectarse, utilizar un servidor remoto por medio de ssh
 - Enviar archivos remotamente con SCP.
 
+## 📜 Requerimientos de un proyecto
+
+Los requerimientos nos dicen como desarrolladorxs que es lo que tenemos que tomar en cuenta a la hora de crear una aplicación o programa. Son las especificaciones que nos proporciona el cliente sobre que espera del software que vamos a desarrollar.
+
+Describen a muy alto nivel las especificaciones y funcionalidades del sistema. 
+
+Por ejemplo los requerimientos de nuestro proyecto AdoptPet, que será una aplicación web que permita a la gente adoptar mascotas y poner mascotas en adopción, a grandes rasgos son los siguientes:
+
+- Publicar anuncios de mascotas en adopción
+- Visualizar las mascotas que están en adopción
+- Permitir a los usuarios interesados en adoptar registrarse y poder enviar solicitudes de adopción
+- Permitir a los cuidadores evaluar solicitudes y confirmar una adopción
+
+### Historias de usuario
+
+Para describir los requerimientos de un sistema a menudo se usan historias de usuarix que son **descripciones cortas** y **simples** de una funcionalidad contada desde la perspectiva de la persona que la desea (usuarix o clientx del sistema). 
+
+Estas historias tienen una **estructura simple**
+
+*"Como **[rol de usuario]** quiero **[objetivo]** para **[beneficio]**"*
+
+Y son utilizadas por varias metodologías para poder comprender mejor los requerimientos y alinearlos con el negocio.
+
+***Ejemplo:***
+
+*Como usuario de adoptaPet quiero ver a todas las mascotas que hay en adopción para poder elegir la que más me guste.*
+
+Posteriormente estas historias se traducen a funcionalidades de nuestro sistema.
+
 ## 🔐 Arquitectura Cliente-servidor
 
 La arquitectura que gobierna la web actualmente es la arquitectura cliente-servidor.
@@ -94,15 +123,15 @@ Puedes encontrar más códigos de respuesta en los
 - [`Ejemplo 01: Arquitectura cliente-servidor`](Ejemplo-01/)
 - [`Reto 01: Uso de Postman o Insomnia`](Reto-01/#reto-1)
 
-### Requerimientos de un proyecto
+<!-- ### Requerimientos de un proyecto
 
 - [`Ejemplo 02: AdoptaPet - Iniciando un nuevo proyecto`](Ejemplo-02/)
-- [`Reto 02: historias de usuario`](Reto-02/#reto-2)
+- [`Reto 02: historias de usuario`](Reto-02/#reto-2) -->
 
 ### Modelo Vista Controlador
 
-- [`Ejemplo 03: Modelo Vista Controlador`](Ejemplo-03/)
-- [`Reto 03: Clases en javascript `](Reto-03/#reto-3)
+- [`Ejemplo 02: Modelo Vista Controlador`](Ejemplo-03/)
+- [`Reto 02: Clases en javascript `](Reto-03/#reto-3)
 
 
 

@@ -1,4 +1,4 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 03: Arquitectura de software`](../README.md) > `Ejemplo 3`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 03: Arquitectura de software`](../README.md) > `Ejemplo 2`
 
 # Modelo Vista Controlador
 
@@ -106,4 +106,4 @@ Para que el sistema que desarrolle frontend se comunique con nuestro backend cre
 
 -------
 
-[`Atrás: Reto-02`](../Reto-02) | [`Siguiente: Reto 03`](../Reto-03)
+[`Atrás: Reto-01`](../Reto-01) | [`Siguiente: Reto 02`](../Reto-03)
