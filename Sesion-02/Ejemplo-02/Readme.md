@@ -22,7 +22,9 @@ Lx expertx debe proveer la dirección del servidor y el archivo de la llave con 
 
 Ejecutaremos el comando `chmod`
 
-`sudo chmod 600 [ruta del certificado]`
+```
+sudo chmod 600 [ruta del certificado]
+```
 
 > 💡 **Recomendación**
 >
@@ -34,7 +36,9 @@ Ejecutaremos el comando `chmod`
 
 **Sintaxis:**
 
-`ssh -i [ruta archivo .pem (key)] [usuario]@[dirección]`
+```
+ssh -i [ruta archivo .pem (key)] [usuario]@[dirección]
+```
 
 **Ejemplo:**
 

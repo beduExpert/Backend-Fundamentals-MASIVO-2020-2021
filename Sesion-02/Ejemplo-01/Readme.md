@@ -37,7 +37,9 @@ Para esto necesitamos **autentificarnos cómo usuarixs root**
 
 Para iniciar sesión en **ubuntu con usuarix root ingresaremos el siguiente comando:**
 
-`su -i` 
+```
+su -i
+``` 
 
 Seguido de nuestro **password** si éste es requerido.
 
@@ -53,7 +55,9 @@ Cada archivo tiene un **tipo de acceso para cada usuarix.**
 
 Entraremos a nuestra **carpeta bedu** de los ejemplos anteriores y ejecutaremos el comando:
 
-`ls -l`
+```
+ls -l
+```
 
 ![src/Untitled.png](src/Untitled.png)
 
@@ -78,7 +82,9 @@ El comando `chown` nos permite cambiar de propietarix a un archivo
 
 **Sintaxis:**
 
-`chown [owner/group owner] [nombre del archivo]`
+```
+chown [owner/group owner] [nombre del archivo]
+```
 
 Si tenemos un archivo **«demo.txt»** y queremos que el propietario del archivo sea **«juan»** y que el propietari del grupo sea **«clientes»**, usaríamos este comando:
 
