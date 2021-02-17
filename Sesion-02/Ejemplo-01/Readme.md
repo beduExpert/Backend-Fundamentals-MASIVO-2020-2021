@@ -33,13 +33,21 @@ Los permisos son:
 
 Para cambiar los privilegios y propietarixs de nuestros archivos necesitamos los permisos suficientes.
 
-Para esto necesitamos **autentificarnos cómo usuarixs root**
+Para esto necesitamos **autentificarnos** cómo usuarixs root
 
-Para iniciar sesión en **ubuntu con usuarix root ingresaremos el siguiente comando:**
+Para iniciar sesión  **como usuarix root** ingresaremos el siguiente comando:
+
+- **Linux**
 
 ```
 su -i
 ``` 
+
+- **MacOS** 
+
+```
+sudo -i
+```
 
 Seguido de nuestro **password** si éste es requerido.
 
@@ -86,7 +94,7 @@ El comando `chown` nos permite cambiar de propietarix a un archivo
 chown [owner/group owner] [nombre del archivo]
 ```
 
-Si tenemos un archivo **«demo.txt»** y queremos que el propietario del archivo sea **«juan»** y que el propietari del grupo sea **«clientes»**, usaríamos este comando:
+Si tenemos un archivo **«demo.txt»** y queremos que el propietario del archivo sea **«juan»** y que el propietario del grupo sea **«clientes»**, usaríamos este comando:
 
 ```
 chown juan:clientes demo.txt
