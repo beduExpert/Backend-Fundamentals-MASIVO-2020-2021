@@ -22,15 +22,19 @@ Lx expertx debe proveer la dirección del servidor y el archivo de la llave con 
 
 Ejecutaremos el comando `chmod`
 
-`sudo chmod 400`
+`sudo chmod 600 [ruta del certificado]`
+
+> 💡 **Recomendación**
+>
+> Como buena práctica se recomienda guardar el certificado (.pem) en una carpeta oculta con nombre `.ssh` y **NUNCA** subirlo a un repositorio público o compartirlo por un medio inseguro de comunicación.
 
 ![img/Untitled%201.png](img/Untitled%201.png)
 
-3. Conectarnos con ssh por medio de la dirección y lx usuarix de nuestro servidor remoto
+3. Conectarnos con ssh por medio de la dirección y usuarix de nuestro servidor remoto
 
 **Sintaxis:**
 
-`ssh -i [ruta archivo .pem] [usuario]@[dirección]`
+`ssh -i [ruta archivo .pem (key)] [usuario]@[dirección]`
 
 **Ejemplo:**
 

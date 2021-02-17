@@ -9,7 +9,7 @@
 
 <img src="img/server.png" align="right" width="250">
 
-Un servidor web es un conjunto de software y hardware que responden las peticiones que lxs clientxs hacen sobre *World Wide Web*.
+Un servidor web es un conjunto de software y hardware que responden las peticiones que los clientes hacen sobre *World Wide Web*.
 
 Para responder a las peticiones, los servidores utilizan distintos protocolos de transferencia de datos por una red, siendo los principales:
 
@@ -21,11 +21,11 @@ Su propósito principal es permitir el acceso al contenido de los sitios web que
 
 ## ¿Cómo funciona un servidor web? 🤔
 
-El hardware del servidor está conectado a la internet y permite el intercambio de información con otrxs clientxs también conectados a la red. Este es una computadora que almacena el contenido del sitio web tales como los archivos HTML, javascript, CSS, imagenes, etc, es decir, es un **host**.
+El hardware del servidor está conectado a la internet y permite el intercambio de información con otros clientes también conectados a la red. Este es una computadora que almacena el contenido del sitio web tales como los archivos HTML, JavaScript, CSS, imagenes, etc, es decir, es un **host**.
 
-Mientras que el software controla el acceso que tienen lxs usuarixs a los archivos del servidor. Todo esto utilizando un modelo cliente servidor. Se accede a este mediante la url (Uniform Resource Locator) del sitio, que sirve como el localizador del sitio y asegura que el contenido será entregado a lxs usuarixs que lo solicitaron.
+Mientras que el software controla el acceso que tienen lxs usuarixs a los archivos del servidor. Todo esto utilizando un modelo cliente servidor. Se accede a este mediante la url (Uniform Resource Locator) del sitio, que sirve como el localizador del sitio y asegura que el contenido será entregado a quienes que lo solicitaron.
 
-Todo este proceso se hace utilizando el modelo **clientx/servidor**.
+Todo este proceso se hace utilizando el modelo **cliente/servidor**.
 
 ## Proceso
 

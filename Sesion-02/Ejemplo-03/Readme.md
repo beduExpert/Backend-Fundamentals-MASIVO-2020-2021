@@ -14,7 +14,9 @@ Utilizar el servidor remoto al que hemos accesado con los comandos aprendidos de
 
 1. Una vez dentro del servidor **crearemos** un archivo con **nuestro nombre** y la extensión **html**
 
-`touch [mi_nombre].html`
+```
+touch [mi_nombre].html 
+```
 
 2. Abrimos el archivo con nano o vim y pegamos el siguiente contenido:
 
@@ -39,19 +41,35 @@ Utilizar el servidor remoto al que hemos accesado con los comandos aprendidos de
 
 3. Cambiaremos al propietario del archivo con el comando
 
-`sudo chown root:root [mi-nombre].html`
+```
+sudo chown root:root [mi-nombre].html
+```
+
 
 ![img/Untitled.png](img/Untitled.png)
 
 4. **Cambiaremos los permisos del archivo** para asegurarnos de que **solo el usuario root** lo pueda **modificar**
 
-`sudo chmod 644 [mi-nombre].html`
+```
+sudo chmod 644 [mi-nombre].html
+```
+
 
 ![img/Untitled%201.png](img/Untitled%201.png)
 
-5. Ahora moveremos este archivo a la ruta `/var/www/html` con el comando `mv` y con permisos **root:**
+4. Vamos a crear un directorio con nuestro nombre dentro de la ruta `/var/www/html`, en este trabajaremos siempre que usemos el servidor.
 
-`sudo mv daniel-garcia.html /var/www/html/`
+```
+sudo mkdir /var/www/html/[tu nombre]
+```
+
+
+5. Ahora moveremos este archivo al directorio que acabamos de crear con el comando `mv` y con permisos **root:**
+
+```
+sudo mv daniel-garcia.html /var/www/html/[tu nombre]
+```
+
 
 6. Si todo ha salido bien **pediremos la url** pública de nuestro servidor, entraremos a ella agregando el nombre de nuestro archivo a la ruta y veremos el [**resultado**](http://ec2-52-43-163-239.us-west-2.compute.amazonaws.com/daniel-garcia.html)
 

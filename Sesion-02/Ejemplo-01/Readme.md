@@ -4,7 +4,7 @@
 
 **Objetivos:**
 
-- Conocer lxs distintos tipos de usuarixs de un sistema operativo UNIX.
+- Conocer los distintos tipos de usuarixs de un sistema operativo UNIX.
 - Entender los diferentes tipos de permisos de un archivo y cómo modificarlos.
 
 **Requerimientos**
@@ -17,9 +17,9 @@ En UNIX contamos con los siguientes tipos de **usuarixs**:
 
 Tipo | Explicación
 -- | --
-owner (propietario) | Quien creeo el archivo
-group (grupo) | 	Todos lxs usuarixs que son miembros del mismo grupo.
-others (otros) | Todos lxs demás usuarixs del sistema que no son propietarixs ni miembros del grupo.
+owner  | El propietario
+group  | 	Todos lxs usuarixs que son miembros del mismo grupo.
+others | Todos lxs demás usuarixs del sistema que no son propietarixs ni miembros del grupo.
 
 Cada uno de estxs usuarixs tiene un tipo de permiso específico sobre cada archivo.
 
@@ -61,10 +61,10 @@ Entraremos a nuestra **carpeta bedu** de los ejemplos anteriores y ejecutaremos 
 
 Utilizaremos los valores del archivo `hola.sh`.
 
-- **-rw-r--r--** En la primera columna obtendremos una representación de los bits de permisos cuyo primer caracter nos indica el **tipo de archivo puede ser folder** `d`, **archivo regular** `-`, o **symbolic link** `l`, los siguientes 3 caracteres serán los **permisos que lx propietarix tiene sobre ese archivo**, luego los permisos del grupo y al final los permisos globales.
+- **-rw-r--r--** En la primera columna obtendremos una representación de los bits de permisos cuyo primer caracter nos indica el **tipo de archivo puede ser folder** `d`, **archivo regular** `-`, o **symbolic link** `l`, los siguientes 3 caracteres serán los **permisos del owner sobre ese archivo**, luego los permisos del grupo y al final los permisos globales.
 
 - **1** – Una cantidad de **enlaces fijos**(hard links). Básicamente, un enlace fijo es un nombre adicional para un archivo existente.
-- **danyparc staff** – Muestra lx **propietarix** y lx **propietarix del grupo** del archivo.
+- **danyparc staff** – nombre del **propietarix** y del **propietarix del grupo** del archivo.
 
 - **30** – Esto muestra el **tamaño** del archivo.
 
