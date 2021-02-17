@@ -120,7 +120,7 @@ estos valores numéricos se suman para **asignar permisos** a un tipo de usuario
 
 Entonces, para cambiar los permisos de **hola.sh** a estos:
 
-**-rwxr–rw- 1 danyparc staff 0 Mar 21 27:05 hola.sh**
+**-rwxr-–rw- 1 danyparc staff 0 Mar 21 27:05 hola.sh**
 
 Ejecutaremos este comando:
 
