@@ -46,7 +46,7 @@ su -i
 - **MacOS** 
 
 ```
-sudo -i
+sudo su
 ```
 
 Seguido de nuestro **password** si éste es requerido.
