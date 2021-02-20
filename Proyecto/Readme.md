@@ -1,17 +1,17 @@
-# Proyecto Backend Fundamentals
+# 🫀 Proyecto Backend Fundamentals
 
 Este proyecto sirve para la evaluación del módulo. Se debe desarrollar en equipos. 
 
 ## Entregables: 
 
-### 1. Reporte Escrito
+### 📜 1. Reporte Escrito
 
 Este reporte debe ser el archivo Readme.md del repositorio de GitHub en donde se encuentre el proyecto. Se deben abordar los siguientes puntos:
 
 - Definir detalladamente las especificaciones del proyecto.
 - Utilizar historias de usuario para definir el papel que jugaran.
 
-### 2. API
+### 👾 2. API
 
 Se debe desarrollar una API con las siguientes características:
 
@@ -30,7 +30,7 @@ Se debe desarrollar una API con las siguientes características:
 - Utilizar un ORM/ODM para la conexión con la base de datos. 
 - Hacer deploy de la API usando Heroku.
 
-### 3. Swagger 
+### 👽 3. Swagger 
 
 Un swagger son la documentación de la API.
 
@@ -38,7 +38,7 @@ Un swagger son la documentación de la API.
 los usuarios puedan consultarla.
 - Seguir todas las buenas prácticas y requerimientos para la documentación.
 
-## Rúbrica de evaluación 
+## ✅ Rúbrica de evaluación 
 
 Para la evaluación del proyecto se usará la siguiente rúbrica:
 
