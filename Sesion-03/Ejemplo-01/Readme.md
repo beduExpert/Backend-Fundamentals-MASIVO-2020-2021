@@ -22,7 +22,7 @@ Listaremos animales haciendo peticiones a una API pública:
 
 2. Abrimos el inspector de elementos y nos dirigiremos a la pestaña *Network*
 
-3. Copiamos y pegamos el [siguiente enlace:](https://petstore.swagger.io/v2/pet/findByStatus?status=available)
+3. Abrimos el [siguiente enlace:](https://petstore.swagger.io/v2/pet/findByStatus?status=available)
 
 4. Observar que es lo que sucede
 
