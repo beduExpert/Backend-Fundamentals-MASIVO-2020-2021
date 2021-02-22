@@ -21,7 +21,6 @@ Desarrollo en Java Script:
 
 - Entender las ventajas de una arquitectura basada en microservicios.
 - Familiarizarse con Docker
-- Descargar e instalar imagenes de docker y utilizarlas
 
 Adicionalmente te aconsejamos leer los siguientes contenidos que ampliarán tus conocimientos:
 
@@ -127,7 +126,7 @@ También el ecosistema docker permite poner a trabajar distintos contenedores de
 >
 >Si te interesa seguir aprendiendo a utilizar docker te recomendamos revisar la [documentación oficial](https://docs.docker.com/). -->
 
-## Avances del Proyecto
+## 🫀 Avances del Proyecto
 
 Utilizando lo aprendido en la sesión 3, realicen los siguientes ejercicios como parte del desarrollo de tu proyecto:
 
