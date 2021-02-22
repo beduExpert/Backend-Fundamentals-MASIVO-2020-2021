@@ -133,7 +133,7 @@ El servidor se movió y ésta y todas las peticiones futuras deben ser dirigidas
 Se requiere que el cliente realice una redirección temporal. 
 ![](https://http.cat/302)
 
-###`404 NOT FOUND`
+### `404 NOT FOUND`
 
 El servidor web no puedo encontrar el recurso solicitado.
 
