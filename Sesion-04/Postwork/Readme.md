@@ -30,7 +30,7 @@ Con el manejo de sesiones podemos también limitar el alcance de nuestros usuari
 
 Actualmente existen diversas técticas para el manejo de sesiones y autenticación.
 
-### Cookies
+### 🍪 Cookies
 
 Cookies son archivos de texto que se guardan en el cliente (computadora de escritorio, tablet, smartphone) con la intención de recordar las preferencias de un visitante sobre una página determinada.
 
@@ -53,3 +53,13 @@ OAuth permite a un usuario compartir su información en el sitio A (proveedor de
 Es utilizado por compañías como Google, Facebook, Microsoft, Twitter y Github para permitir a los usuarios compartir información sobre sus cuentas con aplicaciones de terceros o sitios web.
 
 [Una introducción a OAuth 2 | DigitalOcean](https://www.digitalocean.com/community/tutorials/una-introduccion-a-oauth-2-es)
+
+## 🫀 Avances del Proyecto
+
+Realiza los siguientes ejercicios sobre su proyecto del módulo:
+
+1. Creen la estructura de la API para su proyecto con base en la vista en el Work.
+2. Organicen los Modelos creados en el postwork anterior, en el directorio `models` de tu proyecto.
+3. Definan los controladores de cada uno de sus modelos, simulando el comportamiento del CRUD para cada uno.
+4. Definan la estructura de rutas para cada modelo.
+5. Hagan `push` en su repo, en la rama `main` con los cambios realizados en este postwork.
