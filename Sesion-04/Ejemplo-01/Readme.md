@@ -47,7 +47,7 @@ adoptapet-api/
     ```bash
     npm install express body-parser cors
     ```
-
+Express.js es un framework de Node para desarrollo backend.
 1. Instalar nodemon de manera global
 
     ```bash
@@ -65,6 +65,7 @@ adoptapet-api/
     "dev": "nodemon ./app.js",
     ```
 
+Le indica a npm de que forma debe ejecutar nuestro programa. De esta forma le indicamos que debe usar nodemon para ejecutarlo en el modo de desarrollo.
 1. Verifica que tu archivo `package.json` luzca similar a esto:
 
     ```json
@@ -119,6 +120,9 @@ adoptapet-api/
       console.log('Escuchando en el puerto ' + server.address().port);
     });
     ```
+Una aplicación Express es fundamentalmente una serie de llamadas a funciones de middleware.
+
+Las funciones de middleware son funciones que tienen acceso al objeto de solicitud (req), al objeto de respuesta (res)
 
 1. Ingresaremos el comando `npm run dev` y si la configuración es correcta se ejecutará nodemon y veremos algo como esto en nuestra terminal:
 

@@ -89,6 +89,7 @@ module.exports = Solicitud;
  *  en un futuro aquí se utilizarán los modelos
  */
 
+// importamos el modelo de usuarios
 const Usuario = require('../models/Usuario')
 
 function crearUsuario(req, res) {
@@ -116,6 +117,7 @@ function eliminarUsuario(req, res) {
   res.status(200).send(`Usuario ${req.params.id} eliminado`);
 }
 
+// exportamos las funciones definidas
 module.exports = {
   crearUsuario,
   obtenerUsuarios,
