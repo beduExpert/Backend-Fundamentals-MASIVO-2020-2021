@@ -16,10 +16,15 @@ Se recomienda tener NodeJS LTS instalado y funcionando correctamente. También e
 
 REST es un acrónimo para **RE**presentational **S**tate **T**ransfer, un estilo de arquitectura pensada para sistemas dedicados a la distribución de *hypermedia*. REST cuenta con los siguientes principios:
 
-- Protocolo cliente/servidor sin estado.
-- Los objetos en REST siempre se manipulan a partir de la URI.
+- Arquitectura cliente/servidor sin estado, es decir, no se almacena la información de las solicitudes, cada solicitud es independiente.
+- Una interfaz uniforme entre los elementos, para que la información se transfiera de forma estandarizada.
 - Acciones concretas (POST, GET, PUT y DELETE) para la transferencia de datos.
-- Uso de hipermedios para la comunicación. Para este caso en específico utilizaremos JSON como el hipermedio para enviar respuestas y recibir peticiones de objetos.
+- Uso de formatos de transferencia para la comunicación. Para este caso en específico utilizaremos JSON como el formato para enviar respuestas y recibir peticiones de objetos. Se puede usar también XLT ó HTML
+- Un sistema en capas que organiza en jerarquías invisibles para el cliente y cada uno de los servidores  que participan en la recuperación de la información solicitada.
+
+Si bien parece una arquitectura muy restrictiva, esto sirve para que su uso sea mas sencillo. 
+
+Es importante señalar que REST es un conjunto de normas que se pueden implementar a necesidad de la aplicación. 
 
 ## Preparando nuestro entorno de desarrollo
 
@@ -89,6 +94,7 @@ adoptapet-api/
 1. Ahora editaremos el archivo `app.js` con el siguiente código:
 
     ```jsx
+    // Importamos las bibliotecas necesarias
     var express = require('express'),
         bodyParser = require('body-parser'),
         cors = require('cors');
