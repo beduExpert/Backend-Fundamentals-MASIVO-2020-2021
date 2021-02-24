@@ -132,4 +132,4 @@ El objeto [Request (req)](http://expressjs.com/es/4x/api.html#req) contiene un g
 
 [Response (res)](http://expressjs.com/es/4x/api.html#res) es el objeto que utilizamos para componer la respuesta que enviaremos  con el método *send*.
 
-[`Atrás: Reto 01`](../README.md) | [`Siguiente: Reto 02`](../Reto-02)
+[`Atrás: Reto 01`](../Reto-01) | [`Siguiente: Reto 02`](../Reto-02)
