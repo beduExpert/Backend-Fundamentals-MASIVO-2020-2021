@@ -32,17 +32,17 @@ Toda esta interacción entre aplicaciones, datos y dispositivos de diferentes or
 ### REST API 
 
 - [`Ejemplo 1: Fundamentos de una API REST`](Ejemplo-01/)
-- [`Reto 01:  Ejecutar peticiones con insomnia o postman`](Reto-01/#reto-1)
+- [`Reto 01:  Inicializando el servidor`](Reto-01/#reto-1)
 
 ### Peticiones y respuestas
 
 - [`Ejemplo 2: Objetos de petición y respuesta de ExpressJS`](Ejemplo-02/)
-- [`Reto 02: Creación de un CRUD para los anunciantes, las mascotas y solicitudes`](Reto-02/#reto-2)
+- [`Reto 02: Creación de un CRUD para las mascotas`](Reto-02/#reto-2)
 
 ### Rutas y controladores
 
 - [`Ejemplo 3: Rutas en una API`](Ejemplo-03/)
-- [`Reto 03: Crear controladores para mascotas y solicitudes`](Reto-03/#reto-3)
+- [`Reto 03: Crear rutas para mascotas `](Reto-03/#reto-3)
 - [`Reto 04: Ejecutar peticiones de  un CRUD con insomnia o postman`](Reto-04/#reto-4)
 
 
