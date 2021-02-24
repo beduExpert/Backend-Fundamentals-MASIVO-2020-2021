@@ -14,8 +14,6 @@ Se recomienda tener NodeJS LTS instalado y funcionando correctamente. También e
 
 ### ¿Qué es una API REST?
 
-Una API es un conjunto de funciones y procedimientos que cumplen una o varias funciones con el fin de ser utilizadas por otro *software.* Las siglas API vienen del inglés *Application Programming Interface.* En español sería Interfaz de Programación de Aplicaciones.
-
 REST es un acrónimo para **RE**presentational **S**tate **T**ransfer, un estilo de arquitectura pensada para sistemas dedicados a la distribución de *hypermedia*. REST cuenta con los siguientes principios:
 
 - Protocolo cliente/servidor sin estado.
@@ -29,17 +27,14 @@ REST es un acrónimo para **RE**presentational **S**tate **T**ransfer, un estilo
 
 1. Crearemos una nueva carpeta llamada `adoptapet-api` con la siguiente estructura:
 
-    adoptapet-api/
-
-    config/
-
-    models/
-
-    controllers/
-
-    routes/
-
-    app.js
+```
+adoptapet-api/
+├── config/
+├── models/
+├── controllers/
+├── routes/
+└── app.js
+``` 
 
 1. Nos posicionaremos en esa carpeta e iniciaremos un nuevo proyecto con el comando `npm init -y`
 1. Ejecutaremos el siguiente código 

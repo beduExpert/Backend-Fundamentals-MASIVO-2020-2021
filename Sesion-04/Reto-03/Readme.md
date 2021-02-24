@@ -2,11 +2,9 @@
 	
 ## Reto 3
 
-1. Ahora crea los controladores para las mascotas y las solicitudes con una estructura similar a la anterior.
-2. Contemplando que si pides (GET) solicitudes en el endpoint `v1/solicitudes` este nos devolverá un listado de *todas* las solicitudes. Para obtener únicamente UNA solicitud de adopción ¿qué cambios implementarías?
+Crear la estructura de ruteo para las mascotas  de manera similar a lo que hicimos con el archivo `routes/usuarios.js`
 
-## Nota: 
-
-En este módulo podrás descargar el proyecto con cada modificación realizada a lo largao del módulo.
+- Crea la estructura de rutas para el archivo `routes/mascotas.js`
+- No olvides importar cada router y declarar la ruta donde se ejecutará en el archivo `routes/index.js`
 
 [`Atrás: Ejemplo 03`](../Ejemplo-03) | [`Siguiente: Reto 04`](../Reto-04)
