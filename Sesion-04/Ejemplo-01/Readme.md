@@ -14,7 +14,9 @@ Se recomienda tener NodeJS LTS instalado y funcionando correctamente. También e
 
 ### ¿Qué es una API REST?
 
-REST es un acrónimo para **RE**presentational **S**tate **T**ransfer, un estilo de arquitectura pensada para sistemas dedicados a la distribución de *hypermedia*. REST cuenta con los siguientes principios:
+Cuando se habla de REST API, significa utilizar una API para acceder a aplicaciones backend, de manera que esa comunicación se realice con los estandares definidos por el estilo de arquitectura REST.
+
+REST es un acrónimo para **RE**presentational **S**tate **T**ransfer, fue pensada para sistemas dedicados a la distribución de *hypermedia*. En REST se siguen los siguientes principios:
 
 - Arquitectura cliente/servidor sin estado, es decir, no se almacena la información de las solicitudes, cada solicitud es independiente.
 - Una interfaz uniforme entre los elementos, para que la información se transfiera de forma estandarizada.
