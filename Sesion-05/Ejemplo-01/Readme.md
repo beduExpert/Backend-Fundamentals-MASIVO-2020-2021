@@ -57,16 +57,16 @@ docker exec -it mysql-db mysql -p
 
 ```bash
 # se instala el paquete
-$ brew install mysql
+brew install mysql
 
 # se actualizan los servicios disponibles de homebrew
-$ brew tap homebrew/services
+brew tap homebrew/services
 
 # Se configura la contraseña para el ususario root de MySQL
-$ mysqladmin -u root password 'yourpassword'
+mysqladmin -u root password 'yourpassword'
 
 # Se inicializa MySQL con la contraseña seleccionada
-$ mysql -u root -p
+mysql -u root -p
 ```
 
 ### Con un instalador
