@@ -62,10 +62,12 @@ El modelo entidad-relación se basa en los conceptos: entidad, tipo de entidad, 
 
     La integridad de los datos es la propiedad que asegura que información dada es correcta, al cumplir ciertas aserciones. Las restricciones de integridad son propiedades de la base de datos que se deben satisfacer en cualquier momento entre las cuales están:
 
-    - Integridad de clave primaria
-    - Integridad referencial
-    - Tratamiento de valores nulos
-    - Valores por defecto
+    - **Unicidad de clave primaria** establece que toda clave primaria que se elija para una relación no debe tener valores repetidos
+    - **Integridad de clave primaria** dispone que los atributos de la clave primaria de una relación no pueden tener valores nulos
+    - **Integridad referencial**  está relacionada con el concepto de clave foránea, lo que determina que todos los valores que toma una clave foránea deben ser valores que existen en la clave primaria que referencia
+    - **Tratamiento de valores nulos** permite poner valores nulos en los campos no especificados al momento de agregar o generar nuevos registros.
+    - **Valores por defecto** es una forma de evitar valores nulos al definir un valor que toman los atributos no definidos en lugar de considerarlos nulos.
+    - **Integridad de dominio** define que todos los valores de una columna están tomados del mismo conjunto de datos o son en su defecto valores nulos.
 
     ### ¿Cómo pasar del Modelo ER al Modelo Relacional?
 

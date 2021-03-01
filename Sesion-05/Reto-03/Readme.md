@@ -1,15 +1,15 @@
 `Backend Fundamentals` > `S5 - Fundamentos de Base de Datos Relacionales(SQL)`
 
-### Reto 3
+### Reto 2
 
-Poblar la base de datos *restaurante* y practica consultas avanzadas para mejorar tu habilidad con SQL.
+Creación de la base de datos en SQL para Adoptapet.
 
-> 💡**Tip:**
+>💡 **Nota:**
 >
->Manipula datos entre varias tablas.
+>Recuerda la sintaxis para crear una tabla en MySQL
 
-Para hacer consultas entre distintas tablas puedes utilizar la sentencia join la siguiente página web contiene ejemplos utilizando diferentes tipos de uniones, además, verás una tabla dinámica de cómo se visualiza cada consulta:
+```sql
+CREATE TABLE *nombre_tabla*(*atributo1 tipo* [*restricción*], *atributo2...);*
+```
 
-[Visual JOIN](https://joins.spathon.com/)
-
-[`Atrás: Ejemplo 03`](../Ejemplo-03) | [`Siguiente: Reto 04`](../Reto-04)
+[`Atrás: Ejemplo 03`](../Ejemplo-03) | [`Siguiente: Sesión 05`](../README.md)

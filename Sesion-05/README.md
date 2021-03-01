@@ -32,6 +32,14 @@ MySQL es un sistema para gestionar bases de datos relacionales con un modelo cli
 
 Hay un gran debate sobre como se  pronuncia **MySQL**, algunas personas lo pronuncian como *MAI-ES-KIU-EL* mientras que otras usan *MAI-SI-KUEL*, ¿cuál es la correcta? 🤷. En el siguiente [artículo](https://learnsql.com/blog/sql-or-sequel) puedes encontrar un análisis detallado de ambas y elegir cual prefieres. 
 
+---
+
+## 🖍 Diseño de Bases de datos
+
+Las fases del diseño de bases de datos relacionales son: Análisis de requisitos, diseño conceptual, elección de un SGBD, diseño lógico, diseño físico, uso y mantenimiento.
+     
+![de248-fasesdedisenobd (1)](https://user-images.githubusercontent.com/13757596/87999687-40083500-cac1-11ea-8afe-a065ecf15f09.png)
+
 ### Instalación 
 
 - [`Ejemplo 1 - Instalando MySQL`](Ejemplo-01/)
@@ -40,17 +48,17 @@ Hay un gran debate sobre como se  pronuncia **MySQL**, algunas personas lo pronu
 
 - [`Ejemplo 2 - Diagramas entidad relación y Modelo Relacional`](Ejemplo-02/)
 - [`Reto 01: Modelo Entidad Relación`](Reto-01/#reto-1)
-- [`Reto 02: Diseño de bases datos relacionales`](Reto-02/#reto-2)
+<!-- - [`Reto 02: Diseño de bases datos relacionales`](Reto-02/#reto-2) -->
 
 ### Queries
 
 - [`Ejemplo 3 - Ejecutando Queries`](Ejemplo-03/)
-- [`Reto 03: Consultas avanzadas con SQL`](Reto-03/#reto-3)
+- [`Reto 02: Creación de la base de datos en SQL para Adoptapet.`](Reto-03/#reto-3)
 
-### Creación de bases de datos.
+<!-- ### Creación de bases de datos.
 
 - [`Reto 04: Creación de la base de datos en SQL para Adoptapet.`](Reto-04/#reto-4)
-
+ -->
 ## 🛡 Postwork
 
 **Objetivo:**
