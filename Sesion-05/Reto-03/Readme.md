@@ -4,6 +4,9 @@
 
 Creación de la base de datos en SQL para Adoptapet.
 
+- Define la base de datos para AdoptaPet
+- Define las tablas que representan las entidades de esta base de datos usando el modelo relacional del reto anterior.
+
 >💡 **Nota:**
 >
 >Recuerda la sintaxis para crear una tabla en MySQL

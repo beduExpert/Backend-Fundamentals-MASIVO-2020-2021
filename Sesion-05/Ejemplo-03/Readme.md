@@ -497,4 +497,4 @@ Y encontramos esta información en la documentación de MySQL:
 
 [MySQL :: MySQL 8.0 Reference Manual :: 13.2.10 SELECT Statement](https://dev.mysql.com/doc/refman/8.0/en/select.html)
 
-[`Atrás: Reto 02`](../Reto-02) | [`Siguiente: Reto 02`](../Reto-03)
+[`Atrás: Reto 01`](../Reto-01) | [`Siguiente: Reto 02`](../Reto-03)
