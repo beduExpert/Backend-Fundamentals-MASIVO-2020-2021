@@ -97,27 +97,22 @@ Antes de crear una tabla hay ciertos puntos que debemos estudiar:
         *atributo* *tipo* DEFAULT *expresión*
         ```
 
-    - Clave primaria
+    - Llave primaria
 
-        Nivel columna:
+        Simple:
 
         ```sql
-        *atributo tipo* PRIMARY KEY
+        *atributo* *tipo* PRIMARY KEY
         ```
 
-        Nivel tabla:
+        Compuesta:
 
         ```sql
         PRIMARY KEY(*columna1, columna2, ...*)
         ```
 
-    - Claves alternativas:
 
-        ```sql
-        *atributo tipo* UNIQUE
-        ```
-
-    - Claves foráneas:
+    - Llave foráneas:
 
         Nivel columna:
 
@@ -128,25 +123,25 @@ Antes de crear una tabla hay ciertos puntos que debemos estudiar:
         Nivel tabla:
 
         ```sql
-        FOREIGN KEY(*columna1, columna2, ...*) REFERENCES *tabla*[(*columna1, columna2, ...*)]
+        FOREIGN KEY(*columna1, columna2, ...*) REFERENCES *tabla* [(*columna1, columna2, ...*)]
         ```
 
-Para crear una tabla ocupamos la siguiente sintaxis:
+Para crear una tabla usamos el siguiente comando:
 
 ```sql
-CREATE TABLE *nombre_tabla*(*atributo1 tipo* [*restricción*], *atributo2...);*
+CREATE TABLE *nombre_tabla* (*atributo1* *tipo* [*restricción*], *atributo2...);*
 ```
 
 Para verificar que la tablas se ha creado:
 
 ```sql
-SHOW TABLES;
+show tables;
 ```
 
 Y para ver la cómo se creo la tabla:
 
 ```sql
-DESC *nombre_tabla;*
+describe *nombre_tabla;*
 ```
 
 ### Ejemplo
@@ -157,13 +152,13 @@ Vamos a crear las tablas de la BD de restaurante para ello vamos a utilizar el d
 
 ```sql
 CREATE TABLE sucursal(
-     razonSocial VARCHAR(50),
+     razonSocial VARCHAR(50) PRIMARY KEY,
      rfc CHAR(13) UNIQUE NOT NULL,
      nombre VARCHAR(50),
-     ubicacion VARCHAR(80) NOT NULL,
-     PRIMARY KEY(razonSocial)
+     ubicacion VARCHAR(80) NOT NULL
  );
-DESC sucursal;
+
+ describe sucursal;
 ```
 
 ```sql
@@ -191,7 +186,7 @@ CREATE TABLE empleado(
     PRIMARY KEY(rfc),
     FOREIGN KEY(razonSocial) REFERENCES sucursal(razonSocial)
   );
-DESC empleado;
+describe empleado;
 ```
 
 ```sql
@@ -221,7 +216,7 @@ CREATE TABLE orden(
      FOREIGN KEY(razonSocial) REFERENCES sucursal(razonSocial),
      FOREIGN KEY(rfc) REFERENCES empleado(rfc)
      );
-DESC orden;
+describe orden;
 ```
 
 ```sql
@@ -246,7 +241,7 @@ CREATE TABLE ingrediente(
      stock INT DEFAULT 1,
      PRIMARY KEY(idIngrediente)
     );
-DESC ingrediente;
+describe ingrediente;
 ```
 
 ```sql
@@ -268,7 +263,7 @@ CREATE TABLE categoria(
      nombre VARCHAR(30) NOT NULL,
      PRIMARY KEY(idCategoria)
     );
-DESC categoria
+describe categoria
 ```
 
 ```sql
@@ -292,7 +287,7 @@ CREATE TABLE platillo(
      PRIMARY KEY(idPlatillo),
      FOREIGN KEY(idCategoria) REFERENCES categoria(idCategoria)
     );
-DESC platillo;
+describe platillo;
 ```
 
 ```sql
@@ -317,7 +312,7 @@ CREATE TABLE orden_platillo(
      FOREIGN KEY(idOrden) REFERENCES orden(idOrden),
      FOREIGN KEY(idPlatillo) REFERENCES platillo(idPlatillo)
     );
-DESC orden_platillo;
+describe orden_platillo;
 ```
 
 ```sql
@@ -340,7 +335,7 @@ CREATE TABLE platillo_ingrediente(
      FOREIGN KEY(idIngrediente) REFERENCES ingrediente(idIngrediente),
      FOREIGN KEY(idPlatillo) REFERENCES platillo(idPlatillo)
     );
-DESC platillo_ingrediente;
+describe platillo_ingrediente;
 ```
 
 ```sql
@@ -360,7 +355,7 @@ Para agregar, eliminar o modificar columnas en una tabla existente se ocupa la s
 - Agregar
 
     ```sql
-    ALTER TABLE *nombre_tabla* ADD (*atributo tipo restricción*);
+    ALTER TABLE *nombre_tabla* ADD (*atributo* *tipo* *restricción*);
     ```
 
     Ejemplo, si quisiéramos agregar una columna a la tabla empleado
@@ -372,14 +367,14 @@ Para agregar, eliminar o modificar columnas en una tabla existente se ocupa la s
 - Modificar
 
     ```sql
-    ALTER TABLE *nombre_table* MODIFY *atributo tipo restricción*;
+    ALTER TABLE *nombre_table* MODIFY *atributo* *tipo* *restricción*;
     ```
 
     Ejemplo, al crear la tabla *empleado* consideramos que la columna *razonSocial* puede tener un valor nulo y además es una llave foránea y por regla de negocio nos piden que no puede tener un valor nulo entonces haremos:
 
     ```sql
     ALTER TABLE empleado MODIFY razonSocial VARCHAR(50) NOT NULL;
-    DESC empleado;
+    describe empleado;
     ```
 
     ```json
@@ -410,10 +405,10 @@ Para agregar, eliminar o modificar columnas en una tabla existente se ocupa la s
 
 ### Inserción de registros
 
-La función de una base de datos es persistir información, en las bases de datos relacionales son registros en las tablas existentes para hacer esta tarea en SQL se ocupa la sintaxis:
+La función de una base de datos es persistir información, en las bases de datos relacionales son registros en las tablas existentes para hacer esta tarea en SQL se usa el comando:
 
 ```sql
-INSERT INTO *nombre_tabla*(atributo1, ...) **VALUES(*valor1,...);*
+INSERT INTO *nombre_tabla* (*atributo1, ...)* **VALUES (*valor1,...);*
 ```
 Ejemplo: Se requiere registrar una <b>sucursal</b> nueva.
 
@@ -436,9 +431,9 @@ INSERT INTO empleado VALUES(
 
 ### Consultas a la BD
 
-> Una consulta sirve para extraer información de una base de datos. Permite manipular datos: agregar, eliminar y cambiar. Así es como usaremos esta palabra.
+> Una consulta sirve para extraer información de una base de datos. Permite manipular datos: agregar, eliminar y cambiar.
 
-Para traer información de una o varias tablas ocuparemos:
+Para traer información de una o varias tablas usaremos:
 
 ```sql
 SELECT *columna1, columna2, ...* FROM *nombre_table;* 
@@ -456,7 +451,13 @@ SELECT * from empleado WHERE rfc = "DEFL930301T43"
 
 Si requerimos ordenar o agrupar la información, por ejemplo, podemos utilizar los operadores "ORDER BY", "GROUP BY" respectivamente.
 
-Más acerca de la sentencia SELECT:
+Por ejemplo 
+
+```sql
+SELECT * FROM empleado ORDER BY rfc;
+```
+
+Las consultas tienen muchos campos que nos permiten afinarla para obtener el resultado que queremos, en seguida se muestran todos los posibles campos de una consulta, para verlos con mayor detalle con consulta el siguiente ![tutorial](https://beginner-sql-tutorial.com/sql-select-statement.htm).
 
 ```sql
 SELECT
@@ -493,7 +494,7 @@ into_option: {
 }
 ```
 
-Y encontramos esta información en la documentación de MySQL:
+También podemos encontramos esta información en la documentación de MySQL:
 
 [MySQL :: MySQL 8.0 Reference Manual :: 13.2.10 SELECT Statement](https://dev.mysql.com/doc/refman/8.0/en/select.html)
 
