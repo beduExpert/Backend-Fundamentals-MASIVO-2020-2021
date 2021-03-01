@@ -457,7 +457,7 @@ Por ejemplo
 SELECT * FROM empleado ORDER BY rfc;
 ```
 
-Las consultas tienen muchos campos que nos permiten afinarla para obtener el resultado que queremos, en seguida se muestran todos los posibles campos de una consulta, para verlos con mayor detalle con consulta el siguiente ![tutorial](https://beginner-sql-tutorial.com/sql-select-statement.htm).
+Las consultas tienen muchos campos que nos permiten afinarla para obtener el resultado que queremos, en seguida se muestran todos los posibles campos de una consulta, para verlos con mayor detalle con consulta el siguiente [tutorial](https://beginner-sql-tutorial.com/sql-select-statement.htm).
 
 ```sql
 SELECT
