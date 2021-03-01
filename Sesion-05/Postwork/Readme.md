@@ -58,5 +58,9 @@ Realicen los siguientes ejercicios sobre su proyecto del módulo:
 
 1. Con base en las entidades definidas hasta ahora en tu proyecto, define el diagrama entidad relación de éstas.
 2. Traduzcan el diagrama del inciso anterior en un modelo relacional.
-3. Implementen este modelo como una base de datos relacional en MySQL, guarden todos los comandos que usaron para la creación de la base de datos y tablas en un archivo con nombre `database.sql` y subanlo a su repositorio. 
-4. **Para reflexionar** ¿El modelo relacional se acopla a las necesidades de su proyecto? ¿Que le agregarían o quitarían para que funcionara mejor para sus necesidades. Estas preguntas se discutirán al inicio de la siguiente sesión.
+3. Implementen este modelo como una base de datos relacional en MySQL, guarden todos los comandos que usaron para la creación de la base de datos y tablas en un archivo con nombre `database.sql` y súbanlo a su repositorio. 
+4. Tomen un ScreenShot de la descripción de las tablas en su base de datos en MySQL. Recuerden que el comando para describir una tabla es:
+```sql
+describe <nombre de la tabla>
+```
+5. **Para reflexionar** ¿El modelo relacional se acopla a las necesidades de su proyecto? ¿Que le agregarían o quitarían para que funcionara mejor para sus necesidades. Estas preguntas se discutirán al inicio de la siguiente sesión.
