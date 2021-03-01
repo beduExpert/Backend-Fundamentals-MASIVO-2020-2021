@@ -28,7 +28,7 @@ El modelo entidad-relación se basa en los conceptos: entidad, tipo de entidad, 
 
     <img src="img/Screen_Shot_2020-06-12_at_23.08.39.png" width="500">
 
-    El concepto de **clave** viene ejemplificado en este diagrama, *RFC* será el atributo con el cual identificaremos univocamente cada entidad y que mediante relaciones podremos acceder a la entidad.
+    El concepto de **llave** viene ejemplificado en este diagrama, *RFC* será el atributo con el cual identificaremos univocamente cada entidad y que mediante relaciones podremos acceder a la entidad.
 
 - **Relación**: Es una asociación entre varias entidades. Ej., en un restaurante una receta **tiene** ingredientes.
 
@@ -56,15 +56,20 @@ El modelo entidad-relación se basa en los conceptos: entidad, tipo de entidad, 
 
     El Modelo relacional es utilizado por la mayoría de los SGDB existentes en el mercado (Oracle, SQL Server, MaríaDB, SQLite).
 
-    En el modelo relacional se utiliza un grupo de **tablas** para representar los datos y las relaciones entre ellos. Cada tabla está compuesta por varias **columnas** que representan los atributos de la entidad y **filas** que serán **registros** o **tuplas**.
+    En el modelo relacional se utiliza un grupo de **tablas** para representar los datos y las relaciones entre ellos. Cada tabla está compuesta por varias **columnas** que representan los atributos de la entidad y **filas** que serán **registros** o **tuplas**. Estos registros son tienen un identificador único, para diferenciarlos entre si, la **llave primaria**.
+
+    El uso de **llaves** es muy importante ya que se utilizan para definir relaciones. Las tablas se relacionan mediante una ***"relación de llave primaria o de llave foránea"***, dónde:
+
+    - **Llave primaria**: Es un valor en una tabla que identifica de forma exclusiva un registro de la tabla. Existen dos tipos de llaves primarias **simples** cuando están constituidas por una sola columna o **compuestas** cuando se componen de dos o mas columnas.
+    - **Llave foránea**: Es una columna o conjunto de columnas en una tabla cuyos valores corresponden a los valores de la llave primaria de otra tabla.
 
     ### Restricciones de integridad
 
     La integridad de los datos es la propiedad que asegura que información dada es correcta, al cumplir ciertas aserciones. Las restricciones de integridad son propiedades de la base de datos que se deben satisfacer en cualquier momento entre las cuales están:
 
-    - **Unicidad de clave primaria** establece que toda clave primaria que se elija para una relación no debe tener valores repetidos
-    - **Integridad de clave primaria** dispone que los atributos de la clave primaria de una relación no pueden tener valores nulos
-    - **Integridad referencial**  está relacionada con el concepto de clave foránea, lo que determina que todos los valores que toma una clave foránea deben ser valores que existen en la clave primaria que referencia
+    - **Unicidad de llave primaria** establece que toda llave primaria que se elija para una relación no debe tener valores repetidos
+    - **Integridad de llave primaria** dispone que los atributos de la llave primaria de una relación no pueden tener valores nulos
+    - **Integridad referencial**  está relacionada con el concepto de llave foránea, lo que determina que todos los valores que toma una llave foránea deben ser valores que existen en la llave primaria que referencia
     - **Tratamiento de valores nulos** permite poner valores nulos en los campos no especificados al momento de agregar o generar nuevos registros.
     - **Valores por defecto** es una forma de evitar valores nulos al definir un valor que toman los atributos no definidos en lugar de considerarlos nulos.
     - **Integridad de dominio** define que todos los valores de una columna están tomados del mismo conjunto de datos o son en su defecto valores nulos.
@@ -80,11 +85,6 @@ El modelo entidad-relación se basa en los conceptos: entidad, tipo de entidad, 
     <img src="img/Screen_Shot_2020-06-13_at_20.02.20.png" width="500">
 
     Hemos hablado que el modelo relacional son tablas y columnas, en este ejemplo la entidad *"Empleado"* será el nombre de nuestra tabla y cada atributo será una fila.
-
-    Como lo vimos anteriormente el uso de **claves** es importante ya que se utilizan para definir relaciones. Las tablas se relacionan mediante una ***"relación de clave primaria o de clave foránea"***, dónde:
-
-    - **Llave primaria**: Es una columna o conjunto de columnas en una tabla cuyos valores identifican de forma exclusiva un registro de la tabla.
-    - **Llave foránea**: Es una columna o conjunto de columnas en una tabla cuyos valores corresponden a los valores de la clave primaria de otra tabla.
 
     ### Ejemplo 1
 

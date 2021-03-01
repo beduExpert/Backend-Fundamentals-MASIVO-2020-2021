@@ -32,7 +32,7 @@ show databases;
 
 El resultado dependerá de la versión de MySQL instalada o si anteriormente ya se han creado bases de datos.
 
-2. Para crear una base de datos ocuparemos el siguiente comando:
+2. Para crear una base de datos usaremo el siguiente comando:
 
 ```sql
 create database restaurante;
@@ -83,7 +83,7 @@ Antes de crear una tabla hay ciertos puntos que debemos estudiar:
 
 - Restricciones de Integridad
 
-    Recordando en la clase anterior se trató de estas restricciones:
+    Recordando en el anterior se trató de estas restricciones:
 
     - Valores nulos:
 
