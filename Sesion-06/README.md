@@ -43,9 +43,9 @@ MongoBD es un gestor de bases de datos no relacionales basada en documentos. Uti
 ### Fundamentos de MongoDB 
 
 - [`Ejemplo 2: Comprender los fundamentos de MongoDB`](Ejemplo-02/#ejemplo-2)
-- [`Reto 03: Modelo embebido y referencial`](Reto-03/#reto-3)
+- [`Reto 02: Modelo embebido y referencial`](Reto-03/#reto-3)
 - [`Ejemplo 3: métodos proporcionados por MongoDB para realizar operaciones CRUD`](Ejemplo-03/#ejemplo-3)
-- [`Reto 04: TBA`](Reto-04/#reto-4)
+- [`Reto 03: CRUD en mongo`](Reto-04/#reto-4)
 
 
 ## 🛡 Postwork
