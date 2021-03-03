@@ -14,9 +14,64 @@ Crear un servicio de MongoDB en la nube, configurar la conexión de un host remo
 
 ### Creando un cluster en MongoDB Atlas
 
+1. Para poder hacer uso de MongoDB en la nube se hará uso del servicio __Atlas__ proveeido por el propio equipo de MongoDB, abrir la siguiente url, llenar los campos del formulario y dar clic en el botón de __Get srtarted free__
+
+   URL: https://www.mongodb.com/cloud/atlas?jmp=docs
+
+   ![Registro en MongoDB atlas](imagenes/registro-mongodb-atlas.png)
+
+1. Llenamos el formulario con la información necesaria.
+
+   ![Formulario](imagenes/2form.png)
+
+1. En la siguiente ventana damos click en la opción __skip__ al final.
+    ![conf](imagenes/3lenguaje.png)
+1. Elegir el tipo de __Cluster__, en donde se seleccionará __Starter Clusters__ que es el que es libre de costo, dar clic en el botón __Create a Cluster__.
+
+   ![Seleccionando cluster](imagenes/seleccionando-cluster.png)
+   Observar que con MongoDB Atlas se crean __Clusters__ y no __Servidores__.
+
+1. Después se tienen que seleccionar las opciones para el __Starter Cluster__ y las opciones por omisión son las correctas (AWM Amazon, N. Virginia, M0 Sandbox, MongoDB 4.0, Cluster 0)
+
+   ![Configurando el Started Cluster](imagenes/configurando-cluster.png)
+   Y presionar en el botón __Create Cluster__, lo que va a crear un __Cluster__ de trabajo, acción que puede demorar unos 5 mins.
+
+   ![Cluster creándose](imagenes/creando-cluster-01.png)
+
+   Cuando el __Cluster__ ya está creado se observa la página como la siguiente:
+
+   ![Cluster creado](imagenes/creando-cluster-02.png)
+
+   Abrimos las opciones del cluster dando click en el botón con 3 puntos. Y seleccionamos __Load Sample Dataset__ para que agregue al cluster algunas bases de datos de ejemplo.
+
+   ![Sample](imagenes/4load.png)
+
+1. Lo que sigue es iniciar una conexión al cluster de MongoDB en la nube, esto se realiza dando clic en el botón __CONNECT__
+
+  ![Conectando al servidor MongoDB](imagenes/conectando-a-mongodb.png)
+  
+  MongoDB Atlas hace una validación y solicita definir que dirección IP se va a conectar a el servidor y que usuario.
+
+  Así que dá clic en el botón __Add Your Current IP Address__
+
+  ![Agregando ip](imagenes/agregando-ip.png)
+  
+  Se sugiere etiquetar la dirección IP, para llevar un registro de a quién corresponde cada IP y más adelante poder eliminar las direcciones que ya no sean necesarias.
+
+  Introduce los datos que desees para ingresar a tu base de datos, por ejemplo:
+
+  - Usuario: introabd
+  - Password: introabd1234
+
+  **Recuerda el vídeo de contraseñas seguras `introabd1234` no es una contraseña muy segura que digamos...**
+
+  ![Creando usuario](imagenes/creando-usuario.png)
+  
+  Y presionar en el botón __Create MongoDB User__
+
 MongoDB atlas es la manera más rápida.
 
-1. Entra a la siguiente dirección [https://www.mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas/register) y regístrate.
+<!-- 1. Entra a la siguiente dirección [https://www.mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas/register) y regístrate.
 2. Elige la opción de crear un "Shared Cluster" de manera gratuita.
 3. Aquí puedes dejar las opciones por defecto y continuar al siguiente paso.
 
@@ -32,78 +87,7 @@ MongoDB atlas es la manera más rápida.
 
     4.2 Crea un usuario y contraseña para administrar atlas.
 
-5. Elige tu método de conexión.
-
-### Instalar MongoDB Shell
-
-MongoDB Shell es una interfaz para MongoDB, se puede usar para consultar datos, actualizar datos, así como realizar operaciones administrativas.
-
-**MacOS X**
-
-Instalación con Homebrew:
-
-Prerequisitos: 
-
-- [Nodejs](https://nodejs.org/es/) versión mínima de 12.0.0
-
-1. Instalar Homebrew
-
-    Para seguir los pasos de instalación [Homebrew](https://brew.sh/)
-
-2. Copia y el siguiente comando
-
-    ```bash
-    brew tap mongodb/brew
-    ```
-
-3. Instalar **mongosh** package:
-
-    ```bash
-    brew install mongosh
-    ```
-
-**Windows**
-
-1. Ir a [MongoDB Download Center](https://www.mongodb.com/try/download/shell) y descargar el archivo para tu sistema operativo.
-2. Extraer los archivos del archivo descargado en la ubicación deseada de tu sistema de archivos.
-3. Agregar una variable de entorno para el binario de MongoDB Shell:
-    1. Abrir **Panel de Control.**
-    2. En **Sistema y Seguridad** dar clic en **Sistema.**
-    3. Clic en **Configuración Avanzada del Sistema**. Luego, **Propiedades del Sistema** en la ventana desplegada.
-    4. Clic en **Variables de Entorno**.
-    5. En *Variables del sistema*, select **Path** and clic en **Edit**. Luego, **Editar variable de entorno** en la ventana desplegada.
-    6. Clic **New** y agrega la ruta del archivo binario **mongosh**.
-    7. Clic **Ok** para confirmar los cambios. Luego **Ok** de nuevo.
-    8. Para verificar que la configuración haya tenido éxito, abre la terminal y ejecuta:
-
-        ```bash
-        mongosh --help
-        ```
-
-**Linux**
-
-1. Ir a [MongoDB Download Center](https://www.mongodb.com/try/download/shell) y descargar el archivo para tu sistema operativo
-2. Extraer los archivos del archivo descargado en la ubicación deseada de tu sistema de archivos
-3. Extraer los archivos del archivo descargado
-
-    ```bash
-    tar -zxvf path/to/archive
-    ```
-
-4. Agregar variable de entorno para el binario de MongoDB Shell:
-    - Ejecuta:
-
-         Actualiza **/path/to/mongosh** de acuerdo al directorio de instalación
-
-        ```bash
-        sudo cp /path/to/mongosh /usr/local/bin/
-        ```
-
-    - Ejecuta
-
-        ```bash
-        sudo ln -s  /path/to/mongosh /usr/local/bin/
-        ```
+5. Elige tu método de conexión. -->
 
 ### Conexión a clúster con MongoDB Shell
 
@@ -132,12 +116,6 @@ mongo "mongodb+srv://cluster0-xmea4.mongodb.net/<*dbname*>" --username <*usernam
 
 5. Reemplaza los valores indicados y ejecuta el comando anterior.
 
-
-### Instalar MongoDB Compass
-
-MongoDB Compass es un GUI para MongoDB, nos permitirá visualizar y explorar los datos en nuestras colecciones. Instala <b>MongoDB Compass</b> tomando en cuenta las siguientes instrucciones:
-
-Guía de instalación: <b>https://docs.mongodb.com/compass/master/install</b>
 
 
 ### Conexión a clúster con MongoDB Compass
