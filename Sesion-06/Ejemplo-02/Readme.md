@@ -10,9 +10,9 @@ Conexión a internet
 
 ## Desarrollo
 
-MongoDB es una base de datos NoSQL y orientada a documentos, por lo que, los datos se almacenan como documentos, estos documentos se almacenan en formato JSON.
+MongoDB es una base de datos NoSQL y orientada a documentos, por lo que, los datos se almacenan como documentos en formato JSON.
 
-Veamos un ejemplo muy gráfico:
+Veamos un ejemplo:
 
 ![img/Screen_Shot_2020-06-18_at_11.56.02.png](img/Screen_Shot_2020-06-18_at_11.56.02.png)
 
@@ -69,11 +69,11 @@ Los datos en MongoDB tienen un esquema flexible, los documentos en una colecció
             "_id": "joe",
                "name": "Joe Bookreader",
                "address": {
-               "street": "123 Fake Street",
-               "city": "Faketon",
-               "state": "MA",
-               "zip": "12345"
-            }
+                    "street": "123 Fake Street",
+                    "city": "Faketon",
+                    "state": "MA",
+                    "zip": "12345"
+                }
          }
          ```
 
@@ -207,9 +207,9 @@ Copia las siguientes líneas en el editor, antes de oprimir <b>INSERT</b>, anali
 }
 ```
 
-    Este ejemplo es un documento embebido que contiene todos lo datos a almacenar de un post, podemos notar que en comentarios podemos tener un número ilimitado, dependerá del impacto del post cause a una audiencia interesada, pero más allá de eso podría darse el caso en el que el documento sea demasiado grande y hasta podría alcanzar el límite de almacenamiento de un documento.
+Este ejemplo es un documento embebido que contiene todos lo datos a almacenar de un post, podemos notar que en comentarios podemos tener un número ilimitado, dependerá del impacto del post cause a una audiencia interesada, pero más allá de eso podría darse el caso en el que el documento sea demasiado grande y hasta podría alcanzar el límite de almacenamiento de un documento.
     
-Después de la inserción, podrás ver el documento con los datos de autor embebidos dentro de su estrucutra:
+Después de la inserción, podrás ver el documento con los datos de autor embebidos dentro de su estructura:
 
 ![img/ResultadoInserción.png](img/ResultadoInserción.png)
 
@@ -303,6 +303,8 @@ Nota: Observa el contenido del campo <b>autor</b>. En el podrás encontrar en un
 }
 ```
 
-Nota: Desde la colección <b>posts</b>, estaremos referenciando vía los id's a los comentarios encontrados en la colección <b>comentarios</b>.
+> Nota: Desde la colección <b>posts</b>, estaremos referenciando vía los id's a los comentarios encontrados en la colección <b>comentarios</b>.
 
-[`Atrás: Reto 02`](../Reto-02) | [`Siguiente: Reto 03`](../Reto-03)
+Es importante señalar que a diferencia de SQL, las relaciones que definimos aquí son simuladas, es decir, no se tiene la misma integridad y restricciones para las relaciones que vimos en la sesión anterior. Aquí simplemente se indica la relación y mongo nos cree que existe.
+
+[`Atrás: Reto 02`](../Reto-02) | [`Siguiente: Reto 02`](../Reto-03)

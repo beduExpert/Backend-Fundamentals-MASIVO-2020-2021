@@ -1,12 +1,12 @@
 `Backend Fundamentals` > `S6 - Fundamentos de Base de Datos NoSQL (Mongo)` 
 	
-## Reto 3
+## Reto 2
 
 
 1. Investiga cuál es el tamaño máximo de un documento que se puede almacenar en MongoDB.
-2. Crea un modelo embebido si es el caso para Adoptapet.
-3. Crea un modelo referencial si es el caso para Adoptapet.
-4. Escribe por qué y cuál sería la mejor opción para crear un modelo para implementar la base de datos Adoptapet.
+2. Crea una base de datos para Adoptapet.
+3. Modela las entidades Mascota y Solicitud, eligiendo entre usar un modelo embebido o uno referencial.
+4. Justifica por qué elegiste el modelo seleccionado en el punto anterior.
 
 Puedes basarte en los ejemplos explicados anteriormente para crear los modelos.
 

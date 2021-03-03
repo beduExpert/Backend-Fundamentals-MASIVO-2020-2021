@@ -145,4 +145,4 @@ mongodb+srv://<username>:<password>@cluster0.kbuns.mongodb.net/<dbname>
 
 6. De aquí en adelante, utiliza MongoDB Compass para ratificar las configuraciones realizadas desde MongoDB Shell.
 
-[`Atrás: Sesión 06`](../README.md) | [`Siguiente: Reto 02`](../Reto-02)
+[`Atrás: Sesión 06`](../README.md) | [`Siguiente: Ejemplo 02`](../Ejemplo-02)

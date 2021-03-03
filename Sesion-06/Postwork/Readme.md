@@ -69,3 +69,17 @@ Sin duda un tema muy interesante que se desprende de estas aplicaciones es *Big 
 Ejemplos de *XaaS: Everything as a Service*
 
 - [XaaS: Everything as a Service](https://youtu.be/4G7u-wIpOvE)
+
+## 🫀 Avances del Proyecto
+
+Realicen los siguientes ejercicios sobre su proyecto del módulo:
+
+1. Implementen la base de datos de su proyecto utilizando MongoDB.
+2. Discutan en equipo las siguientes preguntas y escriban las conclusiones a las que llegaron en un archivo para entregar:
+- ¿Cuáles son las ventajas de usar el modelo relacional en nuestro proyecto?
+- ¿Cuáles son las limitantes de usar el modelo relacional en nuestro proyecto?
+- ¿Qué ventajas ofrece el modelo no relacional a nuestro proyecto?
+- ¿Qué desventajas tiene el uso del modelo no relacional en nuestro proyecto?
+- ¿Qué implementación de base de datos de las que hicimos representa mejor las especificaciones de las entidades del proyecto y por qué?
+3. Después de elegir el modelo de base de datos que mejor se acopla a las necesidades de su proyecto, comiencen a poblar su Base de datos. Recuerden que deben de tener un total de 50 registros. Solo es necesario poblar la base de datos con el modelo que usaran.
+4. Dependiendo de su información, hagan al menos 5 consultas complejas a su base de datos.

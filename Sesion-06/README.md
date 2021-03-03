@@ -38,7 +38,7 @@ MongoBD es un gestor de bases de datos no relacionales basada en documentos. Uti
 ### Clusters
 
 - [`Ejemplo 1: Creando un cluster en MongoDB Atlas`](Ejemplo-01/#ejercicio-1)
-- [`Reto 02: Conectar un clúster en MongoDB Atlas`](Reto-02/#reto-2)
+<!-- - [`Reto 02: Conectar un clúster en MongoDB Atlas`](Reto-02/#reto-2) -->
 
 ### Fundamentos de MongoDB 
 
