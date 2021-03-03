@@ -5,6 +5,10 @@
 - Reconocer características de las bases de datos NoSQL, configurar y utilizar MongoDB.
 - Comprender en qué casos es conveniente utilizar esta B.D. y cómo usarla. 
 
+## ⏳ Antes de empezar 
+
+- [`Reto 01: Intalación de Compass y Shell`](Reto-01/#reto-1)
+
 ## 🧮 Bases de datos no relacionales (NoSQL) 
 
 <img src="img/nosql.jpg.webp" align="right" height="200">
@@ -34,7 +38,6 @@ MongoBD es un gestor de bases de datos no relacionales basada en documentos. Uti
 ### Clusters
 
 - [`Ejemplo 1: Creando un cluster en MongoDB Atlas`](Ejemplo-01/#ejercicio-1)
-- [`Reto 01: Crear un clúster en MongoDB Atlas`](Reto-01/#reto-1)
 - [`Reto 02: Conectar un clúster en MongoDB Atlas`](Reto-02/#reto-2)
 
 ### Fundamentos de MongoDB 

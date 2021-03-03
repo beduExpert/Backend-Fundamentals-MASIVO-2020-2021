@@ -79,4 +79,4 @@ MongoDB Compass es un GUI para MongoDB, nos permitirá visualizar y explorar los
 Guía de instalación: <b>https://docs.mongodb.com/compass/master/install</b>
 
 
-[`Atrás: Ejemplo 01`](../Ejemplo-01) | [`Siguiente: Reto 02`](../Reto-02)
+[`Atrás: Sesión 06`](../README.md) | [`Siguiente: Sesión 06`](../README.md)

@@ -42,10 +42,6 @@ Crear un servicio de MongoDB en la nube, configurar la conexión de un host remo
 
    ![Cluster creado](imagenes/creando-cluster-02.png)
 
-   Abrimos las opciones del cluster dando click en el botón con 3 puntos. Y seleccionamos __Load Sample Dataset__ para que agregue al cluster algunas bases de datos de ejemplo.
-
-   ![Sample](imagenes/4load.png)
-
 1. Lo que sigue es iniciar una conexión al cluster de MongoDB en la nube, esto se realiza dando clic en el botón __CONNECT__
 
   ![Conectando al servidor MongoDB](imagenes/conectando-a-mongodb.png)
@@ -60,16 +56,13 @@ Crear un servicio de MongoDB en la nube, configurar la conexión de un host remo
 
   Introduce los datos que desees para ingresar a tu base de datos, por ejemplo:
 
-  - Usuario: introabd
-  - Password: introabd1234
-
-  **Recuerda el vídeo de contraseñas seguras `introabd1234` no es una contraseña muy segura que digamos...**
+  - Usuario: beduweb
+  - Password: beduweb1234
 
   ![Creando usuario](imagenes/creando-usuario.png)
   
   Y presionar en el botón __Create MongoDB User__
 
-MongoDB atlas es la manera más rápida.
 
 <!-- 1. Entra a la siguiente dirección [https://www.mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas/register) y regístrate.
 2. Elige la opción de crear un "Shared Cluster" de manera gratuita.
@@ -137,7 +130,7 @@ mongo "mongodb+srv://cluster0-xmea4.mongodb.net/<*dbname*>" --username <*usernam
 Donde, 
 
 ```
-mongodb+srv://introabd:<password>@cluster0.kbuns.mongodb.net/<dbname>
+mongodb+srv://<username>:<password>@cluster0.kbuns.mongodb.net/<dbname>
 ```
 
 <*dbname*> : Es el nombre de la base de datos
@@ -152,4 +145,4 @@ mongodb+srv://introabd:<password>@cluster0.kbuns.mongodb.net/<dbname>
 
 6. De aquí en adelante, utiliza MongoDB Compass para ratificar las configuraciones realizadas desde MongoDB Shell.
 
-[`Atrás: Sesión 06`](../README.md) | [`Siguiente: Reto 01`](../Reto-01)
+[`Atrás: Sesión 06`](../README.md) | [`Siguiente: Reto 02`](../Reto-02)
