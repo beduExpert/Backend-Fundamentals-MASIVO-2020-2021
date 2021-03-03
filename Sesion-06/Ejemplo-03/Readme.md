@@ -11,6 +11,37 @@ Comprender los métodos proporcionados por MongoDB para realizar operaciones CRU
 
 ## Desarrollo
 
+En el ejemplo anterior utilizamos MongoDB Compass. En este ejemplo, estaremos trabjando con <b>MongoDB Shell</b>.
+
+1. Utilizando MongoDB Shell, conéctacte a tu cluster a la base de datos <b>BlogsModeloEmbebido</b>:
+
+![img/ConnectionMongoDBShell.png](img/ConnectionMongoDBShell.png)
+
+2. Utilizaremos las funciones antes listadas, con las cuales haremos operaciones tipo <b>CRUD</b> en nuestra base de datos <b>BlogsModeloEmbebido</b>.
+
+- Crea la colección <b>usuarios</b>:
+
+    ```jsx
+    db.createCollection('usuarios')
+    ```
+
+    ```json
+    {
+        "ok" : 1,
+        "$clusterTime" : {[`Atrás: Reto-02`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-01/Reto-02n)
+            "clusterTime" : Timestamp(1592800772, 5),
+            "signature" : {
+                "hash" : BinData(0,"Cqg3SKYxW90A98A5Xz0qScsRGP0="),
+                "keyId" : NumberLong("6799349003877089281")
+            }
+        },
+        "operationTime" : Timestamp(1592800772, 5)
+    }
+    ```
+- Para comprobar que tu colección se generó, puedes utilizar la siguiente función: <b>db.getCollectionNames();</b>
+
+![img/ColecciónCreada.png](img/ColecciónCreada.png)
+
 ### Inserción de documentos
 
 MongoDB proporciona los siguientes métodos para agregar documentos a una colección:
@@ -26,6 +57,21 @@ MongoDB proporciona los siguientes métodos para agregar documentos a una colecc
     )
     ```
 
+Insertar un documento en la colección de "usuarios"
+
+```jsx
+    db.usuarios.insertOne({"nombre": "Diego Lugo","email": "dieguitolu@gmail.com","tipo_cuenta": "experto"})
+```
+
+Obtenemos como respuesta
+
+```json
+    { acknowledged: 1, insertedId: ObjectId("5fa9c13890d998195a954861") }
+```
+- Para listar el documento agregado, puedes utilizar la siguiente función: <b>db.usuarios.find();</b>
+
+![img/UsuarioCreado.png](img/UsuarioCreado.png)
+
 - db.collection.insertMany()
 
     ```jsx
@@ -37,6 +83,39 @@ MongoDB proporciona los siguientes métodos para agregar documentos a una colecc
        }
     )
     ```
+
+Agregamos varios documentos en la colección "usuarios"
+
+```jsx
+    db.usuarios.insertMany([{
+        "nombre": "Alejandro Martínez",
+        "email": "alexmtz@gmail.com",
+        "tipo_cuenta": "legendario",
+    },
+    {
+        "nombre": "Sergio Medina",
+        "email": "sergiomedina@hotmail.com",
+        "tipo_cuenta": "aficionado"
+    },
+    {
+        "nombre": "Emmanuel Martínez",
+        "email": "emmamtz@gmail.com",
+        "tipo_cuenta": "legendario"
+    }])
+```
+
+La respuesta es:
+
+```json
+    {
+        "acknowledged" : true,
+        "insertedIds" : [
+            ObjectId("5ef03837d761235365aa9ca3"),
+            ObjectId("5ef03837d761235365aa9ca4"),
+            ObjectId("5ef03837d761235365aa9ca5")
+        ]
+    }
+```
 
 💡 Recordando: Si se omite el campo **_id** MongoDB creará uno internamente de tipo **ObjectId**.
 
@@ -55,30 +134,70 @@ MongoDB proporciona **find** para leer documentos de una colección:
     - query: Especifica el filtro de selección utilizando operadores.
     - projection: Especifica los campos que se devolverán en los documentos que coinciden con el filtro de consulta.
 
-    **Operadores de consulta básicos**
+Leemos los documentos existentes en la colección <b>usuarios</b>:
 
-    Comparación: 
+```jsx
+    db.usuarios.find()
+```
 
-    - $eq: Coincidencias con valores que son iguales a un valor especificado.
-    - $gt: Coincidencias con valores mayores a un valor especificado.
-    - $gte: Coincidencias con valores mayores o iguales a un valor especificado.
-    - $in: Coincidencias con cualquiera de los valores especificados en una matriz.
-    - $lt: Coincidencias con valores menores a un valor especificado.
-    - $lte: Coincidencias con valores menores o iguales a un valor especificado.
-    - $ne: Coincidencias con valores que no son iguales a un valor especificado.
-    - $nin: No coincide con ninguno de los valores especificados en una matriz.
+La respuesta es:
 
-    Lógico:
+```json
+    { "_id" : ObjectId("5ef036f1d761235365aa9ca2"), "nombre" : "Diego Lugo", "email" : "dieguitolu@gmail.com", "tipo_cuenta" : "experto" }
+    { "_id" : ObjectId("5ef03837d761235365aa9ca3"), "nombre" : "Alejandro Martínez", "email" : "alexmtz@gmail.com", "tipo_cuenta" : "legendario" }
+    { "_id" : ObjectId("5ef03837d761235365aa9ca4"), "nombre" : "Sergio Medina", "email" : "sergiomedina@hotmail.com", "tipo_cuenta" : "aficionado" }
+    { "_id" : ObjectId("5ef03837d761235365aa9ca5"), "nombre" : "Emmanuel Martínez", "email" : "emmamtz@gmail.com", "tipo_cuenta" : "legendario" }
+```
 
-    Tendremos los operadores comunes utilizados en los lenguajes de programación: $and, $not, $nor y $or.
 
-    Elemento:
+**Operadores de consulta básicos**
 
-    - $exists: Coincidencias con documentos que tienen el campo especificado.
+Comparación: 
 
-    [Query and Projection Operators - MongoDB Manual](https://docs.mongodb.com/manual/reference/operator/query/)
+- $eq: Coincidencias con valores que son iguales a un valor especificado.
+- $gt: Coincidencias con valores mayores a un valor especificado.
+- $gte: Coincidencias con valores mayores o iguales a un valor especificado.
+- $in: Coincidencias con cualquiera de los valores especificados en una matriz.
+- $lt: Coincidencias con valores menores a un valor especificado.
+- $lte: Coincidencias con valores menores o iguales a un valor especificado.
+- $ne: Coincidencias con valores que no son iguales a un valor especificado.
+- $nin: No coincide con ninguno de los valores especificados en una matriz.
 
-### Actualización de documentos
+Lógico:
+
+Tendremos los operadores comunes utilizados en los lenguajes de programación: $and, $not, $nor y $or.
+
+Elemento:
+
+- $exists: Coincidencias con documentos que tienen el campo especificado.
+
+[Query and Projection Operators - MongoDB Manual](https://docs.mongodb.com/manual/reference/operator/query/)
+
+Mostramos los documentos cuyo <b>tipo_cuenta</b> tiene el valor <b>legendario</b>
+
+```jsx
+    db.usuarios.find({"tipo_cuenta":"legendario"})
+```
+
+Obtenemos como respuesta:
+
+```json
+    { "_id" : ObjectId("5ef03837d761235365aa9ca3"), "nombre" : "Alejandro Martínez", "email" : "alexmtz@gmail.com", "tipo_cuenta" : "legendario" }
+    { "_id" : ObjectId("5ef03837d761235365aa9ca5"), "nombre" : "Emmanuel Martínez", "email" : "emmamtz@gmail.com", "tipo_cuenta" : "legendario" }
+```
+Ahora usando la función find, buscamos los comentarios publicados en Junio.
+
+```jsx
+    db.comentarios.find({ fecha_publicacion: { $gte: "2020-06-01", $lt: "2020-07-01" }})
+```
+
+Y nos da como resultado:
+
+```json
+    { "_id" : ObjectId("5ef03e5cd761235365aa9ca8"), "autor" : ObjectId("5ef03837d761235365aa9ca5"), "fecha_publicacion" : "2020-06-01", "texto" : "Hay ciertos conceptos que no me quedaron claros...", "puntuacion" : 3 }
+```
+
+<!-- ### Actualización de documentos
 
 MongoDB proporciona los siguientes métodos para actualizar datos
 
@@ -92,8 +211,7 @@ MongoDB proporciona los siguientes métodos para actualizar datos
          upsert: <boolean>,
          writeConcern: <document>,
          collation: <document>,
-         arrayFilters: [ <filterdocument1>, ... ],
-         hint:  <document|string>        // Available starting in MongoDB 4.2.1
+         arrayFilters: [ <filterdocument1>, ... ]
        }
     )
     ```
@@ -108,8 +226,7 @@ MongoDB proporciona los siguientes métodos para actualizar datos
          upsert: <boolean>,
          writeConcern: <document>,
          collation: <document>,
-         arrayFilters: [ <filterdocument1>, ... ],
-         hint:  <document|string>        // Available starting in MongoDB 4.2.1
+         arrayFilters: [ <filterdocument1>, ... ]
        }
     )
     ```
@@ -123,12 +240,11 @@ MongoDB proporciona los siguientes métodos para actualizar datos
        {
          upsert: <boolean>,
          writeConcern: <document>,
-         collation: <document>,
-         hint: <document|string>                   // Available starting in 4.2.1
+         collation: <document>
        }
     )
     ```
-
+ -->
 ### Eliminar documentos
 
 MongoDB proporciona los siguientes métodos para eliminar documentos:
@@ -144,6 +260,17 @@ MongoDB proporciona los siguientes métodos para eliminar documentos:
        }
     )
     ```
+Eliminamos uno de nuestros usuarios.
+
+```jsx
+    db.usuarios.deleteOne({ _id: ObjectId("5fa9ca8d90d998195a954866") })
+```
+> Nota : cambia el ObjectId por uno que corresponda con tu base de datos.
+
+```jsx
+    { "acknowledged" : true, "deletedCount" : 1 }
+```
+
 
 - db.collection.deleteMany()
 
@@ -157,107 +284,78 @@ MongoDB proporciona los siguientes métodos para eliminar documentos:
     )
     ```
 
-### Ejemplo
+### Actualización de documentos
 
-En el ejemplo anterior utilizamos MongoDB Compass. En este ejemplo, estaremos trabjando con <b>MongoDB Shell</b>.
+MongoDB proporciona los siguientes métodos para actualizar datos
 
-1. Utilizando MongoDB Shell, conéctacte a tu cluster a la base de datos <b>BlogsModeloEmbebido</b>:
-
-![img/ConnectionMongoDBShell.png](img/ConnectionMongoDBShell.png)
-
-2. Utilizaremos las funciones antes listadas, con las cuales haremos operaciones tipo <b>CRUD</b> en nuestra base de datos <b>BlogsModeloEmbebido</b>.
-
-- Crea la colección <b>usuarios</b>:
+- db.collection.updateOne()
 
     ```jsx
-    db.createCollection('usuarios')
+    db.collection.updateOne(
+       <filter>,
+       <update>,
+       {
+         upsert: <boolean>,
+         writeConcern: <document>,
+         collation: <document>,
+         arrayFilters: [ <filterdocument1>, ... ]
+       }
+    )
     ```
 
-    ```json
+Actualizaremos uno de los comentarios de la colección posts
+
+```jsx
+    db.posts.updateOne({ _id: ObjectId("5fa9c4cd90d998195a954865")}, {$push: { comentarios: ObjectId("5fa9ca8d90d998195a954866")}})
+```
+
+La respuesta es:
+
+```json
     {
-    	"ok" : 1,
-    	"$clusterTime" : {[`Atrás: Reto-02`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-01/Reto-02n)
-    		"clusterTime" : Timestamp(1592800772, 5),
-    		"signature" : {
-    			"hash" : BinData(0,"Cqg3SKYxW90A98A5Xz0qScsRGP0="),
-    			"keyId" : NumberLong("6799349003877089281")
-    		}
-    	},
-    	"operationTime" : Timestamp(1592800772, 5)
+        acknowledged: 1,
+        insertedId: null,
+        matchedCount: 1,
+        modifiedCount: 1,
+        upsertedCount: 0
     }
-    ```
-- Para comprobar que tu colección se generó, puedes utilizar la siguiente función: <b>db.getCollectionNames();</b>
+```
 
-![img/ColecciónCreada.png](img/ColecciónCreada.png)
-
-2. Insertar un documento en la colección de "usuarios"
+- db.collection.updateMany()
 
     ```jsx
-    db.usuarios.insertOne({"nombre": "Diego Lugo","email": "dieguitolu@gmail.com","tipo_cuenta": "experto"})
+    db.collection.updateMany(
+       <filter>,
+       <update>,
+       {
+         upsert: <boolean>,
+         writeConcern: <document>,
+         collation: <document>,
+         arrayFilters: [ <filterdocument1>, ... ]
+       }
+    )
     ```
 
-    ```json
-    { acknowledged: 1, insertedId: ObjectId("5fa9c13890d998195a954861") }
-    ```
-- Para listar el documento agregado, puedes utilizar la siguiente función: <b>db.usuarios.find();</b>
-
-![img/UsuarioCreado.png](img/UsuarioCreado.png)
-
-3. Inserta varios documentos en la colección "usuarios"
+- db.collection.replaceOne()
 
     ```jsx
-    db.usuarios.insertMany([{
-        "nombre": "Alejandro Martínez",
-        "email": "alexmtz@gmail.com",
-        "tipo_cuenta": "legendario",
-    },
-    {
-        "nombre": "Sergio Medina",
-        "email": "sergiomedina@hotmail.com",
-        "tipo_cuenta": "aficionado"
-    },
-    {
-        "nombre": "Emmanuel Martínez",
-        "email": "emmamtz@gmail.com",
-        "tipo_cuenta": "legendario"
-    }])
+    db.collection.replaceOne(
+       <filter>,
+       <replacement>,
+       {
+         upsert: <boolean>,
+         writeConcern: <document>,
+         collation: <document>
+       }
+    )
     ```
 
-    ```json
-    {
-    	"acknowledged" : true,
-    	"insertedIds" : [
-    		ObjectId("5ef03837d761235365aa9ca3"),
-    		ObjectId("5ef03837d761235365aa9ca4"),
-    		ObjectId("5ef03837d761235365aa9ca5")
-    	]
-    }
-    ```
-4. Leer los documentos existentes en la colección <b>usuarios</b>:
 
-    ```jsx
-    db.usuarios.find()
-    ```
 
-    ```json
-    { "_id" : ObjectId("5ef036f1d761235365aa9ca2"), "nombre" : "Diego Lugo", "email" : "dieguitolu@gmail.com", "tipo_cuenta" : "experto" }
-    { "_id" : ObjectId("5ef03837d761235365aa9ca3"), "nombre" : "Alejandro Martínez", "email" : "alexmtz@gmail.com", "tipo_cuenta" : "legendario" }
-    { "_id" : ObjectId("5ef03837d761235365aa9ca4"), "nombre" : "Sergio Medina", "email" : "sergiomedina@hotmail.com", "tipo_cuenta" : "aficionado" }
-    { "_id" : ObjectId("5ef03837d761235365aa9ca5"), "nombre" : "Emmanuel Martínez", "email" : "emmamtz@gmail.com", "tipo_cuenta" : "legendario" }
-    ```
 
-5. Despliega los documentos cuyo <b>tipo_cuenta</b> tiene el valor <b>legendario</b>
 
-    ```jsx
-    db.usuarios.find({"tipo_cuenta":"legendario"})
-    ```
 
-    ```json
-    { "_id" : ObjectId("5ef03837d761235365aa9ca3"), "nombre" : "Alejandro Martínez", "email" : "alexmtz@gmail.com", "tipo_cuenta" : "legendario" }
-    { "_id" : ObjectId("5ef03837d761235365aa9ca5"), "nombre" : "Emmanuel Martínez", "email" : "emmamtz@gmail.com", "tipo_cuenta" : "legendario" }
-    ```
-
-6. Antes de insertar un nuevo documento en la colección <b>posts</b>, se recomienda eliminar vía <b>MongoDB Compass</b>, el documento creado en el <b>Ejemplo 2</b>. 
+<!-- 6. Antes de insertar un nuevo documento en la colección <b>posts</b>, se recomienda eliminar vía <b>MongoDB Compass</b>, el documento creado en el <b>Ejemplo 2</b>. 
 
 - Inserta el siguiente documento en la colección <b>posts</b>:
 
@@ -348,19 +446,11 @@ En el ejemplo anterior utilizamos MongoDB Compass. En este ejemplo, estaremos tr
     }
     ```
     
-9. Utilizando <b>MongoDB Compass</b>, observa el único documento de tipo <b>posts</b> que tienes agregado. Debe de tener un arreglo de comentarios cuyos ObjectId, corresponden a los comentarios agregados en la colección <b>comentarios</b>
+9. Utilizando <b>MongoDB Compass</b>, observa el único documento de tipo <b>posts</b> que tienes agregado. Debe de tener un arreglo de comentarios cuyos ObjectId, corresponden a los comentarios agregados en la colección <b>comentarios</b> -->
 
-10. En <b>MongoDB Shell</b>, con la función find, busca los comentarios publicados en Junio.
 
-    ```jsx
-    db.comentarios.find({ fecha_publicacion: { $gte: "2020-06-01", $lt: "2020-07-01" }})
-    ```
 
-    ```json
-    { "_id" : ObjectId("5ef03e5cd761235365aa9ca8"), "autor" : ObjectId("5ef03837d761235365aa9ca5"), "fecha_publicacion" : "2020-06-01", "texto" : "Hay ciertos conceptos que no me quedaron claros...", "puntuacion" : 3 }
-    ```
-
-11. Ahora eliminaremos un comentario del posts exitente en la colección <b>posts</b>
+<!-- 11. Ahora eliminaremos un comentario del posts exitente en la colección <b>posts</b>
 
     <b>OJO:</b>
     - Remplaza el <b>ObjectId</b> del post del codigo del ejemplo, por el <b>ObjectId</b> guardado en el punto 6.
@@ -423,6 +513,6 @@ En el ejemplo anterior utilizamos MongoDB Compass. En este ejemplo, estaremos tr
             }
         ]
 
-        ```
+        ``` -->
 
-[`Atrás: Reto 03`](../Reto-03) | [`Siguiente: Reto 04`](../Reto-04)
+[`Atrás: Reto 02`](../Reto-03) | [`Siguiente: Reto 03`](../Reto-04)
