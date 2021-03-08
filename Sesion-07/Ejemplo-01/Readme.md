@@ -14,7 +14,7 @@ Contar con el código de la API que estaba en desarrollo desde la lección 4.
 
 ### Creando el modelo Usuario con Mongoose
 
-[Mongoose](https://mongoosejs.com/) es una librería ODM que nos ayuda a trabajar con MongoDB y Node de manera más dinámica, permitiéndonos comunicarnos con el servidor de MongoDB y crear Modelos con una estructura y reglas que se adaptan a nuestra base de datos.
+[Mongoose](https://mongoosejs.com/) es una biblioteca que nos ayuda a trabajar con MongoDB y Node de manera más dinámica, permitiéndonos comunicarnos con el servidor de MongoDB y crear Modelos con una estructura y reglas que se adaptan a nuestra base de datos.
 
 1. Entra a la carpeta de tu proyecto desarrollado en la Sesión 4, en ella instalaremos mongoose con el comando:
 
@@ -35,9 +35,10 @@ Contar con el código de la API que estaba en desarrollo desde la lección 4.
     ```jsx
    // Usuario.js
    const mongoose = require('mongoose');            //Importando mongoose.
-
-   const UsuarioSchema = new mongoose.Schema({      //Definiendo el objeto UsuarioSchema con el constructor Schema.
-     username: String,                              //Definiendo cada campo con su respectivo tipo de dato.
+    //Definiendo el objeto UsuarioSchema con el constructor Schema.
+    //Definiendo cada campo con su respectivo tipo de dato.
+   const UsuarioSchema = new mongoose.Schema({      
+     username: String,                              
      nombre: String,
      apellido: String, 
      email: String,
@@ -47,9 +48,10 @@ Contar con el código de la API que estaba en desarrollo desde la lección 4.
      bio: String,
      foto: String,
      tipo: String,
-   }, { timestamps: true });                    
+   }, { timestamps: true });  
 
-   mongoose.model("Usuario", UsuarioSchema);        //Define el modelo Usuario, utilizando el esquema UsuarioSchema.
+   //Define el modelo Usuario, utilizando el esquema UsuarioSchema.
+   mongoose.model("Usuario", UsuarioSchema);        
     ```    
 - El modelo ahora no tiene un id ya que por defecto Mongoose le agrega el atributo `_id` a un documento cuando es creado.
 - La opción `{ timestamps: true }` agrega automáticamente la hora y fecha de creación (`createdAt` and `updatedAt`) cada que se crea o actualiza un documento.
@@ -61,8 +63,9 @@ Contar con el código de la API que estaba en desarrollo desde la lección 4.
    const mongoose = require('mongoose');                         //Importando mongoose.
    const uniqueValidator = require("mongoose-unique-validator"); //Importando módulo mongoose-unique-validator, pendiente de instalar.
 
-   const UsuarioSchema = new mongoose.Schema({                   //Definiendo el objeto UsuarioSchema con el constructor Schema.
-    username: {                                                  //Definiendo cada campo con sus tipo sde datos y validaciones.
+   //Definiendo cada campo con sus tipo sde datos y las validaciones sobre este.
+   const UsuarioSchema = new mongoose.Schema({                   
+    username: {                                                  
       type: String,
       unique: true, //este campo no se puede repetir
       lowercase: true,
@@ -101,13 +104,18 @@ Contar con el código de la API que estaba en desarrollo desde la lección 4.
 4. Para crear un nuevo usuario con password y autenticación añadiremos algunos <b>helper methods</b> a nuestro modelo. Estos nos permitirán:
 
 - Crea y valida contraseñas, así como generar el <b>JWT</b>. 
-- Utilizar el algoritmo pbkdf2 econtrado en la libería crypto de Node. Con el cual generaremos y validaremos hashes.
+
+> **JWT** (JSON Web Tokens)
+> Recordemos que el JWT es un estándar para la creación de Tokens de autenticación en la web basados en el formato JSON.
+
+- Utilizar el algoritmo pbkdf2 econtrado en la biblioteca crypto de Node. Con el cual generaremos y validaremos hashes. Para guardar de forma segura la contraseña.
+
 - Para todos los helper methods, requeriremos algunos módulos. Añade las siguientes líneas en la parte alta de nuestro modelo <b>Usuarios</b>.
 
     ```jsx
     const crypto = require('crypto');                             //Importando módulo crypto, pendiente de instalar.
     const jwt = require('jsonwebtoken');                          //Importando módulo jsonwebtoken, pendiente de instalar.
-    const secret = require('../config').secret;                   
+    const secret = require('../config').secret;                   // ????
     ```
 5. Agrega los siguientes métodos a nuestro modelo <b>Usuario</b>:
 
@@ -216,7 +224,7 @@ Nota:
 
 1. Para hacer algunas configuraciones de nuestro ambiente, agregarás el archivo <b>index.js</b> debajo de la carpeta <b>config</b>, es decir: `config/index.js`
 
-- Inserta las siguientes líneas. Quedará clara su utilidad en el siguiente módulo.
+- Inserta las siguientes líneas. Quedará clara su utilidad en la siguiente sesión.
 
     ```jsx
     module.exports = {
@@ -275,6 +283,8 @@ Nota:
     const jwt = require('express-jwt');
     const secret = require('../config').secret;
 
+
+    // Obtenemos el jwt del header de la petición y verificamos su existencia.
     function getTokenFromHeader(req) {
       if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Token' ||
         req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
@@ -429,7 +439,5 @@ Nota:
     module.exports = router;
     ```
 - Analiza el código, observa en que endpoints será necesario el <b>JWT</b> (Su contenido definirá si un usuario tiene o no autorización sobre el endpoint, así como que información puede ver. )
-
-8. Recomendación: [`Pasa al Reto 1:`](../Reto-01)
 
     [`Atrás: Sesión 07`](../README.md) | [`Siguiente: Reto 01`](../Reto-01)

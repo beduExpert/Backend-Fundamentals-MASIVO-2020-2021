@@ -35,13 +35,14 @@ Pero si queremos facilitar el escribir las consultas, lo mejor es usar un **ORM*
 
 - [`Ejemplo 2: Crear un nuevo modelo (Mascota) junto con la lógica de sus controladores`](Ejemplo-02/)
 - [`Reto 02: Crear el método modificarMascota`](Reto-02/#reto-2)
+<!-- 
 - [`Ejemplo 3: Crear un nuevo modelo (Solicitud) junto con la lógica de sus controladores`](Ejemplo-03/)
 - [`Reto 03: Crea el método modificarSolicitud`](Reto-03/#reto-3)
 
 
 ### Probando endpoints
 
-- [`Reto 04: Probando endpoints.`](Reto-04/#reto-4)
+- [`Reto 04: Probando endpoints.`](Reto-04/#reto-4) -->
 
 ## 🛡 Postwork
 

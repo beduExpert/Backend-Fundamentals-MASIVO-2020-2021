@@ -158,6 +158,5 @@ Obtendremos una respuesta como está:
   "__v": 0
 }
 ```
-7. Recomendación: [`Pasa al Ejemplo 3:`](../Ejemplo-03)
 
 [`Atrás: Reto 01`](../Reto-01) | [`Siguiente: Reto 02`](../Reto-02)
