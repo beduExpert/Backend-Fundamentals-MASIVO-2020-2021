@@ -220,4 +220,4 @@ Para definir las relaciones entre las tablas de la base de dato, se utilizan los
 Puedes consultar la documentación de estos métodos en la siguiente [liga](https://sequelize.org/v5/manual/associations.html).
 
 
-[`Atrás: Sesión 08`](../README.md) | [`Siguiente: Sesión 08`](../README.md)
+[`Atrás: Sesión 08`](../README.md) | [`Siguiente: Reto 01`](../Reto-00)
