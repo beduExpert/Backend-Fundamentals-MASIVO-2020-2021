@@ -85,31 +85,6 @@ process.env.NOMBRE_VARIABLE
     );
     ```
 
-4. Tomando en cuenta el valor de la variable isProduction configurada en el punto 3, se habilitará o no mensajes debug en la consola de nuestra API. De tal forma que su habilitación dependerá de estár o no ejecutando el API en un ambiente de producción.
-
-- Comenta la línea actual que configura los mensajes debug. Es decir: `mongoose.set("debug", true);`
-- Inserta las siguientes líneas justo después de la línea comentada.
-
-    ```jsx
-    const errorhandler = require('errorhandler')
-    if (!isProduction) {
-      mongoose.set('debug', true)
-      app.use(errorhandler())
-      // imprimirá los errores en development
-      app.use(function (err, req, res, next) {
-        console.log(err.stack);
-        res.status(err.status || 500);
-        res.json({
-          'errors': {
-            message: err.message,
-            error: err
-          }
-        })
-      })
-    }
-    ```
-- Para utilizar <b>errorhandler</b> debes instalarlo con: `npm i errorhandler`
-
 5. Revisa que al llamar al método `app.listen` se esté utilizando la variable PORT.
 
     ```jsx
