@@ -19,5 +19,4 @@ CREATE TABLE mascota (
 );
 ```
 
-
 [`Atrás: Ejemplo 01`](../Ejemplo-00) | [`Siguiente: Sesión 08`](../Readme.md)

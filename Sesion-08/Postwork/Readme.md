@@ -46,6 +46,8 @@ Para estar brindando valor constantemente a un proyecto, se han creado metodolog
 
 El trabajo de un buen desarrollador no es únicamente escribir buen código, sino también documentar el mismo. Debes ser consciente de que tu trabajo conlleva escribir código y componentes de software que no únicamente deben ser comprendidos por ordenadores, sino también por personas. Para documentar una API existen diversas herramientas, una de ellas es Swagger.
 
+Swagger proporciona una interfaz interactiva para la documentación de tu API. La cual puede consultarse en linea y es muy sencilla de utilizar y crear. Revisa el siguiente [enlace](https://swagger.io/docs/swagger-inspector/how-to-create-an-openapi-definition-using-swagger/) para aprender a crear tu propio Swagger.
+
 ## Más recursos
 
 Si quieres conocer más sobre el camino del desarrollador backend y otros tipos de disciplinas te recomendamos echarle un vistazo al *roadmap* del desarrollador backend.
