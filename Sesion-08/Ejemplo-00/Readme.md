@@ -210,7 +210,14 @@ function eliminarUsuario(req, res) {
 }
 ```
 
+### Relaciones
 
+Para definir las relaciones entre las tablas de la base de dato, se utilizan los siguientes métodos: 
+
+- `hasOne` para cuando la relación es hacía un registro de la tabla destino (uno a uno).
+- `hasMany` para cuando la relación es hacía muchos registros de la tabla destino (uno a muchos).
+
+Puedes consultar la documentación de estos métodos en la siguiente [liga](https://sequelize.org/v5/manual/associations.html).
 
 
 [`Atrás: Sesión 08`](../README.md) | [`Siguiente: Sesión 08`](../README.md)
