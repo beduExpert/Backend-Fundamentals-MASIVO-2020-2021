@@ -1,6 +1,6 @@
 `Backend Fundamentals` > `S08 - Deploy` 
 	
-## Reto 1
+## Reto 2
 
 1. Una vez que hayas verificado que el consumo de variables de entorno esté en orden, si aún no lo has hecho, **inicializa un nuevo repositorio de git** con el proyecto de adoptapet.
 2.  **Es importante que antes de hacer push actualices el archivo `.gitignore`** agregando la carpeta `node_modules/` y tu archivo `env.sh`  

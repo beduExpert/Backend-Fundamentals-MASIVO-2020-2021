@@ -8,11 +8,9 @@
 
 
 
-![](img/launch.png)
 
-<iframe src="http://free.timeanddate.com/countdown/i74zafgm/n594/cf12/cm0/cu4/ct0/cs0/ca0/co0/cr0/ss0/cacf0f/cpcf09/pcfff/tcfbd9e8/fs200/szw448/szh189/iso2021-03-10T00:00:00/bo2" allowTransparency="true" frameborder="0" width="309" height="83"></iframe>
 
-## Sequelize 
+## 🧳 Sequelize 
 
 Sequelize es un ORM para Nodejs que nos permite manipular varias bases de datos SQL de una manera bastante sencilla, entre estas bases de datos podemos encontrar: mysql, sqlite, postgres, mssql.
 
@@ -34,12 +32,15 @@ Otras opciones son:
 - **SQLite** `sqlite3`
 - **MsSQL** `tedious`
 
-### Uso de Sequelize
+### 🐼 Uso de Sequelize
 
 - [`Ejemplo 1: Configuración y definición`](Ejemplo-00/#ejemplo-1)
 - [`Reto 01: Sequelize`](Reto-00/#reto-1)
 
-## Deployment
+![](img/launch.png)
+
+
+## ☁️ Deployment
 
 Uno de los procesos mas importantes en el desarrollo de API es el **deploy** de ésta, es decir, el proceso que se da cuando terminamos de desarrollarla y  la hacemos publica para que las personas la utilicen.
 
@@ -60,12 +61,12 @@ Los pasos que en la mayoría de los casos se siguen para lanzar a producción la
 ### 🚀 Launch 
 
 - [`Ejemplo 3: Deploy con Heroku`](Ejemplo-02/#ejemplo-2---deploy-con-heroku)
-- [`Reto 03: Deploy de tu API`](Reto-02/#reto-2)
+<!-- - [`Reto 02: Deploy de tu API`](Reto-02/#reto-2) -->
 
-### 🪂 Uso 
+<!-- ### 🪂 Uso 
 
 - [`Ejemplo 4: Demostración - Publicación en Dominio`](Ejemplo-03/#ejemplo-3---últimos-pasos)
-- [`Reto 04: Certificado SSL`](Reto-02/#reto-3)
+- [`Reto 03: Certificado SSL`](Reto-02/#reto-3) -->
 
 
 ## 🛡 Postwork

@@ -62,7 +62,7 @@ npm run dev
 
 Y debería mostrarnos en la consola lo siguiente:
 
-![](img/alive)
+![](img/alive.png)
 
 ### Modelos
 

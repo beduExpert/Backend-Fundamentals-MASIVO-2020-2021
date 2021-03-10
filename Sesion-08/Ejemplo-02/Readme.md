@@ -1,4 +1,4 @@
-# Ejemplo 2 - Deploy con Heroku
+# Ejemplo 3 - Deploy con Heroku
 
 ## Objetivo
 
@@ -62,4 +62,4 @@ En el método de deployment elige Github y conecta tu cuenta de Github.
 
     ![img/Untitled%206.png](img/Untitled%206.png)
 
-[`Atrás: Reto 01`](../Reto-02) | [`Siguiente: Reto 02`](../Reto-02)
+[`Atrás: Reto 01`](../Reto-02) | [`Siguiente: Sesión 08`](../README.md)
