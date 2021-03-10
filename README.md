@@ -50,7 +50,7 @@ Es recomendable que tengas los siguientes **conocimientos.**
 
 - [`Sesión 07` - Mongoose](Sesion-07)
 
-- [`Sesión 08` - Deploy](Sesion-08)
+- [`Sesión 08` - Sequelize y Deploy](Sesion-08)
 
 # 🦾 Proyecto del Módulo
 
