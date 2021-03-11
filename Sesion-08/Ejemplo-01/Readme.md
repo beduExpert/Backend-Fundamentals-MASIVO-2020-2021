@@ -26,10 +26,10 @@ Si queremos compartir nuestro código por medio de un repositorio público, es i
 
 Una de las maneras más simples para almacenar información sin tenerla escrita directamente en el código es por medio de **variables de entorno.** 
 
->💡 **Nota:**
+<!-- >💡 **Nota:**
 >
 > Explicar a los alumnos que también se les conoce como **variables de ambiente**
->
+> -->
 
 Para crear una variable de entorno podemos utilizar la siguiente sintaxis directamente en la terminal de nuestro sistema UNIX:
 
