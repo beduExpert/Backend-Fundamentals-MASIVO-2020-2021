@@ -51,8 +51,8 @@ Toda esta interacción entre aplicaciones, datos y dispositivos de diferentes or
 
 ### Peticiones y respuestas
 
-- [`Ejemplo 2: Objetos de petición y respuesta de ExpressJS`](Ejemplo-03/)
-- [`Reto 02: Creación de un CRUD para las mascotas`](Reto-03/#reto-3)
+- [`Ejemplo 3: Objetos de petición y respuesta de ExpressJS`](Ejemplo-03/)
+- [`Reto 03: Creación de un CRUD para las mascotas`](Reto-03/#reto-3)
 
 <!-- ### Rutas y controladores
 
