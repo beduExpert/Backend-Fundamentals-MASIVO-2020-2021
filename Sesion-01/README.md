@@ -59,7 +59,7 @@ Cuando entramos al navegador y colocamos la dirección de nuestro sitio web favo
 ### Peticiones a un servidor
 
 - [`Ejemplo 02: Peticiones en Insomnia`](Ejemplo-02/)
-- [`Reto 02: Uso de Postman o Insomnia`](Reto-01/#reto-2)
+- [`Reto 02: Uso de Postman o Insomnia`](Reto-02/#reto-2)
 
 
 ## 📜 Requerimientos de un proyecto
