@@ -1,133 +1,139 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 03: API`](../README.md) > `Ejemplo 1`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 04: API`](../README.md) > `Ejemplo 3`
 
-# Ejemplo 1
+# Ejemplo 3
 
 ## Objetivo
 
-Repasar los fundamentos de una API REST y configurar nuestro entorno para comenzar a desarrollar una API con NodeJS y Express.
+Comprender el concepto de rutas en nuestra API y la mejor manera de establecerlas para acceder a recursos.
 
 ## Requerimientos
 
-Se recomienda tener NodeJS LTS instalado y funcionando correctamente. También es recomendable estar familiarizado con Javascript.
+Se recomienda tener NodeJS LTS y ExpressJS.
 
 ## Desarrollo
 
-### ¿Qué es una API REST?
+### Configurando las rutas de nuestra API
 
-Cuando se habla de REST API, significa utilizar una API para acceder a aplicaciones backend, de manera que esa comunicación se realice con los estandares definidos por el estilo de arquitectura REST.
+### Creando la estructura de un CRUD
 
-REST es un acrónimo para **RE**presentational **S**tate **T**ransfer, fue pensada para sistemas dedicados a la distribución de *hypermedia*. En REST se siguen los siguientes principios:
+En los siguientes pasos crearemos el **esqueleto** de nuestra API para el recurso `usuarios`, declarando las rutas para crear, obtener, actualizar y eliminar usuarios (CRUD).
 
-- Arquitectura cliente/servidor sin estado, es decir, no se almacena la información de las solicitudes, cada solicitud es independiente.
-- Una interfaz uniforme entre los elementos, para que la información se transfiera de forma estandarizada.
-- Acciones concretas (POST, GET, PUT y DELETE) para la transferencia de datos.
-- Uso de formatos de transferencia para la comunicación. Para este caso en específico utilizaremos JSON como el formato para enviar respuestas y recibir peticiones de objetos. Se puede usar también XLT ó HTML
-- Un sistema en capas que organiza en jerarquías invisibles para el cliente y cada uno de los servidores  que participan en la recuperación de la información solicitada.
+Los siguientes *endpoints* estarán siendo importados en el archivo `index.js` y bajo la ruta `v1/usuarios` de nuestra api.
 
-Si bien parece una arquitectura muy restrictiva, esto sirve para que su uso sea mas sencillo. 
-
-Es importante señalar que REST es un conjunto de normas que se pueden implementar a necesidad de la aplicación. 
-
-## Preparando nuestro entorno de desarrollo
-
-1. Si aún no tienes NodeJS debes descargarlo desde su [sitio oficial](https://nodejs.org/en/download/) e instalarlo
-
-1. Crearemos una nueva carpeta llamada `adoptapet-api` con la siguiente estructura:
+1. Debajo de la carpeta `routes`, completa la siguiente estructura:
 
 ```
-adoptapet-api/
-├── config/
-├── models/
-├── controllers/
-├── routes/
-└── app.js
+routes/
+├── anunciantes.js
+├── index.js
+├── solicitudes.js
+├── usuarios.js
+└── mascotas.js
 ``` 
 
-1. Nos posicionaremos en esa carpeta e iniciaremos un nuevo proyecto con el comando `npm init -y`
-1. Ejecutaremos el siguiente código 
 
-    ```bash
-    npm install express body-parser cors
-    ```
-Express.js es un framework de Node para desarrollo backend.
-1. Instalar nodemon de manera global
+2. En el archivo `usuarios.js`, agrega la siguiente estructura:
 
-    ```bash
-    npm install -g nodemon
-    ```
+```jsx
+// Estructura del CRUD
+const router = require('express').Router();
+const {
+  crearUsuario,
+  obtenerUsuarios,
+  modificarUsuario,
+  eliminarUsuario
+} = require('../controllers/usuarios')
 
-    Nodemon nos servirá para agilizar el desarrollo, ya que recarga nuestro server de manera automática, de esta manera no tendremos que reiniciar el servidor manualmente cada que  realicemos cambios.
+router.get('/', obtenerUsuarios)
+router.post('/', crearUsuario)
+router.put('/:id', modificarUsuario)
+router.delete('/:id', eliminarUsuario)
 
-    Nota: Si tienes problemas con permisos de instalación, intenta ejecutando el comando con `sudo`
+module.exports = router;
+```
 
-1. Agregar la siguientes dos líneas dentro del objeto "scripts" del archivo `package.json`:
+- Lo que aquí sucedió es que hemos externalizado el código de nuestro router a funciones independientes en nuestra carpeta de controladores.
 
-    ```bash
-    "start": "node ./app.js",
-    "dev": "nodemon ./app.js",
-    ```
+- Aunque para este caso en particular podríamos seguir trabajando con la lógica de cada *endpoint* dentro del archivo `routes/usuarios.js` cuando los proyectos van creciendo, es conveniente modularizar nuestro código, y una manera de hacerlo es externalizando funciones en los controladores.
+Para hacer peticiones en una ruta (endpoint) en específico, debemos establecer una estructura específica.
 
-Le indica a npm de que forma debe ejecutar nuestro programa. De esta forma le indicamos que debe usar nodemon para ejecutarlo en el modo de desarrollo.
-1. Verifica que tu archivo `package.json` luzca similar a esto:
+- Para esto utilizaremos el Router que nos provee la biblioteca Express.
 
-    ```json
-    {
-      "name": "adoptapet-api",
-      "version": "1.0.0",
-      "description": "",
-      "main": "index.js",
-      "scripts": {
-        "start": "node ./app.js",
-        "dev": "nodemon ./app.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-      },
-      "keywords": [],
-      "author": "",
-      "license": "ISC",
-      "dependencies": {
-        "body-parser": "^1.19.0",
-        "cors": "^2.8.5",
-        "express": "^4.17.1"
-      }
-    }
-    ```
+3. Dentro del archivo `index.js` agregamos el siguiente código:
 
-    Aquí estarán instaladas las dependencias de nuestro proyecto.
+```jsx
+// importamos las dependencias necesarias
+var router = require('express').Router();
 
-1. Ahora editaremos el archivo `app.js` con el siguiente código:
+// definimos el comportamiento en la raíz del endpoint
+router.get('/', (req, res)=>{
+  res.send('welcome to adoptapet api');
+});
 
-    ```jsx
-    // Importamos las bibliotecas necesarias
-    var express = require('express'),
-        bodyParser = require('body-parser'),
-        cors = require('cors');
+// exportamos nuestro nuevo router
+module.exports = router;
+```
+La sintaxis `(req, res) => { ... }` representa una función que será ejecutada cuando llegue alguna petición en las direcciones URI que especificamos, también se le puede llamar ***handler*** o ***callback***. 
 
-    // Objeto global de la app
-    var app = express();
+4. Ahora modificaremos nuestro archivo `app.js` para agregar esta ruta:
 
-    // configuración de middlewares
-    app.use(cors());
-    app.use(bodyParser.urlencoded({ extended: false }));
-    app.use(bodyParser.json());
+```jsx
+var express = require('express'),
+    bodyParser = require('body-parser'),
+    cors = require('cors');
 
-    // Manejando los errores 404
-    app.use(function(req, res, next) {
-      var err = new Error('Not Found');
-      err.status = 404;
-      next(err);
-    });
+// Objeto global de la app
+var app = express();
 
-    // Iniciando el servidor...
-    var server = app.listen(process.env.PORT || 3000, function(){
-      console.log('Escuchando en el puerto ' + server.address().port);
-    });
-    ```
-Una aplicación Express es fundamentalmente una serie de llamadas a funciones de middleware.
+// Configuración de middlewares
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-Las funciones de middleware son funciones que tienen acceso al objeto de solicitud (req), al objeto de respuesta (res)
+**// Agregamos el código de nuestro router (routes/index.js)
+app.use('/v1', require('./routes'));**
 
-1. Ingresaremos el comando `npm run dev` y si la configuración es correcta se ejecutará nodemon y veremos algo como esto en nuestra terminal:
+// Interceptando los errores 404
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
 
-    ![img/Untitled.png](img/Untitled.png)
-    
-[`Atrás: Sesión 04`](../README.md) | [`Siguiente: Reto 01`](../Reto-01)
+// Iniciando el servidor...
+var server = app.listen(process.env.PORT || 3000, function(){
+  console.log('Escuchando en el puerto ' + server.address().port);
+});
+```
+
+Al hacer una petición a esta ruta podremos ver que nos está devolviendo información sobre la versión uno de nuestra API.
+
+![img/Screen_Shot_2020-05-28_at_18.59.55.png](img/Screen_Shot_2020-05-28_at_18.59.55.png)
+
+Es una buena práctica colocar la versión de nuestra app como una ruta principal, ya que así en un futuro si hay un cambio demasiado grande puede mantenerse funcionando ambas apis y conservar compatibilidad.
+
+
+![img/Screen_Shot_2020-06-03_at_22.41.30.png](img/Screen_Shot_2020-06-03_at_22.41.30.png)
+
+5. En el archivo `index.js` añadiremos lo siguiente
+
+```jsx
+var router = require('express').Router();
+
+router.get('/', (req, res)=>{
+  res.send('welcome to adoptapet api');
+})
+
+router.use('/usuarios', require('./usuarios'));
+
+/* con el método use de nuestro router estamos indicando 
+* que en la ruta 'v1/usuarios' estarán anidadas las rutas 
+* que vamos a crear en nuestro archivo usuarios.js,
+* la función require está importando este archivo */
+
+module.exports = router;
+```
+
+No olvides guardar, revisar que tu servidor se haya actualizado y esté corriendo.
+
+[`Atrás: Reto 02`](../Reto-02) | [`Siguiente: Reto 03`](../Reto-03)

@@ -1,8 +1,10 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 04: API`](../README.md) >[`Ejemplo-01`](../Ejemplo-01) > `Reto 1`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 04: API`](../README.md) >[`Ejemplo-03`](../Ejemplo-03) > `Reto 3`
 	
-## Reto 1
+## Reto 3
 
-1. Siguiendo las instrucciones del ejemplo anterior, configura e inicializa tu servidor local.
+Crear la estructura de ruteo para las mascotas  de manera similar a lo que hicimos con el archivo `routes/usuarios.js`
 
+- Crea la estructura de rutas para el archivo `routes/mascotas.js`
+- No olvides importar cada router y declarar la ruta donde se ejecutará en el archivo `routes/index.js`
 
-[`Atrás: Ejemplo 01`](../Ejemplo-01) | [`Siguiente: Ejemplo 02`](../Ejemplo-02)
+[`Atrás: Ejemplo 03`](../Ejemplo-03) | [`Siguiente: Reto 04`](../Reto-04)
