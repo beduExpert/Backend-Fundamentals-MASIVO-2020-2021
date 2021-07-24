@@ -1,6 +1,6 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 02: Arquitectura de software`](../README.md) >[`Ejemplo-01`](../Ejemplo-01) > `Reto 1`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 02: Arquitectura de software`](../README.md) >[`Ejemplo-01`](../Ejemplo-01) > `Reto 2`
 	
-## Reto 1
+## Reto 2
 
 Utiliza Postman o Insomnia para resolver los siguientes puntos:
 
@@ -10,4 +10,4 @@ Para esto deberás hacer una petición `PUT` con el id del objeto a modificar c�
 
 <img src="https://github.com/beduExpert/A2-Backend-Fundamentals-2020/blob/master/Sesion-03/Ejemplo-01/img/Untitled4.png?raw=trueg" width="900">
 
-[`Atrás: Ejemplo 01`](../Ejemplo-01) | [`Siguiente: Ejemplo 02`](../Ejemplo-03)
+[`Atrás: Ejemplo 02`](../Ejemplo-02) | [`Siguiente`](../README.md)

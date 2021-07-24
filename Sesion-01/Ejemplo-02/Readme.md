@@ -1,4 +1,4 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 03: Arquitectura de software`](../README.md) > `Ejemplo 1`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 03: Arquitectura de software`](../README.md) > `Ejemplo 2`
 
 # Peticiones
 
@@ -60,5 +60,5 @@ Una vez ejecutada la petición, obtendremos una respuesta `200` si todo ha salid
 
 -------
 
-[`Atrás: Sesión 03`](../README.md) | [`Siguiente: Reto-01`](../Reto-01)
+[`Atrás: Sesión 03`](../README.md) | [`Siguiente: Reto-02`](../Reto-02)
 
