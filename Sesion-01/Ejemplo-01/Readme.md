@@ -1,87 +1,129 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 01: Consola`](../README.md) > `Ejemplo 1`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 03: Arquitectura de software`](../README.md) > `Ejemplo 1`
 
-# Requerimientos
+# Arquitectura cliente-servidor
 
-- Tener **instalado** sistema operativo **Linux** o **MacOS**.
+**Objetivo:**
 
-# Desarrollo
+- Comprender las diferencias entre un cliente y un servidor web, la manera en la que se comunican y los diferentes tipos de servidores y protocolos más comunes de la web.
 
-# Navegación (File system)
+**Requerimientos:**
 
-- Para navegar en el sistema de archivos de nuestro sistema operativo podemos utilizar **los siguientes comandos:**
+- Navegador web y cuaderno o aplicación para tomar notas.
 
-## `ls`
+## Desarrollo
 
-Lista el contenido del directorio dónde estamos posicionados.
+La arquitectura que gobierna la web actualmente es la arquitectura cliente-servidor.
 
-<img src="img/ls.png" width="650px">
+### 👥 **Cliente**
 
-## `cd`
+El cliente se ocupa de hacer peticiones, recibir respuestas y presentarlas al usuario.  En los primeros días eran ordenadores de uso común, ahora un cliente es cualquier tipo de dispositivo capaz de enviar una petición, esto engloba smartphones y dispositivos inteligentes como bocinas, luces, refrigeradores, relojes, termostatos, etc.
 
-Nos permite posicionarnos en una ruta en específico, o *entrar* en una carpeta.
+### 💽 **Servidor**
 
-**Sintaxis básica:** `cd [ruta o nombre de la carpeta]`
+Es un sistema diseñado específicamente para satisfacer las demandas de información de los clientes. El servidor recibe las peticiones del cliente, las procesa y responde la información solicitada.
 
-<img src="img/cd.png" width="650px">
+Los servidores suelen realizar tareas complejas y especializadas, comúnmente también hacen peticiones a otros sistemas como a servidores de bases de datos o servicios externos e internos *(micro-servicios)*.
 
->💡 **Nota:**
->
->Para volver volver atrás en una ruta utilizamos `cd ..`
->
->Explicar la diferencia entre rutas relativas y rutas absolutas.
->
->En windows los comandos tienen diversas variaciones. Si tienes problemas basta con googlear para buscar su equivalente.
->
+Algunos ejemplos de servidores son:
 
-## `mkdir`
+- Servidores de base de datos.
+- Servidores de correo electrónico.
+- Servidores de imágenes.
+- Servidores WEB.
 
-Crea una nueva carpeta.
+<img src="img/Untitled.png" width="500">
 
-**Sintaxis básica:** `mkdir [nombre carpeta]`
+Tomando esto en cuenta es común dividir las responsabilidades y los equipos de desarrollo en ***Frontend developers*** y ***Backend developers**,* dónde los primeros se encargan de desarrollar el código que se ejecutará en un navegador, y los segundos el código y las configuraciones del lado del servidor.
 
-<img src="img/mkdir.png" width="650px">
+<img src="img/Frontend-and-backend-frameworks.png" width="700">
 
-## `touch`
+## ✉️ Protocolo HTTP
 
-Crea un nuevo archivo.
+En computación, un protocolo es únicamente una manera en la que acordamos que se comunicará un sistema.  
 
-**Sintaxis básica:** `touch [nombre del archivo con extensión]`
+Haciendo una analogía podemos decir que un protocolo en la vida real sería la serie de reglas del sistema postal de correo. Si hoy quisiéramos enviar una carta por correo necesitaríamos escribir en un sobre el nombre y la dirección del destinatario, esta dirección a su vez contendría su código postal, también necesitaríamos un timbre y los datos del remitente. 
 
-<img src="img/tocuh.png" width="650px">
+De manera similar, el protocolo base para el funcionamiento de la web es el protocolo HTTP, que significa *"Hypertext Transfer Protocol"*. Este protocolo de petición-respuesta está basado en otros protocolos que funcionan en un nivel más bajo de la red. 
 
-## `cp`
-
-Copia un nuevo archivo.
-
-**Sintaxis básica:** `cp [ruta del archivo a copiar] [nueva ruta]`
-
-<img src="img/cp.png" width="650px">
-
-## `mv`
-
-Mover o renombrar archivos.
-
-**Sintaxis básica:** `mv [ruta del archivo] [nueva ruta / nuevo nombre]`
-
-<img src="img/mv.png" width="650px">
-
-## `rm`
-
-Eliminar un archivo. Con la opción `-r` podemos también eliminar folders y sus contenidos de manera *recursiva.*
-
-**Sintaxis básica:** `rm [opciones] [ruta del archivo]`
-
-<img src="img/rm.png" width="650px">
-
-## `man`
-
-Despliega información del manual de algún comando
-
-**Sintaxis Básica:** `man [nombre del comando]`
-
-El siguiente ejemplo `man man` despliega el manual del mismo comando `man`
-
-<img src="img/man.png" width="650px">
+<img src="img/HTTP__layers.png" width="700">
 
 
-[`Atrás: Sesión 01`](../README.md) | [`Siguiente: Reto-01`](../Reto-01)
+### 📪 Peticiones
+
+HTTP define un conjunto de métodos de petición *(request method)* para indicar que acción se desea realizar. Los métodos más importantes son:
+
+### `GET`
+
+Solicita una representación de un recurso específico. Las peticiones que usan el método GET únicamente obtienen datos.
+
+### `POST`
+
+El método **POST** se utiliza para enviar una entidad a un recurso en específico, causando a menudo un cambio en el estado o efectos secundarios en el servidor. También es común que se utilice para crear nuevos registros de recursos en una API.
+
+### `PUT`
+
+El modo **PUT** reemplaza todas las representaciones actuales del recurso de destino con la carga útil de la petición.
+
+### `DELETE`
+
+El método **DELETE** borra un recurso en específico.
+
+Estos métodos proporcionan las llamadas operaciones **CRUD** o simplemente el **CRUD** y son:
+
+- `Create`
+- `Read`
+- `Update`
+- `Delete`
+
+Puedes encontrar todos los métodos existentes en el [siguiente enlace:](https://developer.mozilla.org/es/docs/Web/HTTP/Methods)
+
+### 📫 Respuestas
+
+Las respuestas además de que pueden estar conformadas opcionalmente por un cuerpo o contenido, son definidas por un código de respuesta. Los códigos de respuesta indican si una petición se ha completado exitosamente o no, y nos brindan información sobre el estado de la respuesta. Las respuestas se dividen en 5 categorías:
+
+1. **Informativas (`100`-`199`)** Usualmente se utilizan para informar que se recibió la petición o información .
+2. **Éxito (`200`–`299`)** Indica que la petición fue recibida correctamente, entendida y aceptada.
+3. **Redirecciones (`300`–`399`)** Le indican al cliente que es necesaria una acción de su parte para completar la petición.
+4. **Error del lado del cliente (`400`–`499`)** La solicitud no puede procesarse por un error por parte del cliente, como puede ser un error en sintaxis o falta de algún header.
+5. **Error del lado del servidor (`500`–`599`)** La solicitud era aparentemente válida, pero el servidor falló al completarla (errores de conexión, no se encontró la información, etc.).
+
+Algunos de los códigos de respuesta más comunes son:
+
+### `200 OK` 
+
+Todo salio bien, es la respuesta estándar para peticiones correctas.
+![](https://http.cat/200)
+
+### `301 MOVED PERMANENTLY`
+
+El servidor se movió y ésta y todas las peticiones futuras deben ser dirigidas a la nueva URL.
+
+![](https://http.cat/301)
+
+### `302 FOUND`
+
+Se requiere que el cliente realice una redirección temporal. 
+![](https://http.cat/302)
+
+### `404 NOT FOUND`
+
+El servidor web no puedo encontrar el recurso solicitado.
+
+![](https://http.cat/404)
+
+### `500 Internal Server Error`
+
+Ocurrió un error dentro del servidor al intentar resolver la petición. Es el código de error más común
+
+![](https://http.cat/500)
+
+Puedes encontrar más códigos de respuesta en los 
+
+- [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+- [HTTP Cats](https://http.cat/)
+
+
+-------
+
+[`Atrás: Sesión 03`](../README.md) | [`Siguiente: Reto-01`](../Reto-01)
+

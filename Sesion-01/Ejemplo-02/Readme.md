@@ -1,91 +1,64 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 01: Consola`](../README.md) `Ejemplo 02`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 03: Arquitectura de software`](../README.md) > `Ejemplo 1`
 
-# Requerimientos
+# Peticiones
 
-- Tener **instalado** sistema operativo **Linux** o **MacOS**.
+### Listando animalitos
 
-# Desarrollo
+Listaremos animales haciendo peticiones a una API pública: 
 
-# Editando Archivos
+1. Abriremos una nueva pestaña de nuestro navegador
 
-- En Linux y MacOS existen diversas maneras de editar un archivo sin necesidad de **salir de la terminal.**
+2. Abrimos el inspector de elementos y nos dirigiremos a la pestaña *Network*
 
-## nano
+3. Abrimos el [siguiente enlace:](https://petstore.swagger.io/v2/pet/findByStatus?status=available)
 
-**Sintaxis: `nano [nombre del archivo]`**
+4. Observar que es lo que sucede
 
-<img src="img/Untitled.png" width="650px">
+5. En la pestaña de *Network* dar click en la primera petición, analizar los campos del request y de la respuesta.
 
-**Esto nos muestra la siguiente interfaz**
 
-<img src="img/Screen_Shot_2020-03-16_at_22.21.11.png" width="650px"> 
+<img src="img/Untitled1.png" width="1000">
 
-Ahora, copiaremos el siguiente código:
+### Utilizando un cliente de peticiones
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Editando en Nano</title>
-</head>
-<body>
-	  <h1>hello friend!</h1>
-</body>
-</html>
+1. Elegiremos e instalaremos alguno de los siguientes clientes de peticiones HTTP/HTTPS
+    - [Insomnia Core](https://insomnia.rest/)
+    - [Postman](https://www.postman.com/)
+
+2. Añadiremos una nueva mascota haciendo una petición `POST` en el siguiente URL: [https://petstore.swagger.io/v2/pet](https://petstore.swagger.io/v2/pet)
+
+<img src="img/Untitled2.png" width="700">
+
+El cuerpo de la petición estará en formato JSON y será cómo el siguiente:
+
+```jsx
+{
+   "id": 989898,
+    "category": {
+      "id": 0,
+      "name": "dogs"
+    },
+    "name": "El Firulais",
+    "photoUrls": [
+    "https://i.pinimg.com/474x/63/96/a2/6396a292169efeb4651278196a81bb6b.jpg"
+    ],
+    "tags": [
+      {
+        "id": 4242,
+        "name": "memes"
+      }
+    ],
+    "status": "available"
+}
 ```
 
->💡 **Nota:**
->
->Para guardare un archivo utilizamos el comando `ctrl + o`
->
->Y para salir presionamos `ctrl + x`
+Consulta la [Documentación](https://petstore.swagger.io/#/) de la API, para que veas como funcionan los servicios de ésta.
 
-## vim
+Una vez ejecutada la petición, obtendremos una respuesta `200` si todo ha salido bien
 
-vim es una **versión mejorada de vi** un editor de texto que viene instalado por defecto en los sitemas UNIX. Aunque es más complejo de utilizar que nano, una vez que lo dominas será una **poderosa herramienta.**
+<img src="img/Untitled3.png" width="900">
 
-**Ejemplo:**
+-------
 
-A continuación abriremos el archivo anterior con el comando `vim + [nombre de archivo]`
+[`Atrás: Sesión 03`](../README.md) | [`Siguiente: Reto-01`](../Reto-01)
 
-<img src="img/Untitled%201.png" width="650px">
-
-**Esto nos mostrará una interfaz como la siguiente**
-
-<img src="img/Untitled%202.png" width="650px">
-
-Te darás cuenta que vim **no** nos permite **editar** directamente cuando abrimos un archivo, ya que vim tiene diferentes **modos** de trabajo.
-
->💡 **Nota:**
->
->Para activar el modo edición **(insert mode)** presionaremos la tecla `i`
-
-<img src="img/Screen_Shot_2020-03-21_at_14.35.53.png" width="650px">
-
-Ahora añadiremos la línea `<p>Editando desde VIM</p>` debajo de nuestro encabezado desplazandonos con las teclas de flecha.
-
-<img src="img/Untitled%203.png" width="650px">
-
->💡 **Nota:**
->
->Para guardar primero debemos salir del modo edición, presionando la tecla `ESC`
-
-<img src="img/Screen_Shot_2020-03-21_at_15.37.45.png" width="650px">
-
-Esto nos llevará al modo de comandos, aquí ingresaremos el comando `:w` para **guardar,** ó podemos usar `:wq` para **guardar y salir**, luego presionamos **enter.**
-
-Si haz seguido bien los pasos **¡felicidades!** 🎉, has salido de vim sin morir en el intento.
-
-## Mas comandos de vim
-
-`:q!` Salir sin guardar cambios
-
-`u` Deshacer
-
-`ctrl + r` Rehacer
-
-`:set number` mostrar numeración de líneas
-
-[`Atŕas: Reto-01`](../Reto-01) | [`Siguiente: Reto-02`](../Reto-02)

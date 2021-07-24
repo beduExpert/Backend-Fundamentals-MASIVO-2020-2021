@@ -1,86 +1,60 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 01: Consola`](../README.md) > `Prework`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 03: Arquitectura de software`](../README.md) > `Prework`
 
-# Prework
+# Prework - Ciclo de desarrollo de la arquitectura
 
-## ¿Qué es la Terminal?
+## Objetivo
 
-**Objetivos:**
++ Conocer y comprender las diferentes etapas del desarrollo de la arquitectura de un sistema o aplicación.
 
-- Conocer la terminal y sus principales ventajas con respecto a las interfaces gráficas.
-- Ejecutar los primeros comandos.
+## Requerimientos
 
-**Índice**
+Computadora y cuaderno o aplicación para tomar apuntes.
 
-1. Introducción
-2. Conceptos fundamentales
+## Instrucciones
 
-## Introducción
+Lee el siguiente material y toma apuntes.
+Investiga a mayor detalle los conceptos listados y toma notas de ejemplos que encuentres en la web.
 
-La consola también conocida como terminal, shell o línea de comandos (Command-line interface) es una de las primeras maneras con las que hemos podido interactuar con una computadora.
+## Desarrollo
 
-Mucho antes del *mouse*, de la interfaz gráfica y de la metáfora del escritorio, los sistemas operativos contaban con esta interfaz para recibir órdenes por medio de una pantalla y el teclado.
+## **¿Por qué es importante la arquitectura de software?**
+La arquitectura de software es de especial importancia ya que la manera en que se estructura un sistema tiene un impacto directo sobre la capacidad de este para satisfacer lo que se conoce como los atributos de calidad del sistema. Ejemplos de atributos de calidad son el **desempeño**, que tiene que ver con el tiempo de respuesta del sistema a las peticiones que se le hacen; la **usabilidad**, que tiene que ver con qué tan sencillo les resulta a los usuarios realizar operaciones con el sistema; o bien la **modificabilidad**, que tiene que ver con qué tan simple resulta introducir cambios en el sistema. 
 
-### ¿Por qué es importante saber utilizar la consola?
+Los atributos de calidad son parte de los requerimientos (no funcionales) del sistema y son características que deben expresarse de forma cuantitativa. No tiene sentido, por ejemplo, decir que el sistema debe devolver una petición *de manera rápida*, o presentar una página *ligera*, ya que no es posible evaluar objetivamente si el sistema cubre o no esos requerimientos.
 
-Las interfaces de línea de comandos son utilizadas por usuarios avanzados, como programadores y administradores de sistemas.
+La manera en que se estructura un sistema permitirá o impedirá que se satisfagan los atributos de calidad.
 
-Algunas de sus ventajas son:
+Por ejemplo, un sistema estructurado de tal manera que una petición deba transitar por muchos componentes antes de que se devuelva una respuesta podría tener un desempeño pobre. Por otro lado, un sistema estructurado de tal manera que los componentes estén altamente acoplados entre ellos limitará severamente la modificabilidad. Curiosamente, la estructuración tiene un impacto mucho menor respecto a los requerimientos funcionales del sistema.
 
-1. **Flexibilidad.** Los programas gráficos suelen ser muy adecuados para realizar la tarea para la que han sido creados, pero son difíciles de adaptar para otras tareas. Los programas diseñados para ser usados en la línea de comandos suelen ser más versátiles.
-2. **Automatización.** Repetir un proceso para realizar un análisis con un programa gráfico es muy costoso puesto que es difícil describir la secuencia de clicks y dobles clicks que hemos realizado.
-3. **Eficiencia.** Las interfaces gráficas suelen consumir muchos recursos mientras que los programas que funcionan en línea de comandos suelen ser extraordinariamente livianos y rápidos.
-4. **Documentación.** Los procesos realizados mediante la línea de comandos son más fáciles de documentar puesto que tan sólo debemos guardar el texto que hemos introducido en la pantalla.
+Además de los atributos de calidad, la arquitectura de software juega un papel fundamental para guiar el desarrollo. Una de las múltiples estructuras que la componen se enfoca en partir el sistema en componentes que serán desarrollados por individuos o grupos de individuos. La identificación de esta estructura de asignación de trabajo es esencial para apoyar las tareas de planeación del proyecto.
 
-### Conociendo la terminal
+Finalmente, los diseños arquitectónicos que se crean en una organización pueden ser reutilizados para crear sistemas distintos. Esto permite reducir costos y aumentar la calidad, sobre todo si dichos diseños han resultado previamente en sistemas exitosos.
 
-Abre la aplicación *terminal* en macOS o Linux. Verás una interfaz similar a esta:
+## **El ciclo de desarrollo de la arquitectura**
 
-+ **Terminal en Ubuntu**
-
-![https://ubuntucommunity.s3.dualstack.us-east-2.amazonaws.com/original/2X/b/ba76cbf3dc8dc2cc94d26dd61c7aad3cedcd5102.png](https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.comoinstalarlinux.com%2Fwp-content%2Fuploads%2Fcomo-abrir-la-terminal-en-ubuntu-linux-mint-centos-debian-02.gif&f=1&nofb=1)
-
-
-+ **Terminal en MacOS**
-
-![Untitled.png](https://raw.githubusercontent.com/mikaelbr/node-notifier/master/example/input-example.gif)
-
-Ahora posiciónate con el mouse y teclea el comando  `pwd`.
-
-> 💡 **Nota:**
+>La arquitectura de software de un sistema es el conjunto de estructuras necesarias para razonar sobre
+>el sistema. Comprende elementos de software, relaciones entre ellos, y propiedades de ambos.
 >
->El comando `pwd`  imprime el **directorio** (carpeta) en donde estamos posicionados.
+>(Bass, Clements y Kazman, 2012).
 
-## Conceptos fundamentales
+Dentro de un proyecto de desarrollo, e independientemente de la metodología que se utilice, se puede hablar de *desarrollo de la arquitectura de software*. Este desarrollo, que precede a la construcción del sistema, esta dividido en las siguientes etapas: requerimientos, diseño, documentación y evaluación. 
 
-### Sistema operativo
+Cabe señalar que las actividades relacionadas con el desarrollo de la arquitectura de software generalmente forman parte de las actividades definidas dentro de las metodologías de desarrollo.
 
->*"es el software principal o conjunto de programas de un sistema informático que gestiona los recursos de hardware y provee servicios a los programas de aplicación de software, ejecutándose en modo privilegiado respecto de los restantes".*
+Aunque seamos los mejores programadores, al iniciar a construir una aplicación de software podemos enfrentamos al problema de no saber por dónde comenzar si no tenemos los fundamentos necesarios de arquitectura de software. Por esto es necesario conocer el ciclo de la arquitectura de software y lo que involucra. Este ciclo está compuesto por las siguientes etapas:
 
-En un sentido muy general el S.O. permite a los usuarios correr otras aplicaciones en un ordenador. Aunque es posible que otro programa se comunique directamente con el hardware, la mayoría de las aplicaciones están escritas para un S.O. en específico, esto les permite tomar ventaja de librerías preestablecidas sin preocuparse sobre detalles específicos del hardware.
++ **Requerimientos:**
 
-**Los recursos que maneja un S.O. son:**
+La etapa de requerimientos se enfoca en la captura, documentación y priorización de requerimientos que influencian la arquitectura. Como se mencionó anteriormente, los atributos de calidad juegan un papel preponderante dentro de estos requerimientos, así que esta etapa hace énfasis en ellos. Otros requerimientos, sin embargo, son también relevantes para la arquitectura, estos son los requerimientos funcionales primarios y las restricciones.
 
-- **Dispositivos de entrada** ej: teclado y mouse.
-- **Dispositivos de salida** ej: pantalla, bocinas, impresoras.
-- **Dispositivos de red** ej: módems, routers.
-- **Dispositivos de almacenamiento** ej: disco duro, usb flash.
++ **Diseño:**
 
-También se encarga de eficientar los recursos de memoria para las diversas aplicaciones de software instaladas.
+La etapa de diseño es la etapa central en relación con la arquitectura y probablemente la más compleja. Durante esta etapa se definen las estructuras que componen la arquitectura. La creación de estas estructuras se hace en base a patrones de diseño, tácticas de diseño y elecciones tecnológicas. El diseño que se realiza debe buscar ante todo satisfacer los requerimientos que influencian a la arquitectura, y no simplemente incorporar diversas tecnologías por que están “de moda”.
 
-### UNIX
++ **Documentación:**
 
-UNIX es un S.O. que nació en los Laboratorios Bell de AT&T en 1969, desarrollado por Ken Thompson y Dennis Ritchie (también creador del lenguaje de programación C).
+Una vez creado el diseño de la arquitectura, es necesario poder comunicarlo a otros involucrados dentro del desarrollo. La comunicación exitosa del diseño muchas veces depende de que dicho diseño sea documentado de forma apropiada. La documentación de una arquitectura involucra la representación de varias de sus estructuras que son representadas a través de distintas vistas. Una vista generalmente contiene un diagrama, además de información adicional, que apoya en la comprensión de dicho diagrama.
 
-UNIX fue muy importante para la industria del software, ya que presentó ideas fundamentales que ayudaron al desarrollo de sistemas posteriores.
++ **Evaluación:**
 
-UNIX es parte de ***Mac OS X***, es lo que se ejecuta en la mayoría de los servidores que te dejan acceder a la web, y está también dentro de millones y millones de smartphones. **GNU/*Linux*** es una clase de UNIX, y a la fecha puedes ejecutar UNIX dentro de un navegador.
-
-Aunque solo los sistemas totalmente compatibles que se encuentran certificados por la especificación única de UNIX, pueden ser llamados UNIX como tal, otros reciben la denominación «UNIX Like«, o similar a UNIX. El **OS X** de Apple está basado en UNIX y está certificado de esa manera, mientras que **Linux** es la versión más popular de sistemas no certificados.
-
-### Shell
-
-En informática, el término Shell se emplea para referirse a aquellos programas que proveen una interfaz de usuario (interfaz de línea de comandos) para acceder a los servicios del sistema operativo. Estos pueden ser gráficos o de **texto simple**, dependiendo del tipo de interfaz que empleen.
-
-Los Shell están diseñados para facilitar la forma en que se invocan o ejecutan los distintos programas disponibles en el computador.
-
-Es decir, un SHELL es una interface con nuestro sistema operativo. Gracias a él podremos dar las órdenes y mandatos necesarios para que nuestro sistema informático realice las tareas que necesitamos. **No debemos confundir al intérprete de comandos con el sistema operativo**. Este es sólo un programa que hará de **mediador** entre nosotros y el Kernel del sistema. Un ejemplo de shell puede ser el *powershell* de windows o *bash* de linux.
+Dado que la arquitectura de software juega un papel crítico en el desarrollo, es conveniente evaluar el diseño una vez que este ha sido documentado con el fin de identificar posibles problemas y riesgos. La ventaja de evaluar el diseño es que es una actividad que se puede realizar de manera temprana (aún antes de codificar), y que el costo de corrección de los defectos identificados a través de la evaluación es mucho menor al costo que tendría el corregir estos defectos una vez que el sistema ha sido construido.

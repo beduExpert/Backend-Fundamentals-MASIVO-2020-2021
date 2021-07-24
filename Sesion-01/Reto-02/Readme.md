@@ -1,39 +1,13 @@
-  [`Backend Fundamentals`](../../README.md) > [`Sesión 01: Consola`](../README.md) >[`Ejemplo-02`](../Ejemplo-02) > `Reto 2`
- 
-
+[`Backend Fundamentals`](../../README.md) > [`Sesión 02: Arquitectura de software`](../README.md) >[`Ejemplo-01`](../Ejemplo-01) > `Reto 1`
 	
-# Reto 2
+## Reto 1
 
-# Instrucciones:
+Utiliza Postman o Insomnia para resolver los siguientes puntos:
 
-Con la estructura creada en el [Reto 1](../Reto-01/Readme.md) realiza las siguientes ediciones de los archivos.
+1. Crea una nueva mascota siguiendo el ejemplo 2, pero cambia el atributo `name` y opcionalmente la url de `photoUrls` añadiendo una nueva imagen. También cambia la propiedad `id` a una que tu elijas y guarda el id con cuidado.
+2. Modifica el recurso que acabas de crear cambiando el nombre.
+Para esto deberás hacer una petición `PUT` con el id del objeto a modificar cómo se ejemplifica en la [documentación de esta API](https://petstore.swagger.io/#/pet/updatePet):
 
-1. Verifica que el archivo **README.md** que se encuentra dentro de tu carpeta **bedu**. 
+<img src="https://github.com/beduExpert/A2-Backend-Fundamentals-2020/blob/master/Sesion-03/Ejemplo-01/img/Untitled4.png?raw=trueg" width="900">
 
-   **Arquitectura:** `Documents/bedu/README.md`, si no existe crealo.
-
-2. Al archivo `README.md` agrega la siguiente información:
-
-    ```markdown
-    # Consola
-    Clase de consola del curso Back-end fudamentals.
-    ```
-
-3. Edita el archivo **inicio.sh** que se encuentra dentro de tu carpeta **src**. 
-
-   **Arquitectura:** `Documents/bedu/src/incicio.sh`
-
-    ```bash
-    echo "Hola desde la consola"
-    ```
-
-4. Edita el archivo **main.js** que se encuentra dentro de tu carpeta **src**.
-
-   **Arquitectura:** `Documents/bedu/src/main.js`
-
-    ```js
-    var fecha = new Date();
-    console.log(`Fecha actual: ${fecha}`)
-    ```
-
-[`Atrás: Ejemplo 2`](../Ejemplo-02) | [`Siguiente: Ejemplo 3`](../Ejemplo-03)
+[`Atrás: Ejemplo 01`](../Ejemplo-01) | [`Siguiente: Ejemplo 02`](../Ejemplo-03)

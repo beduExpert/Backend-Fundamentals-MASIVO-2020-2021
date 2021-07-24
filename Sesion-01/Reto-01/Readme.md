@@ -1,22 +1,7 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 01: Consola`](../README.md) >[`Ejemplo-01`](../Ejemplo-01) > `Reto 1`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 02: Arquitectura de software`](../README.md) >[`Ejemplo-01`](../Ejemplo-01) > `Reto 1`
+	
+## Reto 1
 
-# Reto 1
+INVESTIGA ALGO
 
-# Instrucciones
-
-
-- Dentro de la carpeta **Documents** crea la carpeta **bedu** y dentro de ella crea la siguiente estructura.
-
-
-```terminal
-Documents/
-└──📂bedu/
-   └── index.html
-   └── README.md
-   └── hola.sh
-   └──📂src/
-      └── inicio.sh
-      └── main.js
-```
-
-[`Atrás: Ejemplo 01`](../Ejemplo-01) | [`Siguiente: Ejemplo 02`](../Ejemplo-02)
+[`Atrás: Ejemplo 01`](../Ejemplo-01) | [`Siguiente: Ejemplo 02`](../Ejemplo-03)

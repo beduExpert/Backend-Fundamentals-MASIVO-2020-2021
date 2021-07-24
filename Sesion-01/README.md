@@ -1,95 +1,123 @@
-# Sesión 01 - Consola 🧑‍💻
+# Sesión 01 - Introducción a Backend 🕹
 
-# 🎯 Objetivos Generales:
+🎯 **Objetivo:**
 
-- Utilizar la terminal, sus principales ventajas y comandos.
-- Editar archivos e instalar paquetes en el sistema operativo por medio de la consola.
+- Gestionar usuarios y permisos de archivos, cómo conectarse, utilizar un servidor remoto por medio de ssh
+- Enviar archivos remotamente con SCP.
 
---- 
+# ¿Qué es un Backend?
 
-# 🤖 La consola 
+Hasta ahora en el curso se había estado trabajando unicamente con la vista de las aplicaciones web, es decir, con la interfaz a la que los usuarios y usuarias tienen acceso y mediante la cual interactua con nuestra aplicación. A este trabajo se le conoce como Frontend. 
 
-<img src="img/console.jpg" align="right" width="250">
+El Backend es la parte del desarrollo web que se encarga de que toda la lógica de una página web  funcione. Se trata del conjunto de acciones que pasan en una web pero que no vemos. Es la parte que se conecta con la base de datos y el servidor que utiliza dicho sitio web, por eso decimos que el backend corre del lado del servidor.
 
-Las interfaces gráficas (GUI) de los programas nos permiten utilizarlos interactuando con ventanas, botones, iconos, etc. Sin embargo, esta forma de interacción con la computadora es relativamente nueva. En los primeros días los ordenadores no tenían esas bonitas interfaces que estamos tan acostumbradxs a usar y si nosotrxs queríamos darle una instrucciones a la computadora, esto se hacia mediante la linea de comandos. 
+Backend es la capa de acceso a los datos, que no es directamente accesible por los usuarios, además contiene la lógica de la aplicación que maneja dichos datos. 
 
-La consola o terminal es una interfaz que permite acceder a la linea de comando de nuestra computadora. Es decir, es una programa mediante el cual podemos escribir instrucciones para que la computadora las ejecute y, si es el caso, muestre los resultados o mensajes.
+El Backend está compuesto por 3 partes fundamentales:
 
-## Pero ... ¿Por qué usar la linea de comandos? 🤨
+- **Servidor**
+- **Base de Datos**
+- **Middleware**
 
-Las computadoras fueron creadas para liberarnos del trabajo manual. Pero muchas veces hacemos tareas que terminan siendo muy tediosas moviendo el mouse a un lugar y dando click y luego a otro y de nuevo click y otro y repetir lo mismo de nuevo ... 
+## 👾 Servidor web
 
-Seguro en ese momento has pensado que la computadora debería ser capaz de hacer esas tareas por ti, y así es. La consola nos permite usar la computadora de forma automatizada sin el uso de GUI. 
+<img src="img/server.png" align="right" width="250">
 
-Las ventajas de la consola son: 
+Un servidor web es un conjunto de software y hardware que responden las peticiones que los clientes hacen sobre *World Wide Web*.
 
-- Es flexible 🧩
-- Permite automatizar procesos ⚙️
-- Es mas rápida que las GUI ⚡️
-- Tenemos un historial de los comandos que ejecutamos 💾
-- Nos vemos cool 😎
+Para responder a las peticiones, los servidores utilizan distintos protocolos de transferencia de datos por una red, siendo los principales:
 
-## ¿Qué podemos hacer desde la consola? ... Todo 
+- HTTP/HTTPS
+- SMTP 
+- FTP
 
-### 🗃 File System
+Su propósito principal es permitir el acceso al contenido de los sitios web que requieren lxs usuarixs, para esto, el servidor almacena, procesa y envía las paginas web.
 
-- [`Ejemplo 01: Navegación (File system)`](Ejemplo-01/#navegación-file-system)
-- [`Reto 01: Creación de carpetas`](Reto-01/#reto-1)
+## ¿Cómo funciona un servidor web? 🤔
 
----
+El hardware del servidor está conectado a la internet y permite el intercambio de información con otros clientes también conectados a la red. Este es una computadora que almacena el contenido del sitio web tales como los archivos HTML, JavaScript, CSS, imagenes, etc, es decir, es un **host**.
 
-### 📝 Editar y manipular de archivos
+Mientras que el software controla el acceso que tienen lxs usuarixs a los archivos del servidor. Todo esto utilizando un modelo cliente servidor. Se accede a este mediante la url (Uniform Resource Locator) del sitio, que sirve como el localizador del sitio y asegura que el contenido será entregado a quienes que lo solicitaron.
 
-- [`Ejemplo 02: Editando Archivos`](Ejemplo-02/#editando-archivos)
-- [`Reto 02: Ediciones de archivos`](Reto-02/#reto-2)
+Todo este proceso se hace utilizando el modelo **cliente/servidor**.
 
----
+## Proceso
 
-### 📀 Instalar de paquetes
+Cuando entramos al navegador y colocamos la dirección de nuestro sitio web favorito, el navegador hace el siguiente proceso para encontrar la página que le pedimos:
 
-- [`Ejemplo 03: Instalando paquetes`](Ejemplo-03/#instalando-paquetes)
-- [`Reto 03: Instalación de paquetes`](Reto-03/#reto-3)
+1. Con la url, identifica la dirección IP del servidor en el que se *hostea* el sitio que le pedimos
+1. Hace una solicitud de los archivos necesarios con el protocolo HTTP 
+1. El servidor acepta la petición, busca los archivos y los envía como respuesta
 
----
+![](img/proceso.jpg)
 
-### 🎨 ASCII Art
+### 🔐 Arquitectura Cliente-servidor
 
-Primero se instala el paquete `toilet`.
+- [`Ejemplo 01: Arquitectura cliente-servidor`](Ejemplo-01/)
+- [`Reto 01: Uso de Postman o Insomnia`](Reto-01/#reto-1)
 
-``` 
-sudo apt-get install toilet 			#Linux
-brew install toilet 				#Mac
-```
+### Peticiones a un servidor
 
-Se ejecuta el siguiente comando:
-
-``` 
-toilet -f mono9 -F gay Bedu
-```
-
-![console-bedu](img/toilet-bedu.png)
+- [`Ejemplo 02: Peticiones en Insomnia`](Ejemplo-02/)
+- [`Reto 02: Uso de Postman o Insomnia`](Reto-01/#reto-2)
 
 
----
+## 📜 Requerimientos de un proyecto
 
-### 📼 Ver películas 
+<img src="img/scrum_board.svg" alt="PostItHistoriaUsuario" align="right" width="450" > 
 
-Ejecuta el comando:
+Los requerimientos nos dicen como desarrolladorxs que es lo que tenemos que tomar en cuenta a la hora de crear una aplicación o programa. Son las especificaciones que nos proporciona el cliente sobre que espera del software que vamos a desarrollar.
 
-```
-telnet towel.blinkenlights.nl
-```
+Describen a muy alto nivel las especificaciones y funcionalidades del sistema. 
 
-![console-bedu](img/starwars.png)
+Por ejemplo nosotros vamos a desarrollar un proyecto llamado AdoptPet, que será una aplicación web que permita a la gente adoptar mascotas y poner mascotas en adopción, a grandes rasgos los requerimientos son los siguientes:
 
->💡**Nota:**
->
-> Para salir pulsa `Ctrl+]` 
+- Publicar anuncios de mascotas en adopción
+- Visualizar las mascotas que están en adopción
+- Permitir a los usuarios interesados en adoptar registrarse y poder enviar solicitudes de adopción
+- Permitir a los cuidadores evaluar solicitudes y confirmar una adopción
 
----
+### Historias de usuario
+
+Para describir los requerimientos de un sistema a menudo se usan historias de usuarix que son **descripciones cortas** y **simples** de una funcionalidad contada desde la perspectiva de la persona que la desea (usuarix o clientx del sistema). 
+
+Estas historias tienen una **estructura simple**
+
+*"Como **[rol de usuario]** quiero **[objetivo]** para **[beneficio]**"*
+
+Y son utilizadas por varias metodologías para poder comprender mejor los requerimientos y alinearlos con el negocio.
+
+***Ejemplo:***
+
+- *Como usuario de adoptaPet, quiero ver a todas las mascotas que hay en adopción para poder elegir la que más me guste.*
+
+- *Como anunciante de adoptPet, quiero agregar nuevas mascotas en adopción, para poder buscar hogar a mas animalitos*
+
+Posteriormente estas historias se traducen a funcionalidades de nuestro sistema.
+
+### Requerimientos de un proyecto
+
+<!-- - [`Ejemplo 02: AdoptaPet - Iniciando un nuevo proyecto`](Ejemplo-02/) -->
+- [`Reto 03: historias de usuario`](Reto-03/#reto-3)
+
+<!-- ### Modelo Vista Controlador
+
+- [`Ejemplo 02: Modelo Vista Controlador`](Ejemplo-03/)
+- [`Reto 02: Clases en javascript `](Reto-03/#reto-3) -->
 
 
-# 🛡 Postwork
 
-Recuerda que todo lo trabajado en tu prework, así como en el work, puede ser aplicado a tu proyecto personal; Para lo cual, toma las siguientes consideraciones ...[`leer más`](Postwork/#postwork)
+
+## 🛡 Postwork
+
+**Objetivo**
+
+- Entender las ventajas de una arquitectura basada en microservicios.
+- Familiarizarse con Docker
+- Descargar e instalar imagenes de docker y utilizarlas
+
+**Arquitectura de Microservicios**
+
+Recuerda que todo lo trabajado en tu prework, así como durante la sesión, puede ser aplicado a tu proyecto personal; Para lo cual, toma las siguientes consideraciones...[`leer mas`](Postwork/#postwork---arquitectura-de-microservicios)
+
 

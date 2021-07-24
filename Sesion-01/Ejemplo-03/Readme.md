@@ -1,63 +1,45 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 01: Consola`](../README.md) > `Ejemplo 03`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 03: Arquitectura de software`](../README.md) > `Ejemplo 2`
+
+# Proyecto - AdoptaPet
+
+# Objetivo
+
+- Presentar un nuevo proyecto y levantar requerimientos para cumplir con la primera etapa de planteamiento de nuestra arquitectura de software.
+
+<img src="img/scrum_board.svg" alt="PostItHistoriaUsuario" width="450" > 
 
 # Requerimientos
 
-- Tener **instalado** sistema operativo **Linux** o **MacOS**.
+- Cuaderno o aplicación para tomar notas y resolver preguntas.
 
 # Desarrollo
 
-# Instalando paquetes
+- AdoptaPet será una aplicación web que permita a la gente adoptar mascotas y poner mascotas en adopción.
 
-- Los paquetes en los sitemas operativos unix, son **programas** que han sido empaquetados para su instalación y distribución.
-- Distribuciones de Linux como Ubuntu y Debian cuentan con su gestor de paquetes por defecto.
-- Para MacOs debemos **instalar Brew** siguiendo las instrucciones del [siguiente enlace](https://brew.sh/index_es)
+## 1. Conociendo los requerimientos
 
-## Actualizando la lista de repositorios
+Los requerimientos a grandes rasgos para este sistema son los siguientes:
 
-- Para actualizar la fuente oficial de dónde se descargaran los paquetes utilizaremos el **siguiente comando:**
+- Publicar anuncios de mascotas en adopción
+- Visualizar las mascotas que están en adopción
+- Permitir a los usuarios interesados en adoptar registrarse y poder enviar solicitudes de adopción
+- Permitir a los cuidadores evaluar solicitudes y confirmar una adopción
 
-```
-sudo apt-get update			#Linux
-brew update 				#Mac
-```
+## 2. Creando User Stories
 
-<img src="img/Screen_Shot_2020-03-21_at_16.33.43.png" width="650px">
+Las historias de usuario son **descripciones cortas** y **simples** de una funcionalidad contada desde la perspectiva de la persona que la desea (usuario o cliente del sistema). 
 
-Al utilizar el prefijo **sudo**, estamos dando el permiso a nuestro gestor de paquetes de **hacer cambios en nuestro sistema**
+Estas historias tienen una **estructura simple**
 
->💡**Nota:**
->
->Es posible que nos solicite nuestra contraseña.
+*"Como **[rol de usuario]** quiero **[objetivo]** para **[beneficio]**"*
 
-## Instalando paquetes
+Y son utilizadas por varias metodologías para poder comprender mejor los requerimientos y alinearlos con el negocio.
 
+### Ejemplo:
 
-### Sintaxis:
+**Como usuario de adoptaPet quiero ver a todas las mascotas que hay en adopción para poder elegir la que más me guste.**
 
-Para Linux:
-
-`[sudo] apt-get install [nombre del paquete o paquetes separados por espacio]`
-
-Para Mac:
-
-`brew install [nombre del paquete o paquetes separados por espacio]`
-
-**Instalaremos** un paquete simple llamado **cowsay** ejecutando el siguiente comando:
-
-```
-sudo apt-get install cowsay			#Linux
-brew install cowsay				#Mac
-```
-
-En caso de que nos pida **confirmación para continuar ingresaremos la opción**  `Y` y presionamos **enter.**
-
-Si todo ha sido exitoso ahora tendremos un nuevo ***comando*** instalado en nuestra terminal el cual ejecutaremos de la siguiente manera:
-
-### Sintaxis:
-
-`cowsay [mensaje]`
-
-<img src="img/Untitled.png" width="650px">
+<img src="img/story.png" alt="PostItHistoriaUsuario" width="550" > 
 
 
-[`Atrás: Reto-02`](../Reto-02) | [`Siguiente: Reto-03`](../Reto-03)
+[`Atrás: Reto 01`](../Reto-01) | [`Siguiente: Reto 02`](../Reto-02)
