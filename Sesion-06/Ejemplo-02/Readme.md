@@ -2,309 +2,161 @@
 
 ## Objetivo
 
-Comprender los fundamentos de MongoDB para la implementación de Bases de Datos NoSQL orientada a documentos.
+Crear un nuevo modelo (Mascota) junto con la lógica de sus controladores
 
 ## Requerimientos
 
-Conexión a internet
+Contar con el código de la API que se encuentra en desarrollo desde la lección 4.
 
 ## Desarrollo
 
-MongoDB es una base de datos NoSQL y orientada a documentos, por lo que, los datos se almacenan como documentos en formato JSON.
+1. Creando modelo Mascota:
 
-Veamos un ejemplo:
+- Abre el archivo:`models/Mascota.js` 
+- En este archivo se encuentra la configuración del modelo <b>Mascota</b> previa a utilizar mongoose.
+- Comenta el código en el archivo e inserta la declaración del esquema <b>Mascota</b>: 
 
-![img/Screen_Shot_2020-06-18_at_11.56.02.png](img/Screen_Shot_2020-06-18_at_11.56.02.png)
+```jsx
+const mongoose = require("mongoose");
 
-A su vez, MongoDB almacena los documentos en **colecciones**, veamos una analogía de entre MongoDB y un RDBMS:
+const MascotaSchema = new mongoose.Schema({
+  nombre: {type: String, required: true}, // nombre de la mascota (o titulo del anuncio)
+  categoria: { type: String, enum: ['perro', 'gato', 'otro'] }, // perro | gato | otro
+  fotos: [String], // links a las fotografías
+  descripcion: {type:String, required: true}, // descripción del anuncio
+  anunciante: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario'}, // contacto con la persona que anuncia al animalito
+  ubicacion: { type: String }, // muy importante
+  estado:{type: String, enum:['adoptado', 'disponible', 'pendiente']},
+}, { timestamps: true })
 
-![img/TablaNueva.png](img/TablaNueva.png)
+MascotaSchema.methods.publicData = function(){
+  return {
+    id: this.id,
+    nombre: this.nombre,
+    categoria: this.categoria,
+    fotos: this.fotos,
+    descripcion: this.descripcion,
+    anunciante: this.anunciante,
+    ubicacion: this.ubicacion,
+    estado: this.estado
+  };
+};
 
-### Estructura de un documento en MongoDB
+mongoose.model('Mascota', MascotaSchema)
+```
 
-Los documentos en MongoDB están compuesto por pares de campo y valor con la siguientes estructura:
+- Para la propiedad categoría utilizaremos un `enum` el cuál nos permite pasar únicamente los valores 'perro', 'gato' u 'otro'.
+- Para la propiedad anunciante, crearemos una referencia el modelo Usuario que contendrá el id de un usuario y nos servirá más adelante.
 
-```json
-{ 
-   "field1": "value1", 
-   "field2": "value2", 
-   "field3": "value3", 
-   ... 
-   "fieldN":  "valueN"
+2. Recuerda importar el modelo en `app.js` debajo de dónde importamos el modelo Usuario.
+
+
+```jsx
+...
+require('./models/Usuario');
+require('./config/passport');
+require('./models/Mascota');
+...
+```
+
+3. Modifica las rutas del archivo `routes/mascotas.js`,  agregar las siguientes autorizaciones:
+```jsx
+const router = require('express').Router();
+const {
+  crearMascota,
+  obtenerMascotas,
+  modificarMascota,
+  eliminarMascota
+} = require('../controllers/mascotas')
+var auth = require('./auth');
+
+router.get('/', auth.opcional,obtenerMascotas)
+router.get('/:id', auth.opcional, obtenerMascotas)// nuevo endpoint con todos los detalles de mascota
+router.post('/', auth.requerido, crearMascota)
+router.put('/:id',auth.requerido, modificarMascota)
+router.delete('/:id',auth.requerido, eliminarMascota)
+
+module.exports = router;
+```
+
+4. En el controlador mascotas, es decir: `controllers/mascotas.js`, actualiza la función `crearMascota` con el siguiente código:
+
+```jsx
+const mongoose = require('mongoose')
+const Mascota = mongoose.model('Mascota')
+
+function crearMascota(req, res, next) {
+  var mascota = new Mascota(req.body)
+  mascota.anunciante = req.usuario.id
+  mascota.estado = 'disponible'
+  mascota.save().then(mascota => {
+    res.status(201).send(mascota)
+  }).catch(next)
+}
+
+```
+
+5. En el controlador mascotas, es decir: `controllers/mascotas.js`, actualiza la función `obtenerMascotas` con el siguiente código:
+
+```jsx
+function obtenerMascotas(req, res, next) {
+  Mascota.find().then(mascotas=>{
+    res.send(mascotas)
+  }).catch(next)
 }
 ```
 
-Y el valor de cada campo tiene un tipo de datos, revisa los distintos tipos de datos en MongoDB:
+### Populate
 
-[BSON Types - MongoDB Manual](https://docs.mongodb.com/manual/reference/bson-types/)
+El método populate nos sirve para *poblar* documentos que son integrados dentro de otros documentos.
 
-### Llave primaria
+6. Cuando queramos obtener una mascota en específico, en el endpoint 'v1/mascotas/:id'. Será necesario mostrar la información de su anunciante, así que agregaremos una condición para que cuándo un id esté presente se agreguen los campos username, nombre, apellido, bio y foto del anunciante.
 
-Cada documento almacenado en MongoDB requiere un campo **_id** único que se identificará como la llave primaria, si omitimos este campo, MongoDB genera automáticamente un **ObjectId** que es un tipo de dato.
+- De nuevo, actualiza el controlador mascotas, es decir: `controllers/mascotas.js`, muestra los datos del anunciante de una mascota, modificando la función `obtenerMascotas` con el siguiente código:
 
-La utilización de ObjectId con MongoDB es muy común, ya que, es un tipo de dato pequeño, rápido de generar y ordenado. Su estructura:
-
-- 4 bytes para un valor *timestamp*
-- 5 bytes para un valor aleatorio
-- 3 bytes para un contador incremental
-
-### Modelado de datos en MongoDB
-
-Los datos en MongoDB tienen un esquema flexible, los documentos en una colección pueden no seguir una misma estructura, por lo que, se debe considerar:
-
-> Normalización y denormalización: Los modelos de datos totalmente normalizados describen las relaciones con referencias entre documentos, mientras que los modelos denormalizados pueden almacenar información redundante a tráves de los modelos relacionados.
-
-- **Modelado Embebido**:
-
-    Permite agregar un documento dentro de un documento, pero no sólo eso, recordemos que también podemos tener *arrays* de documentos. La ventaja de este tipo de modelado es la rapidez para hacer operaciones CRUD, además, son menos costosas.
-
-    Se puede usar cuando: 
-
-    - Se tiene relaciones *Uno a uno* entre documentos. Ve más detalles en [Model One-to-One Relationships with Embedded Documents](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-one-relationships-between-documents/#data-modeling-example-one-to-one)
-
-    - Ilustrando esta relación con un ejemplo de MongoDB:
-
-         ```json
-         {
-            "_id": "joe",
-               "name": "Joe Bookreader",
-               "address": {
-                    "street": "123 Fake Street",
-                    "city": "Faketon",
-                    "state": "MA",
-                    "zip": "12345"
-                }
-         }
-         ```
-
-   - Se tiene relaciones *Uno a muchos.* Ve más detalles en [Model One-to-Many Relationships with Embedded Documents.](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/#data-modeling-example-one-to-many)
-
-   - Ilustrando esta relación con un ejemplo de MongoDB:
-
-        ```json
-        {
-           "_id": "joe",
-           "name": "Joe Bookreader",
-           "addresses": [
-                {
-                    "street": "123 Fake Street",
-                    "city": "Faketon",
-                    "state": "MA",
-                    "zip": "12345"
-                },
-                {
-                    "street": "1 Some Other Street",
-                    "city": "Boston",
-                    "state": "MA",
-                    "zip": "12345"
-                }
-            ]
-         }
-        ```
-
-- **Modelado utilizando referencias**
-
-    Es almacenar **referencias** entre documentos para indicar la existencia de una relación entre los datos de cada documento.
-
-    Puede implicar que los queries tengan mayor complejidad, ya que puede ser el caso en el que se tenga que consultar más de una colección.
-
-    Se usa en situaciones:
-
-    - Donde las referencias son más flexibles que los embebidos. Puede haber situaciones en las que conviene tener almacenadas las referencias en lugar de un número ilimitado de documentos y que puede llegar a crecer constantemente. Ver más en [Model One-to-Many Relationships with Document References](https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/#data-modeling-publisher-and-books)
-
-        Ilustrando este caso con un ejemplo de MongoDB:
-
-        ```json
-        {
-           "name": "O'Reilly Media",
-           "founded": 1980,
-           "location": "CA",
-           "books": [123456789, 234567890, ...]
-
-        }
-
-        {
-            "_id": 123456789,
-            "title": "MongoDB: The Definitive Guide",
-            "author": [ "Kristina Chodorow", "Mike Dirolf" ],
-            "published_date": ISODate("2010-09-24"),
-            "pages": 216,
-            "language": "English"
-        }
-
-        {
-           "_id": 234567890,
-           "title": "50 Tips and Tricks for MongoDB Developer",
-           "author": "Kristina Chodorow",
-           "published_date": ISODate("2011-05-06"),
-           "pages": 68,
-           "language": "English"
-        }
-        ```
-
-    - Se tienen relaciones *muchos a muchos*
-
-### Ejemplo
-
-Supongamos una base de datos para una aplicación de blogs, donde es necesario almacenar: usuarios, posts, comentarios, etiquetas, etc.
-
-Vamos a modelar estos documentos de las formas que ya se explicaron; Por el momento utilizarmeos <b>MongoDB Compass</b>, en el siguiente ejemplo estaremos utilizando <b>Mongo Shell</b> para continuar con el modelado.
-
-1. Una vez que lograste conectarte a tu cluster, vamos a crear una nueva base de datos utilizando MongoDB Compass. Da click en <b>CREATE DATABASE</b>
-
-![img/CreateDatabase.png](img/CreateDatabase.png)
-
-2. En Database Name, inserta: <b>BlogsModeloEmbebido</b>, en Collation Name, inserta: <b>posts</b>, oprime <b>CREATE DATABASE</b>.
-
-![img/CreateDatabaseCollection.png](img/CreateDatabaseCollection.png)
-
-En la lista de Bases de Datos de tu cluster, ya podrás ver la Base de Datos recientemente creda.
-
-![img/ModeloCreado.png](img/ModeloCreado.png)
-
-3. Selecciona el modelo creado en los puntos anteriores, selecciona la colección <b>posts</b>, oprime <b>ADD DATA</b>, <b>Insert Document</b>. Se abrirá una especie de editor: 
-
-![img/Editor.png](img/Editor.png)
-
-Copia las siguientes líneas en el editor, antes de oprimir <b>INSERT</b>, analiza el código JSON.
-
-```json
-{
-   "_id": 1234,
-   "nombre": "Bases de Datos Relacionales",
-   "fecha_publicacion": "2020-05-12",
-   "texto": "Las bases de datos...",
-   "autor": {
-      "_id": 35,
-      "nombre": "Diego Lugo",
-      "email": "dieguitolu@gmail.com",
-      "tipo_cuenta": "experto"
-    },
-    "comentarios": [
-      {   
-         "_id": 23456,
-         "nombre": "Sergio Medina",
-         "email": "sergiomedina@hotmail.com",
-         "fecha_publicacion": "2020-05-23",
-         "texto": "Excelente post, me ayudo a comprender más...",
-         "puntuacion": 5
-      },
-      {
-         "_id": 78901,
-         "nombre": "Emmanuel Martínez",
-         "email": "emmamtz@gmail.com",
-         "fecha_publicacion": "2020-06-01",
-         "texto": "Hay ciertos conceptos que no me quedaron claros...",
-         "puntuacion": 3
-      }
-    ],
-    "etiquetas": [
-      "Bases de Datos Relacionales", "Modelo E/R"
-      ],
-    "categorias": [
-      "TI", "Desarrollo de Software"
-     ]
+```jsx
+function obtenerMascotas(req, res, next) {
+  if(req.params.id){
+    Mascota.findById(req.params.id)
+			.populate('anunciante', 'username nombre apellido bio foto').then(mascotas => {
+	      res.send(mascotas)
+	    }).catch(next)
+  } else {
+    Mascota.find().then(mascotas=>{
+      res.send(mascotas)
+    }).catch(next)
+  }
 }
 ```
 
-Este ejemplo es un documento embebido que contiene todos lo datos a almacenar de un post, podemos notar que en comentarios podemos tener un número ilimitado, dependerá del impacto del post cause a una audiencia interesada, pero más allá de eso podría darse el caso en el que el documento sea demasiado grande y hasta podría alcanzar el límite de almacenamiento de un documento.
-    
-Después de la inserción, podrás ver el documento con los datos de autor embebidos dentro de su estructura:
-
-![img/ResultadoInserción.png](img/ResultadoInserción.png)
-
-4. Ahora, vamos a crear una nueva base de datos, está utilizará referencias en lugar del modelo embebido. Da click en <b>CREATE DATABASE</b>:
-
-![img/CreateDatabase2.png](img/CreateDatabase2.png)
-
-Inserta el nombre: <b>BlogsModeloConReferencias</b> y Collection Name: <b>autores</b>
-
-5. Selecciona la base de datos recien creada, después selecciona la colección autores.
-
-Inserta los siguientes autores (como lo hicimos en el punto 3 ). Nota: Inserta uno por uno.
+Obtendremos una respuesta como está:
 
 ```json
 {
-   "_id": 35,
-   "nombre": "Diego Lugo",
-   "email": "dieguitolu@gmail.com",
-   "tipo_cuenta": "experto"
-}
-        
-{
-   "_id": 189,
-   "nombre": "Alejandro Martínez",
-   "email": "alexmtz@gmail.com",
-   "tipo_cuenta": "legendario"
-}
-
-{   
-   "_id": 23456,
-   "nombre": "Sergio Medina",
-   "email": "sergiomedina@hotmail.com",
-   "tipo_cuenta": "aficionado"
-}
-
-{
-   "_id": 78901,
-   "nombre": "Emmanuel Martínez",
-   "email": "emmamtz@gmail.com",
-   "tipo_cuenta": "legendario"
+  "categoria": [
+    "gato"
+  ],
+  "fotos": [
+    "https://images.app.goo.gl/MsX6R9aTWfQKjsvW6"
+  ],
+  "estado": [
+    "disponible"
+  ],
+  "_id": "5ee8f79d2ab51833d2147e26",
+  "nombre": "Kalita",
+  "descripcion": "Gatito bebé encontrado debajo de un carro necesita hogar",
+  "anunciante": {
+    "_id": "5ee7101ee584287c9d4d44ce",
+    "username": "karly",
+    "nombre": "Karla",
+    "apellido": "Ivonne",
+    "bio": "Yo soy Karly, look at me!",
+    "foto": "http://pictures/foto-de-perfil"
+  },
+  "createdAt": "2020-06-16T16:47:25.900Z",
+  "updatedAt": "2020-06-16T16:47:25.900Z",
+  "__v": 0
 }
 ```
 
-![img/ColecciónAutores.png](img/ColecciónAutores.png)
-
-6. Agreguemos una nueva colección al model <b>BlogsModeloConReferencia</b>, llámala <b>posts</b>:
-
-![img/CreandoPostsCollection.png](img/CreandoPostsCollection.png)
-
-7. En el ejemplo anterior (modelo emebido), definimos que un post sólo pertenece a un autor pero en una aplicación real en un post podría participar más de una persona, por lo que, hay que definir que puede haber más de un autor. 
-
-Tal como lo hiciste en el ejemplo 5, inserta el siguiente documento en la colección <b>posts</b>. 
-
-```json
-{
-   "_id": 1234,
-   "nombre": "Bases de Datos Relacionales",
-   "fecha_publicacion": "2020-05-12",
-   "texto": "Las bases de datos...",
-   "autor": [35, 189],
-   "comentarios": [23456, 78901],
-   "etiquetas": [
-      "Bases de Datos Relacionales", "Modelo E/R"
-    ],
-    "categorias": [
-      "TI", "Desarrollo de Software"
-      ]
-}
-```
-Nota: Observa el contenido del campo <b>autor</b>. En el podrás encontrar en un arreglo, los valores correspondientes a los id's de los autores que crearon este post.  (Si revisas la colección autores, podrás encontrar estos id's en diferentes autores). De esta forma estamos referenciando desde la colección <b>posts</b> a los id's de documentos en la colección <b>autores</b>.
-
-![img/PostsReferenciandoAutores.png](img/PostsReferenciandoAutores.png)
-
-8. Agreguemos una nueva colección al model <b>BlogsModeloConReferencia</b>, llámala <b>comentarios</b>, inserta los siguientes documentos:
-
-```json
-{
-   "_id": 23456,
-   "autor": 1001,
-   "fecha_publicacion": "2020-05-23",
-   "texto": "Excelente post, me ayudo a comprender más...",
-   "puntuacion": 5
-}
-        
-{            
-   "_id": 78901,
-   "autor": 3,
-   "fecha_publicacion": "2020-06-01",
-   "texto": "Hay ciertos conceptos que no me quedaron claros...",
-   "puntuacion": 3
-}
-```
-
-> Nota: Desde la colección <b>posts</b>, estaremos referenciando vía los id's a los comentarios encontrados en la colección <b>comentarios</b>.
-
-Es importante señalar que a diferencia de SQL, las relaciones que definimos aquí son simuladas, es decir, no se tiene la misma integridad y restricciones para las relaciones que vimos en la sesión anterior. Aquí simplemente se indica la relación y mongo nos cree que existe.
-
-[`Atrás: Reto 02`](../Reto-02) | [`Siguiente: Reto 02`](../Reto-03)
+[`Atrás: Reto 01`](../Reto-01) | [`Siguiente: Sesión 07`](../README.md)

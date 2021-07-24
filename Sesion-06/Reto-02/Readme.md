@@ -1,27 +1,13 @@
-`Backend Fundamentals` > `S6 - Fundamentos de Base de Datos NoSQL (Mongo)` 
+`Backend Fundamentals` > `S07 - Mongoose` 
 	
 ## Reto 2
 
-Conéctate al clúster con MongoDB Shell y sigue los pasos ya explicados.
+1. Crea el método `modificarMascota` teniendo en cuenta que el id del anunciante de la mascota debe ser igual al id del usuario que está peticionando para poder realizar cambios. Utiliza el token de acceso con [`req.usuario.id`](http://req.usuario.id) para comparar.
+2. Crea el método `eliminarMascota` teniendo en cuenta que el id del anunciante de la mascota debe ser igual al id del usuario que está peticionando.
+3. ¿En qué otro caso se te ocurre que sea útil el método populate?
 
-Utiliza el comando que ya hemos utilizado anteriormente:
+![image](https://i.stack.imgur.com/GcGMK.png)
 
-```bash
-mongo "mongodb+srv://<cluster>/<bd>" --username <nombre_usuario>
-```
 
-```bash
-MongoDB shell version v4.2.0
-Enter password:
-connecting to: mongodb://cluster...
-2020-07-20T17:53:54.133-0500 I  NETWORK  [js] 
-2020-07-20T17:53:54.133-0500 I  CONNPOOL 
-2020-07-20T17:53:54.133-0500 I  CONNPOOL 
-2020-07-20T17:53:54.133-0500 I  CONNPOOL 
-2020-07-20T17:53:54.583-0500 I  NETWORK
-Implicit session: session { "id" : UUID("33bdb...") }
-MongoDB server version: 4.2.8
-MongoDB Enterprise Cluster0-shard-0:PRIMARY>
-```
 
-[`Atrás: Reto 01`](../Reto-01) | [`Siguiente: Ejemplo 02`](../Ejemplo-02)
+[`Atrás: Ejemplo 02`](../Ejemplo-02) | [`Siguiente: Sesión 07`](../README.md)

@@ -38,9 +38,9 @@ Es recomendable que tengas los siguientes **conocimientos.**
 
 - [`Sesión 01` - Introducción a Backend](Sesion-01/)
 
-- [`Sesión 02` - API 101](Sesion-02)
+- [`Sesión 02` - Middleware (API)](Sesion-02)
 
-- [`Sesión 03` - API 102](Sesion-03)
+- [`Sesión 03` - Creando una API](Sesion-03)
 
 - [`Sesión 04` - Introducción a Bases de Datos](Sesion-04)
 

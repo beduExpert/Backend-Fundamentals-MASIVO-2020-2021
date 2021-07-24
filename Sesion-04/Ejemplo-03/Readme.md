@@ -1,139 +1,501 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 04: API`](../README.md) > `Ejemplo 3`
-
-# Ejemplo 3
+# Ejemplo 3 - Ejecutando Queries
 
 ## Objetivo
 
-Comprender el concepto de rutas en nuestra API y la mejor manera de establecerlas para acceder a recursos.
+Comprender los fundamentos del lenguaje SQL y ejecutar consultas a la DB.
 
 ## Requerimientos
 
-Se recomienda tener NodeJS LTS y ExpressJS.
+Haber completado la instalación y configuración de MySQL.
 
 ## Desarrollo
 
-### Configurando las rutas de nuestra API
+### Crear una base de datos
 
-### Creando la estructura de un CRUD
+1. Listar las bases de datos creadas:
 
-En los siguientes pasos crearemos el **esqueleto** de nuestra API para el recurso `usuarios`, declarando las rutas para crear, obtener, actualizar y eliminar usuarios (CRUD).
-
-Los siguientes *endpoints* estarán siendo importados en el archivo `index.js` y bajo la ruta `v1/usuarios` de nuestra api.
-
-1. Debajo de la carpeta `routes`, completa la siguiente estructura:
-
-```
-routes/
-├── anunciantes.js
-├── index.js
-├── solicitudes.js
-├── usuarios.js
-└── mascotas.js
-``` 
-
-
-2. En el archivo `usuarios.js`, agrega la siguiente estructura:
-
-```jsx
-// Estructura del CRUD
-const router = require('express').Router();
-const {
-  crearUsuario,
-  obtenerUsuarios,
-  modificarUsuario,
-  eliminarUsuario
-} = require('../controllers/usuarios')
-
-router.get('/', obtenerUsuarios)
-router.post('/', crearUsuario)
-router.put('/:id', modificarUsuario)
-router.delete('/:id', eliminarUsuario)
-
-module.exports = router;
+```sql
+show databases;
 ```
 
-- Lo que aquí sucedió es que hemos externalizado el código de nuestro router a funciones independientes en nuestra carpeta de controladores.
-
-- Aunque para este caso en particular podríamos seguir trabajando con la lógica de cada *endpoint* dentro del archivo `routes/usuarios.js` cuando los proyectos van creciendo, es conveniente modularizar nuestro código, y una manera de hacerlo es externalizando funciones en los controladores.
-Para hacer peticiones en una ruta (endpoint) en específico, debemos establecer una estructura específica.
-
-- Para esto utilizaremos el Router que nos provee la biblioteca Express.
-
-3. Dentro del archivo `index.js` agregamos el siguiente código:
-
-```jsx
-// importamos las dependencias necesarias
-var router = require('express').Router();
-
-// definimos el comportamiento en la raíz del endpoint
-router.get('/', (req, res)=>{
-  res.send('welcome to adoptapet api');
-});
-
-// exportamos nuestro nuevo router
-module.exports = router;
-```
-La sintaxis `(req, res) => { ... }` representa una función que será ejecutada cuando llegue alguna petición en las direcciones URI que especificamos, también se le puede llamar ***handler*** o ***callback***. 
-
-4. Ahora modificaremos nuestro archivo `app.js` para agregar esta ruta:
-
-```jsx
-var express = require('express'),
-    bodyParser = require('body-parser'),
-    cors = require('cors');
-
-// Objeto global de la app
-var app = express();
-
-// Configuración de middlewares
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-**// Agregamos el código de nuestro router (routes/index.js)
-app.use('/v1', require('./routes'));**
-
-// Interceptando los errores 404
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-// Iniciando el servidor...
-var server = app.listen(process.env.PORT || 3000, function(){
-  console.log('Escuchando en el puerto ' + server.address().port);
-});
+```json
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| innodb             |
+| mysql              |
+| performance_schema |
++--------------------+
+4 rows in set (0.061 sec)
 ```
 
-Al hacer una petición a esta ruta podremos ver que nos está devolviendo información sobre la versión uno de nuestra API.
+El resultado dependerá de la versión de MySQL instalada o si anteriormente ya se han creado bases de datos.
 
-![img/Screen_Shot_2020-05-28_at_18.59.55.png](img/Screen_Shot_2020-05-28_at_18.59.55.png)
+2. Para crear una base de datos usaremo el siguiente comando:
 
-Es una buena práctica colocar la versión de nuestra app como una ruta principal, ya que así en un futuro si hay un cambio demasiado grande puede mantenerse funcionando ambas apis y conservar compatibilidad.
-
-
-![img/Screen_Shot_2020-06-03_at_22.41.30.png](img/Screen_Shot_2020-06-03_at_22.41.30.png)
-
-5. En el archivo `index.js` añadiremos lo siguiente
-
-```jsx
-var router = require('express').Router();
-
-router.get('/', (req, res)=>{
-  res.send('welcome to adoptapet api');
-})
-
-router.use('/usuarios', require('./usuarios'));
-
-/* con el método use de nuestro router estamos indicando 
-* que en la ruta 'v1/usuarios' estarán anidadas las rutas 
-* que vamos a crear en nuestro archivo usuarios.js,
-* la función require está importando este archivo */
-
-module.exports = router;
+```sql
+create database restaurante;
 ```
 
-No olvides guardar, revisar que tu servidor se haya actualizado y esté corriendo.
+```json
+Query OK, 1 row affected (0.063 sec)
+```
 
-[`Atrás: Reto 02`](../Reto-02) | [`Siguiente: Reto 03`](../Reto-03)
+Y listaremos nuevamente para asegurar la creación de la BD
+
+```sql
+show databases;
+```
+
+```json
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| innodb             |
+| mysql              |
+| performance_schema |
+| restaurante        |
++--------------------+
+5 rows in set (0.060 sec)
+```
+
+3. Luego, será necesario seleccionar la BD en la que vamos a trabajar
+
+```sql
+use restaurante;
+```
+
+```json
+Database changed
+```
+
+### Crear una tabla
+
+Antes de crear una tabla hay ciertos puntos que debemos estudiar:
+
+- Tipos de datos
+
+    Los tipos de datos soportados en MySQL según la documentación:
+
+    [MySQL :: MySQL 8.0 Reference Manual :: 11 Data Types](https://dev.mysql.com/doc/refman/8.0/en/data-types.html)
+
+- Restricciones de Integridad
+
+    Recordando en el anterior se trató de estas restricciones:
+
+    - Valores nulos:
+
+        ```sql
+        *atributo* *tipo* NOT NULL | NULL
+        ```
+
+    - Valores por defecto:
+
+        ```sql
+        *atributo* *tipo* DEFAULT *expresión*
+        ```
+
+    - Llave primaria
+
+        Simple:
+
+        ```sql
+        *atributo* *tipo* PRIMARY KEY
+        ```
+
+        Compuesta:
+
+        ```sql
+        PRIMARY KEY(*columna1, columna2, ...*)
+        ```
+
+
+    - Llave foráneas:
+
+        Nivel columna:
+
+        ```sql
+        *atributo tipo* REFERENCES *tabla*[(*columna*)]
+        ```
+
+        Nivel tabla:
+
+        ```sql
+        FOREIGN KEY(*columna1, columna2, ...*) REFERENCES *tabla* [(*columna1, columna2, ...*)]
+        ```
+
+Para crear una tabla usamos el siguiente comando:
+
+```sql
+CREATE TABLE *nombre_tabla* (*atributo1* *tipo* [*restricción*], *atributo2...);*
+```
+
+Para verificar que la tablas se ha creado:
+
+```sql
+show tables;
+```
+
+Y para ver la cómo se creo la tabla:
+
+```sql
+describe *nombre_tabla;*
+```
+
+### Ejemplo
+
+Vamos a crear las tablas de la BD de restaurante para ello vamos a utilizar el diseño que se realizó.
+
+1. Sucursal
+
+```sql
+CREATE TABLE sucursal(
+     razonSocial VARCHAR(50) PRIMARY KEY,
+     rfc CHAR(13) UNIQUE NOT NULL,
+     nombre VARCHAR(50),
+     ubicacion VARCHAR(80) NOT NULL
+ );
+
+ describe sucursal;
+```
+
+```sql
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| razonSocial | varchar(50) | NO   | PRI | NULL    |       |
+| rfc         | char(13)    | NO   | UNI | NULL    |       |
+| nombre      | varchar(50) | YES  |     | NULL    |       |
+| ubicacion   | varchar(80) | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set (0.063 sec)
+```
+
+2. Empleado
+
+```sql
+CREATE TABLE empleado(
+    rfc CHAR(13),
+    nombre VARCHAR(100) NOT NULL,
+    fechaNcto DATE NOT NULL,
+    direccion VARCHAR(80) NOT NULL,
+    tel CHAR(11),
+    razonSocial VARCHAR(50),
+    PRIMARY KEY(rfc),
+    FOREIGN KEY(razonSocial) REFERENCES sucursal(razonSocial)
+  );
+describe empleado;
+```
+
+```sql
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| rfc         | char(13)     | NO   | PRI | NULL    |       |
+| nombre      | varchar(100) | NO   |     | NULL    |       |
+| fechaNcto   | date         | NO   |     | NULL    |       |
+| direccion   | varchar(80)  | NO   |     | NULL    |       |
+| tel         | char(11)     | YES  |     | NULL    |       |
+| razonSocial | varchar(50)  | YES  | MUL | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+6 rows in set (0.065 sec)
+```
+
+3. Orden
+
+```sql
+CREATE TABLE orden(
+     idOrden INT,
+     fecha DATE NOT NULL,
+     total FLOAT NOT NULL,
+     razonSocial VARCHAR(50) NOT NULL,
+     rfc CHAR(13) NOT NULL,
+     PRIMARY KEY(idOrden),
+     FOREIGN KEY(razonSocial) REFERENCES sucursal(razonSocial),
+     FOREIGN KEY(rfc) REFERENCES empleado(rfc)
+     );
+describe orden;
+```
+
+```sql
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| idOrden     | int(11)     | NO   | PRI | NULL    |       |
+| fecha       | date        | NO   |     | NULL    |       |
+| total       | float       | NO   |     | NULL    |       |
+| razonSocial | varchar(50) | NO   | MUL | NULL    |       |
+| rfc         | char(13)    | NO   | MUL | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+5 rows in set (0.063 sec)
+```
+
+4. Ingrediente
+
+```sql
+CREATE TABLE ingrediente(
+     idIngrediente INT,
+     nombre VARCHAR(40) NOT NULL,
+     stock INT DEFAULT 1,
+     PRIMARY KEY(idIngrediente)
+    );
+describe ingrediente;
+```
+
+```sql
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| idIngrediente | int(11)     | NO   | PRI | NULL    |       |
+| nombre        | varchar(40) | NO   |     | NULL    |       |
+| stock         | int(11)     | YES  |     | 1       |       |
++---------------+-------------+------+-----+---------+-------+
+3 rows in set (0.059 sec)
+```
+
+5. Categoría
+
+```sql
+CREATE TABLE categoria(
+     idCategoria INT,
+     nombre VARCHAR(30) NOT NULL,
+     PRIMARY KEY(idCategoria)
+    );
+describe categoria
+```
+
+```sql
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| idCategoria | int(11)     | NO   | PRI | NULL    |       |
+| nombre      | varchar(30) | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+2 rows in set (0.062 sec)
+```
+
+6. Platillo
+
+```sql
+CREATE TABLE platillo(
+     idPlatillo INT,
+     nombre VARCHAR(30) NOT NULL,
+     costo FLOAT NOT NULL,
+     idCategoria INT NOT NULL,
+     PRIMARY KEY(idPlatillo),
+     FOREIGN KEY(idCategoria) REFERENCES categoria(idCategoria)
+    );
+describe platillo;
+```
+
+```sql
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| idPlatillo  | int(11)     | NO   | PRI | NULL    |       |
+| nombre      | varchar(30) | NO   |     | NULL    |       |
+| costo       | float       | NO   |     | NULL    |       |
+| idCategoria | int(11)     | NO   | MUL | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set (0.378 sec)
+```
+
+7. Orden Platillo
+
+```sql
+CREATE TABLE orden_platillo(
+     cantidad INT NOT NULL,
+     idOrden INT NOT NULL,
+     idPlatillo INT NOT NULL,
+     FOREIGN KEY(idOrden) REFERENCES orden(idOrden),
+     FOREIGN KEY(idPlatillo) REFERENCES platillo(idPlatillo)
+    );
+describe orden_platillo;
+```
+
+```sql
++------------+---------+------+-----+---------+-------+
+| Field      | Type    | Null | Key | Default | Extra |
++------------+---------+------+-----+---------+-------+
+| cantidad   | int(11) | NO   |     | NULL    |       |
+| idOrden    | int(11) | NO   | MUL | NULL    |       |
+| idPlatillo | int(11) | NO   | MUL | NULL    |       |
++------------+---------+------+-----+---------+-------+
+3 rows in set (0.060 sec)
+```
+
+8. Platillo Ingrediente
+
+```sql
+CREATE TABLE platillo_ingrediente(
+     idIngrediente INT NOT NULL,
+     idPlatillo INT NOT NULL,
+     FOREIGN KEY(idIngrediente) REFERENCES ingrediente(idIngrediente),
+     FOREIGN KEY(idPlatillo) REFERENCES platillo(idPlatillo)
+    );
+describe platillo_ingrediente;
+```
+
+```sql
++---------------+---------+------+-----+---------+-------+
+| Field         | Type    | Null | Key | Default | Extra |
++---------------+---------+------+-----+---------+-------+
+| idIngrediente | int(11) | NO   | MUL | NULL    |       |
+| idPlatillo    | int(11) | NO   | MUL | NULL    |       |
++---------------+---------+------+-----+---------+-------+
+2 rows in set (0.062 sec)
+```
+
+### Agregar, Eliminar, Modificar una tabla
+
+Para agregar, eliminar o modificar columnas en una tabla existente se ocupa la sintaxis:
+
+- Agregar
+
+    ```sql
+    ALTER TABLE *nombre_tabla* ADD (*atributo* *tipo* *restricción*);
+    ```
+
+    Ejemplo, si quisiéramos agregar una columna a la tabla empleado
+
+    ```sql
+    ALTER TABLE empleado ADD (sexo CHAR(1) NOT NULL);
+    ```
+
+- Modificar
+
+    ```sql
+    ALTER TABLE *nombre_table* MODIFY *atributo* *tipo* *restricción*;
+    ```
+
+    Ejemplo, al crear la tabla *empleado* consideramos que la columna *razonSocial* puede tener un valor nulo y además es una llave foránea y por regla de negocio nos piden que no puede tener un valor nulo entonces haremos:
+
+    ```sql
+    ALTER TABLE empleado MODIFY razonSocial VARCHAR(50) NOT NULL;
+    describe empleado;
+    ```
+
+    ```json
+    +-------------+--------------+------+-----+---------+-------+
+    | Field       | Type         | Null | Key | Default | Extra |
+    +-------------+--------------+------+-----+---------+-------+
+    | rfc         | char(13)     | NO   | PRI | NULL    |       |
+    | nombre      | varchar(100) | NO   |     | NULL    |       |
+    | fechaNcto   | date         | NO   |     | NULL    |       |
+    | direccion   | varchar(80)  | NO   |     | NULL    |       |
+    | tel         | char(11)     | YES  |     | NULL    |       |
+    | razonSocial | varchar(50)  | NO   | MUL | NULL    |       |
+    +-------------+--------------+------+-----+---------+-------+
+    6 rows in set (0.247 sec)
+    ```
+
+- Eliminar
+
+    ```sql
+    ALTER TABLE *nombre_columna* DROP COLUMN *atributo;*
+    ```
+
+    Ejemplo, agregamos a empleado la columna *sexo* y necesitamos eliminar la columna
+
+    ```sql
+    ALTER TABLE empleado DROP COLUMN sexo;
+    ```
+
+### Inserción de registros
+
+La función de una base de datos es persistir información, en las bases de datos relacionales son registros en las tablas existentes para hacer esta tarea en SQL se usa el comando:
+
+```sql
+INSERT INTO *nombre_tabla* (*atributo1, ...)* **VALUES (*valor1,...);*
+```
+Ejemplo: Se requiere registrar una <b>sucursal</b> nueva.
+
+```sql
+INSERT INTO sucursal VALUES ("El Taquito Feliz SA de CV", "TAF261020666", "Taco Feliz", "CDMX");
+```
+
+Ejemplo. Se requiere registrar un nuevo empleado en la sucursal antes creada.
+
+```sql
+INSERT INTO empleado VALUES(
+     "DEFL930301T43",
+     "Daniel Ernesto FLores",
+     "1993-03-01",
+     "Bosque del Tesoro N.345 Col. Miguel Hidalgo, Ciudad de México, México CP.56070",
+     "5510673492",
+     "El Taquito Feliz SA de CV"
+    );
+```
+
+### Consultas a la BD
+
+> Una consulta sirve para extraer información de una base de datos. Permite manipular datos: agregar, eliminar y cambiar.
+
+Para traer información de una o varias tablas usaremos:
+
+```sql
+SELECT *columna1, columna2, ...* FROM *nombre_table;* 
+```
+
+¿Qué pasa si sólo nos interesa obtener información de un empleado?
+
+SQL nos permite utilizar condiciones, a través de la cláusula WHERE:
+
+Ej. Queremos la información del empleado con RFC "DEFL930301T43"
+
+```sql
+SELECT * from empleado WHERE rfc = "DEFL930301T43"
+```
+
+Si requerimos ordenar o agrupar la información, por ejemplo, podemos utilizar los operadores "ORDER BY", "GROUP BY" respectivamente.
+
+Por ejemplo 
+
+```sql
+SELECT * FROM empleado ORDER BY rfc;
+```
+
+Las consultas tienen muchos campos que nos permiten afinarla para obtener el resultado que queremos, en seguida se muestran todos los posibles campos de una consulta, para verlos con mayor detalle con consulta el siguiente [tutorial](https://beginner-sql-tutorial.com/sql-select-statement.htm).
+
+```sql
+SELECT
+    [ALL | DISTINCT | DISTINCTROW ]
+    [HIGH_PRIORITY]
+    [STRAIGHT_JOIN]
+    [SQL_SMALL_RESULT] [SQL_BIG_RESULT] [SQL_BUFFER_RESULT]
+    [SQL_NO_CACHE] [SQL_CALC_FOUND_ROWS]
+    select_expr [, select_expr] ...
+    [into_option]
+    [FROM table_references
+      [PARTITION partition_list]]
+    [WHERE where_condition]
+    [GROUP BY {col_name | expr | position}, ... [WITH ROLLUP]]
+    [HAVING where_condition]
+    [WINDOW window_name AS (window_spec)
+        [, window_name AS (window_spec)] ...]
+    [ORDER BY {col_name | expr | position}
+      [ASC | DESC], ... [WITH ROLLUP]]
+    [LIMIT {[offset,] row_count | row_count OFFSET offset}]
+    [into_option]
+    [FOR {UPDATE | SHARE}
+        [OF tbl_name [, tbl_name] ...]
+        [NOWAIT | SKIP LOCKED]
+      | LOCK IN SHARE MODE]
+    [into_option]
+
+into_option: {
+    INTO OUTFILE 'file_name'
+        [CHARACTER SET charset_name]
+        export_options
+  | INTO DUMPFILE 'file_name'
+  | INTO var_name [, var_name] ...
+}
+```
+
+También podemos encontramos esta información en la documentación de MySQL:
+
+[MySQL :: MySQL 8.0 Reference Manual :: 13.2.10 SELECT Statement](https://dev.mysql.com/doc/refman/8.0/en/select.html)
+
+[`Atrás: Reto 01`](../Reto-01) | [`Siguiente: Reto 02`](../Reto-03)

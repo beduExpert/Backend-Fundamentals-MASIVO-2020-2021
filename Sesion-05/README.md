@@ -1,70 +1,57 @@
-# Sesión 5 - Fundamentos de Base de Datos Relacionales(SQL)
+# Sesión 6 - Fundamentos de Base de Datos NoSQL (Mongo)
 
 🎯 **Objetivo:**
 
-- Configurar una base de datos relacional, en que casos es conveniente utilizarlas, los fundamentos de los modelos de bases de datos relacionales y el lenguaje SQL.
+- Reconocer características de las bases de datos NoSQL, configurar y utilizar MongoDB.
+- Comprender en qué casos es conveniente utilizar esta B.D. y cómo usarla. 
 
-## 💽 Bases de datos
+## ⏳ Antes de empezar 
 
-El término base de datos se remonta a 1963. Una base de datos se puede definir como un conjunto de información relacionada que se encuentra agrupada ó estructurada, la cual se puede consultar y manipular.
+- [`Reto 01: Intalación de Compass y Shell`](Reto-01/#reto-1)
 
-El principal propósito de almacenar la información en una base de datos es que sea mas sencilla de manejar y mantener. 
+## 🧮 Bases de datos no relacionales (NoSQL) 
 
----
+<img src="img/nosql.jpg.webp" align="right" height="200">
 
-## 🌐 Modelo relacional
+NoSQL es un enfoque de diseño de bases de datos que nos permite crear esquemas mas flexibles para el almacenamiento de datos en comparación con las tradicionales tablas de SQL. 
 
-Son bases de datos que almacenan información relacionándola por medio de tablas con columnas para la definición de atributos y filas para definir valores donde cada tabla represente a una entidad u objeto y cada columna a un atributo de esta entidad. Por lo general cada dato de una tabla cuenta con un identificador único, con el cual puede relacionarse con uno o más datos.
+Las bases de dato no relacionales fueron presentadas en 1998 por Carl Strozz, sin embargo ha sido recientemente que han adquirido mayor popularidad y esto se debe principalmente a que vivimos en una era de **Cloud**, **Big Data** y **web** con información difícil de estandarizar que debe viajar a gran velocidad. 
 
-Los fundamentos de las bases de datos relacionales son la teoría de conjuntos.
+NoSQL significa *Not Only SQL*, no es nada en contra de SQL 😅. Esto es importante pues muchos modelos de bases de datos no relacionales soportan SQL. 
 
----
+## 🧵 Tipos de DB NoSQL
 
-## 💻 Gestores de Bases de Datos (DBMS)
+- **De documentos** Se almacenan los datos en estructuras llamadas documentos, estos contienen casa atributo como pares de clave-valor.
 
-Son programas que funcionan como interfaz entre lxs usuarixs y las bases de datos. Gestionando los datos, el motor de base de datos, y el esquema de la base para facilitar la organización y manipulación de los datos. 
+- **De grafos**  se utilizan para almacenar información sobre redes de datos, como las conexiones sociales.
 
-En otras palabras, es un software mediante el cual nosotrxs como usuarixs podemos acceder a la base de daos y hacer consultas, manipular los datos, modificar el esquema y en general administrar la base de datos.   
+- **De clave-valor** son las bases de datos NoSQL más simples. Cada elemento de la base de datos se almacena como un nombre de atributo junto con su valor.
 
-### MySQL
+- **Orientadas a columnas** estas bases de datos permiten realizar consultas en grandes conjuntos de datos y almacenan los datos en columnas, en lugar de filas.
 
-MySQL es un sistema para gestionar bases de datos relacionales con un modelo cliente-servidor que cuenta con una amplia popularidad.
+![](img/schemas.png)
 
-Hay un gran debate sobre como se  pronuncia **MySQL**, algunas personas lo pronuncian como *MAI-ES-KIU-EL* mientras que otras usan *MAI-SI-KUEL*, ¿cuál es la correcta? 🤷. En el siguiente [artículo](https://learnsql.com/blog/sql-or-sequel) puedes encontrar un análisis detallado de ambas y elegir cual prefieres. 
+## 🍃 MongoDB 
 
----
+MongoBD es un gestor de bases de datos no relacionales basada en documentos. Utiliza sintaxis de JSON para modelar su esquema.
 
-## 🖍 Diseño de Bases de datos
+### Clusters
 
-Las fases del diseño de bases de datos relacionales son: Análisis de requisitos, diseño conceptual, elección de un SGBD, diseño lógico, diseño físico, uso y mantenimiento.
-     
-![de248-fasesdedisenobd (1)](https://user-images.githubusercontent.com/13757596/87999687-40083500-cac1-11ea-8afe-a065ecf15f09.png)
+- [`Ejemplo 1: Creando un cluster en MongoDB Atlas`](Ejemplo-01/#ejercicio-1)
+<!-- - [`Reto 02: Conectar un clúster en MongoDB Atlas`](Reto-02/#reto-2) -->
 
-### Instalación 
+### Fundamentos de MongoDB 
 
-- [`Ejemplo 1 - Instalando MySQL`](Ejemplo-01/)
+- [`Ejemplo 2: Comprender los fundamentos de MongoDB`](Ejemplo-02/#ejemplo-2)
+- [`Reto 02: Modelo embebido y referencial`](Reto-03/#reto-3)
+- [`Ejemplo 3: métodos proporcionados por MongoDB para realizar operaciones CRUD`](Ejemplo-03/#ejemplo-3)
+- [`Reto 03: CRUD en mongo`](Reto-04/#reto-4)
 
-### Modelando una Base de datos relacional
 
-- [`Ejemplo 2 - Diagramas entidad relación y Modelo Relacional`](Ejemplo-02/)
-- [`Reto 01: Modelo Entidad Relación`](Reto-01/#reto-1)
-<!-- - [`Reto 02: Diseño de bases datos relacionales`](Reto-02/#reto-2) -->
-
-### Queries
-
-- [`Ejemplo 3 - Ejecutando Queries`](Ejemplo-03/)
-- [`Reto 02: Creación de la base de datos en SQL para Adoptapet.`](Reto-03/#reto-3)
-
-<!-- ### Creación de bases de datos.
-
-- [`Reto 04: Creación de la base de datos en SQL para Adoptapet.`](Reto-04/#reto-4)
- -->
 ## 🛡 Postwork
 
 **Objetivo:**
 
-- Reflexionar sobre el alcance de las bases de datos relacionales y la importancia de su implementación.
-
-**Funciones y Procedimientos Almacenados**
+- Comprender en qué situaciones utilizar SQL o NoSQL y sus diferentes aplicaciones.
 
 Recuerda que todo lo trabajado en tu prework, así como durante la sesión, puede ser aplicado a tu proyecto personal. Para lo cual, toma las siguientes consideraciones...[`leer mas`](Postwork/#postwork)

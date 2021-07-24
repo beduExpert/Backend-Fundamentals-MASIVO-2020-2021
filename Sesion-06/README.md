@@ -1,57 +1,55 @@
-# Sesión 6 - Fundamentos de Base de Datos NoSQL (Mongo)
+# Sesión 7 - Mongoose
 
 🎯 **Objetivo:**
 
-- Reconocer características de las bases de datos NoSQL, configurar y utilizar MongoDB.
-- Comprender en qué casos es conveniente utilizar esta B.D. y cómo usarla. 
+- Comprender la utilidad de un ORM. 
+- Modelar e Integrar nuestra API basada en Express con una base de datos por medio de Mongoose para MongoDB.
 
-## ⏳ Antes de empezar 
+## 📡 Interactuar con la base de datos
 
-- [`Reto 01: Intalación de Compass y Shell`](Reto-01/#reto-1)
+Hay dos opciones.
 
-## 🧮 Bases de datos no relacionales (NoSQL) 
+- Utilizar el lenguaje de consulta nativo de la base de datos.
+- Utilizar un **ORM**/ **ODM** (*Object Relational Mapping*/*Object Data Mapping*) que representa los datos como objetos de JavaScript.
 
-<img src="img/nosql.jpg.webp" align="right" height="200">
+La principal diferencia es cómo vamos a escribir las consultas.
 
-NoSQL es un enfoque de diseño de bases de datos que nos permite crear esquemas mas flexibles para el almacenamiento de datos en comparación con las tradicionales tablas de SQL. 
+### ¿Cuál es la mejor opción? 😮
 
-Las bases de dato no relacionales fueron presentadas en 1998 por Carl Strozz, sin embargo ha sido recientemente que han adquirido mayor popularidad y esto se debe principalmente a que vivimos en una era de **Cloud**, **Big Data** y **web** con información difícil de estandarizar que debe viajar a gran velocidad. 
+Si nos interesa el desempeño de las consultas (que tan rápido se hacen ⏳) entonces la mejor opción es usar el lenguaje nativo de la base de datos. 
 
-NoSQL significa *Not Only SQL*, no es nada en contra de SQL 😅. Esto es importante pues muchos modelos de bases de datos no relacionales soportan SQL. 
+Pero si queremos facilitar el escribir las consultas, lo mejor es usar un **ORM**/ **ODM** pues siempre pensamos y escribimos en el mismo lenguaje. También nos ayudan a simplificar el proceso de validación y verificación de los datos.
 
-## 🧵 Tipos de DB NoSQL
+> 💡 Usar **ORM**/ **ODM** nos ayuda también en el mantenimiento del código, a menos de que el desempeño sea de suma importancia se recomienda mas el uso de estas herramientas.
 
-- **De documentos** Se almacenan los datos en estructuras llamadas documentos, estos contienen casa atributo como pares de clave-valor.
+## 🦦 Mongoose
 
-- **De grafos**  se utilizan para almacenar información sobre redes de datos, como las conexiones sociales.
+`Mongoose` es una biblioteca de **ODM** para MongoDB y Node.js. Nos ayuda a manejar las relaciones entre los datos, cuenta con un esquema de validaciones y se usa para la traducción entre objetos en código y su representación en MongoDB.
 
-- **De clave-valor** son las bases de datos NoSQL más simples. Cada elemento de la base de datos se almacena como un nombre de atributo junto con su valor.
+### Instalación 
 
-- **Orientadas a columnas** estas bases de datos permiten realizar consultas en grandes conjuntos de datos y almacenan los datos en columnas, en lugar de filas.
+- [`Ejemplo 1: Instalar Mongoose y crear nuestro primer modelo para integrar nuestra API`](Ejemplo-01/)
+- [`Reto 01: Probar los nuevos endpoints de la API`](Reto-01/#reto-1)
 
-![](img/schemas.png)
+### Creando modelos y métodos
 
-## 🍃 MongoDB 
+- [`Ejemplo 2: Crear un nuevo modelo (Mascota) junto con la lógica de sus controladores`](Ejemplo-02/)
+<!-- - [`Reto 02: Crear el método modificarMascota`](Reto-02/#reto-2) -->
+<!-- 
+- [`Ejemplo 3: Crear un nuevo modelo (Solicitud) junto con la lógica de sus controladores`](Ejemplo-03/)
+- [`Reto 03: Crea el método modificarSolicitud`](Reto-03/#reto-3)
 
-MongoBD es un gestor de bases de datos no relacionales basada en documentos. Utiliza sintaxis de JSON para modelar su esquema.
 
-### Clusters
+### Probando endpoints
 
-- [`Ejemplo 1: Creando un cluster en MongoDB Atlas`](Ejemplo-01/#ejercicio-1)
-<!-- - [`Reto 02: Conectar un clúster en MongoDB Atlas`](Reto-02/#reto-2) -->
-
-### Fundamentos de MongoDB 
-
-- [`Ejemplo 2: Comprender los fundamentos de MongoDB`](Ejemplo-02/#ejemplo-2)
-- [`Reto 02: Modelo embebido y referencial`](Reto-03/#reto-3)
-- [`Ejemplo 3: métodos proporcionados por MongoDB para realizar operaciones CRUD`](Ejemplo-03/#ejemplo-3)
-- [`Reto 03: CRUD en mongo`](Reto-04/#reto-4)
-
+- [`Reto 04: Probando endpoints.`](Reto-04/#reto-4) -->
 
 ## 🛡 Postwork
 
 **Objetivo:**
 
-- Comprender en qué situaciones utilizar SQL o NoSQL y sus diferentes aplicaciones.
+- Desarrollar un nuevo feature sobre el código que se ha trabajado hasta ahora.
 
-Recuerda que todo lo trabajado en tu prework, así como durante la sesión, puede ser aplicado a tu proyecto personal. Para lo cual, toma las siguientes consideraciones...[`leer mas`](Postwork/#postwork)
+**Desarrolla un nuevo feature para guardar mascotas favoritas**
+
+Recuerda que todo lo trabajado en tu prework, así como durante la sesión, puede ser aplicado a tu proyecto personal. Para lo cual, toma las siguientes consideraciones...[`leer más`](Postwork/#postwork)

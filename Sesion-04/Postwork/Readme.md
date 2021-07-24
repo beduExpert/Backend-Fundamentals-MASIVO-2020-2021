@@ -1,65 +1,66 @@
 # Postwork
 
+## Requerimientos
+
+- Computadora y cuaderno o aplicación para tomar apuntes.
+
 Recuerda que todo lo trabajado en tu prework, así como durante la sesión, puede ser aplicado a tu proyecto personal. Para lo cual, toma las siguientes consideraciones:
 
 **Asegurate de comprender:**
 
-- Para qué son útiles herramientas como Insomnia y Postman en el desarrollo de un API.
+- Como instalar y configurar MySQL.
+- La sintaxis SQL para crear tu base de datos, tablas, insertar registros, así como consultar estas estructuras.
 
 ## Objetivo
 
-- Comprender los conceptos fundamentales de las técnicas para el manejo de sesiones y autenticación en una API.
-
-Adicionalmente te aconsejamos leer los siguientes contenidos que ampliarán tus conocimientos:
+Reflexionar sobre el alcance de las bases de datos relacionales y la importancia de su implementación.
 
 ## Desarrollo:
 
-- Crea las clases que conformarán tu modelo, los controladores y rutas que te permitirán interactuar con ellos.
+- Analiza las necesidades de tu proyecto personal y desarrolla tu diagrama ERD.
+- Tomando como base tu ERD, crea la base de datos, tablas e inserta los datos necesarios para tu proyecto.
 
-## Sesiones en una API
+Adicionalmente te aconsejamos leer los siguientes contenidos que ampliarán tus conocimientos:
 
-Para mantener el control de quién realiza peticiones a nuestra API necesitamos una manera de identificar quién está peticionando. Una vez que una API ha sido publicada cualquier humano o bot podría realizar peticiones y si no utilizamos técnicas para controlar el acceso, podríamos tener fugas de información confidencial o importante para nuestra organización.
+## Funciones y Procedimientos Almacenados
 
-### ¿Porque es importante manejar sesiones?
+**Artículo 1**
 
-El uso de sesiones permite que la información del usuario sea persistente (con estado) en todas las páginas de un sitio web o aplicación. 
+[Cómo crear y usar una función almacenada MySQL](https://www.neoguias.com/funciones-almacenadas-mysql/)
 
-Con el manejo de sesiones podemos también limitar el alcance de nuestros usuarios a la información de otros usuarios. Si tenemos una API más madura y con un gran número de usuarios, podríamos comenzar a preocuparnos por limitar el número de peticiones que un usuario puede realizar en un lapso de tiempo, y así protegernos de cierta manera de bots que únicamente quieran extraer información.
+Articulo 2
 
-### ¿Cómo manejar las sesiones de un usuario en una API?
+[Cómo crear y usar un procedimiento almacenado MySQL](https://www.neoguias.com/procedimientos-almacenados-mysql/)
 
-Actualmente existen diversas técticas para el manejo de sesiones y autenticación.
+## Seguridad
 
-### 🍪 Cookies
+Es importante mantener la seguridad en las bases de datos de lo intentos por robar o modificar datos ya que el impacto puede ser catastrófico. La seguridad en la bases de datos se resumen a autorizaciones de lectura, actualización, eliminación, inserción de los datos, por ello, la administración de usuarios, grupos y roles será fundamental. Los SGBD tienen definida la cláusula *GRANT* que permitirá conceder o revocar privilegios específicos a usuarios, grupos o roles.
 
-Cookies son archivos de texto que se guardan en el cliente (computadora de escritorio, tablet, smartphone) con la intención de recordar las preferencias de un visitante sobre una página determinada.
+**Artículo**
 
-Más información:
+[Asignar permisos en SQL](https://codigofacilito.com/articulos/asignar-permisos-mysql)
 
-[¿Qué son las Cookies y Sesiones? (desde 0 y con ejemplos)](https://programacionymas.com/blog/cookies-y-sesiones)
+Pero más allá de diseñar un control de acceso de la bases de datos, es fundamental la creación de un plan de contingencia que incluye la creación de *backups*.
 
-[¿Cómo configurar sesiones en ExpressJS?](https://devcode.la/tutoriales/como-configurar-sesiones-en-expressjs/)
+La seguridad de las bases de datos no solamente es a nivel BD, también debe ser a nivel de red, nivel de sistema operativo, seguridad incluso a nivel humano.
 
-### JWT
+## Optimización de consultas en una BD Relacional
 
-JSON Web Token (JWT) es un estándar abierto basado en JSON para la creación de tokens de acceso que permiten la propagación de identidad y privilegios.
+Como ya hemos estudiado, las consultas nos permiten manipular información en una bases de datos y debemos preocuparnos de la eficiencia con que las implementamos, al tener un número extraordinario de datos se vuelve relevante el tiempo en el que se trae esos datos. La optimización de consultas es un tema a estudiar tarde o temprano vamos a utilizarlo. Existen algoritmos y técnicas para la optimización de consultas que van desde la creación hasta la utilización del álgebra relacional, es un tema de especialización que debe estudiarse.
 
-[¿Qué es JWT y cómo se diferencia de Cookies y Sesiones?](https://programacionymas.com/blog/jwt-vs-cookies-y-sesiones)
+El siguiente video puede ser una breve introducción a esto:
 
-### OAuth
-
-OAuth permite a un usuario compartir su información en el sitio A (proveedor de servicio) con el sitio B (llamado consumidor) sin compartir toda su identidad. 
-
-Es utilizado por compañías como Google, Facebook, Microsoft, Twitter y Github para permitir a los usuarios compartir información sobre sus cuentas con aplicaciones de terceros o sitios web.
-
-[Una introducción a OAuth 2 | DigitalOcean](https://www.digitalocean.com/community/tutorials/una-introduccion-a-oauth-2-es)
+[Administración de Bases de Datos - Tema 3. Procesamiento de consultas - Andrés Muñoz](https://www.youtube.com/watch?v=AC5n-wz3Fx8)
 
 ## 🫀 Avances del Proyecto
 
-Realiza los siguientes ejercicios sobre su proyecto del módulo:
+Realicen los siguientes ejercicios sobre su proyecto del módulo:
 
-1. Creen la estructura de la API para su proyecto con base en la vista en el Work.
-2. Organicen los Modelos creados en el postwork anterior, en el directorio `models` de tu proyecto.
-3. Definan los controladores de cada uno de sus modelos, simulando el comportamiento del CRUD para cada uno.
-4. Definan la estructura de rutas para cada modelo.
-5. Hagan `push` en su repo, en la rama `main` con los cambios realizados en este postwork.
+1. Con base en las entidades definidas hasta ahora en tu proyecto, define el diagrama entidad relación de éstas.
+2. Traduzcan el diagrama del inciso anterior en un modelo relacional.
+3. Implementen este modelo como una base de datos relacional en MySQL, guarden todos los comandos que usaron para la creación de la base de datos y tablas en un archivo con nombre `database.sql` y súbanlo a su repositorio. 
+4. Tomen un ScreenShot de la descripción de las tablas en su base de datos en MySQL. Recuerden que el comando para describir una tabla es:
+```sql
+describe <nombre de la tabla>
+```
+5. **Para reflexionar** ¿El modelo relacional se acopla a las necesidades de su proyecto? ¿Que le agregarían o quitarían para que funcionara mejor para sus necesidades. Estas preguntas se discutirán al inicio de la siguiente sesión.

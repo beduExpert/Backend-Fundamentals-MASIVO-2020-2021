@@ -1,66 +1,85 @@
 # Postwork
 
-## Requerimientos
-
-- Computadora y cuaderno o aplicación para tomar apuntes.
-
 Recuerda que todo lo trabajado en tu prework, así como durante la sesión, puede ser aplicado a tu proyecto personal. Para lo cual, toma las siguientes consideraciones:
 
-**Asegurate de comprender:**
+**Asegúrate de comprender:**
 
-- Como instalar y configurar MySQL.
-- La sintaxis SQL para crear tu base de datos, tablas, insertar registros, así como consultar estas estructuras.
+- La utilidad que tendrá MongoDB en el desarrollo de tu API.
+- Los fundamentos para poner en operación y trabajar con MongoDB.
+- Las funciones de MongoDB para realizar operaciones CRUD en MongoDB.
 
 ## Objetivo
 
-Reflexionar sobre el alcance de las bases de datos relacionales y la importancia de su implementación.
+Comprender en qué situaciones utilizar SQL o NoSQL y sus diferentes aplicaciones.
 
 ## Desarrollo:
 
-- Analiza las necesidades de tu proyecto personal y desarrolla tu diagrama ERD.
-- Tomando como base tu ERD, crea la base de datos, tablas e inserta los datos necesarios para tu proyecto.
+- Habilita un ambiente en MongoDB para persistir la información con la que trabajará tu API.
+- Crea el modelo de base de datos en MongoDB con el cual trabajará tu API.
 
 Adicionalmente te aconsejamos leer los siguientes contenidos que ampliarán tus conocimientos:
 
-## Funciones y Procedimientos Almacenados
+## SQL vs NoSQL ¿Cuál debo usar?
 
-**Artículo 1**
+Las bases de datos NoSQL tienen estructuras que permiten almacenar información en aquellas situaciones en las que las BD relacionales generan ciertos problemas como escalabilidad y rendimiento. Por ejemplo en donde pueda haber una gran cantidad de usuarios concurrentes que accedan a muchos datos.
 
-[Cómo crear y usar una función almacenada MySQL](https://www.neoguias.com/funciones-almacenadas-mysql/)
+Empresas como Amazon tuvieron la necesidad de utilizar este tipo de BD NoSQL por la necesidad de crecimiento en su almacenamiento, Amazon por ejemplo, creo DynamoDB.
 
-Articulo 2
+Al iniciar un proyecto en donde es necesario almacenar información y por lo tanto utilizar una base de datos es necesario hacer la pregunta: ¿debo usar una base de datos SQL o NoSQL? La respuesta tiene que ser analizada según los datos que se van a almacenar.
 
-[Cómo crear y usar un procedimiento almacenado MySQL](https://www.neoguias.com/procedimientos-almacenados-mysql/)
+Esto nos lleva a las siguientes preguntas:
 
-## Seguridad
+### ¿Cuándo debo utilizar una base de datos NoSQL?
 
-Es importante mantener la seguridad en las bases de datos de lo intentos por robar o modificar datos ya que el impacto puede ser catastrófico. La seguridad en la bases de datos se resumen a autorizaciones de lectura, actualización, eliminación, inserción de los datos, por ello, la administración de usuarios, grupos y roles será fundamental. Los SGBD tienen definida la cláusula *GRANT* que permitirá conceder o revocar privilegios específicos a usuarios, grupos o roles.
+- Los requisitos de los datos son desconocidos, sujetos a cambiar o expandirse con facilidad.
+- Se necesita un alto rendimiento de escritura y de lectura de los datos.
+- Necesidad de escalabilidad horizontal de la base de datos.
 
-**Artículo**
+## ¿Cuándo debo utilizar una bases de datos SQL?
 
-[Asignar permisos en SQL](https://codigofacilito.com/articulos/asignar-permisos-mysql)
+- Se necesita que los datos sean consistentes y transacciones atómicas.
+- Necesidad de un esquema estricto y gran dependencia de relaciones.
 
-Pero más allá de diseñar un control de acceso de la bases de datos, es fundamental la creación de un plan de contingencia que incluye la creación de *backups*.
+El siguiente artículo da un panorama de lo que conlleva la elección de una base de datos como desarrollador:
 
-La seguridad de las bases de datos no solamente es a nivel BD, también debe ser a nivel de red, nivel de sistema operativo, seguridad incluso a nivel humano.
+## Artículo 1
 
-## Optimización de consultas en una BD Relacional
+[¿Cómo saber si necesitas una Base de Datos NoSQL?](https://medium.com/@eugeniomendoza/c%C3%B3mo-saber-si-necesitas-una-base-de-datos-nosql-b6cfd5bb7d9b)
 
-Como ya hemos estudiado, las consultas nos permiten manipular información en una bases de datos y debemos preocuparnos de la eficiencia con que las implementamos, al tener un número extraordinario de datos se vuelve relevante el tiempo en el que se trae esos datos. La optimización de consultas es un tema a estudiar tarde o temprano vamos a utilizarlo. Existen algoritmos y técnicas para la optimización de consultas que van desde la creación hasta la utilización del álgebra relacional, es un tema de especialización que debe estudiarse.
+A continuación se muestran algunos ejemplos de donde aplicar las bases de datos NoSQL y SQL.
 
-El siguiente video puede ser una breve introducción a esto:
+### SQL:
 
-[Administración de Bases de Datos - Tema 3. Procesamiento de consultas - Andrés Muñoz](https://www.youtube.com/watch?v=AC5n-wz3Fx8)
+- Fines educativos: Aportar conocimiento lógico al estudiante.
+- Desarrollo web: Para mantener jerarquía de datos, siempre y cuando la capacidad de concurrencia o almacenamiento no sea considerable.
+- Negocios: Inteligencia y análisis de negocios, facilita el consumo de la información.
+- Empresarial: Tanto el software a la medida y empresarial tiene la característica de mantener los datos consistentes.
+
+### NoSQL:
+
+- Redes sociales: Altamente necesario.
+- Desarrollo web: Donde la concurrencia y almacenamiento es alta y por lo tanto la velocidad de lectura y escritura es fundamental.
+- BigData: Debido a la administración de grandes cantidades de información.
+- Cloud: "Everything as service".
+
+Sin duda un tema muy interesante que se desprende de estas aplicaciones es *Big Data*, este video te da una introducción de qué es *Big Data* y por qué es tan importante, además te da una idea clara de por qué se utilizan bases de datos NoSQL:
+
+- [¿Qué es el Big Data?](https://youtu.be/M26iIqmqWkI)
+
+Ejemplos de *XaaS: Everything as a Service*
+
+- [XaaS: Everything as a Service](https://youtu.be/4G7u-wIpOvE)
 
 ## 🫀 Avances del Proyecto
 
 Realicen los siguientes ejercicios sobre su proyecto del módulo:
 
-1. Con base en las entidades definidas hasta ahora en tu proyecto, define el diagrama entidad relación de éstas.
-2. Traduzcan el diagrama del inciso anterior en un modelo relacional.
-3. Implementen este modelo como una base de datos relacional en MySQL, guarden todos los comandos que usaron para la creación de la base de datos y tablas en un archivo con nombre `database.sql` y súbanlo a su repositorio. 
-4. Tomen un ScreenShot de la descripción de las tablas en su base de datos en MySQL. Recuerden que el comando para describir una tabla es:
-```sql
-describe <nombre de la tabla>
-```
-5. **Para reflexionar** ¿El modelo relacional se acopla a las necesidades de su proyecto? ¿Que le agregarían o quitarían para que funcionara mejor para sus necesidades. Estas preguntas se discutirán al inicio de la siguiente sesión.
+1. Implementen la base de datos de su proyecto utilizando MongoDB.
+2. Discutan en equipo las siguientes preguntas y escriban las conclusiones a las que llegaron en un archivo para entregar:
+- ¿Cuáles son las ventajas de usar el modelo relacional en nuestro proyecto?
+- ¿Cuáles son las limitantes de usar el modelo relacional en nuestro proyecto?
+- ¿Qué ventajas ofrece el modelo no relacional a nuestro proyecto?
+- ¿Qué desventajas tiene el uso del modelo no relacional en nuestro proyecto?
+- ¿Qué implementación de base de datos de las que hicimos representa mejor las especificaciones de las entidades del proyecto y por qué?
+3. Después de elegir el modelo de base de datos que mejor se acopla a las necesidades de su proyecto, comiencen a poblar su Base de datos. Recuerden que deben de tener un total de 50 registros. Solo es necesario poblar la base de datos con el modelo que usaran.
+4. Dependiendo de su información, hagan al menos 5 consultas complejas a su base de datos.

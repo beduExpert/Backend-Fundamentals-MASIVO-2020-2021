@@ -4,82 +4,38 @@ Recuerda que todo lo trabajado en tu prework, así como durante la sesión, pued
 
 **Asegúrate de comprender:**
 
-- La utilidad que tendrá MongoDB en el desarrollo de tu API.
-- Los fundamentos para poner en operación y trabajar con MongoDB.
-- Las funciones de MongoDB para realizar operaciones CRUD en MongoDB.
+  - Diferenciar entre el papel que desempeña un Modelo y un Controlador en el patrón de diseño MVC.
+  - Para que sirve mongoose.
+  - Como generar un Modelo para cada entidad y la importancia de un modelo con mongoose implementado.
+  - Analiza las necesidades de tu proyecto personal y aplica los cambios necesarios en tu API para que aproveches los beneficios que te aporta mongoose.
 
 ## Objetivo
 
-Comprender en qué situaciones utilizar SQL o NoSQL y sus diferentes aplicaciones.
-
-## Desarrollo:
-
-- Habilita un ambiente en MongoDB para persistir la información con la que trabajará tu API.
-- Crea el modelo de base de datos en MongoDB con el cual trabajará tu API.
+- Desarrollar un nuevo feature sobre el código que se ha trabajado hasta ahora
 
 Adicionalmente te aconsejamos leer los siguientes contenidos que ampliarán tus conocimientos:
 
-## SQL vs NoSQL ¿Cuál debo usar?
+## Desarrolla un nuevo feature para guardar mascotas favoritas
 
-Las bases de datos NoSQL tienen estructuras que permiten almacenar información en aquellas situaciones en las que las BD relacionales generan ciertos problemas como escalabilidad y rendimiento. Por ejemplo en donde pueda haber una gran cantidad de usuarios concurrentes que accedan a muchos datos.
+Considerando los modelos que has desarrollado en los ejercicios anteriores. 
 
-Empresas como Amazon tuvieron la necesidad de utilizar este tipo de BD NoSQL por la necesidad de crecimiento en su almacenamiento, Amazon por ejemplo, creo DynamoDB.
+Desarrolla una nueva característica para que un usuario sea capaz de guardar mascotas que ha visto y que desea adoptar en un futuro.
 
-Al iniciar un proyecto en donde es necesario almacenar información y por lo tanto utilizar una base de datos es necesario hacer la pregunta: ¿debo usar una base de datos SQL o NoSQL? La respuesta tiene que ser analizada según los datos que se van a almacenar.
+Esta característica debe incluir:
 
-Esto nos lleva a las siguientes preguntas:
+- Modificaciones al modelo Usuario para soporte de mascotas favoritas
+- Endpoint para **agregar** mascota a favoritos.
+- Endpoint para **eliminar** mascota de favoritos.
+- Endpoint para **listar** favoritos
 
-### ¿Cuándo debo utilizar una base de datos NoSQL?
+Como recomendación, escribe las pruebas en un papel o aplicación y plantéate en qué casos se utilizaría del lado del frontend.
 
-- Los requisitos de los datos son desconocidos, sujetos a cambiar o expandirse con facilidad.
-- Se necesita un alto rendimiento de escritura y de lectura de los datos.
-- Necesidad de escalabilidad horizontal de la base de datos.
+**Ej. ¿El anunciante de una mascota debería tener noción de cuántos likes tiene su perrito/gatito?**
 
-## ¿Cuándo debo utilizar una bases de datos SQL?
+Visualiza la interfaz, pensando de manera muy similar al comportamiento de Twitter o Spotify cuando das un like. Tómate la libertad de añadir lo necesario para que esta característica sea de valor para los usuarios.
 
-- Se necesita que los datos sean consistentes y transacciones atómicas.
-- Necesidad de un esquema estricto y gran dependencia de relaciones.
+Crea varios registros de mascotas para hacer pruebas.
 
-El siguiente artículo da un panorama de lo que conlleva la elección de una base de datos como desarrollador:
+![Untitled.png](Untitled.png)
 
-## Artículo 1
-
-[¿Cómo saber si necesitas una Base de Datos NoSQL?](https://medium.com/@eugeniomendoza/c%C3%B3mo-saber-si-necesitas-una-base-de-datos-nosql-b6cfd5bb7d9b)
-
-A continuación se muestran algunos ejemplos de donde aplicar las bases de datos NoSQL y SQL.
-
-### SQL:
-
-- Fines educativos: Aportar conocimiento lógico al estudiante.
-- Desarrollo web: Para mantener jerarquía de datos, siempre y cuando la capacidad de concurrencia o almacenamiento no sea considerable.
-- Negocios: Inteligencia y análisis de negocios, facilita el consumo de la información.
-- Empresarial: Tanto el software a la medida y empresarial tiene la característica de mantener los datos consistentes.
-
-### NoSQL:
-
-- Redes sociales: Altamente necesario.
-- Desarrollo web: Donde la concurrencia y almacenamiento es alta y por lo tanto la velocidad de lectura y escritura es fundamental.
-- BigData: Debido a la administración de grandes cantidades de información.
-- Cloud: "Everything as service".
-
-Sin duda un tema muy interesante que se desprende de estas aplicaciones es *Big Data*, este video te da una introducción de qué es *Big Data* y por qué es tan importante, además te da una idea clara de por qué se utilizan bases de datos NoSQL:
-
-- [¿Qué es el Big Data?](https://youtu.be/M26iIqmqWkI)
-
-Ejemplos de *XaaS: Everything as a Service*
-
-- [XaaS: Everything as a Service](https://youtu.be/4G7u-wIpOvE)
-
-## 🫀 Avances del Proyecto
-
-Realicen los siguientes ejercicios sobre su proyecto del módulo:
-
-1. Implementen la base de datos de su proyecto utilizando MongoDB.
-2. Discutan en equipo las siguientes preguntas y escriban las conclusiones a las que llegaron en un archivo para entregar:
-- ¿Cuáles son las ventajas de usar el modelo relacional en nuestro proyecto?
-- ¿Cuáles son las limitantes de usar el modelo relacional en nuestro proyecto?
-- ¿Qué ventajas ofrece el modelo no relacional a nuestro proyecto?
-- ¿Qué desventajas tiene el uso del modelo no relacional en nuestro proyecto?
-- ¿Qué implementación de base de datos de las que hicimos representa mejor las especificaciones de las entidades del proyecto y por qué?
-3. Después de elegir el modelo de base de datos que mejor se acopla a las necesidades de su proyecto, comiencen a poblar su Base de datos. Recuerden que deben de tener un total de 50 registros. Solo es necesario poblar la base de datos con el modelo que usaran.
-4. Dependiendo de su información, hagan al menos 5 consultas complejas a su base de datos.
+Un ejemplo de la interfaz para dar like a comentarios.

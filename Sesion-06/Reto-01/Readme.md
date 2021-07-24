@@ -1,82 +1,52 @@
-`Backend Fundamentals` > `S6 - Fundamentos de Base de Datos NoSQL (Mongo)` 
+`Backend Fundamentals` > `S07 - Mongoose` 
 	
-## Reto 1
+### Reto 1
 
-### Instalar MongoDB Shell
+Es momento de probar los endpoints recien creados en el API, así que ejecuta el servidor y realiza las siguientes tareas.
 
-MongoDB Shell es una interfaz para MongoDB, se puede usar para consultar datos, actualizar datos, así como realizar operaciones administrativas.
+1. Utilizando insomnia, prueba el endpoint que te permitirá <b>crear una cuenta de usuario en adoptapet</b> ( es decir, en el endpoint `POST [/v1/usuarios](http://localhost:3000/v1/usuarios)` ), guarda el <b>JWT</b> que te devuelve la petición.
 
-**MacOS X**
+ - Puedes utilizar el siguiente ejemplo <b>json</b> como base para hacer tu petición:
 
-Instalación con Homebrew:
+		{
+			"username":"midory",
+			"nombre":"midory",
+			"apellido":"romero",
+			"email":"midoryr@gmail.com",
+			"password":"midory",
+			"ubicacion":"cdmx",	
+			"telefono":"3312333",
+			"bio":"constante anunciante",
+			"foto":"",
+			"tipo":"anunciante"
+		}  
 
-Prerequisitos: 
+- No olvides guardar el <b>JWT</b>:
 
-- [Nodejs](https://nodejs.org/es/) versión mínima de 12.0.0
+ ![img/JWT.png](img/JWT.png)
 
-1. Instalar Homebrew
+2. Ahora prueba el endpoint para obtener la información del usuario recien creado. Utiliza el endpoint `GET [/v1/usuarios](http://localhost:3000/v1/usuarios)`. 
 
-    Para seguir los pasos de instalación [Homebrew](https://brew.sh/)
+- <b>Nota:</b>
+	
+	Debido a que en la configuración de <b>routes/usuarios.js</b>, indicamos que es necesaria autorización para el endpoint <b>GET-obtener usuarios</b>, debemos agregar los headers de autenticación. Es decir el JWT del usuario que solicitará la petición, de tal forma que el usuario solo podrá ver sus propios datos. Para lograr esto, selecciona el tipo de Auth <b>Bearer</b>. 
 
-2. Copia y el siguiente comando
+- Seleccionando Tipo de Auth:
 
-    ```bash
-    brew tap mongodb/brew
-    ```
+ ![img/SeleccionandoAuth.png](img/SeleccionandoAuth.png)
 
-3. Instalar **mongosh** package:
+- Insertando JWT:
 
-    ```bash
-    brew install mongosh
-    ```
+ ![img/IngresandoBearerToken.png](img/IngresandoBearerToken.png)
+ 
+ - Resultado de búsqueda:
+ 
+  ![img/UsuarioEncontrado.png](img/UsuarioEncontrado.png)
 
-**Windows**
+3. Al igual que lo hiciste en los puntos anteriores, prueba el endpoint que te permitirá modificar los datos de un usuario. Intenta cambiar el nombre y password del usuario creado en los puntos anteriores.
+5. Ahora pregúntate: ¿en qué caso necesitaríamos conocer información sobre otro usuario?
+6. Si el usuario no tiene la propiedad `tipo` cuando es creado en una petición POST, ¿podemos hacer algo para asignarle un tipo?
 
-1. Ir a [MongoDB Download Center](https://www.mongodb.com/try/download/shell) y descargar el archivo para tu sistema operativo.
-2. Extraer los archivos del archivo descargado en la ubicación deseada de tu sistema de archivos.
-3. Agregar una variable de entorno para el binario de MongoDB Shell:
-    1. Abrir **Panel de Control.**
-    2. En **Sistema y Seguridad** dar clic en **Sistema.**
-    3. Clic en **Configuración Avanzada del Sistema**. Luego, **Propiedades del Sistema** en la ventana desplegada.
-    4. Clic en **Variables de Entorno**.
-    5. En *Variables del sistema*, select **Path** and clic en **Edit**. Luego, **Editar variable de entorno** en la ventana desplegada.
-    6. Clic **New** y agrega la ruta del archivo binario **mongosh**.
-    7. Clic **Ok** para confirmar los cambios. Luego **Ok** de nuevo.
-    8. Para verificar que la configuración haya tenido éxito, abre la terminal y ejecuta:
+![image](https://user-images.githubusercontent.com/13757596/87738478-21ddc480-c7a3-11ea-9c9b-cf88868563ec.png)
 
-        ```bash
-        mongosh --help
-        ```
-
-**Linux**
-
-1. Ir a [MongoDB Download Center](https://www.mongodb.com/try/download/shell) y descargar el archivo para tu sistema operativo
-2. Extraer los archivos del archivo descargado en la ubicación deseada de tu sistema de archivos
-3. Extraer los archivos del archivo descargado
-
-    ```bash
-    tar -zxvf path/to/archive
-    ```
-
-4. Agregar variable de entorno para el binario de MongoDB Shell:
-    - Ejecuta:
-
-         Actualiza **/path/to/mongosh** de acuerdo al directorio de instalación
-
-        ```bash
-        sudo cp /path/to/mongosh /usr/local/bin/
-        ```
-
-    - Ejecuta
-
-        ```bash
-        sudo ln -s  /path/to/mongosh /usr/local/bin/
-        ```
-### Instalar MongoDB Compass
-
-MongoDB Compass es un GUI para MongoDB, nos permitirá visualizar y explorar los datos en nuestras colecciones. Instala <b>MongoDB Compass</b> tomando en cuenta las siguientes instrucciones:
-
-Guía de instalación: <b>https://docs.mongodb.com/compass/master/install</b>
-
-
-[`Atrás: Sesión 06`](../README.md) | [`Siguiente: Sesión 06`](../README.md)
+[`Atrás: Ejemplo 01`](../Ejemplo-01) | [`Siguiente: Ejemplo 02`](../Ejemplo-02)

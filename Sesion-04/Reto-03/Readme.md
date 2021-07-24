@@ -1,10 +1,18 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 04: API`](../README.md) >[`Ejemplo-03`](../Ejemplo-03) > `Reto 3`
-	
-## Reto 3
+`Backend Fundamentals` > `S5 - Fundamentos de Base de Datos Relacionales(SQL)`
 
-Crear la estructura de ruteo para las mascotas  de manera similar a lo que hicimos con el archivo `routes/usuarios.js`
+### Reto 2
 
-- Crea la estructura de rutas para el archivo `routes/mascotas.js`
-- No olvides importar cada router y declarar la ruta donde se ejecutará en el archivo `routes/index.js`
+Creación de la base de datos en SQL para Adoptapet.
 
-[`Atrás: Ejemplo 03`](../Ejemplo-03) | [`Siguiente: Reto 04`](../Reto-04)
+- Define la base de datos para AdoptaPet
+- Define las tablas que representan las entidades de esta base de datos usando el modelo relacional del reto anterior.
+
+>💡 **Nota:**
+>
+>Recuerda la sintaxis para crear una tabla en MySQL
+
+```sql
+CREATE TABLE *nombre_tabla*(*atributo1 tipo* [*restricción*], *atributo2...);*
+```
+
+[`Atrás: Ejemplo 03`](../Ejemplo-03) | [`Siguiente: Sesión 05`](../README.md)

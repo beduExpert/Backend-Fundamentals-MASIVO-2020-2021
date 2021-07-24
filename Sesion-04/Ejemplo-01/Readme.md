@@ -1,133 +1,81 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 03: API`](../README.md) > `Ejemplo 1`
-
-# Ejemplo 1
+# Ejemplo 1 - Instalando MySQL
 
 ## Objetivo
 
-Repasar los fundamentos de una API REST y configurar nuestro entorno para comenzar a desarrollar una API con NodeJS y Express.
+Comprender que es una base de datos relacional e instalar un sevidor de bases de datos relacionales.
 
 ## Requerimientos
 
-Se recomienda tener NodeJS LTS instalado y funcionando correctamente. También es recomendable estar familiarizado con Javascript.
+Contar con almacenamiento suficiente y conexión a internet para instalar MySQL.
 
-## Desarrollo
 
-### ¿Qué es una API REST?
 
-Cuando se habla de REST API, significa utilizar una API para acceder a aplicaciones backend, de manera que esa comunicación se realice con los estandares definidos por el estilo de arquitectura REST.
+# Instalar MySQL server
 
-REST es un acrónimo para **RE**presentational **S**tate **T**ransfer, fue pensada para sistemas dedicados a la distribución de *hypermedia*. En REST se siguen los siguientes principios:
+## Instalación en Ubuntu
 
-- Arquitectura cliente/servidor sin estado, es decir, no se almacena la información de las solicitudes, cada solicitud es independiente.
-- Una interfaz uniforme entre los elementos, para que la información se transfiera de forma estandarizada.
-- Acciones concretas (POST, GET, PUT y DELETE) para la transferencia de datos.
-- Uso de formatos de transferencia para la comunicación. Para este caso en específico utilizaremos JSON como el formato para enviar respuestas y recibir peticiones de objetos. Se puede usar también XLT ó HTML
-- Un sistema en capas que organiza en jerarquías invisibles para el cliente y cada uno de los servidores  que participan en la recuperación de la información solicitada.
+Instala el paquete mysql-server y luego ejecuta el script de seguridad incluido.
 
-Si bien parece una arquitectura muy restrictiva, esto sirve para que su uso sea mas sencillo. 
+```bash
+# Se actualizan los paquetes de gestor
+sudo apt update
 
-Es importante señalar que REST es un conjunto de normas que se pueden implementar a necesidad de la aplicación. 
+# Se instala MySQL
+sudo apt install mysql-server
 
-## Preparando nuestro entorno de desarrollo
+# Se configura MySQL
+sudo mysql_secure_installation
 
-1. Si aún no tienes NodeJS debes descargarlo desde su [sitio oficial](https://nodejs.org/en/download/) e instalarlo
-
-1. Crearemos una nueva carpeta llamada `adoptapet-api` con la siguiente estructura:
-
+# se inicializa MySQL
+sudo mysql
 ```
-adoptapet-api/
-├── config/
-├── models/
-├── controllers/
-├── routes/
-└── app.js
-``` 
 
-1. Nos posicionaremos en esa carpeta e iniciaremos un nuevo proyecto con el comando `npm init -y`
-1. Ejecutaremos el siguiente código 
+Y deberás ver una interfaz como esta
 
-    ```bash
-    npm install express body-parser cors
-    ```
-Express.js es un framework de Node para desarrollo backend.
-1. Instalar nodemon de manera global
+![img/Screen_Shot_2020-06-08_at_6.58.16.png](img/Screen_Shot_2020-06-08_at_6.58.16.png)
 
-    ```bash
-    npm install -g nodemon
-    ```
+## Instalación en MacOS
 
-    Nodemon nos servirá para agilizar el desarrollo, ya que recarga nuestro server de manera automática, de esta manera no tendremos que reiniciar el servidor manualmente cada que  realicemos cambios.
+### Desde la terminal 
 
-    Nota: Si tienes problemas con permisos de instalación, intenta ejecutando el comando con `sudo`
+```bash
+# se instala el paquete
+brew install mysql
 
-1. Agregar la siguientes dos líneas dentro del objeto "scripts" del archivo `package.json`:
+# se actualizan los servicios disponibles de homebrew
+brew tap homebrew/services
 
-    ```bash
-    "start": "node ./app.js",
-    "dev": "nodemon ./app.js",
-    ```
+# Se configura la contraseña para el ususario root de MySQL
+mysqladmin -u root password 'yourpassword'
 
-Le indica a npm de que forma debe ejecutar nuestro programa. De esta forma le indicamos que debe usar nodemon para ejecutarlo en el modo de desarrollo.
-1. Verifica que tu archivo `package.json` luzca similar a esto:
+# Se inicializa MySQL con la contraseña seleccionada
+mysql -u root -p
+```
 
-    ```json
-    {
-      "name": "adoptapet-api",
-      "version": "1.0.0",
-      "description": "",
-      "main": "index.js",
-      "scripts": {
-        "start": "node ./app.js",
-        "dev": "nodemon ./app.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-      },
-      "keywords": [],
-      "author": "",
-      "license": "ISC",
-      "dependencies": {
-        "body-parser": "^1.19.0",
-        "cors": "^2.8.5",
-        "express": "^4.17.1"
-      }
-    }
-    ```
+### Con un instalador
+1. Dirígete al siguiente [link para descargar MySQL server](https://dev.mysql.com/downloads/mysql/)
+2. Selecciona tu sistema operativo y descarga el archivo `.dmg`. Para instalar de esta manera tal vez sea necesario crear una cuenta en Oracle.
+3. Ejecuta el `.dmg` y sigue los pasos.
 
-    Aquí estarán instaladas las dependencias de nuestro proyecto.
+## Instalación con Docker
 
-1. Ahora editaremos el archivo `app.js` con el siguiente código:
+Si tienes [docker](https://docs.docker.com/engine/install/) instalado puedes ejecutar Mysql desde un contenedor instalandolo con el siguiente comando:
 
-    ```jsx
-    // Importamos las bibliotecas necesarias
-    var express = require('express'),
-        bodyParser = require('body-parser'),
-        cors = require('cors');
+```bash
+$ docker run -d -p 33060:3306 --name=mysql-db -e MYSQL_ROOT_PASSWORD=secret mysql
+```
 
-    // Objeto global de la app
-    var app = express();
+- **-d**: Detached Mode es la forma en que indicamos que corra en segundo plano.
+- **-p** : Puerto, el contenedor corre en el puerto 3306 pero hacemos un *bind* para que lo escuchemos en Host el puerto 33061.
+- **–name** : Para no tener que hacer referencia al hash le asignamos un nombre.
+- **-e** : Environment le asignamos **la contraseña**.
 
-    // configuración de middlewares
-    app.use(cors());
-    app.use(bodyParser.urlencoded({ extended: false }));
-    app.use(bodyParser.json());
+Entra a Mysql con el siguiente comando:
 
-    // Manejando los errores 404
-    app.use(function(req, res, next) {
-      var err = new Error('Not Found');
-      err.status = 404;
-      next(err);
-    });
+```bash
+docker exec -it mysql-db mysql -p
+```
 
-    // Iniciando el servidor...
-    var server = app.listen(process.env.PORT || 3000, function(){
-      console.log('Escuchando en el puerto ' + server.address().port);
-    });
-    ```
-Una aplicación Express es fundamentalmente una serie de llamadas a funciones de middleware.
 
-Las funciones de middleware son funciones que tienen acceso al objeto de solicitud (req), al objeto de respuesta (res)
 
-1. Ingresaremos el comando `npm run dev` y si la configuración es correcta se ejecutará nodemon y veremos algo como esto en nuestra terminal:
-
-    ![img/Untitled.png](img/Untitled.png)
-    
-[`Atrás: Sesión 04`](../README.md) | [`Siguiente: Reto 01`](../Reto-01)
+[`Atrás: Sesión 05`](../README.md) | [`Siguiente: Ejemplo 02`](../Ejemplo-02)

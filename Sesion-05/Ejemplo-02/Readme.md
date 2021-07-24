@@ -1,103 +1,310 @@
-# Ejemplo 2 - Diagramas entidad relación y Modelo Relacional
+# Ejemplo 2
 
 ## Objetivo
 
-Aprender a realizar diagramas entidad relación y utilizarlo como herramienta para modelar bases de datos de alto nivel con representaciones de esquemas conceptuales.
+Comprender los fundamentos de MongoDB para la implementación de Bases de Datos NoSQL orientada a documentos.
 
 ## Requerimientos
 
-Herramienta de software de diagramación, para esta sesión ocuparemos [draw.io](https://www.draw.io)
+Conexión a internet
 
 ## Desarrollo
 
-### Modelo ER
+MongoDB es una base de datos NoSQL y orientada a documentos, por lo que, los datos se almacenan como documentos en formato JSON.
 
-El modelo entidad-relación se basa en los conceptos: entidad, tipo de entidad, atributo y relación.
+Veamos un ejemplo:
 
-- **Entidad**: Representación de un objeto que puede ser real o abstracto. Ej., de un restaurante se podría crear las entidades: **Empleado**, **menú**, **cocina**, **ingrediente**, **receta**, etc.
+![img/Screen_Shot_2020-06-18_at_11.56.02.png](img/Screen_Shot_2020-06-18_at_11.56.02.png)
 
-    Una entidad se representa en un diagrama conceptual en forma de rectángulos, como los siguientes:
+A su vez, MongoDB almacena los documentos en **colecciones**, veamos una analogía de entre MongoDB y un RDBMS:
 
-    <img src="img/Screen_Shot_2020-06-12_at_22.38.42.png" width="500">
+![img/TablaNueva.png](img/TablaNueva.png)
 
+### Estructura de un documento en MongoDB
 
-- **Tipo de entidad**: Es el conjunto de entidades que comparte los mismos atributos.
-- **Atributo**: Es el componente o característica que determina una entidad. Ej., de la entidad **empleado** podemos determinar como atributos: **nombre**, **apellidos**, **teléfono**, **domicilio**, etc.
+Los documentos en MongoDB están compuesto por pares de campo y valor con la siguientes estructura:
 
-    Los atributos tienen la forma de óvalo como a continuación:
+```json
+{ 
+   "field1": "value1", 
+   "field2": "value2", 
+   "field3": "value3", 
+   ... 
+   "fieldN":  "valueN"
+}
+```
 
-    <img src="img/Screen_Shot_2020-06-12_at_23.08.39.png" width="500">
+Y el valor de cada campo tiene un tipo de datos, revisa los distintos tipos de datos en MongoDB:
 
-    El concepto de **llave** viene ejemplificado en este diagrama, *RFC* será el atributo con el cual identificaremos univocamente cada entidad y que mediante relaciones podremos acceder a la entidad.
+[BSON Types - MongoDB Manual](https://docs.mongodb.com/manual/reference/bson-types/)
 
-- **Relación**: Es una asociación entre varias entidades. Ej., en un restaurante una receta **tiene** ingredientes.
+### Llave primaria
 
-    En un diagrama podemos observar una relación en forma de rombo:
+Cada documento almacenado en MongoDB requiere un campo **_id** único que se identificará como la llave primaria, si omitimos este campo, MongoDB genera automáticamente un **ObjectId** que es un tipo de dato.
 
-    <img src="img/Screen_Shot_2020-06-12_at_23.21.15.png" width="500">
+La utilización de ObjectId con MongoDB es muy común, ya que, es un tipo de dato pequeño, rápido de generar y ordenado. Su estructura:
 
-    En este ejemplo podemos hablar de que un ingrediente **pertenece** a una receta y ese mismo ingrediente puede pertenecer a varias recetas, a su vez receta puede tener uno o más ingredientes. Es importante definir la **cardinalidad** en las relaciones ya que especificará el número de entidades con las que se puede asociar otra entidad.
+- 4 bytes para un valor *timestamp*
+- 5 bytes para un valor aleatorio
+- 3 bytes para un contador incremental
 
-    **1:1**
+### Modelado de datos en MongoDB
 
-    <img src="img/Screen_Shot_2020-06-13_at_0.07.53.png" width="500">
+Los datos en MongoDB tienen un esquema flexible, los documentos en una colección pueden no seguir una misma estructura, por lo que, se debe considerar:
 
-    **1:N o N:1**
+> Normalización y denormalización: Los modelos de datos totalmente normalizados describen las relaciones con referencias entre documentos, mientras que los modelos denormalizados pueden almacenar información redundante a tráves de los modelos relacionados.
 
-    <img src="img/Screen_Shot_2020-06-13_at_0.22.03.png" width="500">
+- **Modelado Embebido**:
 
-    **N:N**
+    Permite agregar un documento dentro de un documento, pero no sólo eso, recordemos que también podemos tener *arrays* de documentos. La ventaja de este tipo de modelado es la rapidez para hacer operaciones CRUD, además, son menos costosas.
 
-    <img src="img/Screen_Shot_2020-06-13_at_0.24.44.png" width="500">
+    Se puede usar cuando: 
 
-    ### Modelo Relacional
+    - Se tiene relaciones *Uno a uno* entre documentos. Ve más detalles en [Model One-to-One Relationships with Embedded Documents](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-one-relationships-between-documents/#data-modeling-example-one-to-one)
 
-    El modelo ER facilita las tareas de diseño conceptual de base de datos pero es necesario traducirlo a un esquema que sea compatible con un **Sistema de Gestión de Base de Datos** como lo es MySQL.
+    - Ilustrando esta relación con un ejemplo de MongoDB:
 
-    El Modelo relacional es utilizado por la mayoría de los SGDB existentes en el mercado (Oracle, SQL Server, MaríaDB, SQLite).
+         ```json
+         {
+            "_id": "joe",
+               "name": "Joe Bookreader",
+               "address": {
+                    "street": "123 Fake Street",
+                    "city": "Faketon",
+                    "state": "MA",
+                    "zip": "12345"
+                }
+         }
+         ```
 
-    En el modelo relacional se utiliza un grupo de **tablas** para representar los datos y las relaciones entre ellos. Cada tabla está compuesta por varias **columnas** que representan los atributos de la entidad y **filas** que serán **registros** o **tuplas**. Estos registros son tienen un identificador único, para diferenciarlos entre si, la **llave primaria**.
+   - Se tiene relaciones *Uno a muchos.* Ve más detalles en [Model One-to-Many Relationships with Embedded Documents.](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/#data-modeling-example-one-to-many)
 
-    El uso de **llaves** es muy importante ya que se utilizan para definir relaciones. Las tablas se relacionan mediante una ***"relación de llave primaria o de llave foránea"***, dónde:
+   - Ilustrando esta relación con un ejemplo de MongoDB:
 
-    - **Llave primaria**: Es un valor en una tabla que identifica de forma exclusiva un registro de la tabla. Existen dos tipos de llaves primarias **simples** cuando están constituidas por una sola columna o **compuestas** cuando se componen de dos o mas columnas.
-    - **Llave foránea**: Es una columna o conjunto de columnas en una tabla cuyos valores corresponden a los valores de la llave primaria de otra tabla.
+        ```json
+        {
+           "_id": "joe",
+           "name": "Joe Bookreader",
+           "addresses": [
+                {
+                    "street": "123 Fake Street",
+                    "city": "Faketon",
+                    "state": "MA",
+                    "zip": "12345"
+                },
+                {
+                    "street": "1 Some Other Street",
+                    "city": "Boston",
+                    "state": "MA",
+                    "zip": "12345"
+                }
+            ]
+         }
+        ```
 
-    ### Restricciones de integridad
+- **Modelado utilizando referencias**
 
-    La integridad de los datos es la propiedad que asegura que información dada es correcta, al cumplir ciertas aserciones. Las restricciones de integridad son propiedades de la base de datos que se deben satisfacer en cualquier momento entre las cuales están:
+    Es almacenar **referencias** entre documentos para indicar la existencia de una relación entre los datos de cada documento.
 
-    - **Unicidad de llave primaria** establece que toda llave primaria que se elija para una relación no debe tener valores repetidos
-    - **Integridad de llave primaria** dispone que los atributos de la llave primaria de una relación no pueden tener valores nulos
-    - **Integridad referencial**  está relacionada con el concepto de llave foránea, lo que determina que todos los valores que toma una llave foránea deben ser valores que existen en la llave primaria que referencia
-    - **Tratamiento de valores nulos** permite poner valores nulos en los campos no especificados al momento de agregar o generar nuevos registros.
-    - **Valores por defecto** es una forma de evitar valores nulos al definir un valor que toman los atributos no definidos en lugar de considerarlos nulos.
-    - **Integridad de dominio** define que todos los valores de una columna están tomados del mismo conjunto de datos o son en su defecto valores nulos.
+    Puede implicar que los queries tengan mayor complejidad, ya que puede ser el caso en el que se tenga que consultar más de una colección.
 
-    ### ¿Cómo pasar del Modelo ER al Modelo Relacional?
+    Se usa en situaciones:
 
-    Del ejemplo de la entidad "*Empleado"*
+    - Donde las referencias son más flexibles que los embebidos. Puede haber situaciones en las que conviene tener almacenadas las referencias en lugar de un número ilimitado de documentos y que puede llegar a crecer constantemente. Ver más en [Model One-to-Many Relationships with Document References](https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/#data-modeling-publisher-and-books)
 
-    <img src="img/Screen_Shot_2020-06-12_at_23.08.39.png" width="500">
+        Ilustrando este caso con un ejemplo de MongoDB:
 
-    Vamos a analizar el siguiente diagrama:
+        ```json
+        {
+           "name": "O'Reilly Media",
+           "founded": 1980,
+           "location": "CA",
+           "books": [123456789, 234567890, ...]
 
-    <img src="img/Screen_Shot_2020-06-13_at_20.02.20.png" width="500">
+        }
 
-    Hemos hablado que el modelo relacional son tablas y columnas, en este ejemplo la entidad *"Empleado"* será el nombre de nuestra tabla y cada atributo será una fila.
+        {
+            "_id": 123456789,
+            "title": "MongoDB: The Definitive Guide",
+            "author": [ "Kristina Chodorow", "Mike Dirolf" ],
+            "published_date": ISODate("2010-09-24"),
+            "pages": 216,
+            "language": "English"
+        }
 
-    ### Ejemplo 1
+        {
+           "_id": 234567890,
+           "title": "50 Tips and Tricks for MongoDB Developer",
+           "author": "Kristina Chodorow",
+           "published_date": ISODate("2011-05-06"),
+           "pages": 68,
+           "language": "English"
+        }
+        ```
 
-    Vamos a poner en práctica todo los conocimientos teóricos adquiridos hasta hora, primero crearemos el diagrama del Modelo ER para un restaurante y luego el Modelo Relacional.
+    - Se tienen relaciones *muchos a muchos*
 
-    Ocuparemos [draw.io](https://www.draw.io) que es una herramienta online que nos permite hacer permitir diagramas como los que necesitamos en esta sesión, sólo necesitaremos una cuenta y navegar entre los distintos tipos de diagramas.
+### Ejemplo
 
-    Modelo E/R
+Supongamos una base de datos para una aplicación de blogs, donde es necesario almacenar: usuarios, posts, comentarios, etiquetas, etc.
 
-    ![img/Screen_Shot_2020-06-14_at_14.18.17.png](img/Screen_Shot_2020-06-14_at_14.18.17.png)
+Vamos a modelar estos documentos de las formas que ya se explicaron; Por el momento utilizarmeos <b>MongoDB Compass</b>, en el siguiente ejemplo estaremos utilizando <b>Mongo Shell</b> para continuar con el modelado.
 
-    Modelo Relacional
+1. Una vez que lograste conectarte a tu cluster, vamos a crear una nueva base de datos utilizando MongoDB Compass. Da click en <b>CREATE DATABASE</b>
 
-    ![img/Screen_Shot_2020-06-14_at_21.23.16.png](img/Screen_Shot_2020-06-14_at_21.23.16.png)
+![img/CreateDatabase.png](img/CreateDatabase.png)
 
-[`Atrás: Ejemplo 01`](../Ejemplo-01) | [`Siguiente: Reto 01`](../Reto-01)
+2. En Database Name, inserta: <b>BlogsModeloEmbebido</b>, en Collation Name, inserta: <b>posts</b>, oprime <b>CREATE DATABASE</b>.
+
+![img/CreateDatabaseCollection.png](img/CreateDatabaseCollection.png)
+
+En la lista de Bases de Datos de tu cluster, ya podrás ver la Base de Datos recientemente creda.
+
+![img/ModeloCreado.png](img/ModeloCreado.png)
+
+3. Selecciona el modelo creado en los puntos anteriores, selecciona la colección <b>posts</b>, oprime <b>ADD DATA</b>, <b>Insert Document</b>. Se abrirá una especie de editor: 
+
+![img/Editor.png](img/Editor.png)
+
+Copia las siguientes líneas en el editor, antes de oprimir <b>INSERT</b>, analiza el código JSON.
+
+```json
+{
+   "_id": 1234,
+   "nombre": "Bases de Datos Relacionales",
+   "fecha_publicacion": "2020-05-12",
+   "texto": "Las bases de datos...",
+   "autor": {
+      "_id": 35,
+      "nombre": "Diego Lugo",
+      "email": "dieguitolu@gmail.com",
+      "tipo_cuenta": "experto"
+    },
+    "comentarios": [
+      {   
+         "_id": 23456,
+         "nombre": "Sergio Medina",
+         "email": "sergiomedina@hotmail.com",
+         "fecha_publicacion": "2020-05-23",
+         "texto": "Excelente post, me ayudo a comprender más...",
+         "puntuacion": 5
+      },
+      {
+         "_id": 78901,
+         "nombre": "Emmanuel Martínez",
+         "email": "emmamtz@gmail.com",
+         "fecha_publicacion": "2020-06-01",
+         "texto": "Hay ciertos conceptos que no me quedaron claros...",
+         "puntuacion": 3
+      }
+    ],
+    "etiquetas": [
+      "Bases de Datos Relacionales", "Modelo E/R"
+      ],
+    "categorias": [
+      "TI", "Desarrollo de Software"
+     ]
+}
+```
+
+Este ejemplo es un documento embebido que contiene todos lo datos a almacenar de un post, podemos notar que en comentarios podemos tener un número ilimitado, dependerá del impacto del post cause a una audiencia interesada, pero más allá de eso podría darse el caso en el que el documento sea demasiado grande y hasta podría alcanzar el límite de almacenamiento de un documento.
+    
+Después de la inserción, podrás ver el documento con los datos de autor embebidos dentro de su estructura:
+
+![img/ResultadoInserción.png](img/ResultadoInserción.png)
+
+4. Ahora, vamos a crear una nueva base de datos, está utilizará referencias en lugar del modelo embebido. Da click en <b>CREATE DATABASE</b>:
+
+![img/CreateDatabase2.png](img/CreateDatabase2.png)
+
+Inserta el nombre: <b>BlogsModeloConReferencias</b> y Collection Name: <b>autores</b>
+
+5. Selecciona la base de datos recien creada, después selecciona la colección autores.
+
+Inserta los siguientes autores (como lo hicimos en el punto 3 ). Nota: Inserta uno por uno.
+
+```json
+{
+   "_id": 35,
+   "nombre": "Diego Lugo",
+   "email": "dieguitolu@gmail.com",
+   "tipo_cuenta": "experto"
+}
+        
+{
+   "_id": 189,
+   "nombre": "Alejandro Martínez",
+   "email": "alexmtz@gmail.com",
+   "tipo_cuenta": "legendario"
+}
+
+{   
+   "_id": 23456,
+   "nombre": "Sergio Medina",
+   "email": "sergiomedina@hotmail.com",
+   "tipo_cuenta": "aficionado"
+}
+
+{
+   "_id": 78901,
+   "nombre": "Emmanuel Martínez",
+   "email": "emmamtz@gmail.com",
+   "tipo_cuenta": "legendario"
+}
+```
+
+![img/ColecciónAutores.png](img/ColecciónAutores.png)
+
+6. Agreguemos una nueva colección al model <b>BlogsModeloConReferencia</b>, llámala <b>posts</b>:
+
+![img/CreandoPostsCollection.png](img/CreandoPostsCollection.png)
+
+7. En el ejemplo anterior (modelo emebido), definimos que un post sólo pertenece a un autor pero en una aplicación real en un post podría participar más de una persona, por lo que, hay que definir que puede haber más de un autor. 
+
+Tal como lo hiciste en el ejemplo 5, inserta el siguiente documento en la colección <b>posts</b>. 
+
+```json
+{
+   "_id": 1234,
+   "nombre": "Bases de Datos Relacionales",
+   "fecha_publicacion": "2020-05-12",
+   "texto": "Las bases de datos...",
+   "autor": [35, 189],
+   "comentarios": [23456, 78901],
+   "etiquetas": [
+      "Bases de Datos Relacionales", "Modelo E/R"
+    ],
+    "categorias": [
+      "TI", "Desarrollo de Software"
+      ]
+}
+```
+Nota: Observa el contenido del campo <b>autor</b>. En el podrás encontrar en un arreglo, los valores correspondientes a los id's de los autores que crearon este post.  (Si revisas la colección autores, podrás encontrar estos id's en diferentes autores). De esta forma estamos referenciando desde la colección <b>posts</b> a los id's de documentos en la colección <b>autores</b>.
+
+![img/PostsReferenciandoAutores.png](img/PostsReferenciandoAutores.png)
+
+8. Agreguemos una nueva colección al model <b>BlogsModeloConReferencia</b>, llámala <b>comentarios</b>, inserta los siguientes documentos:
+
+```json
+{
+   "_id": 23456,
+   "autor": 1001,
+   "fecha_publicacion": "2020-05-23",
+   "texto": "Excelente post, me ayudo a comprender más...",
+   "puntuacion": 5
+}
+        
+{            
+   "_id": 78901,
+   "autor": 3,
+   "fecha_publicacion": "2020-06-01",
+   "texto": "Hay ciertos conceptos que no me quedaron claros...",
+   "puntuacion": 3
+}
+```
+
+> Nota: Desde la colección <b>posts</b>, estaremos referenciando vía los id's a los comentarios encontrados en la colección <b>comentarios</b>.
+
+Es importante señalar que a diferencia de SQL, las relaciones que definimos aquí son simuladas, es decir, no se tiene la misma integridad y restricciones para las relaciones que vimos en la sesión anterior. Aquí simplemente se indica la relación y mongo nos cree que existe.
+
+[`Atrás: Reto 02`](../Reto-02) | [`Siguiente: Reto 02`](../Reto-03)

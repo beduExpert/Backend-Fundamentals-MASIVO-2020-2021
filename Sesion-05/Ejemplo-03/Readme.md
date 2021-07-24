@@ -1,501 +1,518 @@
-# Ejemplo 3 - Ejecutando Queries
+# Ejemplo 3
 
 ## Objetivo
 
-Comprender los fundamentos del lenguaje SQL y ejecutar consultas a la DB.
+Comprender los métodos proporcionados por MongoDB para realizar operaciones CRUD en una bases de datos. 
 
 ## Requerimientos
 
-Haber completado la instalación y configuración de MySQL.
+- Conexión a internet
+- MongoDB Shell en tu computadora
 
 ## Desarrollo
 
-### Crear una base de datos
+En el ejemplo anterior utilizamos MongoDB Compass. En este ejemplo, estaremos trabjando con <b>MongoDB Shell</b>.
 
-1. Listar las bases de datos creadas:
+1. Utilizando MongoDB Shell, conéctacte a tu cluster a la base de datos <b>BlogsModeloEmbebido</b>:
 
-```sql
-show databases;
-```
+![img/ConnectionMongoDBShell.png](img/ConnectionMongoDBShell.png)
 
-```json
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| innodb             |
-| mysql              |
-| performance_schema |
-+--------------------+
-4 rows in set (0.061 sec)
-```
+2. Utilizaremos las funciones antes listadas, con las cuales haremos operaciones tipo <b>CRUD</b> en nuestra base de datos <b>BlogsModeloEmbebido</b>.
 
-El resultado dependerá de la versión de MySQL instalada o si anteriormente ya se han creado bases de datos.
+- Crea la colección <b>usuarios</b>:
 
-2. Para crear una base de datos usaremo el siguiente comando:
-
-```sql
-create database restaurante;
-```
-
-```json
-Query OK, 1 row affected (0.063 sec)
-```
-
-Y listaremos nuevamente para asegurar la creación de la BD
-
-```sql
-show databases;
-```
-
-```json
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| innodb             |
-| mysql              |
-| performance_schema |
-| restaurante        |
-+--------------------+
-5 rows in set (0.060 sec)
-```
-
-3. Luego, será necesario seleccionar la BD en la que vamos a trabajar
-
-```sql
-use restaurante;
-```
-
-```json
-Database changed
-```
-
-### Crear una tabla
-
-Antes de crear una tabla hay ciertos puntos que debemos estudiar:
-
-- Tipos de datos
-
-    Los tipos de datos soportados en MySQL según la documentación:
-
-    [MySQL :: MySQL 8.0 Reference Manual :: 11 Data Types](https://dev.mysql.com/doc/refman/8.0/en/data-types.html)
-
-- Restricciones de Integridad
-
-    Recordando en el anterior se trató de estas restricciones:
-
-    - Valores nulos:
-
-        ```sql
-        *atributo* *tipo* NOT NULL | NULL
-        ```
-
-    - Valores por defecto:
-
-        ```sql
-        *atributo* *tipo* DEFAULT *expresión*
-        ```
-
-    - Llave primaria
-
-        Simple:
-
-        ```sql
-        *atributo* *tipo* PRIMARY KEY
-        ```
-
-        Compuesta:
-
-        ```sql
-        PRIMARY KEY(*columna1, columna2, ...*)
-        ```
-
-
-    - Llave foráneas:
-
-        Nivel columna:
-
-        ```sql
-        *atributo tipo* REFERENCES *tabla*[(*columna*)]
-        ```
-
-        Nivel tabla:
-
-        ```sql
-        FOREIGN KEY(*columna1, columna2, ...*) REFERENCES *tabla* [(*columna1, columna2, ...*)]
-        ```
-
-Para crear una tabla usamos el siguiente comando:
-
-```sql
-CREATE TABLE *nombre_tabla* (*atributo1* *tipo* [*restricción*], *atributo2...);*
-```
-
-Para verificar que la tablas se ha creado:
-
-```sql
-show tables;
-```
-
-Y para ver la cómo se creo la tabla:
-
-```sql
-describe *nombre_tabla;*
-```
-
-### Ejemplo
-
-Vamos a crear las tablas de la BD de restaurante para ello vamos a utilizar el diseño que se realizó.
-
-1. Sucursal
-
-```sql
-CREATE TABLE sucursal(
-     razonSocial VARCHAR(50) PRIMARY KEY,
-     rfc CHAR(13) UNIQUE NOT NULL,
-     nombre VARCHAR(50),
-     ubicacion VARCHAR(80) NOT NULL
- );
-
- describe sucursal;
-```
-
-```sql
-+-------------+-------------+------+-----+---------+-------+
-| Field       | Type        | Null | Key | Default | Extra |
-+-------------+-------------+------+-----+---------+-------+
-| razonSocial | varchar(50) | NO   | PRI | NULL    |       |
-| rfc         | char(13)    | NO   | UNI | NULL    |       |
-| nombre      | varchar(50) | YES  |     | NULL    |       |
-| ubicacion   | varchar(80) | NO   |     | NULL    |       |
-+-------------+-------------+------+-----+---------+-------+
-4 rows in set (0.063 sec)
-```
-
-2. Empleado
-
-```sql
-CREATE TABLE empleado(
-    rfc CHAR(13),
-    nombre VARCHAR(100) NOT NULL,
-    fechaNcto DATE NOT NULL,
-    direccion VARCHAR(80) NOT NULL,
-    tel CHAR(11),
-    razonSocial VARCHAR(50),
-    PRIMARY KEY(rfc),
-    FOREIGN KEY(razonSocial) REFERENCES sucursal(razonSocial)
-  );
-describe empleado;
-```
-
-```sql
-+-------------+--------------+------+-----+---------+-------+
-| Field       | Type         | Null | Key | Default | Extra |
-+-------------+--------------+------+-----+---------+-------+
-| rfc         | char(13)     | NO   | PRI | NULL    |       |
-| nombre      | varchar(100) | NO   |     | NULL    |       |
-| fechaNcto   | date         | NO   |     | NULL    |       |
-| direccion   | varchar(80)  | NO   |     | NULL    |       |
-| tel         | char(11)     | YES  |     | NULL    |       |
-| razonSocial | varchar(50)  | YES  | MUL | NULL    |       |
-+-------------+--------------+------+-----+---------+-------+
-6 rows in set (0.065 sec)
-```
-
-3. Orden
-
-```sql
-CREATE TABLE orden(
-     idOrden INT,
-     fecha DATE NOT NULL,
-     total FLOAT NOT NULL,
-     razonSocial VARCHAR(50) NOT NULL,
-     rfc CHAR(13) NOT NULL,
-     PRIMARY KEY(idOrden),
-     FOREIGN KEY(razonSocial) REFERENCES sucursal(razonSocial),
-     FOREIGN KEY(rfc) REFERENCES empleado(rfc)
-     );
-describe orden;
-```
-
-```sql
-+-------------+-------------+------+-----+---------+-------+
-| Field       | Type        | Null | Key | Default | Extra |
-+-------------+-------------+------+-----+---------+-------+
-| idOrden     | int(11)     | NO   | PRI | NULL    |       |
-| fecha       | date        | NO   |     | NULL    |       |
-| total       | float       | NO   |     | NULL    |       |
-| razonSocial | varchar(50) | NO   | MUL | NULL    |       |
-| rfc         | char(13)    | NO   | MUL | NULL    |       |
-+-------------+-------------+------+-----+---------+-------+
-5 rows in set (0.063 sec)
-```
-
-4. Ingrediente
-
-```sql
-CREATE TABLE ingrediente(
-     idIngrediente INT,
-     nombre VARCHAR(40) NOT NULL,
-     stock INT DEFAULT 1,
-     PRIMARY KEY(idIngrediente)
-    );
-describe ingrediente;
-```
-
-```sql
-+---------------+-------------+------+-----+---------+-------+
-| Field         | Type        | Null | Key | Default | Extra |
-+---------------+-------------+------+-----+---------+-------+
-| idIngrediente | int(11)     | NO   | PRI | NULL    |       |
-| nombre        | varchar(40) | NO   |     | NULL    |       |
-| stock         | int(11)     | YES  |     | 1       |       |
-+---------------+-------------+------+-----+---------+-------+
-3 rows in set (0.059 sec)
-```
-
-5. Categoría
-
-```sql
-CREATE TABLE categoria(
-     idCategoria INT,
-     nombre VARCHAR(30) NOT NULL,
-     PRIMARY KEY(idCategoria)
-    );
-describe categoria
-```
-
-```sql
-+-------------+-------------+------+-----+---------+-------+
-| Field       | Type        | Null | Key | Default | Extra |
-+-------------+-------------+------+-----+---------+-------+
-| idCategoria | int(11)     | NO   | PRI | NULL    |       |
-| nombre      | varchar(30) | NO   |     | NULL    |       |
-+-------------+-------------+------+-----+---------+-------+
-2 rows in set (0.062 sec)
-```
-
-6. Platillo
-
-```sql
-CREATE TABLE platillo(
-     idPlatillo INT,
-     nombre VARCHAR(30) NOT NULL,
-     costo FLOAT NOT NULL,
-     idCategoria INT NOT NULL,
-     PRIMARY KEY(idPlatillo),
-     FOREIGN KEY(idCategoria) REFERENCES categoria(idCategoria)
-    );
-describe platillo;
-```
-
-```sql
-+-------------+-------------+------+-----+---------+-------+
-| Field       | Type        | Null | Key | Default | Extra |
-+-------------+-------------+------+-----+---------+-------+
-| idPlatillo  | int(11)     | NO   | PRI | NULL    |       |
-| nombre      | varchar(30) | NO   |     | NULL    |       |
-| costo       | float       | NO   |     | NULL    |       |
-| idCategoria | int(11)     | NO   | MUL | NULL    |       |
-+-------------+-------------+------+-----+---------+-------+
-4 rows in set (0.378 sec)
-```
-
-7. Orden Platillo
-
-```sql
-CREATE TABLE orden_platillo(
-     cantidad INT NOT NULL,
-     idOrden INT NOT NULL,
-     idPlatillo INT NOT NULL,
-     FOREIGN KEY(idOrden) REFERENCES orden(idOrden),
-     FOREIGN KEY(idPlatillo) REFERENCES platillo(idPlatillo)
-    );
-describe orden_platillo;
-```
-
-```sql
-+------------+---------+------+-----+---------+-------+
-| Field      | Type    | Null | Key | Default | Extra |
-+------------+---------+------+-----+---------+-------+
-| cantidad   | int(11) | NO   |     | NULL    |       |
-| idOrden    | int(11) | NO   | MUL | NULL    |       |
-| idPlatillo | int(11) | NO   | MUL | NULL    |       |
-+------------+---------+------+-----+---------+-------+
-3 rows in set (0.060 sec)
-```
-
-8. Platillo Ingrediente
-
-```sql
-CREATE TABLE platillo_ingrediente(
-     idIngrediente INT NOT NULL,
-     idPlatillo INT NOT NULL,
-     FOREIGN KEY(idIngrediente) REFERENCES ingrediente(idIngrediente),
-     FOREIGN KEY(idPlatillo) REFERENCES platillo(idPlatillo)
-    );
-describe platillo_ingrediente;
-```
-
-```sql
-+---------------+---------+------+-----+---------+-------+
-| Field         | Type    | Null | Key | Default | Extra |
-+---------------+---------+------+-----+---------+-------+
-| idIngrediente | int(11) | NO   | MUL | NULL    |       |
-| idPlatillo    | int(11) | NO   | MUL | NULL    |       |
-+---------------+---------+------+-----+---------+-------+
-2 rows in set (0.062 sec)
-```
-
-### Agregar, Eliminar, Modificar una tabla
-
-Para agregar, eliminar o modificar columnas en una tabla existente se ocupa la sintaxis:
-
-- Agregar
-
-    ```sql
-    ALTER TABLE *nombre_tabla* ADD (*atributo* *tipo* *restricción*);
-    ```
-
-    Ejemplo, si quisiéramos agregar una columna a la tabla empleado
-
-    ```sql
-    ALTER TABLE empleado ADD (sexo CHAR(1) NOT NULL);
-    ```
-
-- Modificar
-
-    ```sql
-    ALTER TABLE *nombre_table* MODIFY *atributo* *tipo* *restricción*;
-    ```
-
-    Ejemplo, al crear la tabla *empleado* consideramos que la columna *razonSocial* puede tener un valor nulo y además es una llave foránea y por regla de negocio nos piden que no puede tener un valor nulo entonces haremos:
-
-    ```sql
-    ALTER TABLE empleado MODIFY razonSocial VARCHAR(50) NOT NULL;
-    describe empleado;
+    ```jsx
+    db.createCollection('usuarios')
     ```
 
     ```json
-    +-------------+--------------+------+-----+---------+-------+
-    | Field       | Type         | Null | Key | Default | Extra |
-    +-------------+--------------+------+-----+---------+-------+
-    | rfc         | char(13)     | NO   | PRI | NULL    |       |
-    | nombre      | varchar(100) | NO   |     | NULL    |       |
-    | fechaNcto   | date         | NO   |     | NULL    |       |
-    | direccion   | varchar(80)  | NO   |     | NULL    |       |
-    | tel         | char(11)     | YES  |     | NULL    |       |
-    | razonSocial | varchar(50)  | NO   | MUL | NULL    |       |
-    +-------------+--------------+------+-----+---------+-------+
-    6 rows in set (0.247 sec)
+    {
+        "ok" : 1,
+        "$clusterTime" : {[`Atrás: Reto-02`](https://github.com/beduExpert/A2-Backend-Fundamentals-2020/tree/master/Sesion-01/Reto-02n)
+            "clusterTime" : Timestamp(1592800772, 5),
+            "signature" : {
+                "hash" : BinData(0,"Cqg3SKYxW90A98A5Xz0qScsRGP0="),
+                "keyId" : NumberLong("6799349003877089281")
+            }
+        },
+        "operationTime" : Timestamp(1592800772, 5)
+    }
+    ```
+- Para comprobar que tu colección se generó, puedes utilizar la siguiente función: <b>db.getCollectionNames();</b>
+
+![img/ColecciónCreada.png](img/ColecciónCreada.png)
+
+### Inserción de documentos
+
+MongoDB proporciona los siguientes métodos para agregar documentos a una colección:
+
+- db.collection.insertOne()
+
+    ```jsx
+    db.collection.insertOne(
+       <document>,
+       {
+          writeConcern: <document>
+       }
+    )
     ```
 
-- Eliminar
+Insertar un documento en la colección de "usuarios"
 
-    ```sql
-    ALTER TABLE *nombre_columna* DROP COLUMN *atributo;*
+```jsx
+    db.usuarios.insertOne({"nombre": "Diego Lugo","email": "dieguitolu@gmail.com","tipo_cuenta": "experto"})
+```
+
+Obtenemos como respuesta
+
+```json
+    { acknowledged: 1, insertedId: ObjectId("5fa9c13890d998195a954861") }
+```
+- Para listar el documento agregado, puedes utilizar la siguiente función: <b>db.usuarios.find();</b>
+
+![img/UsuarioCreado.png](img/UsuarioCreado.png)
+
+- db.collection.insertMany()
+
+    ```jsx
+    db.collection.insertMany(
+       [ <document 1> , <document 2>, ... ],
+       {
+          writeConcern: <document>,
+          ordered: <boolean>
+       }
+    )
     ```
 
-    Ejemplo, agregamos a empleado la columna *sexo* y necesitamos eliminar la columna
+Agregamos varios documentos en la colección "usuarios"
 
-    ```sql
-    ALTER TABLE empleado DROP COLUMN sexo;
+```jsx
+    db.usuarios.insertMany([{
+        "nombre": "Alejandro Martínez",
+        "email": "alexmtz@gmail.com",
+        "tipo_cuenta": "legendario",
+    },
+    {
+        "nombre": "Sergio Medina",
+        "email": "sergiomedina@hotmail.com",
+        "tipo_cuenta": "aficionado"
+    },
+    {
+        "nombre": "Emmanuel Martínez",
+        "email": "emmamtz@gmail.com",
+        "tipo_cuenta": "legendario"
+    }])
+```
+
+La respuesta es:
+
+```json
+    {
+        "acknowledged" : true,
+        "insertedIds" : [
+            ObjectId("5ef03837d761235365aa9ca3"),
+            ObjectId("5ef03837d761235365aa9ca4"),
+            ObjectId("5ef03837d761235365aa9ca5")
+        ]
+    }
+```
+
+💡 Recordando: Si se omite el campo **_id** MongoDB creará uno internamente de tipo **ObjectId**.
+
+### Leer documentos
+
+MongoDB proporciona **find** para leer documentos de una colección:
+
+- db.collection.find()
+
+    ```jsx
+    db.collection.find(query, projection)
     ```
 
-### Inserción de registros
+    donde:
 
-La función de una base de datos es persistir información, en las bases de datos relacionales son registros en las tablas existentes para hacer esta tarea en SQL se usa el comando:
+    - query: Especifica el filtro de selección utilizando operadores.
+    - projection: Especifica los campos que se devolverán en los documentos que coinciden con el filtro de consulta.
 
-```sql
-INSERT INTO *nombre_tabla* (*atributo1, ...)* **VALUES (*valor1,...);*
-```
-Ejemplo: Se requiere registrar una <b>sucursal</b> nueva.
+Leemos los documentos existentes en la colección <b>usuarios</b>:
 
-```sql
-INSERT INTO sucursal VALUES ("El Taquito Feliz SA de CV", "TAF261020666", "Taco Feliz", "CDMX");
+```jsx
+    db.usuarios.find()
 ```
 
-Ejemplo. Se requiere registrar un nuevo empleado en la sucursal antes creada.
+La respuesta es:
 
-```sql
-INSERT INTO empleado VALUES(
-     "DEFL930301T43",
-     "Daniel Ernesto FLores",
-     "1993-03-01",
-     "Bosque del Tesoro N.345 Col. Miguel Hidalgo, Ciudad de México, México CP.56070",
-     "5510673492",
-     "El Taquito Feliz SA de CV"
-    );
+```json
+    { "_id" : ObjectId("5ef036f1d761235365aa9ca2"), "nombre" : "Diego Lugo", "email" : "dieguitolu@gmail.com", "tipo_cuenta" : "experto" }
+    { "_id" : ObjectId("5ef03837d761235365aa9ca3"), "nombre" : "Alejandro Martínez", "email" : "alexmtz@gmail.com", "tipo_cuenta" : "legendario" }
+    { "_id" : ObjectId("5ef03837d761235365aa9ca4"), "nombre" : "Sergio Medina", "email" : "sergiomedina@hotmail.com", "tipo_cuenta" : "aficionado" }
+    { "_id" : ObjectId("5ef03837d761235365aa9ca5"), "nombre" : "Emmanuel Martínez", "email" : "emmamtz@gmail.com", "tipo_cuenta" : "legendario" }
 ```
 
-### Consultas a la BD
 
-> Una consulta sirve para extraer información de una base de datos. Permite manipular datos: agregar, eliminar y cambiar.
+**Operadores de consulta básicos**
 
-Para traer información de una o varias tablas usaremos:
+Comparación: 
 
-```sql
-SELECT *columna1, columna2, ...* FROM *nombre_table;* 
+- $eq: Coincidencias con valores que son iguales a un valor especificado.
+- $gt: Coincidencias con valores mayores a un valor especificado.
+- $gte: Coincidencias con valores mayores o iguales a un valor especificado.
+- $in: Coincidencias con cualquiera de los valores especificados en una matriz.
+- $lt: Coincidencias con valores menores a un valor especificado.
+- $lte: Coincidencias con valores menores o iguales a un valor especificado.
+- $ne: Coincidencias con valores que no son iguales a un valor especificado.
+- $nin: No coincide con ninguno de los valores especificados en una matriz.
+
+Lógico:
+
+Tendremos los operadores comunes utilizados en los lenguajes de programación: $and, $not, $nor y $or.
+
+Elemento:
+
+- $exists: Coincidencias con documentos que tienen el campo especificado.
+
+[Query and Projection Operators - MongoDB Manual](https://docs.mongodb.com/manual/reference/operator/query/)
+
+Mostramos los documentos cuyo <b>tipo_cuenta</b> tiene el valor <b>legendario</b>
+
+```jsx
+    db.usuarios.find({"tipo_cuenta":"legendario"})
 ```
 
-¿Qué pasa si sólo nos interesa obtener información de un empleado?
+Obtenemos como respuesta:
 
-SQL nos permite utilizar condiciones, a través de la cláusula WHERE:
+```json
+    { "_id" : ObjectId("5ef03837d761235365aa9ca3"), "nombre" : "Alejandro Martínez", "email" : "alexmtz@gmail.com", "tipo_cuenta" : "legendario" }
+    { "_id" : ObjectId("5ef03837d761235365aa9ca5"), "nombre" : "Emmanuel Martínez", "email" : "emmamtz@gmail.com", "tipo_cuenta" : "legendario" }
+```
+Ahora usando la función find, buscamos los comentarios publicados en Junio.
 
-Ej. Queremos la información del empleado con RFC "DEFL930301T43"
-
-```sql
-SELECT * from empleado WHERE rfc = "DEFL930301T43"
+```jsx
+    db.comentarios.find({ fecha_publicacion: { $gte: "2020-06-01", $lt: "2020-07-01" }})
 ```
 
-Si requerimos ordenar o agrupar la información, por ejemplo, podemos utilizar los operadores "ORDER BY", "GROUP BY" respectivamente.
+Y nos da como resultado:
 
-Por ejemplo 
-
-```sql
-SELECT * FROM empleado ORDER BY rfc;
+```json
+    { "_id" : ObjectId("5ef03e5cd761235365aa9ca8"), "autor" : ObjectId("5ef03837d761235365aa9ca5"), "fecha_publicacion" : "2020-06-01", "texto" : "Hay ciertos conceptos que no me quedaron claros...", "puntuacion" : 3 }
 ```
 
-Las consultas tienen muchos campos que nos permiten afinarla para obtener el resultado que queremos, en seguida se muestran todos los posibles campos de una consulta, para verlos con mayor detalle con consulta el siguiente [tutorial](https://beginner-sql-tutorial.com/sql-select-statement.htm).
+<!-- ### Actualización de documentos
 
-```sql
-SELECT
-    [ALL | DISTINCT | DISTINCTROW ]
-    [HIGH_PRIORITY]
-    [STRAIGHT_JOIN]
-    [SQL_SMALL_RESULT] [SQL_BIG_RESULT] [SQL_BUFFER_RESULT]
-    [SQL_NO_CACHE] [SQL_CALC_FOUND_ROWS]
-    select_expr [, select_expr] ...
-    [into_option]
-    [FROM table_references
-      [PARTITION partition_list]]
-    [WHERE where_condition]
-    [GROUP BY {col_name | expr | position}, ... [WITH ROLLUP]]
-    [HAVING where_condition]
-    [WINDOW window_name AS (window_spec)
-        [, window_name AS (window_spec)] ...]
-    [ORDER BY {col_name | expr | position}
-      [ASC | DESC], ... [WITH ROLLUP]]
-    [LIMIT {[offset,] row_count | row_count OFFSET offset}]
-    [into_option]
-    [FOR {UPDATE | SHARE}
-        [OF tbl_name [, tbl_name] ...]
-        [NOWAIT | SKIP LOCKED]
-      | LOCK IN SHARE MODE]
-    [into_option]
+MongoDB proporciona los siguientes métodos para actualizar datos
 
-into_option: {
-    INTO OUTFILE 'file_name'
-        [CHARACTER SET charset_name]
-        export_options
-  | INTO DUMPFILE 'file_name'
-  | INTO var_name [, var_name] ...
-}
+- db.collection.updateOne()
+
+    ```jsx
+    db.collection.updateOne(
+       <filter>,
+       <update>,
+       {
+         upsert: <boolean>,
+         writeConcern: <document>,
+         collation: <document>,
+         arrayFilters: [ <filterdocument1>, ... ]
+       }
+    )
+    ```
+
+- db.collection.updateMany()
+
+    ```jsx
+    db.collection.updateMany(
+       <filter>,
+       <update>,
+       {
+         upsert: <boolean>,
+         writeConcern: <document>,
+         collation: <document>,
+         arrayFilters: [ <filterdocument1>, ... ]
+       }
+    )
+    ```
+
+- db.collection.replaceOne()
+
+    ```jsx
+    db.collection.replaceOne(
+       <filter>,
+       <replacement>,
+       {
+         upsert: <boolean>,
+         writeConcern: <document>,
+         collation: <document>
+       }
+    )
+    ```
+ -->
+### Eliminar documentos
+
+MongoDB proporciona los siguientes métodos para eliminar documentos:
+
+- db.collection.deleteOne()
+
+    ```jsx
+    db.collection.deleteOne(
+       <filter>,
+       {
+          writeConcern: <document>,
+          collation: <document>
+       }
+    )
+    ```
+Eliminamos uno de nuestros usuarios.
+
+```jsx
+    db.usuarios.deleteOne({ _id: ObjectId("5fa9ca8d90d998195a954866") })
+```
+> Nota : cambia el ObjectId por uno que corresponda con tu base de datos.
+
+```jsx
+    { "acknowledged" : true, "deletedCount" : 1 }
 ```
 
-También podemos encontramos esta información en la documentación de MySQL:
 
-[MySQL :: MySQL 8.0 Reference Manual :: 13.2.10 SELECT Statement](https://dev.mysql.com/doc/refman/8.0/en/select.html)
+- db.collection.deleteMany()
 
-[`Atrás: Reto 01`](../Reto-01) | [`Siguiente: Reto 02`](../Reto-03)
+    ```jsx
+    db.collection.deleteMany(
+       <filter>,
+       {
+          writeConcern: <document>,
+          collation: <document>
+       }
+    )
+    ```
+
+### Actualización de documentos
+
+MongoDB proporciona los siguientes métodos para actualizar datos
+
+- db.collection.updateOne()
+
+    ```jsx
+    db.collection.updateOne(
+       <filter>,
+       <update>,
+       {
+         upsert: <boolean>,
+         writeConcern: <document>,
+         collation: <document>,
+         arrayFilters: [ <filterdocument1>, ... ]
+       }
+    )
+    ```
+
+Actualizaremos uno de los comentarios de la colección posts
+
+```jsx
+    db.posts.updateOne({ _id: ObjectId("5fa9c4cd90d998195a954865")}, {$push: { comentarios: ObjectId("5fa9ca8d90d998195a954866")}})
+```
+
+La respuesta es:
+
+```json
+    {
+        acknowledged: 1,
+        insertedId: null,
+        matchedCount: 1,
+        modifiedCount: 1,
+        upsertedCount: 0
+    }
+```
+
+- db.collection.updateMany()
+
+    ```jsx
+    db.collection.updateMany(
+       <filter>,
+       <update>,
+       {
+         upsert: <boolean>,
+         writeConcern: <document>,
+         collation: <document>,
+         arrayFilters: [ <filterdocument1>, ... ]
+       }
+    )
+    ```
+
+- db.collection.replaceOne()
+
+    ```jsx
+    db.collection.replaceOne(
+       <filter>,
+       <replacement>,
+       {
+         upsert: <boolean>,
+         writeConcern: <document>,
+         collation: <document>
+       }
+    )
+    ```
+
+
+
+
+
+
+<!-- 6. Antes de insertar un nuevo documento en la colección <b>posts</b>, se recomienda eliminar vía <b>MongoDB Compass</b>, el documento creado en el <b>Ejemplo 2</b>. 
+
+- Inserta el siguiente documento en la colección <b>posts</b>:
+
+    ```jsx
+    db.posts.insertOne({
+    "nombre": "Bases de Datos Relacionales",
+        "fecha_publicacion": "2020-05-12",
+        "texto": "Las bases de datos...",
+        "autor": [ObjectId("5ef036f1d761235365aa9ca2"), ObjectId("5ef03837d761235365aa9ca3")],
+        "etiquetas": [
+            "Bases de Datos Relacionales", "Modelo E/R"
+        ],
+        "categorias": [
+            "TI", "Desarrollo de Software"
+        ]
+    })
+    ```
+
+    ```json
+    {
+    	"acknowledged" : true,
+    	"insertedId" : ObjectId("5ef03c44d761235365aa9ca6")
+    }
+    ```
+
+- <b>Importante:</b> Para referenciar a este documento posteriormente, guarda el ObjectId del mismo.
+![img/PostsInsertado.png](img/PostsInsertado.png)    
+7. Inserta documentos en la colección <b>comentarios</b>.
+
+    ```jsx
+    db.comentarios.insertMany([{
+        "autor": ObjectId("5ef03837d761235365aa9ca4"),
+        "fecha_publicacion": "2020-05-23",
+        "texto": "Excelente post, me ayudo a comprender más...",
+        "puntuacion": 5
+    },
+    {
+        "autor": ObjectId("5ef03837d761235365aa9ca5"),
+        "fecha_publicacion": "2020-06-01",
+        "texto": "Hay ciertos conceptos que no me quedaron claros...",
+        "puntuacion": 3
+    }])
+    ```
+
+    ```jsx
+    {
+    	"acknowledged" : true,
+    	"insertedIds" : [
+    		ObjectId("5ef03e5cd761235365aa9ca7"),
+    		ObjectId("5ef03e5cd761235365aa9ca8")
+    	]
+    }
+    ```    
+
+- <b>Importante:</b> Para referenciar a estos documentos posteriormente, guarda los ObjectsId de los mismos. 
+![img/ComentariosObjectId.png](img/ComentariosObjectId.png)
+8. Actualizar el documento del post creado para agregar las referencias de los comentarios creados. 
+
+    <b>OJO:</b>
+    - Remplaza el <b>ObjectId</b> del post del codigo del ejemplo, por el <b>ObjectId</b> guardado en el punto 6.
+    - En la función <b>$push</b> que inserta un comentario al arreglo de comentarios del post, remplaza el <b>ObjectId</b> del post del codigo del ejemplo, por el <b>ObjectId</b> guardado en el punto 7.
+
+    ```jsx
+    db.posts.updateOne({ _id: ObjectId("5fa9c4cd90d998195a954865")}, {$push: { comentarios: ObjectId("5fa9ca8d90d998195a954866")}})
+    ```
+
+    ```json
+    {
+        acknowledged: 1,
+        insertedId: null,
+        matchedCount: 1,
+        modifiedCount: 1,
+        upsertedCount: 0
+    }
+    ```
+
+    ```jsx
+    db.posts.updateOne({ _id: ObjectId("5fa9c4cd90d998195a954865")},{$push:{comentarios: ObjectId("5fa9ca8d90d998195a954867")}})
+    ```
+
+    ```json
+    {
+        acknowledged: 1,
+        insertedId: null,
+        matchedCount: 1,
+        modifiedCount: 1,
+        upsertedCount: 0
+    }
+    ```
+    
+9. Utilizando <b>MongoDB Compass</b>, observa el único documento de tipo <b>posts</b> que tienes agregado. Debe de tener un arreglo de comentarios cuyos ObjectId, corresponden a los comentarios agregados en la colección <b>comentarios</b> -->
+
+
+
+<!-- 11. Ahora eliminaremos un comentario del posts exitente en la colección <b>posts</b>
+
+    <b>OJO:</b>
+    - Remplaza el <b>ObjectId</b> del post del codigo del ejemplo, por el <b>ObjectId</b> guardado en el punto 6.
+    - En la función <b>$pull</b> que elimina un comentario del arreglo de comentarios del post, remplaza el <b>ObjectId</b> del codigo del ejemplo, por el <b>ObjectId</b> guardado en el punto 7.
+
+    1. Eliminar la referencia del comentario en el post
+
+        ```jsx
+        db.posts.updateOne({ _id: ObjectId("5fa9c4cd90d998195a954865")},{$pull:{comentarios: ObjectId("5fa9ca8d90d998195a954866")}})
+        ```
+
+        ```json
+        {
+            acknowledged: 1,
+            insertedId: null,
+            matchedCount: 1,
+            modifiedCount: 1,
+            upsertedCount: 0
+        }
+        ```
+
+    2. Ver que los cambios funcionaron
+
+        ```jsx
+        db.posts.find({ "_id" : ObjectId("5fa9c4cd90d998195a954865") }, { "_id" : 1, comentarios : 1 })
+        ```
+
+        ```json
+          [
+            {
+                _id: ObjectId("5fa9c4cd90d998195a954865"),
+                comentarios: [ ObjectId("5fa9ca8d90d998195a954867") ]
+            }
+          ]
+        ```
+
+    3. Eliminar el documento en la colección "comentarios"
+ 
+        ```jsx
+        db.comentarios.deleteOne({ _id: ObjectId("5fa9ca8d90d998195a954866") })
+        ```
+        ```jsx
+        { "acknowledged" : true, "deletedCount" : 1 }
+        ```
+
+    4. Leer los comentarios actuales
+
+        ```jsx
+        db.comentarios.find()
+        ```
+
+        ```json
+        [
+            {
+                _id: ObjectId("5fa9ca8d90d998195a954867"),
+                autor: ObjectId("5ef03837d761235365aa9ca5"),
+                fecha_publicacion: '2020-06-01',
+                texto: 'Hay ciertos conceptos que no me quedaron claros...',
+                puntuacion: 3
+            }
+        ]
+
+        ``` -->
+
+[`Atrás: Reto 02`](../Reto-03) | [`Siguiente: Reto 03`](../Reto-04)

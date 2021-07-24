@@ -1,22 +1,11 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 04: API`](../README.md) >[`Ejemplo-02`](../Ejemplo-02) > `Reto 2`
+`Backend Fundamentals` > `S5 - Fundamentos de Base de Datos Relacionales(SQL)` 
 	
-## Reto 2  
+  ### Reto 2
 
-1. Ahora crea los controladores para las mascotas con una estructura CRUD similar a la anterior. Para esto dentro del archivo `controllers/mascotas.js`, define las funciones:
+  - Investiga a detalle las fases del diseño de bases datos relacionales y crea tu propio ejercicio, no olvides ponerle cierta complejidad.
 
-- `crearMascota` en donde se crea una instancia de `Mascota` y se devuelve como respuesta.
-- `obtenerMascotas` que simula al menos 2 instancias de `Mascota` y las regresa como respuesta.
-- `modificarMascota` que simula un usuario y luego lo modifica según la petición.
-- `eliminarMascota` que regresa un código de éxito simulando la eliminación de un usuario.
+     💡 Las fases del diseño de bases de datos relacionales son: Análisis de requisitos, diseño conceptual, elección de un SGBD, diseño lógico, diseño físico, uso y mantenimiento.
+     
+  ![de248-fasesdedisenobd (1)](https://user-images.githubusercontent.com/13757596/87999687-40083500-cac1-11ea-8afe-a065ecf15f09.png)
 
-
-> **NOTA 💡**
-> Observemos que `obtenerMascotas` nos regresa *todas* las mascotas, ¿cómo modificarías esta función para que regrese sólo una? ¿necesitarías información adicional en la request?
-
-
-
-
-
-![image](https://antonioperez.pro/wp-content/uploads/2017/12/crud-rails-1.png)
-
-[`Atrás: Ejemplo 02`](../Ejemplo-02) | [`Siguiente: Ejemplo 03`](../Ejemplo-03)
+[`Atrás: Reto 01`](../Reto-01) | [`Siguiente: Ejemplo 03`](../Ejemplo-03)

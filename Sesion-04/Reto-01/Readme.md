@@ -1,8 +1,17 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 04: API`](../README.md) >[`Ejemplo-01`](../Ejemplo-01) > `Reto 1`
+`Backend Fundamentals` > `S5 - Fundamentos de Base de Datos Relacionales(SQL)` 
 	
-## Reto 1
+  ### Reto 1
 
-1. Siguiendo las instrucciones del ejemplo anterior, configura e inicializa tu servidor local.
+  - Con los ejemplos anteriores construye el modelo ER de adoptapet
+  - Construye el modelo relacional conceptual de adoptapet. No olvides la cardinalidad en las relaciones, llaves primarias y foráneas.
+  Puedes basarte en el ejercicio visto en el ejemplo anterior
 
+#### Modelo ER
+  
+  <img width="694" alt="Screen_Shot_2020-07-16_at_20 00 08" src="https://user-images.githubusercontent.com/13757596/87999488-9d4fb680-cac0-11ea-8da3-28e61b92207d.png">
+  
+#### Modelo Relacional
 
-[`Atrás: Ejemplo 01`](../Ejemplo-01) | [`Siguiente: Ejemplo 02`](../Ejemplo-02)
+<img width="671" alt="Screen_Shot_2020-07-16_at_20 20 08" src="https://user-images.githubusercontent.com/13757596/87999490-a17bd400-cac0-11ea-9e18-69c6008c3503.png">
+
+[`Atrás: Ejemplo  02`](../Ejemplo-02) | [`Siguiente: Ejemplo 03`](../Ejemplo-03)
