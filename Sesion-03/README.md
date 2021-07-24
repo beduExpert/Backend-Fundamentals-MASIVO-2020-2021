@@ -7,11 +7,11 @@
 ## Endpoints
 
 - [`Ejemplo 1: Rutas en una API`](Ejemplo-01/)
-- [`Reto 01: Crear rutas para mascotas`](Reto-02/#reto-2)
+- [`Reto 01: Crear rutas para mascotas`](Reto-01/#reto-1)
 
 ## Web Services
 
-- [`Reto 02: Ejecutar peticiones de  un CRUD con insomnia o postman`](Reto-03/#reto-3)
+- [`Reto 02: Ejecutar peticiones de  un CRUD con insomnia o postman`](Reto-02/#reto-2)
 
 
 ## 🛡 Postwork
