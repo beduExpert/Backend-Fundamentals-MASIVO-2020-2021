@@ -4,7 +4,7 @@
 
 Llena la siguiente tabla sobre las respuestas a peticiones
 
-| Codigo | Descripcion |
+| Código | Descripción |
 |--------|-------------|
 | 102    |             |
 | 202    |             |
