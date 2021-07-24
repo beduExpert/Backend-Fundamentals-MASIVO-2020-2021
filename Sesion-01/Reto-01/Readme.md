@@ -2,6 +2,19 @@
 	
 ## Reto 1
 
-INVESTIGA ALGO
+Llena la siguiente tabla sobre las respuestas a peticiones
+
+| Codigo | Descripcion |
+|--------|-------------|
+| 102    |             |
+| 202    |             |
+| 206    |             |
+| 300    |             |
+| 304    |             |
+| 400    |             |
+| 401    |             |
+| 418    |             |
+| 501    |             |
+| 511    |             |
 
 [`Atrás: Ejemplo 01`](../Ejemplo-01) | [`Siguiente: Ejemplo 02`](../Ejemplo-02)
