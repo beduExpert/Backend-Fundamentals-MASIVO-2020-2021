@@ -50,12 +50,15 @@ Para hacer peticiones en una ruta (endpoint) en específico, debemos establecer 
 2. Dentro de la carpeta routes, crearemos el archivo `index.js` con el siguiente código:
 
 ```jsx
+// importamos las dependencias necesarias
 var router = require('express').Router();
 
+// definimos el comportamiento en la raíz del endpoint
 router.get('/', (req, res)=>{
   res.send('welcome to adoptapet api');
 });
 
+// exportamos nuestro nuevo router
 module.exports = router;
 ```
 La sintaxis `(req, res) => { ... }` representa una función que será ejecutada cuando llegue alguna petición en las direcciones uri que especificamos, también se le puede llamar ***handler*** o ***callback***. 

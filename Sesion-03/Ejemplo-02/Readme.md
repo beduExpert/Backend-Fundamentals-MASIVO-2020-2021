@@ -97,6 +97,7 @@ module.exports = Solicitud;
  *  en un futuro aquí se utilizarán los modelos
  */
 
+// importamos el modelo de usuarios
 const Usuario = require('../models/Usuario')
 
 function crearUsuario(req, res) {
@@ -113,7 +114,7 @@ function obtenerUsuarios(req, res) {
 }
 
 function modificarUsuario(req, res) {
-  // simulando un usuario previamente existente que el usuario utili
+  // simulando un usuario previamente existente que el cliente modifica
   var usuario1 = new Usuario(req.params.id, 'Juan', 'Vega', 'juan@vega.com')
   var modificaciones = req.body
   usuario1 = { ...usuario1, ...modificaciones }
@@ -121,9 +122,11 @@ function modificarUsuario(req, res) {
 }
 
 function eliminarUsuario(req, res) {
+  // se simula una eliminación de usuario, regresando un 200
   res.status(200).send(`Usuario ${req.params.id} eliminado`);
 }
 
+// exportamos las funciones definidas
 module.exports = {
   crearUsuario,
   obtenerUsuarios,
