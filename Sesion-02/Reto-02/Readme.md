@@ -11,6 +11,4 @@
 2. Prueba que funcionen en Insomnia
 
 
-![image](https://antonioperez.pro/wp-content/uploads/2017/12/crud-rails-1.png)
-
 [`Atrás`](../Ejemplo-02) | [`Siguiente`](../Ejemplo-03)
