@@ -2,6 +2,8 @@
 
 # Ejemplo 3
 
+# Ejemplo 3
+
 ## Objetivo
 
 Comprender el concepto de rutas en nuestra API y la mejor manera de establecerlas para acceder a recursos.
@@ -20,19 +22,7 @@ En los siguientes pasos crearemos el **esqueleto** de nuestra API para el recurs
 
 Los siguientes *endpoints* estarán siendo importados en el archivo `index.js` y bajo la ruta `v1/usuarios` de nuestra api.
 
-1. Debajo de la carpeta `routes`, completa la siguiente estructura:
-
-```
-routes/
-├── anunciantes.js
-├── index.js
-├── solicitudes.js
-├── usuarios.js
-└── mascotas.js
-``` 
-
-
-2. En el archivo `usuarios.js`, agrega la siguiente estructura:
+1. Debajo de la carpeta routes, crea el archivo `usuarios.js`, agrega la siguiente estructura:
 
 ```jsx
 // Estructura del CRUD
@@ -57,25 +47,22 @@ module.exports = router;
 - Aunque para este caso en particular podríamos seguir trabajando con la lógica de cada *endpoint* dentro del archivo `routes/usuarios.js` cuando los proyectos van creciendo, es conveniente modularizar nuestro código, y una manera de hacerlo es externalizando funciones en los controladores.
 Para hacer peticiones en una ruta (endpoint) en específico, debemos establecer una estructura específica.
 
-- Para esto utilizaremos el Router que nos provee la biblioteca Express.
+- Para esto utilizaremos el Router que nos provee la librería Express.
 
-3. Dentro del archivo `index.js` agregamos el siguiente código:
+2. Dentro de la carpeta routes, crearemos el archivo `index.js` con el siguiente código:
 
 ```jsx
-// importamos las dependencias necesarias
 var router = require('express').Router();
 
-// definimos el comportamiento en la raíz del endpoint
 router.get('/', (req, res)=>{
   res.send('welcome to adoptapet api');
 });
 
-// exportamos nuestro nuevo router
 module.exports = router;
 ```
-La sintaxis `(req, res) => { ... }` representa una función que será ejecutada cuando llegue alguna petición en las direcciones URI que especificamos, también se le puede llamar ***handler*** o ***callback***. 
+La sintaxis `(req, res) => { ... }` representa una función que será ejecutada cuando llegue alguna petición en las direcciones uri que especificamos, también se le puede llamar ***handler*** o ***callback***. 
 
-4. Ahora modificaremos nuestro archivo `app.js` para agregar esta ruta:
+3. Ahora modificaremos nuestro archivo `app.js` para agregar esta ruta:
 
 ```jsx
 var express = require('express'),
@@ -112,6 +99,19 @@ Al hacer una petición a esta ruta podremos ver que nos está devolviendo inform
 
 Es una buena práctica colocar la versión de nuestra app como una ruta principal, ya que así en un futuro si hay un cambio demasiado grande puede mantenerse funcionando ambas apis y conservar compatibilidad.
 
+4. Debajo de la carpeta `routes`, completa la siguiente estructura:
+
+routes/
+
+anunciantes.js
+
+index.js
+
+solicitudes.js
+
+usuarios.js
+
+mascotas.js
 
 ![img/Screen_Shot_2020-06-03_at_22.41.30.png](img/Screen_Shot_2020-06-03_at_22.41.30.png)
 
