@@ -4,7 +4,7 @@
 
 - Desarrollar una API REST con endpoints para crear, leer, actualizar y eliminar datos por medio de Express y NodeJS. 
 
-## Endpoints
+## Rutas y Controladores
 
 - [`Ejemplo 1: Rutas en una API`](Ejemplo-01/)
 - [`Reto 01: Crear rutas para mascotas`](Reto-01/#reto-1)

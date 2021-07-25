@@ -50,11 +50,11 @@ Las fases del diseño de bases de datos relacionales son: Análisis de requisito
 - [`Reto 01: Modelo Entidad Relación`](Reto-01/#reto-1)
 <!-- - [`Reto 02: Diseño de bases datos relacionales`](Reto-02/#reto-2) -->
 
-### Queries
+<!-- ### Queries
 
 - [`Ejemplo 3 - Ejecutando Queries`](Ejemplo-03/)
 - [`Reto 02: Creación de la base de datos en SQL para Adoptapet.`](Reto-03/#reto-3)
-
+ -->
 <!-- ### Creación de bases de datos.
 
 - [`Reto 04: Creación de la base de datos en SQL para Adoptapet.`](Reto-04/#reto-4)
