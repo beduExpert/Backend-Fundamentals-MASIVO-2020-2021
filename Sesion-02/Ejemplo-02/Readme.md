@@ -176,7 +176,7 @@ Para cada petición se espera una única respuesta y todas las peticiones deben 
 ```javascript
 const goods = [
   { name: 'Zeus' }, 
-  { name: 'Ades' }, 
+  { name: 'Hades' }, 
   { name: 'Hermes' }
 ];
 app.get('/goods', (req, res, next) => {
@@ -189,6 +189,8 @@ En el código anterior estamos enviando como respuesta un arreglo que tiene los 
 Cuando se haga una petición `GET` a la ruta `/goods` Express buscara todas las definiciones de `app.get()` hasta encontrar una que haga match con la ruta `/goods` y cuando la encuentre ejecutará el callback definido.
 
 5. Prueba la petición que acabamos de definir usando Insomnia.
+
+AQUI VA UN SS DE INSOMNIA CON LA PETICION
 
 
     

@@ -2,7 +2,7 @@
 	
 ## Reto 2
 
-1. Siguiendo las instrucciones del ejemplo anterior, configura e inicializa tu servidor local.
+1. Algo de contruir otras peticiones GET.
 
 
 [`Atrás`](../Ejemplo-02) | [`Siguiente`](../Ejemplo-03)
