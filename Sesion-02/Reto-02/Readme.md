@@ -1,6 +1,6 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 02`](../README.md) > `Reto 3`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 02`](../README.md) > `Reto 2`
 	
-## Reto 3
+## Reto 2
 
 <!-- 1. Ahora crea los controladores para las mascotas con una estructura CRUD similar a la anterior. Para esto dentro del archivo `controllers/mascotas.js`, define las funciones:
 
@@ -21,4 +21,4 @@ ALGO DE HACER MAS SERVICIOS CON RUTAS DINAMICAS Y ENVIAR CODIGOS ESPECIFICOS.
 
 ![image](https://antonioperez.pro/wp-content/uploads/2017/12/crud-rails-1.png)
 
-[`Atrás`](../Ejemplo-02) | [`Siguiente`](../Ejemplo-03`)
+[`Atrás`](../Ejemplo-02) | [`Siguiente`](../Ejemplo-03)
