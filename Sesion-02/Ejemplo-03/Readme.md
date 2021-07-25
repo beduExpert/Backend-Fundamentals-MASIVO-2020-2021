@@ -68,7 +68,7 @@ localhost:4001/goods/Zeus?live=Underworld&symbol=eagle
 
 Para acceder a la *query string* desde el servicio se utiliza el atributo `req.query` que nos regresa un objeto con la información recibida, en el ejemplo anterior el objeto sería:
 
-```json
+```javascript
 {
   live : 'Underworld',
   symbol : 'eagle'
