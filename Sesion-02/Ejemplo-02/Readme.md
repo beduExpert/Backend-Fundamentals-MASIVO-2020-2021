@@ -115,14 +115,14 @@ adoptapet-api/
 
 Por ahora nos concentraremos en el archivo `app.js` mas adelante (en la siguiente sesión) entenderemos a que corresponde cada directorio.
 
-1. Express es un módulo de Node, así que es necesario importarlo para poder utilizarlo. Una vez importado creamos una instancia de aplicación de express al cual llamaremos `app`.
+2. Express es un módulo de Node, así que es necesario importarlo para poder utilizarlo. Una vez importado creamos una instancia de aplicación de express al cual llamaremos `app`.
 
 ```javascript
 const express = require('express');
 const app = express();
 ```
 
-1. Con la aplicación que creamos podemos iniciar un servidor que se encargará de escuchar las peticiones que se hagan a nuestra API y responderlas, pero para esto tenemos que indicarle *en dónde escuchar* peticiones dándole un puerto especifico. Para esto contamos con el método `listen()`.
+3. Con la aplicación que creamos podemos iniciar un servidor que se encargará de escuchar las peticiones que se hagan a nuestra API y responderlas, pero para esto tenemos que indicarle *en dónde escuchar* peticiones dándole un puerto especifico. Para esto contamos con el método `listen()`.
 
 ```javascript
 const PORT = 4001;
@@ -138,7 +138,7 @@ como primer parámetro de `listen()` le pasamos el puerto que va a estar escucha
 app.use(express.static('public'));
 ``` -->
 
-1. Y ahora ... ¿Cómo sabe el servidor como atender las peticiones? Para indicarle al servidor como reaccionar a cada petición se definen una serie de rutas. La respuesta de nuestro servidor dependerá de la ruta a la que se hace la petición y el método HTTP (`GET`, `POST`, etc.) que utiliza. La ruta es parte de la url de petición y va después del *hostname*. La url completa tiene la siguiente estructura:
+4. Y ahora ... ¿Cómo sabe el servidor como atender las peticiones? Para indicarle al servidor como reaccionar a cada petición se definen una serie de rutas. La respuesta de nuestro servidor dependerá de la ruta a la que se hace la petición y el método HTTP (`GET`, `POST`, etc.) que utiliza. La ruta es parte de la url de petición y va después del *hostname*. La url completa tiene la siguiente estructura:
 
 ```
 <dirección del servidor>:<número de puerto>/<ruta de petición>
@@ -188,7 +188,7 @@ En el código anterior estamos enviando como respuesta un arreglo que tiene los 
 
 Cuando se haga una petición `GET` a la ruta `/goods` Express buscara todas las definiciones de `app.get()` hasta encontrar una que haga match con la ruta `/goods` y cuando la encuentre ejecutará el callback definido.
 
-1. Prueba la petición que acabamos de definir usando Insomnia.
+5. Prueba la petición que acabamos de definir usando Insomnia.
 
 
     
