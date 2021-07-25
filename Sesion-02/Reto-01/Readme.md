@@ -5,4 +5,4 @@
 1. Algo de contruir otras peticiones GET.
 
 
-[`Atrás`](../Ejemplo-02) | [`Siguiente`](../Ejemplo-03)
+[`Atrás`](../Ejemplo-01) | [`Siguiente`](../Ejemplo-02)

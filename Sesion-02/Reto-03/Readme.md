@@ -9,11 +9,8 @@
 - `modificarMascota` que simula un usuario y luego lo modifica según la petición.
 - `eliminarMascota` que regresa un código de éxito simulando la eliminación de un usuario. -->
 
-ALGO DE HACER MAS SERVICIOS CON RUTAS DINAMICAS Y ENVIAR CODIGOS ESPECIFICOS.
+COMPLETAR UN CRUD O ALGO
 
-
-> **NOTA 💡**
-> Observemos que `obtenerMascotas` nos regresa *todas* las mascotas, ¿cómo modificarías esta función para que regrese sólo una? ¿necesitarías información adicional en la request?
 
 
 

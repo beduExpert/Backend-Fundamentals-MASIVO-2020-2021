@@ -1,6 +1,6 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 02`](../README.md) > `Ejemplo 2`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 02`](../README.md) > `Ejemplo 1`
 
-# Ejemplo 2
+# Ejemplo 1
 
 ## Objetivo
 
@@ -147,20 +147,20 @@ app.use(express.static('public'));
 Por ejemplo, para nuestra aplicación sería
 
 ```
-localhost:400/goods
+localhost:400/gods
 ```
 
-En donde `goods` es la ruta de petición. Como desarrolladoras y desarrolladores de la API es nuestra tarea decirle al servidor como debe responder en cada una de las rutas. Para esto Express tiene métodos definidos para cada uno de las peticiones HTTP, por ejemplo, si la petición es un GET, usamos el método `app.get()` que funciona de la siguiente forma:
+En donde `gods` es la ruta de petición. Como desarrolladoras y desarrolladores de la API es nuestra tarea decirle al servidor como debe responder en cada una de las rutas. Para esto Express tiene métodos definidos para cada uno de las peticiones HTTP, por ejemplo, si la petición es un GET, usamos el método `app.get()` que funciona de la siguiente forma:
 
 ```javascript
-app.get('/goods', (req, res, next) => {
+app.get('/gods', (req, res, next) => {
   // Aquí construimos y enviamos la respuesta 
 });
 ```
 
 Analicemos los parámetros:
 
-- `'/goods'` es la ruta de petición que estamos definiendo
+- `'/gods'` es la ruta de petición que estamos definiendo
 - `(req, res, next) => {...}` es el callback que define el comportamiento. En el callback `req` representa la petición hecha (*request*) mientras que `res` es la respuesta que eventualmente se tiene que enviar.
 
 Si no está definida la ruta sobre la cual se hace la petición, Express enviará un código 404 como respuesta.
@@ -174,19 +174,19 @@ Para cada petición se espera una única respuesta y todas las peticiones deben 
 <!-- The client is like a customer at a restaurant ordering a large bowl of soup: the request is sent through the wait staff, the kitchen prepares the soup, and after is it prepared, the wait staff returns it to the customer. In the restaurant, it would be unfortunate if the soup never arrived back to the customer, but it would be equally problematic if the customer was given four large bowls of soup and was asked to consume them all at the exact same time. That’s impossible with only two hands! -->
 
 ```javascript
-const goods = [
+const gods = [
   { name: 'Zeus' }, 
   { name: 'Hades' }, 
   { name: 'Hermes' }
 ];
-app.get('/goods', (req, res, next) => {
-  res.send(goods);
+app.get('/gods', (req, res, next) => {
+  res.send(gods);
 });
 ```
 
 En el código anterior estamos enviando como respuesta un arreglo que tiene los nombres de los dioses.
 
-Cuando se haga una petición `GET` a la ruta `/goods` Express buscara todas las definiciones de `app.get()` hasta encontrar una que haga match con la ruta `/goods` y cuando la encuentre ejecutará el callback definido.
+Cuando se haga una petición `GET` a la ruta `/gods` Express buscara todas las definiciones de `app.get()` hasta encontrar una que haga match con la ruta `/gods` y cuando la encuentre ejecutará el callback definido.
 
 5. Prueba la petición que acabamos de definir usando Insomnia.
 
@@ -194,4 +194,4 @@ AQUI VA UN SS DE INSOMNIA CON LA PETICION
 
 
     
-[`Atrás`](../README.md) | [`Siguiente`](../Reto-02)
+[`Atrás`](../README.md) | [`Siguiente`](../Reto-01)

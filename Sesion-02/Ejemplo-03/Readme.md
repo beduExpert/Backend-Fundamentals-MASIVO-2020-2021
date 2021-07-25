@@ -12,44 +12,9 @@ Se recomienda tener NodeJS LTS instalado y funcionando correctamente. También e
 
 ## Desarrollo
 
-### Recibiendo Parámetros
+### CRUD
 
-1. Las rutas también pueden utilizarse de forma dinámica, esto se puede lograr en Express con los *route parameters*, estos son segmentos de la ruta de petición y se definen en la API comenzando con `:` en la definición de la ruta. Por ejemplo `/goods/:id`, esta ruta va a hacer match con la petición sobre `goods/6` y también con `goods/456`.
-
-Express extrae los valores de los parámetros para que podamos usarlos en la definición del servicio.
-
-```javascript
-const goods = { 
-  Zeus: { live: 'Olympus', symbol: 'Thunderbolt' }, 
-  Hades : { live : 'Underworld', symbol: 'Cornucopia' } 
-};
-
-app.get('/goods/:name', (req, res, next) => {
-  res.send(goods[req.params.name]);
-});
-```
-
-en el código anterior `req.params.name` guarda el valor del parámetro `name` enviado en la ruta de la petición. Y la petición `GET` sobre la ruta `/goods/Zeus` va a regresar `{ live: 'Olympus', symbol: 'Thunderbolt' }`.
-
-
-2. Recordemos que todas las respuestas de un servidor tienen un código HTTP asociada que describe la ejecución. Hasta ahora Express se ha encargado de definir el código de respuesta por nosotros, pero también podemos decirle explícitamente cuál queremos enviar. Para eso existe el método `.status()` del objeto `res` (*response*). Por ejemplo, podemos enviar un código 404 si nos piden un dios que no tenemos registrado, entonces nuestro servicio se define como sigue:
-
-```javascript
-app.get('/goods/:name', (req, res, next) => {
-  const good = goods[req.params.name];
-  if (good) {
-    res.send(good);
-  } else {
-    res.status(404).send('Good Not Found');
-  }
-});
-```
-
-3. Prueba estos servicios en Insomnia.
-
-SS DE INSOMNIA
-
-4. En el ejemplo anterior dijimos que para que nuestra API fuera REST era necesario que tuviera el CRUD completo y hasta ahora solo hemos trabajado con `GET`. Así como existe `.get()` Express tiene un método para cada petición de HTTP que funcionan de la misma forma.
+1. En el primer ejemplo dijimos que para que nuestra API fuera REST era necesario que tuviera el CRUD completo y hasta ahora solo hemos trabajado con `GET`. Así como existe `.get()` Express tiene un método para cada petición de HTTP que funcionan de la misma forma.
 
 |   | HTTP   | Express   |
 |---|--------|-----------|
@@ -60,21 +25,45 @@ SS DE INSOMNIA
 
 El funcionamiento del servicio dependerá del tipo de petición, pero todos estos métodos funcionan como ya vimos, recibiendo una ruta y un *callback* que define como reaccionar. También en cada caso debe regresarse una respuesta y un código HTTP.
 
-4. Otra forma de pasarle información al servicio directamente en la url de petición es mediante *query strings*, éstas aparecen al final de la url y se indican con un signo `?` y se separan por un `&`. Por ejemplo 
-
-```
-localhost:4001/goods/Zeus?live=Underworld&symbol=eagle
-```
-
-Para acceder a la *query string* desde el servicio se utiliza el atributo `req.query` que nos regresa un objeto con la información recibida, en el ejemplo anterior el objeto sería:
+2. El servicio para modificar los dioses griegos que tenemos guardados seria:
 
 ```javascript
-{
-  live : 'Underworld',
-  symbol : 'eagle'
-}
+app.put('/gods/:name', (req,res,next) => {
+  const god = req.query;
+  gods[req.params.name] = god
+  res.send(god);
+})
 ```
 
+En este servicio suponemos que los nuevos valores nos los pasan como *query string* y el nombre del dios es parte de la ruta dinámica.
+
+3. Para agregar un nuevo dios definimos el siguiente servicio:
+
+```javascript
+app.post('/gods', (req, res, next) => {
+  const newGod = req.body;
+  gods.push(newGod);
+  res.status(200).send(newGod);
+})
+```
+
+Para este servicio la información del dios que crearemos viene en el `body` de la petición
+
+4. Por último definimos el servicio que elimina un dios.
+
+```javascript
+app.delete('/goods/:name', (req, res, next) =>{
+  const name = req.params.name;
+  deleteByKey(gods, name);
+  res.sed('God deleted.')
+})
+```
+
+Este servicio en especial no hace nada, pues no tenemos persistencia de datos, eso lo corregiremos en un par de sesiones.
+
+5. Prueba todos estos servicios en insomnia. 
+
+SS DE INSOMNIA
 
  
 [`Atrás`](../Reto-02) | [`Siguiente`](../Reto-03)

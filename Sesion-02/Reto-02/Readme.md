@@ -12,13 +12,13 @@
 ALGO DE HACER MAS SERVICIOS CON RUTAS DINAMICAS Y ENVIAR CODIGOS ESPECIFICOS.
 
 
-> **NOTA 💡**
+<!-- > **NOTA 💡**
 > Observemos que `obtenerMascotas` nos regresa *todas* las mascotas, ¿cómo modificarías esta función para que regrese sólo una? ¿necesitarías información adicional en la request?
 
 
-
+ -->
 
 
 ![image](https://antonioperez.pro/wp-content/uploads/2017/12/crud-rails-1.png)
 
-[`Atrás`](../Ejemplo-03) | [`Siguiente`](../README.md)
+[`Atrás`](../Ejemplo-02) | [`Siguiente`](../Ejemplo-03`)
