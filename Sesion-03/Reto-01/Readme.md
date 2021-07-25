@@ -1,10 +1,13 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 04: API`](../README.md) >[`Ejemplo-03`](../Ejemplo-03) > `Reto 3`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 03`](../README.md) > > `Reto 2`
 	
-## Reto 3
+### Reto 1
 
-Crear la estructura de ruteo para las mascotas  de manera similar a lo que hicimos con el archivo `routes/usuarios.js`
+Define las 3 clases restantes en javascript para representar nuestros modelos. Recuerda preguntarte para cada clase
 
-- Crea la estructura de rutas para el archivo `routes/mascotas.js`
-- No olvides importar cada router y declarar la ruta donde se ejecutará en el archivo `routes/index.js`
+- **¿Qué propiedades necesito guardar en el sistema?** 
 
-[`Atrás: Ejemplo 03`](../Ejemplo-03) | [`Siguiente: Reto 04`](../Reto-04)
+- **¿Que funciones y atributos son necesarios para cumplir con mis historias de usuario?**
+
+<img src="https://user-images.githubusercontent.com/13757596/87735418-138baa80-c79b-11ea-9824-1690872acd64.png" width="600">
+
+[`Atrás`](../Ejemplo-01) | [`Siguiente`](../README.md)

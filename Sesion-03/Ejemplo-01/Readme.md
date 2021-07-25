@@ -1,139 +1,109 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 04: API`](../README.md) > `Ejemplo 3`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 03`](../README.md) > `Ejemplo 1`
 
-# Ejemplo 3
+# Modelo Vista Controlador
 
 ## Objetivo
 
-Comprender el concepto de rutas en nuestra API y la mejor manera de establecerlas para acceder a recursos.
+Entender la arquitectura Modelo Vista Controlador y su utilidad en la etapa de diseño de una aplicación.
 
 ## Requerimientos
 
-Se recomienda tener NodeJS LTS y ExpressJS.
+Computadora y cuaderno para tomar notas. Estar familiarizado con el concepto de Programación Orientada a Objetos.
 
 ## Desarrollo
 
-### Configurando las rutas de nuestra API
+Una de las maneras para bajar nuestras ideas y comenzar a diseñar la arquitectura de nuestra solución de software es por medio del patrón MVC *(Model View Controller)* 
 
-### Creando la estructura de un CRUD
+### ¿Qué es MVC?
 
-En los siguientes pasos crearemos el **esqueleto** de nuestra API para el recurso `usuarios`, declarando las rutas para crear, obtener, actualizar y eliminar usuarios (CRUD).
+Es un patrón de diseño que separa las partes de nuestra aplicación en tres elementos.
 
-Los siguientes *endpoints* estarán siendo importados en el archivo `index.js` y bajo la ruta `v1/usuarios` de nuestra api.
+- **Modelo:** Contiene una representación de los datos que maneja el sistema, su lógica de negocio, y sus mecanismos de persistencia.
+- **Vista:**  Compone y presenta la información que se envía al cliente y los mecanismos interacción con éste por medio de una interfaz de usuario.
+- **Controlador:** Actúa como un intermediario entre el Modelo y la Vista, gestionando el flujo de información entre ellos y las transformaciones para adaptar los datos a las necesidades de cada uno.
 
-1. Debajo de la carpeta `routes`, completa la siguiente estructura:
+<img src="https://designlopers.com/views/assets/post/Desarrollo_de_aplicaciones_profesionales_en_PHP_y_MVC.png" width="550">
 
-```
-routes/
-├── anunciantes.js
-├── index.js
-├── solicitudes.js
-├── usuarios.js
-└── mascotas.js
-``` 
+### Flujo MVC
 
+MVC es un estilo de arquitectura que nos sirve para abstraer el funcionamiento de nuestra aplicación y separar las partes referentes al negocio de la lógica. Actualmente existen varios frameworks que han adaptado este estilo a su manera y que nos ayudan a no perder tiempo y comenzar a desarrollar con reglas preestablecidas. Algunos de estos frameworks son:
 
-2. En el archivo `usuarios.js`, agrega la siguiente estructura:
+- SailJS o Express para NodeJS.
+- Django si lo tuyo es Python.
+- Ruby on Rails para el lenguaje de programación Ruby.
+- Laravel si lo tuyo es PHP.
 
-```jsx
-// Estructura del CRUD
-const router = require('express').Router();
-const {
-  crearUsuario,
-  obtenerUsuarios,
-  modificarUsuario,
-  eliminarUsuario
-} = require('../controllers/usuarios')
+Los cuales nos permiten entregarle al usuario las vistas (documentos HTML, CSS y Javascript) desde el servidor.
 
-router.get('/', obtenerUsuarios)
-router.post('/', crearUsuario)
-router.put('/:id', modificarUsuario)
-router.delete('/:id', eliminarUsuario)
+MVC también ha sido adaptado para utilizarse en frontend y en Android.
 
-module.exports = router;
-```
+### Modelo: Utilizando Programación Orientada a Objetos
 
-- Lo que aquí sucedió es que hemos externalizado el código de nuestro router a funciones independientes en nuestra carpeta de controladores.
+Continuando con AdoptaPet, podemos identificar cuatro entidades principales:
 
-- Aunque para este caso en particular podríamos seguir trabajando con la lógica de cada *endpoint* dentro del archivo `routes/usuarios.js` cuando los proyectos van creciendo, es conveniente modularizar nuestro código, y una manera de hacerlo es externalizando funciones en los controladores.
-Para hacer peticiones en una ruta (endpoint) en específico, debemos establecer una estructura específica.
+1. Mascota: Se refiere al animalito que los administradores registran y que los usuarios pueden adoptar.
+2. Usuario: hay dos tipos de usuarios de nuestra aplicación, el tipo normal que busca adoptar una mascota y el tipo anunciante que puede ser el cuidador de la mascota o del centro de adopción. Se encarga de registrar a las mascotas y de contactarse con los usuarios cuando estos envían una solicitud, así como de aprobarla y rechazarla.
+3. Solicitud: Una solicitud puede ser creada por un usuario para ponerse en contacto con el administrador y adoptar a una mascota. 
 
-- Para esto utilizaremos el Router que nos provee la biblioteca Express.
-
-3. Dentro del archivo `index.js` agregamos el siguiente código:
+Estos cuatro elementos serán nuestros modelos. Utilizando programación orientada a objetos podemos crear una [clase](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Classes) para cada uno y así posteriormente el usuario podrá utilizar estos modelos creando instancias y obteniéndolas. 
 
 ```jsx
-// importamos las dependencias necesarias
-var router = require('express').Router();
+// Mascota.js
 
-// definimos el comportamiento en la raíz del endpoint
-router.get('/', (req, res)=>{
-  res.send('welcome to adoptapet api');
-});
-
-// exportamos nuestro nuevo router
-module.exports = router;
-```
-La sintaxis `(req, res) => { ... }` representa una función que será ejecutada cuando llegue alguna petición en las direcciones URI que especificamos, también se le puede llamar ***handler*** o ***callback***. 
-
-4. Ahora modificaremos nuestro archivo `app.js` para agregar esta ruta:
-
-```jsx
-var express = require('express'),
-    bodyParser = require('body-parser'),
-    cors = require('cors');
-
-// Objeto global de la app
-var app = express();
-
-// Configuración de middlewares
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-**// Agregamos el código de nuestro router (routes/index.js)
-app.use('/v1', require('./routes'));**
-
-// Interceptando los errores 404
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-// Iniciando el servidor...
-var server = app.listen(process.env.PORT || 3000, function(){
-  console.log('Escuchando en el puerto ' + server.address().port);
-});
+/** Clase que representa un animalito a adoptar */
+class Mascota{
+	constructor(nombre, categoria, fotos, descripcion, anunciante, ubicacion){
+		this.nombre = nombre; // nombre de la mascota (o titulo del anuncio)
+		this.categoria = categoria; // perro | gato | otro
+		this.fotos = fotos; // links a las fotografías
+		this.descripcion = descripcion; // descripción del anuncio
+		this.anunciante = anunciante; // contacto con la persona que anuncia al animalito
+		this.ubicacion = ubicacion; // muy importante
+	}
+	
+	guardar(){
+		// función para guardar un nuevo registro en la base de datos.
+	}
+	
+}
 ```
 
-Al hacer una petición a esta ruta podremos ver que nos está devolviendo información sobre la versión uno de nuestra API.
-
-![img/Screen_Shot_2020-05-28_at_18.59.55.png](img/Screen_Shot_2020-05-28_at_18.59.55.png)
-
-Es una buena práctica colocar la versión de nuestra app como una ruta principal, ya que así en un futuro si hay un cambio demasiado grande puede mantenerse funcionando ambas apis y conservar compatibilidad.
+>💡**NOTA:**
+>
+>Este código nos va a permitir instanciar nuevos objetos, pero para que esta información persista debemos guardarla en una base de datos, algo que veremos en las sesiones posteriores.
 
 
-![img/Screen_Shot_2020-06-03_at_22.41.30.png](img/Screen_Shot_2020-06-03_at_22.41.30.png)
 
-5. En el archivo `index.js` añadiremos lo siguiente
+### Vista
 
-```jsx
-var router = require('express').Router();
+Cuando iniciamos un proyecto desde cero, es recomendable  diseñar y documentar nuestras vistas por medio de bocetos de las interfaces necesarias para un primer prototipo ***(wireframes)***. Este tarea es común que sea encomendada a el equipo de desarrollo y diseño en conjunto, si es que se cuenta con uno.
 
-router.get('/', (req, res)=>{
-  res.send('welcome to adoptapet api');
-})
+Los [wireframes](https://www.lucidchart.com/pages/es/que-es-un-wireframe-para-un-sitio-web) se catalogan en tres o cuatro tipos, los cuales van desde lo más básico y de baja calidad hasta lo más detallado y con interacciones prediseñadas.
 
-router.use('/usuarios', require('./usuarios'));
+<img src="https://github.com/beduExpert/A2-Backend-Fundamentals-2020/blob/master/Sesion-03/Ejemplo-03/img/wireframes.png?raw=true" width="700">
 
-/* con el método use de nuestro router estamos indicando 
-* que en la ruta 'v1/usuarios' estarán anidadas las rutas 
-* que vamos a crear en nuestro archivo usuarios.js,
-* la función require está importando este archivo */
+Hablando estrictamente de la implementación en código, es posible entregar todas las vistas desde el backend por medio de funciones que generen y devuelvan al usuario un documento html o también ayudándonos de un motor de plantillas.
 
-module.exports = router;
-```
+Si por ejemplo, tenemos un servidor con las mismas características que el de la sesión pasada (ubuntu ejecutando Apache), podríamos configurar el lenguaje de programación PHP, crear nuestros modelos, controladores y generar de manera dinámica nuestras vistas, creando así nuestro propia implementación de MVC, o también podemos utilizar el framework Laravel para seguir el patrón MVC utilizando PHP y no *reinventar la rueda*.
 
-No olvides guardar, revisar que tu servidor se haya actualizado y esté corriendo.
+Actualmente es muy común que los *frontend developers* se encarguen de la responsabilidad de programar las vistas, esto de alguna manera nos hace replantearnos la arquitectura MVC y comenzar a utilizar arquitecturas mas complejas pero que nos den ventajas a la hora de trabajar en equipo.
 
-[`Atrás: Reto 02`](../Reto-02) | [`Siguiente: Reto 03`](../Reto-03)
+### Controlador
+
+El controlador establece la comunicación entre el cliente y nuestro servidor. Aquí es común encontrarnos con el patrón CRUD para permitirle al cliente realizar operaciones básicas con nuestros modelos. Estas operaciones son:
+
+**C - Create (crear)**
+
+**R - Read (leer)**
+
+**U - Update (actualizar)**
+
+**D - Delete (eliminar)**
+
+Para la finalidad de este curso asumiremos que AdoptaPet contará con una arquitectura cliente-servidor y con equipos independientes de frontend y backend.
+Para que el sistema que desarrolle frontend se comunique con nuestro backend crearemos una *"interfaz"* o API en la siguiente sesión.
+
+
+-------
+
+[`Atrás`](../README.md) | [`Siguiente`](../Reto-01)
