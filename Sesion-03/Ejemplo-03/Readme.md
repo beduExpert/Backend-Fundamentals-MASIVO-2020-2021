@@ -2,8 +2,6 @@
 
 # Ejemplo 3
 
-# Ejemplo 3
-
 ## Objetivo
 
 Comprender el concepto de rutas en nuestra API y la mejor manera de establecerlas para acceder a recursos.
@@ -136,4 +134,4 @@ module.exports = router;
 
 No olvides guardar, revisar que tu servidor se haya actualizado y esté corriendo.
 
-[`Atrás`](../Reto-03) | [`Siguiente`](../README.md)
+[`Atrás`](../Reto-02) | [`Siguiente`](../Reto-03)

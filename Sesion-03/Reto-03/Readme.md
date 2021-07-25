@@ -1,4 +1,4 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 03`](../README.md) > > `Reto 3`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 03`](../README.md) > `Reto 3`
 
 ## Reto 3
 
@@ -15,4 +15,4 @@ Analiza las respuestas y qué es lo que sucede en cada caso.
 Repite el proceso con solicitudes.
 
 
-[`Atrás: Reto 03`](../Reto-03) | [`Siguiente: Sesión 04`](../README.md)
+[`Atrás`](../Ejemplo-03) | [`Siguiente`](../README.md)

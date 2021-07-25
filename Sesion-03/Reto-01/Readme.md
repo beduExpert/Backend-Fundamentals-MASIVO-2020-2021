@@ -10,4 +10,4 @@ Define las 3 clases restantes en javascript para representar nuestros modelos. R
 
 <img src="https://user-images.githubusercontent.com/13757596/87735418-138baa80-c79b-11ea-9824-1690872acd64.png" width="600">
 
-[`Atrás`](../Ejemplo-01) | [`Siguiente`](../README.md)
+[`Atrás`](../Ejemplo-01) | [`Siguiente`](../Ejemplo-02)
