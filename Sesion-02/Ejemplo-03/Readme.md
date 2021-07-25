@@ -48,5 +48,33 @@ app.get('/goods/:name', (req, res, next) => {
 3. Prueba estos servicios en Insomnia.
 
 SS DE INSOMNIA
+
+4. En el ejemplo anterior dijimos que para que nuestra API fuera REST era necesario que tuviera el CRUD completo y hasta ahora solo hemos trabajado con `GET`. Así como existe `.get()` Express tiene un método para cada petición de HTTP que funcionan de la misma forma.
+
+|   | HTTP   | Express   |
+|---|--------|-----------|
+| C | `POST`   | `.post()`   |
+| R | `GET`    | `.get()`    |
+| U | `PUT`    | `.put()`    |
+| D | `DELETE` | `.delete(`) |
+
+El funcionamiento del servicio dependerá del tipo de petición, pero todos estos métodos funcionan como ya vimos, recibiendo una ruta y un *callback* que define como reaccionar. También en cada caso debe regresarse una respuesta y un código HTTP.
+
+4. Otra forma de pasarle información al servicio directamente en la url de petición es mediante *query strings*, éstas aparecen al final de la url y se indican con un signo `?` y se separan por un `&`. Por ejemplo 
+
+```
+localhost:4001/goods/Zeus?live=Underworld&symbol=eagle
+```
+
+Para acceder a la *query string* desde el servicio se utiliza el atributo `req.query` que nos regresa un objeto con la información recibida, en el ejemplo anterior el objeto sería:
+
+```json
+{
+  live : 'Underworld',
+  symbol : 'eagle'
+}
+```
+
+
  
 [`Atrás`](../Reto-02) | [`Siguiente`](../Reto-03)
