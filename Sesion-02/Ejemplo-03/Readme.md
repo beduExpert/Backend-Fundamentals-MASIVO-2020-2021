@@ -44,5 +44,9 @@ app.get('/goods/:name', (req, res, next) => {
   }
 });
 ```
+
+3. Prueba estos servicios en Insomnia.
+
+SS DE INSOMNIA
  
 [`Atrás`](../Reto-02) | [`Siguiente`](../Reto-03)
