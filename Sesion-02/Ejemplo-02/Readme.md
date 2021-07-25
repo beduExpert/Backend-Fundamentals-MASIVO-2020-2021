@@ -1,197 +1,72 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 02`](../README.md) > `Ejemplo 2`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 02`](../README.md) > `Ejemplo 3`
 
-# Ejemplo 2
+# Ejemplo 3
 
 ## Objetivo
 
-Repasar los fundamentos de una API REST y configurar nuestro entorno para comenzar a desarrollar una API con NodeJS y Express.
+Entender los objetos de petición y respuesta que nos provee ExpressJS y cómo utilizarlos para agregar funcionalidad a nuestra API.
 
 ## Requerimientos
 
-Se recomienda tener NodeJS LTS instalado y funcionando correctamente. También es recomendable estar familiarizado con Javascript.
+Se recomienda tener NodeJS LTS instalado y funcionando correctamente. También es recomendable estar familiarizado con Javascript y programación orientada a objetos.
 
 ## Desarrollo
 
-### ¿Qué es una API REST?
+### Recibiendo Parámetros
 
-Cuando se habla de REST API, significa utilizar una API para acceder a aplicaciones backend, de manera que esa comunicación se realice con los estandares definidos por el estilo de arquitectura REST.
+1. Las rutas también pueden utilizarse de forma dinámica, esto se puede lograr en Express con los *route parameters*, estos son segmentos de la ruta de petición y se definen en la API comenzando con `:` en la definición de la ruta. Por ejemplo `/goods/:id`, esta ruta va a hacer match con la petición sobre `goods/6` y también con `goods/456`.
 
-REST es un acrónimo para **RE**presentational **S**tate **T**ransfer, fue pensada para sistemas dedicados a la distribución de *hypermedia*. En REST se siguen los siguientes principios:
-
-- Arquitectura cliente/servidor sin estado, es decir, no se almacena la información de las solicitudes, cada solicitud es independiente.
-- Una interfaz uniforme entre los elementos, para que la información se transfiera de forma estandarizada.
-- Acciones concretas (POST, GET, PUT y DELETE) para la transferencia de datos.
-- Uso de formatos de transferencia para la comunicación. Para este caso en específico utilizaremos JSON como el formato para enviar respuestas y recibir peticiones de objetos. Se puede usar también XLT ó HTML
-- Un sistema en capas que organiza en jerarquías invisibles para el cliente y cada uno de los servidores  que participan en la recuperación de la información solicitada.
-
-Si bien parece una arquitectura muy restrictiva, esto sirve para que su uso sea mas sencillo. 
-
-Es importante señalar que REST es un conjunto de normas que se pueden implementar a necesidad de la aplicación. 
-
-<!-- 
-PREWORK
-
-## Preparando nuestro entorno de desarrollo
-
-1. Si aún no tienes NodeJS debes descargarlo desde su [sitio oficial](https://nodejs.org/en/download/) e instalarlo
-
-1. Crearemos una nueva carpeta llamada `adoptapet-api` con la siguiente estructura:
-
-```
-adoptapet-api/
-├── config/
-├── models/
-├── controllers/
-├── routes/
-└── app.js
-``` 
-
-1. Nos posicionaremos en esa carpeta e iniciaremos un nuevo proyecto con el comando `npm init -y`
-1. Ejecutaremos el siguiente código 
-
-    ```bash
-    npm install express body-parser cors
-    ```
-Express.js es un framework de Node para desarrollo backend.
-1. Instalar nodemon de manera global
-
-    ```bash
-    npm install -g nodemon
-    ```
-
-    Nodemon nos servirá para agilizar el desarrollo, ya que recarga nuestro server de manera automática, de esta manera no tendremos que reiniciar el servidor manualmente cada que  realicemos cambios.
-
-    Nota: Si tienes problemas con permisos de instalación, intenta ejecutando el comando con `sudo`
-
-1. Agregar la siguientes dos líneas dentro del objeto "scripts" del archivo `package.json`:
-
-    ```bash
-    "start": "node ./app.js",
-    "dev": "nodemon ./app.js",
-    ```
-
-Le indica a npm de que forma debe ejecutar nuestro programa. De esta forma le indicamos que debe usar nodemon para ejecutarlo en el modo de desarrollo.
-1. Verifica que tu archivo `package.json` luzca similar a esto:
-
-    ```json
-    {
-      "name": "adoptapet-api",
-      "version": "1.0.0",
-      "description": "",
-      "main": "index.js",
-      "scripts": {
-        "start": "node ./app.js",
-        "dev": "nodemon ./app.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-      },
-      "keywords": [],
-      "author": "",
-      "license": "ISC",
-      "dependencies": {
-        "body-parser": "^1.19.0",
-        "cors": "^2.8.5",
-        "express": "^4.17.1"
-      }
-    }
-    ```
-
-    Aquí estarán instaladas las dependencias de nuestro proyecto. 
-
-Express is a powerful but flexible Javascript framework for creating web servers and APIs. It can be used for everything from simple static file servers to JSON APIs to full production servers.
-
--->
-## Definiendo nuestra API con ExpressJS
-
-1. Para este ejemplo utilizaremos el proyecto que crearon en su prework, el cual tiene la siguiente estructura:
-
-```
-adoptapet-api/
-├── config/
-├── models/
-├── controllers/
-├── routes/
-└── app.js
-```
-
-Por ahora nos concentraremos en el archivo `app.js` mas adelante (en la siguiente sesión) entenderemos a que corresponde cada directorio.
-
-2. Express es un módulo de Node, así que es necesario importarlo para poder utilizarlo. Una vez importado creamos una instancia de aplicación de express al cual llamaremos `app`.
+Express extrae los valores de los parámetros para que podamos usarlos en la definición del servicio.
 
 ```javascript
-const express = require('express');
-const app = express();
-```
+const goods = { 
+  Zeus: { live: 'Olympus', symbol: 'Thunderbolt' }, 
+  Hades : { live : 'Underworld', symbol: 'Cornucopia' } 
+};
 
-3. Con la aplicación que creamos podemos iniciar un servidor que se encargará de escuchar las peticiones que se hagan a nuestra API y responderlas, pero para esto tenemos que indicarle *en dónde escuchar* peticiones dándole un puerto especifico. Para esto contamos con el método `listen()`.
-
-```javascript
-const PORT = 4001;
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
+app.get('/goods/:name', (req, res, next) => {
+  res.send(goods[req.params.name]);
 });
 ```
 
-como primer parámetro de `listen()` le pasamos el puerto que va a estar escuchando y como segundo un `callback` que se ejecuta una vez que el servidor está corriendo y listo para recibir peticiones.
+en el código anterior `req.params.name` guarda el valor del parámetro `name` enviado en la ruta de la petición. Y la petición `GET` sobre la ruta `/goods/Zeus` va a regresar `{ live: 'Olympus', symbol: 'Thunderbolt' }`.
 
-<!-- 1. 
-```javascript
-app.use(express.static('public'));
-``` -->
 
-4. Y ahora ... ¿Cómo sabe el servidor como atender las peticiones? Para indicarle al servidor como reaccionar a cada petición se definen una serie de rutas. La respuesta de nuestro servidor dependerá de la ruta a la que se hace la petición y el método HTTP (`GET`, `POST`, etc.) que utiliza. La ruta es parte de la url de petición y va después del *hostname*. La url completa tiene la siguiente estructura:
-
-```
-<dirección del servidor>:<número de puerto>/<ruta de petición>
-```
-
-Por ejemplo, para nuestra aplicación sería
-
-```
-localhost:400/goods
-```
-
-En donde `goods` es la ruta de petición. Como desarrolladoras y desarrolladores de la API es nuestra tarea decirle al servidor como debe responder en cada una de las rutas. Para esto Express tiene métodos definidos para cada uno de las peticiones HTTP, por ejemplo, si la petición es un GET, usamos el método `app.get()` que funciona de la siguiente forma:
+2. Recordemos que todas las respuestas de un servidor tienen un código HTTP asociada que describe la ejecución. Hasta ahora Express se ha encargado de definir el código de respuesta por nosotros, pero también podemos decirle explícitamente cuál queremos enviar. Para eso existe el método `.status()` del objeto `res` (*response*). Por ejemplo, podemos enviar un código 404 si nos piden un dios que no tenemos registrado, entonces nuestro servicio se define como sigue:
 
 ```javascript
-app.get('/goods', (req, res, next) => {
-  // Aquí construimos y enviamos la respuesta 
+app.get('/goods/:name', (req, res, next) => {
+  const good = goods[req.params.name];
+  if (good) {
+    res.send(good);
+  } else {
+    res.status(404).send('Good Not Found');
+  }
 });
 ```
 
-Analicemos los parámetros:
+3. Prueba estos servicios en Insomnia.
 
-- `'/goods'` es la ruta de petición que estamos definiendo
-- `(req, res, next) => {...}` es el callback que define el comportamiento. En el callback `req` representa la petición hecha (*request*) mientras que `res` es la respuesta que eventualmente se tiene que enviar.
+SS DE INSOMNIA
 
-Si no está definida la ruta sobre la cual se hace la petición, Express enviará un código 404 como respuesta.
 
-1. Para definir el comportamiento del servidor bajo cierta ruta tenemos que construir la respuesta y enviarla al cliente. 
+4. Otra forma de pasarle información al servicio directamente en la url de petición es mediante *query strings*, éstas aparecen al final de la url y se indican con un signo `?` y se separan por un `&`. Por ejemplo 
 
-Para cada petición se espera una única respuesta y todas las peticiones deben ser respondidas. Recordemos que `res` modela la respuesta del servidor, y  tiene un método `.send()` que se encarga de enviarla.
-
-> Nota: Seguir con el ejemplo del restaurante, enviando sopas.
-
-<!-- The client is like a customer at a restaurant ordering a large bowl of soup: the request is sent through the wait staff, the kitchen prepares the soup, and after is it prepared, the wait staff returns it to the customer. In the restaurant, it would be unfortunate if the soup never arrived back to the customer, but it would be equally problematic if the customer was given four large bowls of soup and was asked to consume them all at the exact same time. That’s impossible with only two hands! -->
-
-```javascript
-const goods = [
-  { name: 'Zeus' }, 
-  { name: 'Hades' }, 
-  { name: 'Hermes' }
-];
-app.get('/goods', (req, res, next) => {
-  res.send(goods);
-});
+```
+localhost:4001/goods/Zeus?live=Underworld&symbol=eagle
 ```
 
-En el código anterior estamos enviando como respuesta un arreglo que tiene los nombres de los dioses.
+Para acceder a la *query string* desde el servicio se utiliza el atributo `req.query` que nos regresa un objeto con la información recibida, en el ejemplo anterior el objeto sería:
 
-Cuando se haga una petición `GET` a la ruta `/goods` Express buscara todas las definiciones de `app.get()` hasta encontrar una que haga match con la ruta `/goods` y cuando la encuentre ejecutará el callback definido.
+```javascript
+{
+  live : 'Underworld',
+  symbol : 'eagle'
+}
+```
 
-5. Prueba la petición que acabamos de definir usando Insomnia.
+5. También podemos recibir información en el cuerpo de la petición, ésta es la forma mas segura de transferir información pues no viene directamente en la url sino que viene como parte de la petición. En este caso es el cliente el encargado de generar este cuerpo cuando hace su petición y para acceder a ella usamos el atributo `req.body`.
 
-AQUI VA UN SS DE INSOMNIA CON LA PETICION
-
-
-    
-[`Atrás`](../README.md) | [`Siguiente`](../Reto-02)
+En la primera sesión del módulo vimos como definir el body directamente en psotman. ENLACE AL EJEMPLO EN DONDE SE VE ESO.
+ 
+[`Atrás`](../Reto-02) | [`Siguiente`](../Reto-03)

@@ -12,12 +12,6 @@ En esencia, el middleware es la conexión que existe entre el lado del cliente (
 
 El middleware debe proveer una interfaz de comunicación que se adapte tanto a las necesidades del cliente como las del servidor por lo que debe ser muy flexible. 
 
-## Modelo Vista controlador
-
-El modelo vista controlador es un patrón de diseño de aplicaciones muy útil para modularizar los componentes de una aplicación (Frontend, middleware y backend) haciendo a cada uno independiente del resto para simplificar el desarrollo autónomo de cada uno. 
-
-- [`Ejemplo 1: Modelo Vista Controlador`](Ejemplo-01/)
-- [`Reto 01:  Clases en JavaScript`](Reto-01/#reto-1)
 
 ## 🎡 API 
 
@@ -46,21 +40,20 @@ Toda esta interacción entre aplicaciones, datos y dispositivos de diferentes or
 
 ### REST API 
 
-- [`Ejemplo 2: Fundamentos de una API REST`](Ejemplo-02/)
-- [`Reto 02:  Inicializando el servidor`](Reto-02/#reto-2)
+- [`Ejemplo 1`](Ejemplo-01/)
+- [`Reto 01`](Reto-01/#reto-1)
 
-### Peticiones y respuestas
+### Obteniendo Información 
 
-- [`Ejemplo 3: Objetos de petición y respuesta de ExpressJS`](Ejemplo-03/)
-- [`Reto 03: Creación de un CRUD para las mascotas`](Reto-03/#reto-3)
+- [`Ejemplo 2`](Ejemplo-02/)
+- [`Reto 02`](Reto-02/#reto-2)
 
-<!-- ### Rutas y controladores
+### CRUD
 
-- [`Ejemplo 3: Rutas en una API`](Ejemplo-04/)
-- [`Reto 03: Crear rutas para mascotas `](Reto-04/#reto-4)
-- [`Reto 04: Ejecutar peticiones de  un CRUD con insomnia o postman`](Reto-05/#reto-5)
+- [`Ejemplo 3`](Ejemplo-03/)
+- [`Reto 03`](Reto-03/#reto-3)
 
- -->
+
 ## 🛡 Postwork
 
 **Objetivo:**

@@ -1,109 +1,197 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 02`](../README.md) > `Ejemplo 1`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 02`](../README.md) > `Ejemplo 2`
 
-# Modelo Vista Controlador
+# Ejemplo 2
 
 ## Objetivo
 
-Entender la arquitectura Modelo Vista Controlador y su utilidad en la etapa de diseño de una aplicación.
+Repasar los fundamentos de una API REST y configurar nuestro entorno para comenzar a desarrollar una API con NodeJS y Express.
 
 ## Requerimientos
 
-Computadora y cuaderno para tomar notas. Estar familiarizado con el concepto de Programación Orientada a Objetos.
+Se recomienda tener NodeJS LTS instalado y funcionando correctamente. También es recomendable estar familiarizado con Javascript.
 
 ## Desarrollo
 
-Una de las maneras para bajar nuestras ideas y comenzar a diseñar la arquitectura de nuestra solución de software es por medio del patrón MVC *(Model View Controller)* 
+### ¿Qué es una API REST?
 
-### ¿Qué es MVC?
+Cuando se habla de REST API, significa utilizar una API para acceder a aplicaciones backend, de manera que esa comunicación se realice con los estandares definidos por el estilo de arquitectura REST.
 
-Es un patrón de diseño que separa las partes de nuestra aplicación en tres elementos.
+REST es un acrónimo para **RE**presentational **S**tate **T**ransfer, fue pensada para sistemas dedicados a la distribución de *hypermedia*. En REST se siguen los siguientes principios:
 
-- **Modelo:** Contiene una representación de los datos que maneja el sistema, su lógica de negocio, y sus mecanismos de persistencia.
-- **Vista:**  Compone y presenta la información que se envía al cliente y los mecanismos interacción con éste por medio de una interfaz de usuario.
-- **Controlador:** Actúa como un intermediario entre el Modelo y la Vista, gestionando el flujo de información entre ellos y las transformaciones para adaptar los datos a las necesidades de cada uno.
+- Arquitectura cliente/servidor sin estado, es decir, no se almacena la información de las solicitudes, cada solicitud es independiente.
+- Una interfaz uniforme entre los elementos, para que la información se transfiera de forma estandarizada.
+- Acciones concretas (POST, GET, PUT y DELETE) para la transferencia de datos.
+- Uso de formatos de transferencia para la comunicación. Para este caso en específico utilizaremos JSON como el formato para enviar respuestas y recibir peticiones de objetos. Se puede usar también XLT ó HTML
+- Un sistema en capas que organiza en jerarquías invisibles para el cliente y cada uno de los servidores  que participan en la recuperación de la información solicitada.
 
-<img src="https://designlopers.com/views/assets/post/Desarrollo_de_aplicaciones_profesionales_en_PHP_y_MVC.png" width="550">
+Si bien parece una arquitectura muy restrictiva, esto sirve para que su uso sea mas sencillo. 
 
-### Flujo MVC
+Es importante señalar que REST es un conjunto de normas que se pueden implementar a necesidad de la aplicación. 
 
-MVC es un estilo de arquitectura que nos sirve para abstraer el funcionamiento de nuestra aplicación y separar las partes referentes al negocio de la lógica. Actualmente existen varios frameworks que han adaptado este estilo a su manera y que nos ayudan a no perder tiempo y comenzar a desarrollar con reglas preestablecidas. Algunos de estos frameworks son:
+<!-- 
+PREWORK
 
-- SailJS o Express para NodeJS.
-- Django si lo tuyo es Python.
-- Ruby on Rails para el lenguaje de programación Ruby.
-- Laravel si lo tuyo es PHP.
+## Preparando nuestro entorno de desarrollo
 
-Los cuales nos permiten entregarle al usuario las vistas (documentos HTML, CSS y Javascript) desde el servidor.
+1. Si aún no tienes NodeJS debes descargarlo desde su [sitio oficial](https://nodejs.org/en/download/) e instalarlo
 
-MVC también ha sido adaptado para utilizarse en frontend y en Android.
+1. Crearemos una nueva carpeta llamada `adoptapet-api` con la siguiente estructura:
 
-### Modelo: Utilizando Programación Orientada a Objetos
+```
+adoptapet-api/
+├── config/
+├── models/
+├── controllers/
+├── routes/
+└── app.js
+``` 
 
-Continuando con AdoptaPet, podemos identificar cuatro entidades principales:
+1. Nos posicionaremos en esa carpeta e iniciaremos un nuevo proyecto con el comando `npm init -y`
+1. Ejecutaremos el siguiente código 
 
-1. Mascota: Se refiere al animalito que los administradores registran y que los usuarios pueden adoptar.
-2. Usuario: hay dos tipos de usuarios de nuestra aplicación, el tipo normal que busca adoptar una mascota y el tipo anunciante que puede ser el cuidador de la mascota o del centro de adopción. Se encarga de registrar a las mascotas y de contactarse con los usuarios cuando estos envían una solicitud, así como de aprobarla y rechazarla.
-3. Solicitud: Una solicitud puede ser creada por un usuario para ponerse en contacto con el administrador y adoptar a una mascota. 
+    ```bash
+    npm install express body-parser cors
+    ```
+Express.js es un framework de Node para desarrollo backend.
+1. Instalar nodemon de manera global
 
-Estos cuatro elementos serán nuestros modelos. Utilizando programación orientada a objetos podemos crear una [clase](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Classes) para cada uno y así posteriormente el usuario podrá utilizar estos modelos creando instancias y obteniéndolas. 
+    ```bash
+    npm install -g nodemon
+    ```
 
-```jsx
-// Mascota.js
+    Nodemon nos servirá para agilizar el desarrollo, ya que recarga nuestro server de manera automática, de esta manera no tendremos que reiniciar el servidor manualmente cada que  realicemos cambios.
 
-/** Clase que representa un animalito a adoptar */
-class Mascota{
-	constructor(nombre, categoria, fotos, descripcion, anunciante, ubicacion){
-		this.nombre = nombre; // nombre de la mascota (o titulo del anuncio)
-		this.categoria = categoria; // perro | gato | otro
-		this.fotos = fotos; // links a las fotografías
-		this.descripcion = descripcion; // descripción del anuncio
-		this.anunciante = anunciante; // contacto con la persona que anuncia al animalito
-		this.ubicacion = ubicacion; // muy importante
-	}
-	
-	guardar(){
-		// función para guardar un nuevo registro en la base de datos.
-	}
-	
-}
+    Nota: Si tienes problemas con permisos de instalación, intenta ejecutando el comando con `sudo`
+
+1. Agregar la siguientes dos líneas dentro del objeto "scripts" del archivo `package.json`:
+
+    ```bash
+    "start": "node ./app.js",
+    "dev": "nodemon ./app.js",
+    ```
+
+Le indica a npm de que forma debe ejecutar nuestro programa. De esta forma le indicamos que debe usar nodemon para ejecutarlo en el modo de desarrollo.
+1. Verifica que tu archivo `package.json` luzca similar a esto:
+
+    ```json
+    {
+      "name": "adoptapet-api",
+      "version": "1.0.0",
+      "description": "",
+      "main": "index.js",
+      "scripts": {
+        "start": "node ./app.js",
+        "dev": "nodemon ./app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "keywords": [],
+      "author": "",
+      "license": "ISC",
+      "dependencies": {
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "express": "^4.17.1"
+      }
+    }
+    ```
+
+    Aquí estarán instaladas las dependencias de nuestro proyecto. 
+
+Express is a powerful but flexible Javascript framework for creating web servers and APIs. It can be used for everything from simple static file servers to JSON APIs to full production servers.
+
+-->
+## Definiendo nuestra API con ExpressJS
+
+1. Para este ejemplo utilizaremos el proyecto que crearon en su prework, el cual tiene la siguiente estructura:
+
+```
+adoptapet-api/
+├── config/
+├── models/
+├── controllers/
+├── routes/
+└── app.js
 ```
 
->💡**NOTA:**
->
->Este código nos va a permitir instanciar nuevos objetos, pero para que esta información persista debemos guardarla en una base de datos, algo que veremos en las sesiones posteriores.
+Por ahora nos concentraremos en el archivo `app.js` mas adelante (en la siguiente sesión) entenderemos a que corresponde cada directorio.
+
+2. Express es un módulo de Node, así que es necesario importarlo para poder utilizarlo. Una vez importado creamos una instancia de aplicación de express al cual llamaremos `app`.
+
+```javascript
+const express = require('express');
+const app = express();
+```
+
+3. Con la aplicación que creamos podemos iniciar un servidor que se encargará de escuchar las peticiones que se hagan a nuestra API y responderlas, pero para esto tenemos que indicarle *en dónde escuchar* peticiones dándole un puerto especifico. Para esto contamos con el método `listen()`.
+
+```javascript
+const PORT = 4001;
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+```
+
+como primer parámetro de `listen()` le pasamos el puerto que va a estar escuchando y como segundo un `callback` que se ejecuta una vez que el servidor está corriendo y listo para recibir peticiones.
+
+<!-- 1. 
+```javascript
+app.use(express.static('public'));
+``` -->
+
+4. Y ahora ... ¿Cómo sabe el servidor como atender las peticiones? Para indicarle al servidor como reaccionar a cada petición se definen una serie de rutas. La respuesta de nuestro servidor dependerá de la ruta a la que se hace la petición y el método HTTP (`GET`, `POST`, etc.) que utiliza. La ruta es parte de la url de petición y va después del *hostname*. La url completa tiene la siguiente estructura:
+
+```
+<dirección del servidor>:<número de puerto>/<ruta de petición>
+```
+
+Por ejemplo, para nuestra aplicación sería
+
+```
+localhost:400/goods
+```
+
+En donde `goods` es la ruta de petición. Como desarrolladoras y desarrolladores de la API es nuestra tarea decirle al servidor como debe responder en cada una de las rutas. Para esto Express tiene métodos definidos para cada uno de las peticiones HTTP, por ejemplo, si la petición es un GET, usamos el método `app.get()` que funciona de la siguiente forma:
+
+```javascript
+app.get('/goods', (req, res, next) => {
+  // Aquí construimos y enviamos la respuesta 
+});
+```
+
+Analicemos los parámetros:
+
+- `'/goods'` es la ruta de petición que estamos definiendo
+- `(req, res, next) => {...}` es el callback que define el comportamiento. En el callback `req` representa la petición hecha (*request*) mientras que `res` es la respuesta que eventualmente se tiene que enviar.
+
+Si no está definida la ruta sobre la cual se hace la petición, Express enviará un código 404 como respuesta.
+
+1. Para definir el comportamiento del servidor bajo cierta ruta tenemos que construir la respuesta y enviarla al cliente. 
+
+Para cada petición se espera una única respuesta y todas las peticiones deben ser respondidas. Recordemos que `res` modela la respuesta del servidor, y  tiene un método `.send()` que se encarga de enviarla.
+
+> Nota: Seguir con el ejemplo del restaurante, enviando sopas.
+
+<!-- The client is like a customer at a restaurant ordering a large bowl of soup: the request is sent through the wait staff, the kitchen prepares the soup, and after is it prepared, the wait staff returns it to the customer. In the restaurant, it would be unfortunate if the soup never arrived back to the customer, but it would be equally problematic if the customer was given four large bowls of soup and was asked to consume them all at the exact same time. That’s impossible with only two hands! -->
+
+```javascript
+const goods = [
+  { name: 'Zeus' }, 
+  { name: 'Hades' }, 
+  { name: 'Hermes' }
+];
+app.get('/goods', (req, res, next) => {
+  res.send(goods);
+});
+```
+
+En el código anterior estamos enviando como respuesta un arreglo que tiene los nombres de los dioses.
+
+Cuando se haga una petición `GET` a la ruta `/goods` Express buscara todas las definiciones de `app.get()` hasta encontrar una que haga match con la ruta `/goods` y cuando la encuentre ejecutará el callback definido.
+
+5. Prueba la petición que acabamos de definir usando Insomnia.
+
+AQUI VA UN SS DE INSOMNIA CON LA PETICION
 
 
-
-### Vista
-
-Cuando iniciamos un proyecto desde cero, es recomendable  diseñar y documentar nuestras vistas por medio de bocetos de las interfaces necesarias para un primer prototipo ***(wireframes)***. Este tarea es común que sea encomendada a el equipo de desarrollo y diseño en conjunto, si es que se cuenta con uno.
-
-Los [wireframes](https://www.lucidchart.com/pages/es/que-es-un-wireframe-para-un-sitio-web) se catalogan en tres o cuatro tipos, los cuales van desde lo más básico y de baja calidad hasta lo más detallado y con interacciones prediseñadas.
-
-<img src="https://github.com/beduExpert/A2-Backend-Fundamentals-2020/blob/master/Sesion-03/Ejemplo-03/img/wireframes.png?raw=true" width="700">
-
-Hablando estrictamente de la implementación en código, es posible entregar todas las vistas desde el backend por medio de funciones que generen y devuelvan al usuario un documento html o también ayudándonos de un motor de plantillas.
-
-Si por ejemplo, tenemos un servidor con las mismas características que el de la sesión pasada (ubuntu ejecutando Apache), podríamos configurar el lenguaje de programación PHP, crear nuestros modelos, controladores y generar de manera dinámica nuestras vistas, creando así nuestro propia implementación de MVC, o también podemos utilizar el framework Laravel para seguir el patrón MVC utilizando PHP y no *reinventar la rueda*.
-
-Actualmente es muy común que los *frontend developers* se encarguen de la responsabilidad de programar las vistas, esto de alguna manera nos hace replantearnos la arquitectura MVC y comenzar a utilizar arquitecturas mas complejas pero que nos den ventajas a la hora de trabajar en equipo.
-
-### Controlador
-
-El controlador establece la comunicación entre el cliente y nuestro servidor. Aquí es común encontrarnos con el patrón CRUD para permitirle al cliente realizar operaciones básicas con nuestros modelos. Estas operaciones son:
-
-**C - Create (crear)**
-
-**R - Read (leer)**
-
-**U - Update (actualizar)**
-
-**D - Delete (eliminar)**
-
-Para la finalidad de este curso asumiremos que AdoptaPet contará con una arquitectura cliente-servidor y con equipos independientes de frontend y backend.
-Para que el sistema que desarrolle frontend se comunique con nuestro backend crearemos una *"interfaz"* o API en la siguiente sesión.
-
-
--------
-
-[`Atrás`](../README.md) | [`Siguiente`](../Reto-01)
+    
+[`Atrás`](../README.md) | [`Siguiente`](../Reto-02)
