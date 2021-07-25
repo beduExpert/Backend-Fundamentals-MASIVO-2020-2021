@@ -47,7 +47,7 @@ app.get('/gods/:name', (req, res, next) => {
 
 3. Prueba estos servicios en Insomnia.
 
-SS DE INSOMNIA
+<!-- SS DE INSOMNIA -->
 
 
 4. Otra forma de pasarle información al servicio directamente en la url de petición es mediante *query strings*, éstas aparecen al final de la url y se indican con un signo `?` y se separan por un `&`. Por ejemplo 

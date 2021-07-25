@@ -190,7 +190,7 @@ Cuando se haga una petición `GET` a la ruta `/gods` Express buscara todas las d
 
 5. Prueba la petición que acabamos de definir usando Insomnia.
 
-AQUI VA UN SS DE INSOMNIA CON LA PETICION
+<!-- AQUI VA UN SS DE INSOMNIA CON LA PETICION -->
 
 
     

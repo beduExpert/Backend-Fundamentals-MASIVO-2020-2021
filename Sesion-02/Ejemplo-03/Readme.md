@@ -63,7 +63,7 @@ Este servicio en especial no hace nada, pues no tenemos persistencia de datos, e
 
 5. Prueba todos estos servicios en insomnia. 
 
-SS DE INSOMNIA
+<!-- SS DE INSOMNIA -->
 
  
 [`Atrás`](../Reto-02) | [`Siguiente`](../Reto-03)
