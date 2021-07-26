@@ -54,12 +54,3 @@ Toda esta interacción entre aplicaciones, datos y dispositivos de diferentes or
 - [`Reto 03`](Reto-03/#reto-3)
 
 
-## 🛡 Postwork
-
-**Objetivo:**
-
-- Comprender los conceptos fundamentales de las técnicas para el manejo de sesiones y autenticación en una API.
-
-**Sesiones en una API**
-
-Recuerda que todo lo trabajado en tu prework, así como durante la sesión, puede ser aplicado a tu proyecto personal. Para lo cual, toma las siguientes consideraciones...[`leer mas`](Postwork/#postwork)

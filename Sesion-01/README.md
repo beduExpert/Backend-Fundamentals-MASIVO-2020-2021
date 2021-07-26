@@ -108,16 +108,4 @@ Posteriormente estas historias se traducen a funcionalidades de nuestro sistema.
 
 
 
-## 🛡 Postwork
-
-**Objetivo**
-
-- Entender las ventajas de una arquitectura basada en microservicios.
-- Familiarizarse con Docker
-- Descargar e instalar imagenes de docker y utilizarlas
-
-**Arquitectura de Microservicios**
-
-Recuerda que todo lo trabajado en tu prework, así como durante la sesión, puede ser aplicado a tu proyecto personal; Para lo cual, toma las siguientes consideraciones...[`leer mas`](Postwork/#postwork---arquitectura-de-microservicios)
-
 

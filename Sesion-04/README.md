@@ -59,12 +59,3 @@ Las fases del diseño de bases de datos relacionales son: Análisis de requisito
 
 - [`Reto 04: Creación de la base de datos en SQL para Adoptapet.`](Reto-04/#reto-4)
  -->
-## 🛡 Postwork
-
-**Objetivo:**
-
-- Reflexionar sobre el alcance de las bases de datos relacionales y la importancia de su implementación.
-
-**Funciones y Procedimientos Almacenados**
-
-Recuerda que todo lo trabajado en tu prework, así como durante la sesión, puede ser aplicado a tu proyecto personal. Para lo cual, toma las siguientes consideraciones...[`leer mas`](Postwork/#postwork)
