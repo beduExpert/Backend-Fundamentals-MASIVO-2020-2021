@@ -56,7 +56,7 @@ MongoBD es un gestor de bases de datos no relacionales basada en documentos. Uti
 
 - [`Ejemplo 1: Creando un cluster en MongoDB Atlas`](Ejemplo-01/#ejercicio-1)
 
-##### <ins>Operaciones con bases de datos</ins>
+#### <ins>Operaciones con bases de datos</ins>
 <img src="imagenes/imagen5.png" align="right" height="200" width="300">
 
 Una vez configurado el *cluster* a partir de __MongoDB Atlas__, podemos conectarnos a través de __MongoDB Compass__ y por lo tanto podremos crear bases de datos desde aquí.
@@ -68,7 +68,7 @@ Por cierto, __MongoDB Compass__ no es el único cliente de __MongoDB__, también
 - [`Ejemplo 2: Creando bases de datos`](Ejemplo-02/Readme.md)
 - [`Reto 1: Creando bases de datos`](Reto-01/Readme.md)
 
-##### <ins>Operaciones con bases de datos</ins>
+#### <ins>Operaciones con bases de datos</ins>
 <img src="imagenes/imagen5.png" align="right" height="200" width="300">
 
 Una vez configurado el *cluster* a partir de __MongoDB Atlas__, podemos conectarnos a través de __MongoDB Compass__ y por lo tanto podremos crear bases de datos desde aquí.
@@ -80,7 +80,7 @@ Por cierto, __MongoDB Compass__ no es el único cliente de __MongoDB__, también
 - [`Ejemplo 3: Poblando la base de datos`](Ejemplo-03/Readme.md)
 - [`Reto 2: Cargando sample datasets`](Reto-02/Readme.md)
 
-#### <ins>Colecciones, Documentos y Proyecciones</ins>
+### <ins>Colecciones, Documentos y Proyecciones</ins>
 <img src="imagenes/imagen2.jpg" align="right" height="200" width="300">
 
 En __MongoDB__ los datos son almacenados en *colecciones* que incluyen documentos. Estos documentos se representan usando el formato de intercambio de información __JSON__. El formato __JSON__ se conforma de un conjunto de elementos de la forma *clave-valor* separados por comas y delmitados por llaves. Los tipos de datos de __JSON__ son:

@@ -11,7 +11,7 @@ Es importante que hayas cargado los **sample datasets** al final de la sesión a
 
 ## Desarrollo
 
-#### <ins>Filtros básicos</ins>
+### <ins>Filtros básicos</ins>
 <img src="imagenes/imagen3.png" align="right" height="200" width="300">
 
 Al igual que con las proyecciones, los filtros se construyen usando __JSON__. En su forma más básica se debe escribir el nombre del campo, dos puntos y el valor que queremos filtrar. Existen varias funciones que se pueden combinar con los filtros y las iremos estudiando a lo largo del módulo.
@@ -23,7 +23,7 @@ Al igual que con las proyecciones, los filtros se construyen usando __JSON__. En
 - [`Ejemplo 1: Filtros básicos`](Ejemplo-01/Readme.md)
 - [`Reto 1: Las primeras consultas`](Reto-01/Readme.md)
 
-#### <ins>Expresiones regulares</ins>
+### <ins>Expresiones regulares</ins>
 <img src="imagenes/imagen1.jpg" align="right" height="200" width="300">
 
 Las expresiones regulares permiten reconocer patrones en un texto, de forma similar a como lo hacía la cláusula `LIKE` en __SQL__, mediante el reconocimiento de distintos patrones.
@@ -33,7 +33,7 @@ Existen distintos estándares que los lenguajes de programación y sistemas gest
 - [`Ejemplo 2`](Ejemplo-02/Readme.md)
 - [`Reto 2`](Reto-02/Readme.md)	
 
-#### <ins>Notación punto y arreglos</ins>
+### <ins>Notación punto y arreglos</ins>
 <img src="imagenes/imagen2.png" align="right" height="200" width="200">
 
 La notación punto es ampliamente usada en los lenguajes de programación orientados a objetos y permite acceder a los atributos de los mismos. Por ejemplo, si tenemos un objeto persona, usando la notación punto, podemos acceder a su nombre, edad, peso, etc.
