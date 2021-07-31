@@ -56,6 +56,8 @@ MongoBD es un gestor de bases de datos no relacionales basada en documentos. Uti
 
 - [`Ejemplo 1: Creando un cluster en MongoDB Atlas`](Ejemplo-01/#ejercicio-1)
 
+---
+
 ### <ins>Operaciones con bases de datos</ins>
 <img src="imagenes/imagen5.png" align="right" height="200" width="300">
 
@@ -68,17 +70,17 @@ Por cierto, __MongoDB Compass__ no es el único cliente de __MongoDB__, también
 - [`Ejemplo 2: Creando bases de datos`](Ejemplo-02/Readme.md)
 - [`Reto 1: Creando bases de datos`](Reto-01/Readme.md)
 
-### <ins>Operaciones con bases de datos</ins>
-<img src="imagenes/imagen5.png" align="right" height="200" width="300">
+---
 
-Una vez configurado el *cluster* a partir de __MongoDB Atlas__, podemos conectarnos a través de __MongoDB Compass__ y por lo tanto podremos crear bases de datos desde aquí.
+##### <ins>Realizando operaciones con Colecciones e importando datos</ins>
+<img src="imagenes/imagen6.png" align="right" height="100" width="300">
 
-Lo único que solicita __MongoDB Compass__, a través de una interfaz gráfica, es el nombre de la base de datos.
-
-Por cierto, __MongoDB Compass__ no es el único cliente de __MongoDB__, también existen otras herramientas como __Robo 3T__ o el *shell* de __MongoDB__.
+Al igual que en __MySQL__ es posible cargar los datos usando formatos de intercambio de información como son __CSV__ o __JSON__. En el caso de __JSON__ se debe separar cada documento por comas.
 
 - [`Ejemplo 3: Poblando la base de datos`](Ejemplo-03/Readme.md)
 - [`Reto 2: Cargando sample datasets`](Reto-02/Readme.md)
+
+---
 
 ### <ins>Colecciones, Documentos y Proyecciones</ins>
 <img src="imagenes/imagen2.jpg" align="right" height="200" width="300">
@@ -96,7 +98,7 @@ Para realizar consultas u otras operaciones en __MongoDB__ debe usarse este form
 - `{campo: 0}`
 - `{campo: 1}`
 
-- [**`EJEMPLO 4`**](Ejemplo-04/Readme.md)
-- [**`RETO 3`**](Reto-03/Readme.md) 
+- [`Ejemplo 4: Entendiendo la estructura de los datos`](Ejemplo-04/Readme.md)
+- [`Reto 3: Entendiendo la estructura de los datos`](Reto-03/Readme.md) 
 
 

@@ -23,6 +23,8 @@ Al igual que con las proyecciones, los filtros se construyen usando __JSON__. En
 - [`Ejemplo 1: Filtros básicos`](Ejemplo-01/Readme.md)
 - [`Reto 1: Las primeras consultas`](Reto-01/Readme.md)
 
+---
+
 ### <ins>Expresiones regulares</ins>
 <img src="imagenes/imagen1.jpg" align="right" height="200" width="300">
 
@@ -32,6 +34,8 @@ Existen distintos estándares que los lenguajes de programación y sistemas gest
 
 - [`Ejemplo 2`](Ejemplo-02/Readme.md)
 - [`Reto 2`](Reto-02/Readme.md)	
+
+---
 
 ### <ins>Notación punto y arreglos</ins>
 <img src="imagenes/imagen2.png" align="right" height="200" width="200">
