@@ -26,36 +26,77 @@ Son programas que funcionan como interfaz entre lxs usuarixs y las bases de dato
 
 En otras palabras, es un software mediante el cual nosotrxs como usuarixs podemos acceder a la base de daos y hacer consultas, manipular los datos, modificar el esquema y en general administrar la base de datos.   
 
-### MySQL
+## 🧮 Bases de datos no relacionales (NoSQL) 
 
-MySQL es un sistema para gestionar bases de datos relacionales con un modelo cliente-servidor que cuenta con una amplia popularidad.
+<img src="img/nosql.jpg.webp" align="right" height="200">
 
-Hay un gran debate sobre como se  pronuncia **MySQL**, algunas personas lo pronuncian como *MAI-ES-KIU-EL* mientras que otras usan *MAI-SI-KUEL*, ¿cuál es la correcta? 🤷. En el siguiente [artículo](https://learnsql.com/blog/sql-or-sequel) puedes encontrar un análisis detallado de ambas y elegir cual prefieres. 
+NoSQL es un enfoque de diseño de bases de datos que nos permite crear esquemas mas flexibles para el almacenamiento de datos en comparación con las tradicionales tablas de SQL. 
 
----
+Las bases de dato no relacionales fueron presentadas en 1998 por Carl Strozz, sin embargo ha sido recientemente que han adquirido mayor popularidad y esto se debe principalmente a que vivimos en una era de **Cloud**, **Big Data** y **web** con información difícil de estandarizar que debe viajar a gran velocidad. 
 
-## 🖍 Diseño de Bases de datos
+NoSQL significa *Not Only SQL*, no es nada en contra de SQL 😅. Esto es importante pues muchos modelos de bases de datos no relacionales soportan SQL. 
 
-Las fases del diseño de bases de datos relacionales son: Análisis de requisitos, diseño conceptual, elección de un SGBD, diseño lógico, diseño físico, uso y mantenimiento.
-     
-![de248-fasesdedisenobd (1)](https://user-images.githubusercontent.com/13757596/87999687-40083500-cac1-11ea-8afe-a065ecf15f09.png)
+## 🧵 Tipos de DB NoSQL
 
-### Instalación 
+- **De documentos** Se almacenan los datos en estructuras llamadas documentos, estos contienen casa atributo como pares de clave-valor.
 
-- [`Ejemplo 1 - Instalando MySQL`](Ejemplo-01/)
+- **De grafos**  se utilizan para almacenar información sobre redes de datos, como las conexiones sociales.
 
-### Modelando una Base de datos relacional
+- **De clave-valor** son las bases de datos NoSQL más simples. Cada elemento de la base de datos se almacena como un nombre de atributo junto con su valor.
 
-- [`Ejemplo 2 - Diagramas entidad relación y Modelo Relacional`](Ejemplo-02/)
-- [`Reto 01: Modelo Entidad Relación`](Reto-01/#reto-1)
-<!-- - [`Reto 02: Diseño de bases datos relacionales`](Reto-02/#reto-2) -->
+- **Orientadas a columnas** estas bases de datos permiten realizar consultas en grandes conjuntos de datos y almacenan los datos en columnas, en lugar de filas.
 
-<!-- ### Queries
+![](img/schemas.png)
 
-- [`Ejemplo 3 - Ejecutando Queries`](Ejemplo-03/)
-- [`Reto 02: Creación de la base de datos en SQL para Adoptapet.`](Reto-03/#reto-3)
- -->
-<!-- ### Creación de bases de datos.
+## 🍃 MongoDB 
 
-- [`Reto 04: Creación de la base de datos en SQL para Adoptapet.`](Reto-04/#reto-4)
- -->
+MongoBD es un gestor de bases de datos no relacionales basada en documentos. Utiliza sintaxis de JSON para modelar su esquema.
+
+### Clusters
+
+- [`Ejemplo 1: Creando un cluster en MongoDB Atlas`](Ejemplo-01/#ejercicio-1)
+
+##### <ins>Operaciones con bases de datos</ins>
+<img src="imagenes/imagen5.png" align="right" height="200" width="300">
+
+Una vez configurado el *cluster* a partir de __MongoDB Atlas__, podemos conectarnos a través de __MongoDB Compass__ y por lo tanto podremos crear bases de datos desde aquí.
+
+Lo único que solicita __MongoDB Compass__, a través de una interfaz gráfica, es el nombre de la base de datos.
+
+Por cierto, __MongoDB Compass__ no es el único cliente de __MongoDB__, también existen otras herramientas como __Robo 3T__ o el *shell* de __MongoDB__.
+
+- [`Ejemplo 2: Creando bases de datos`](Ejemplo-02/Readme.md)
+- [`Reto 1: Creando bases de datos`](Reto-01/Readme.md)
+
+##### <ins>Operaciones con bases de datos</ins>
+<img src="imagenes/imagen5.png" align="right" height="200" width="300">
+
+Una vez configurado el *cluster* a partir de __MongoDB Atlas__, podemos conectarnos a través de __MongoDB Compass__ y por lo tanto podremos crear bases de datos desde aquí.
+
+Lo único que solicita __MongoDB Compass__, a través de una interfaz gráfica, es el nombre de la base de datos.
+
+Por cierto, __MongoDB Compass__ no es el único cliente de __MongoDB__, también existen otras herramientas como __Robo 3T__ o el *shell* de __MongoDB__.
+
+- [`Ejemplo 3: Poblando la base de datos`](Ejemplo-03/Readme.md)
+- [`Reto 2: Cargando sample datasets`](Reto-02/Readme.md)
+
+#### <ins>Colecciones, Documentos y Proyecciones</ins>
+<img src="imagenes/imagen2.jpg" align="right" height="200" width="300">
+
+En __MongoDB__ los datos son almacenados en *colecciones* que incluyen documentos. Estos documentos se representan usando el formato de intercambio de información __JSON__. El formato __JSON__ se conforma de un conjunto de elementos de la forma *clave-valor* separados por comas y delmitados por llaves. Los tipos de datos de __JSON__ son:
+
+- Números
+- Booleanos
+- Cadenas
+- Arreglos
+- Objetos
+
+Para realizar consultas u otras operaciones en __MongoDB__ debe usarse este formato a manera de lenguaje (no es un lenguaje por sí mismo, pero lo usaremos como si lo fuera). En particular, para realizar proyecciones, se usa este formato. Debe indicarse el campo a proyectar y colocar un uno si queremos mostrarlo o cero en caso contrario.
+
+- `{campo: 0}`
+- `{campo: 1}`
+
+- [**`EJEMPLO 4`**](Ejemplo-04/Readme.md)
+- [**`RETO 3`**](Reto-03/Readme.md) 
+
+
