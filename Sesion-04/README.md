@@ -52,11 +52,11 @@ NoSQL significa *Not Only SQL*, no es nada en contra de SQL 😅. Esto es import
 
 MongoBD es un gestor de bases de datos no relacionales basada en documentos. Utiliza sintaxis de JSON para modelar su esquema.
 
-### Clusters
+### <ins>Clusters</ins>
 
 - [`Ejemplo 1: Creando un cluster en MongoDB Atlas`](Ejemplo-01/#ejercicio-1)
 
-#### <ins>Operaciones con bases de datos</ins>
+### <ins>Operaciones con bases de datos</ins>
 <img src="imagenes/imagen5.png" align="right" height="200" width="300">
 
 Una vez configurado el *cluster* a partir de __MongoDB Atlas__, podemos conectarnos a través de __MongoDB Compass__ y por lo tanto podremos crear bases de datos desde aquí.
@@ -68,7 +68,7 @@ Por cierto, __MongoDB Compass__ no es el único cliente de __MongoDB__, también
 - [`Ejemplo 2: Creando bases de datos`](Ejemplo-02/Readme.md)
 - [`Reto 1: Creando bases de datos`](Reto-01/Readme.md)
 
-#### <ins>Operaciones con bases de datos</ins>
+### <ins>Operaciones con bases de datos</ins>
 <img src="imagenes/imagen5.png" align="right" height="200" width="300">
 
 Una vez configurado el *cluster* a partir de __MongoDB Atlas__, podemos conectarnos a través de __MongoDB Compass__ y por lo tanto podremos crear bases de datos desde aquí.
