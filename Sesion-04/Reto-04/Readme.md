@@ -1,6 +1,6 @@
 [`Introducción a Bases de Datos`](../../README.md) > [`Sesión 05`](../Readme.md) > `Reto 1`
 	
-## Reto 1: Colecciones, Documentos y Proyecciones
+## Reto 4: Colecciones, Documentos y Proyecciones
 
 <div style="text-align: justify;">
 
@@ -22,6 +22,6 @@ Usando la base de datos `sample_mflix`, proyecta los datos que se solicitan.
 
 <br/>
 
-[`Anterior`](../Ejemplo-01/Readme.md) | [`Siguiente`](../Readme.md)
+[`Anterior`](../Ejemplo-05/Readme.md) | [`Siguiente`](../README.md)
 
 </div>

@@ -77,6 +77,6 @@
 
    ![imagen](imagenes/s5e23.png)
 
-[`Anterior`](../Readme.md) | [`Siguiente`](../Reto-02/Readme.md)
+[`Anterior`](../README.md) | [`Siguiente`](../Reto-03/Readme.md)
 
 </div>

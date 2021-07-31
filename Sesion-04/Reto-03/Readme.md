@@ -15,4 +15,4 @@ Creación de la base de datos en SQL para Adoptapet.
 CREATE TABLE *nombre_tabla*(*atributo1 tipo* [*restricción*], *atributo2...);*
 ```
 
-[`Atrás: Ejemplo 03`](../Ejemplo-03) | [`Siguiente: Sesión 05`](../README.md)
+[`Atrás`](../Ejemplo-04/Readme.md) | [`Siguiente: Sesión 05`](../README.md)

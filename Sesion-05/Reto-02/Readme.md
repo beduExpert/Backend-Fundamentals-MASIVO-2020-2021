@@ -1,6 +1,6 @@
 [`Introducción a Bases de Datos`](../../README.md) > [`Sesión 06`](../Readme.md) > `Reto 1`
 	
-## Reto 1: Expresiones regulares
+## Reto 2: Expresiones regulares
 
 <div style="text-align: justify;">
 
@@ -23,6 +23,6 @@ Usando la base de datos `sample_airbnblistingsAndReviews`, realiza los siguiente
 
 <br/>
 
-[`Anterior`](../Ejemplo-01/Readme.md) | [`Siguiente`](../Readme.md)
+[`Anterior`](../Ejemplo-02/Readme.md) | [`Siguiente`](../README.md)
 
 </div>

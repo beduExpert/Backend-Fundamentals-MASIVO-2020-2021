@@ -8,4 +8,4 @@
      
   ![de248-fasesdedisenobd (1)](https://user-images.githubusercontent.com/13757596/87999687-40083500-cac1-11ea-8afe-a065ecf15f09.png)
 
-[`Atrás: Reto 01`](../Reto-01) | [`Siguiente: Ejemplo 03`](../Ejemplo-03)
+[`Atrás`](../Ejemplo-03/Readme.md) | [`Siguiente`](../README.md)

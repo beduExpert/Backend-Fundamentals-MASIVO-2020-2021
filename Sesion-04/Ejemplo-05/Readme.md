@@ -54,6 +54,6 @@
 
 **¡Felicidades! Haz realizado tu primera consulta en una base de datos con MongoDB**
 
-[`Anterior`](../Readme.md) | [`Siguiente`](../Reto-01/Readme.md)
+[`Anterior`](../README.md) | [`Siguiente`](../Reto-04/Readme.md)
 
 </div>

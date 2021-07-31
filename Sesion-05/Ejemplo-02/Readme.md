@@ -67,6 +67,6 @@ En este ejemplo revisaremos el concepto de expresión regular. Éste es similar 
    
    ![imagen](imagenes/imagen5.png)  
 
-[`Anterior`](../Readme.md) | [`Siguiente`](../Reto-01/Readme.md)
+[`Anterior`](../README.md) | [`Siguiente`](../Reto-02/Readme.md)
 
 </div>

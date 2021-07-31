@@ -1,6 +1,6 @@
 [`Introducción a Bases de Datos`](../../README.md) > [`Sesión 06`](../Readme.md) > `Reto 2`
 	
-## Reto 2: Notación punto y arreglos
+## Reto 3: Notación punto y arreglos
 
 <div style="text-align: justify;">
 
@@ -18,6 +18,6 @@ Usando la colección `sample_airbnb.listingsAndReviews`, agrega un filtro que pe
 
 <br/>
 
-[`Anterior`](../Ejemplo-02/Readme.md) | [`Siguiente`](../Readme.md)
+[`Anterior`](../Ejemplo-03/Readme.md) | [`Siguiente`](../README.md)
 
 </div>

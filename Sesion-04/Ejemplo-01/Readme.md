@@ -78,4 +78,4 @@ docker exec -it mysql-db mysql -p
 
 
 
-[`Atrás: Sesión 05`](../README.md) | [`Siguiente: Ejemplo 02`](../Ejemplo-02)
+[`Atrás`](../README.md) | [`Siguiente`](../Ejemplo-02/Readme.md)

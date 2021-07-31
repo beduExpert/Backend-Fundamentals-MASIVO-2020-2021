@@ -1,6 +1,6 @@
 [`Introducción a Bases de Datos`](../../README.md) > [`Sesión 05`](../Readme.md) > `Reto 2`
 	
-## Reto 2: Filtros básicos
+## Reto 1: Filtros básicos
 
 <div style="text-align: justify;">
 
@@ -23,6 +23,6 @@ Usando la base de datos `sample_mflix`, agrega proyeccciones, filtros, ordenamie
 
 <br/>
 
-[`Anterior`](../Ejemplo-02/Readme.md) | [`Siguiente`](../Readme.md)
+[`Anterior`](../Ejemplo-01/Readme.md) | [`Siguiente`](../README.md)
 
 </div>

@@ -41,4 +41,4 @@
 
    Se trabajará con Colecciones en el siguiente ejemplo.
 
-[`Anterior`](../Readme.md) | [`Siguiente`](../Readme.md)      
+[`Anterior`](../README.md) | [`Siguiente`](../Reto-01/Readme.md)      

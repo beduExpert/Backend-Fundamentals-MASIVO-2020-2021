@@ -47,4 +47,4 @@ A diferencia de SQL, las Colecciones sólo se crean y no es necesario definir ca
    Otro forma de comprobar la correcta importación es la cantidad de documentos, y se observa que hay 6040 documentos (o registros) en la colección, lo que indica que todo está en orden.
 
 
-[`Anterior`](../Readme.md) | [`Siguiente`](../Reto-03/Readme.md)      
+[`Anterior`](../README.md) | [`Siguiente`](../Reto-02/Readme.md)      
