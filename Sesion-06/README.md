@@ -1,4 +1,4 @@
-# Sesión 7 - Mongoose
+# Sesión 6 - Mongoose
 
 🎯 **Objetivo:**
 
@@ -28,7 +28,7 @@ Pero si queremos facilitar el escribir las consultas, lo mejor es usar un **ORM*
 
 ### Instalación 
 
-- [`Ejemplo 1: Instalar Mongoose y crear nuestro primer modelo para integrar nuestra API`](Ejemplo-01/)
+- [`Ejemplo 1: crear nuestro primer modelo para integrar nuestra API`](Ejemplo-01/)
 - [`Reto 01: Probar los nuevos endpoints de la API`](Reto-01/#reto-1)
 
 ### Creando modelos y métodos

@@ -2,10 +2,12 @@
 	
   ### Reto 2
 
-  - Investiga a detalle las fases del diseño de bases datos relacionales y crea tu propio ejercicio, no olvides ponerle cierta complejidad.
+   Cuando el __Cluster__ ya está creado se observa la página como la siguiente:
 
-     💡 Las fases del diseño de bases de datos relacionales son: Análisis de requisitos, diseño conceptual, elección de un SGBD, diseño lógico, diseño físico, uso y mantenimiento.
-     
-  ![de248-fasesdedisenobd (1)](https://user-images.githubusercontent.com/13757596/87999687-40083500-cac1-11ea-8afe-a065ecf15f09.png)
+   ![Cluster creado](creando-cluster-02.png)
+
+   Abrimos las opciones del cluster dando click en el botón con 3 puntos. Y seleccionamos __Load Sample Dataset__ para que agregue al cluster algunas bases de datos de ejemplo.
+
+   ![Sample](4load.png)
 
 [`Atrás`](../Ejemplo-03/Readme.md) | [`Siguiente`](../README.md)
