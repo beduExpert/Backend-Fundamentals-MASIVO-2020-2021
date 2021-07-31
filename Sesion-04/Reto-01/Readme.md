@@ -1,17 +1,40 @@
-`Backend Fundamentals` > `S5 - Fundamentos de Base de Datos Relacionales(SQL)` 
-	
-  ### Reto 1
+[`Introducción a Bases de Datos`](../../README.md) > [`Sesión 04`](../Readme.md) > Reto 3
 
-  - Con los ejemplos anteriores construye el modelo ER de adoptapet
-  - Construye el modelo relacional conceptual de adoptapet. No olvides la cardinalidad en las relaciones, llaves primarias y foráneas.
-  Puedes basarte en el ejercicio visto en el ejemplo anterior
+## Reto 3: Realizando operaciones con Colecciones e importando datos
 
-#### Modelo ER
-  
-  <img width="694" alt="Screen_Shot_2020-07-16_at_20 00 08" src="https://user-images.githubusercontent.com/13757596/87999488-9d4fb680-cac0-11ea-8da3-28e61b92207d.png">
-  
-#### Modelo Relacional
+### 1. Objetivos :dart:
+- Que el alumno cuente con una Colección para importar datos
+- Que el alumno importe datos en formato CSV a una Colección
 
-<img width="671" alt="Screen_Shot_2020-07-16_at_20 20 08" src="https://user-images.githubusercontent.com/13757596/87999490-a17bd400-cac0-11ea-9e18-69c6008c3503.png">
+### 2. Requisitos :clipboard:
+1. MongoDB Compass instalado
+1. Datos de conexión al Servidor MongoDB
 
-[`Atrás: Ejemplo  02`](../Ejemplo-02) | [`Siguiente: Ejemplo 03`](../Ejemplo-03)
+### 3. Desarrollo :rocket:
+Se deberá de crear colecciones e importar los datos de los archivos `movies.csv` y `ratings.csv`.
+
+1. Crear la colección `movies`
+
+   ![Colección movies](imagenes/colecciones.png)
+
+1. Importar datos a la colección `movies` desde el archivo `movies.csv`
+
+   Para importar documentos, se usa la opción del menú `Collection > Import Data` que abre un diálogo para seleccionar del tipo de archivo CSV y el archivo mismo.
+
+   ![Importando datos csv](imagenes/importando-datos.png)
+
+   Validar que cada campo tenga nombre y que estén todos los campos, además valida la cantidad de documentos, que en este caso debería de ser 3883.
+
+1. Crear la colección `ratings`
+   ![Colección movies](imagenes/colecciones-02.png)
+
+   Seleccionar la colección y continuar.
+
+1. Importar datos a la colección `ratings` desde el archivo `ratings.csv`
+
+   Para importar usar la opción del menú `Collection > Import Data` que abre un diálogo para seleccionar del tipo de archivo CSV y el archivo mismo.
+
+   Validar que cada campo tenga nombre y que estén todos los campos, además valida la cantidad de documentos, que en este caso debería de ser 1000209 documentos.
+
+
+[`Anterior`](../Ejemplo-06/Readme.md) | [`Siguiente`](../Readme.md)

@@ -72,7 +72,7 @@ Por cierto, __MongoDB Compass__ no es el único cliente de __MongoDB__, también
 
 ---
 
-##### <ins>Realizando operaciones con Colecciones e importando datos</ins>
+### <ins>Realizando operaciones con Colecciones e importando datos</ins>
 <img src="imagenes/imagen6.png" align="right" height="100" width="300">
 
 Al igual que en __MySQL__ es posible cargar los datos usando formatos de intercambio de información como son __CSV__ o __JSON__. En el caso de __JSON__ se debe separar cada documento por comas.
@@ -82,6 +82,19 @@ Al igual que en __MySQL__ es posible cargar los datos usando formatos de interca
 
 ---
 
+### <ins>Realizando operaciones con Documentos</ins>
+<img src="imagenes/imagen7.jpg" align="right" height="200" width="300">
+
+Una vez creada una colección, ya sea mediante la carga masiva de datos o de forma vacía. Es posible modificar los documentos que se almacenan ahí. Es posible:
+
+1. Agregar documentos
+1. Editar documentos
+1. Eliminar documentos
+
+- [`Ejemplo 4: Documentos`](Ejemplo-04/Readme.md)
+
+
+---
 ### <ins>Colecciones, Documentos y Proyecciones</ins>
 <img src="imagenes/imagen2.jpg" align="right" height="200" width="300">
 
@@ -98,7 +111,7 @@ Para realizar consultas u otras operaciones en __MongoDB__ debe usarse este form
 - `{campo: 0}`
 - `{campo: 1}`
 
-- [`Ejemplo 4: Entendiendo la estructura de los datos`](Ejemplo-04/Readme.md)
-- [`Reto 3: Entendiendo la estructura de los datos`](Reto-03/Readme.md) 
+- [`Ejemplo 5: Entendiendo la estructura de los datos`](Ejemplo-05/Readme.md)
+- [`Reto 4: Entendiendo la estructura de los datos`](Reto-04/Readme.md) 
 
 

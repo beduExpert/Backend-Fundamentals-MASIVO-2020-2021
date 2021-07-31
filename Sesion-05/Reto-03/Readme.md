@@ -1,67 +1,23 @@
-`Backend Fundamentals` > `S6 - Fundamentos de Base de Datos NoSQL (Mongo)` 
+[`Introducción a Bases de Datos`](../../README.md) > [`Sesión 06`](../Readme.md) > `Reto 2`
 	
-## Reto 2
+## Reto 2: Notación punto y arreglos
 
+<div style="text-align: justify;">
 
-1. Investiga cuál es el tamaño máximo de un documento que se puede almacenar en MongoDB.
-2. Crea una base de datos para Adoptapet.
-3. Modela las entidades Mascota y Solicitud, eligiendo entre usar un modelo embebido o uno referencial.
-4. Justifica por qué elegiste el modelo seleccionado en el punto anterior.
+### 1. Objetivos :dart: 
 
-Puedes basarte en los ejemplos explicados anteriormente para crear los modelos.
+- Proyectar columnas sobre distintos documentos para repasar algunos conceptos.
 
-**Modelo Referencial**
+### 2. Requisitos :clipboard:
 
-```json
-{
-   "name": "O'Reilly Media",
-   "founded": 1980,
-   "location": "CA",
+1. MongoDB Compass instalado.
 
-   "books": [123456789, 234567890, ...]
+### 3. Desarrollo :rocket:
 
-}
+Usando la colección `sample_airbnb.listingsAndReviews`, agrega un filtro que permita obtener todas las publicaciones que tengan 50 o más comentarios, que la valoración sea mayor o igual a 80, que cuenten con conexión a Internet vía cable y estén ubicada en Brazil.
 
-{
-    "_id": 123456789,
-    "title": "MongoDB: The Definitive Guide",
-    "author": [ "Kristina Chodorow", "Mike Dirolf" ],
-    "published_date": ISODate("2010-09-24"),
-    "pages": 216,
-    "language": "English"
-}
+<br/>
 
-{
-   "_id": 234567890,
-   "title": "50 Tips and Tricks for MongoDB Developer",
-   "author": "Kristina Chodorow",
-   "published_date": ISODate("2011-05-06"),
-   "pages": 68,
-   "language": "English"
-}
-```
+[`Anterior`](../Ejemplo-02/Readme.md) | [`Siguiente`](../Readme.md)
 
-**Modelo Embebido**
-
-```json
-{
-   "_id": "joe",
-   "name": "Joe Bookreader",
-   "addresses": [
-        {
-          "street": "123 Fake Street",
-          "city": "Faketon",
-          "state": "MA",
-          "zip": "12345"
-        },
-        {
-          "street": "1 Some Other Street",
-          "city": "Boston",
-          "state": "MA",
-          "zip": "12345"
-        }
-    ]
- }
-```
-
-[`Atrás: Ejemplo 02`](../Ejemplo-02) | [`Siguiente: Ejemplo 03`](../Ejemplo-03)
+</div>

@@ -1,13 +1,27 @@
-### Reto 4
+[`Introducción a Bases de Datos`](../../README.md) > [`Sesión 05`](../Readme.md) > `Reto 1`
+	
+## Reto 1: Colecciones, Documentos y Proyecciones
 
-Creación de la base de datos en SQL para Adoptapet.
+<div style="text-align: justify;">
 
->💡 **Nota:**
->
->Recuerda la sintaxis para crear una tabla en MySQL
+### 1. Objetivos :dart:
 
-```sql
-CREATE TABLE *nombre_tabla*(*atributo1 tipo* [*restricción*], *atributo2...);*
-```
+- Proyectar columnas sobre distintos documentos para repasar algunos conceptos.
 
-[`Atrás: Reto 03`](../Reto-03) | [`Siguiente: Sesión 05`](../REEADME.md)
+### 2. Requisitos :clipboard:
+
+1. MongoDB Compass instalado.
+
+### 3. Desarrollo :rocket:
+
+Usando la base de datos `sample_mflix`, proyecta los datos que se solicitan.
+
+- Fecha, nombre y texto de cada comentario.
+- Título, elenco y año de cada película.
+- Nombre y contraseña de cada usuario.
+
+<br/>
+
+[`Anterior`](../Ejemplo-01/Readme.md) | [`Siguiente`](../Readme.md)
+
+</div>

@@ -1,27 +1,28 @@
-`Backend Fundamentals` > `S6 - Fundamentos de Base de Datos NoSQL (Mongo)` 
+[`Introducción a Bases de Datos`](../../README.md) > [`Sesión 06`](../Readme.md) > `Reto 1`
 	
-## Reto 2
+## Reto 1: Expresiones regulares
 
-Conéctate al clúster con MongoDB Shell y sigue los pasos ya explicados.
+<div style="text-align: justify;">
 
-Utiliza el comando que ya hemos utilizado anteriormente:
+### 1. Objetivos :dart: 
 
-```bash
-mongo "mongodb+srv://<cluster>/<bd>" --username <nombre_usuario>
-```
+- Poner en práctica el uso de expresiones regulares.
 
-```bash
-MongoDB shell version v4.2.0
-Enter password:
-connecting to: mongodb://cluster...
-2020-07-20T17:53:54.133-0500 I  NETWORK  [js] 
-2020-07-20T17:53:54.133-0500 I  CONNPOOL 
-2020-07-20T17:53:54.133-0500 I  CONNPOOL 
-2020-07-20T17:53:54.133-0500 I  CONNPOOL 
-2020-07-20T17:53:54.583-0500 I  NETWORK
-Implicit session: session { "id" : UUID("33bdb...") }
-MongoDB server version: 4.2.8
-MongoDB Enterprise Cluster0-shard-0:PRIMARY>
-```
+### 2. Requisitos :clipboard:
 
-[`Atrás: Reto 01`](../Reto-01) | [`Siguiente: Ejemplo 02`](../Ejemplo-02)
+1. MongoDB Compass instalado.
+
+### 3. Desarrollo :rocket:
+
+Usando la base de datos `sample_airbnblistingsAndReviews`, realiza los siguientes filtros:
+
+- Propiedades que no permitan fiestas.
+- Propiedades que admitan mascotas.
+- Propiedades que no permitan fumadores.
+- Propiedades que no permitan fiestas ni fumadores.
+
+<br/>
+
+[`Anterior`](../Ejemplo-01/Readme.md) | [`Siguiente`](../Readme.md)
+
+</div>
