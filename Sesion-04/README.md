@@ -1,4 +1,4 @@
-# Sesión 5 - Fundamentos de Base de Datos Relacionales(SQL)
+# Sesión 4 - Fundamentos de Bases de Datos 
 
 🎯 **Objetivo:**
 
