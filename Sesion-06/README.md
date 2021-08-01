@@ -28,8 +28,23 @@ Pero si queremos facilitar el escribir las consultas, lo mejor es usar un **ORM*
 
 ### Instalación 
 
-- [`Ejemplo 1: crear nuestro primer modelo para integrar nuestra API`](Ejemplo-01/)
-- [`Reto 01: Probar los nuevos endpoints de la API`](Reto-01/#reto-1)
+- [`Ejemplo 1: Configuración de Mongoose`](Ejemplo-01/)
+
+
+- [`Ejemplo 2: Definición de los Modelos`](Ejemplo-02/)
+- [`Reto 01: Definición de los modelos restantes`](Reto-01/#reto-1)
+
+
+- [`Ejemplo 3: Definición de los Controladores`](Ejemplo-03/)
+- [`Reto 01: Definición de los controladores restantes`](Reto-02/#reto-1)
+
+
+- [`Ejemplo 4: Routers`](Ejemplo-04/)
+- [`Reto 03: Probando los endpoints`](Reto-03/#reto-1)
+
+
+
+
 
 ### Creando modelos y métodos
 
@@ -43,13 +58,3 @@ Pero si queremos facilitar el escribir las consultas, lo mejor es usar un **ORM*
 ### Probando endpoints
 
 - [`Reto 04: Probando endpoints.`](Reto-04/#reto-4) -->
-
-## 🛡 Postwork
-
-**Objetivo:**
-
-- Desarrollar un nuevo feature sobre el código que se ha trabajado hasta ahora.
-
-**Desarrolla un nuevo feature para guardar mascotas favoritas**
-
-Recuerda que todo lo trabajado en tu prework, así como durante la sesión, puede ser aplicado a tu proyecto personal. Para lo cual, toma las siguientes consideraciones...[`leer más`](Postwork/#postwork)

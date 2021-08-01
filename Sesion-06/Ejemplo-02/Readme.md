@@ -10,7 +10,68 @@ Contar con el código de la API que se encuentra en desarrollo desde la lección
 
 ## Desarrollo
 
-1. Creando modelo Mascota:
+1. Para definir la estrucutra que tendrán los documentos de una colección en MongoDB, es necesario definir un <b>schema</b> con mongoose. 
+
+Un **Schema** es un objeto que modela la estructura (los campos) que tienen los documentos de nuestra base de datos. Lo podemos pensar como una traducción de los documentos en el lenguaje de Mongo a Javascript para usarlos desde el código de nuestro backend.
+
+1. Generemos el schema para el modelo <b>Usuario</b>, utilizando la clase `Schema` de mongoose. Abre el código de tu modelo Usuario, comenta el código actual. Primero se importa la biblioteca `Mongoose` que vamos a estar utilizando.
+
+  ```jsx
+  const mongoose = require('mongoose');
+  ```
+
+1. Ahora definimos el `Schema`  la definición de un `schema` incluye todos los campos que se almacenan en el documento que están representando junto con su tipo de dato, el `schema` para Usuario es el siguiente:
+
+  ```jsx
+   const UsuarioSchema = new mongoose.Schema({      
+     username: String,                              
+     nombre: String,
+     apellido: String, 
+     email: String,
+     password: String,
+     ubicacion: String,
+     telefono: String,
+     bio: String,
+     foto: String,
+     tipo: String,
+   }, { timestamps: true });         
+  ```    
+
+- El modelo ahora no tiene un id ya que por defecto Mongoose le agrega el atributo `_id` a un documento cuando es creado.
+- La opción `{ timestamps: true }` agrega automáticamente la hora y fecha de creación (`createdAt` and `updatedAt`) cada que se crea o actualiza un documento.
+
+1. Al definir un schema es necesario definir también una función llamada `publicData` para este, esta función devuelve únicamente los datos públicos del `Schema`. 
+
+```jsx
+  UsuarioSchema.methods.publicData = () => {
+    return {
+      id: this.id,
+      username: this.username,
+      email: this.email,
+      nombre: this.nombre,
+      apellido: this.apellido,
+      bio: this.bio,
+      foto: this.foto,
+      tipo: this.tipo,
+      ubicacion: this.ubicacion,
+      telefono: this.telefono,
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt
+    };
+  };
+```
+
+Como se ve en la definición, la contraseña no se regresa pues se trata de información privada.
+
+1. Por último definimos la correspondencia entre la colección Usuario y el schema `UsuarioSchema`
+
+```jsx 
+   mongoose.model("Usuario", UsuarioSchema); 
+```
+
+Y de esta forma ya sabe como manejar los usuarios tanto en la base de datos como en la API.
+
+1. Ahora vamos a crear el modelo para Mascota:
 
 - Abre el archivo:`models/Mascota.js` 
 - En este archivo se encuentra la configuración del modelo <b>Mascota</b> previa a utilizar mongoose.
@@ -45,118 +106,22 @@ MascotaSchema.methods.publicData = function(){
 mongoose.model('Mascota', MascotaSchema)
 ```
 
+Observemos un par de cosas.
+
+- En esta definición se agregaron restricciones sobre algunos de los campos como lo es `required: true` que lo que dice es que no se puede crear una Mascota sin ese campo.
 - Para la propiedad categoría utilizaremos un `enum` el cuál nos permite pasar únicamente los valores 'perro', 'gato' u 'otro'.
 - Para la propiedad anunciante, crearemos una referencia el modelo Usuario que contendrá el id de un usuario y nos servirá más adelante.
 
-2. Recuerda importar el modelo en `app.js` debajo de dónde importamos el modelo Usuario.
+2. Por último, es necesario  importar los modelos que acabamos de crear  en  el archivo`app.js` junto con el resto de nuestros `import`. Esto es para que en `app.js` se conozca la definición de los modelos y puedan utilizarse.
 
 
 ```jsx
 ...
 require('./models/Usuario');
-require('./config/passport');
 require('./models/Mascota');
 ...
 ```
 
-3. Modifica las rutas del archivo `routes/mascotas.js`,  agregar las siguientes autorizaciones:
-```jsx
-const router = require('express').Router();
-const {
-  crearMascota,
-  obtenerMascotas,
-  modificarMascota,
-  eliminarMascota
-} = require('../controllers/mascotas')
-var auth = require('./auth');
 
-router.get('/', auth.opcional,obtenerMascotas)
-router.get('/:id', auth.opcional, obtenerMascotas)// nuevo endpoint con todos los detalles de mascota
-router.post('/', auth.requerido, crearMascota)
-router.put('/:id',auth.requerido, modificarMascota)
-router.delete('/:id',auth.requerido, eliminarMascota)
-
-module.exports = router;
-```
-
-4. En el controlador mascotas, es decir: `controllers/mascotas.js`, actualiza la función `crearMascota` con el siguiente código:
-
-```jsx
-const mongoose = require('mongoose')
-const Mascota = mongoose.model('Mascota')
-
-function crearMascota(req, res, next) {
-  var mascota = new Mascota(req.body)
-  mascota.anunciante = req.usuario.id
-  mascota.estado = 'disponible'
-  mascota.save().then(mascota => {
-    res.status(201).send(mascota)
-  }).catch(next)
-}
-
-```
-
-5. En el controlador mascotas, es decir: `controllers/mascotas.js`, actualiza la función `obtenerMascotas` con el siguiente código:
-
-```jsx
-function obtenerMascotas(req, res, next) {
-  Mascota.find().then(mascotas=>{
-    res.send(mascotas)
-  }).catch(next)
-}
-```
-
-### Populate
-
-El método populate nos sirve para *poblar* documentos que son integrados dentro de otros documentos.
-
-6. Cuando queramos obtener una mascota en específico, en el endpoint 'v1/mascotas/:id'. Será necesario mostrar la información de su anunciante, así que agregaremos una condición para que cuándo un id esté presente se agreguen los campos username, nombre, apellido, bio y foto del anunciante.
-
-- De nuevo, actualiza el controlador mascotas, es decir: `controllers/mascotas.js`, muestra los datos del anunciante de una mascota, modificando la función `obtenerMascotas` con el siguiente código:
-
-```jsx
-function obtenerMascotas(req, res, next) {
-  if(req.params.id){
-    Mascota.findById(req.params.id)
-			.populate('anunciante', 'username nombre apellido bio foto').then(mascotas => {
-	      res.send(mascotas)
-	    }).catch(next)
-  } else {
-    Mascota.find().then(mascotas=>{
-      res.send(mascotas)
-    }).catch(next)
-  }
-}
-```
-
-Obtendremos una respuesta como está:
-
-```json
-{
-  "categoria": [
-    "gato"
-  ],
-  "fotos": [
-    "https://images.app.goo.gl/MsX6R9aTWfQKjsvW6"
-  ],
-  "estado": [
-    "disponible"
-  ],
-  "_id": "5ee8f79d2ab51833d2147e26",
-  "nombre": "Kalita",
-  "descripcion": "Gatito bebé encontrado debajo de un carro necesita hogar",
-  "anunciante": {
-    "_id": "5ee7101ee584287c9d4d44ce",
-    "username": "karly",
-    "nombre": "Karla",
-    "apellido": "Ivonne",
-    "bio": "Yo soy Karly, look at me!",
-    "foto": "http://pictures/foto-de-perfil"
-  },
-  "createdAt": "2020-06-16T16:47:25.900Z",
-  "updatedAt": "2020-06-16T16:47:25.900Z",
-  "__v": 0
-}
-```
 
 [`Atrás: Reto 01`](../Reto-01) | [`Siguiente: Sesión 07`](../README.md)

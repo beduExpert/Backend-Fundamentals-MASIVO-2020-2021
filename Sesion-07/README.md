@@ -1,4 +1,4 @@
-# Sesión 7 - Mongoose
+# Sesión 7 - Autentiación y Manejo de sesiones
 
 🎯 **Objetivo:**
 

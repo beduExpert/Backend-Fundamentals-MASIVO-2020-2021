@@ -48,7 +48,7 @@ Es recomendable que tengas los siguientes **conocimientos.**
 
 - [`Sesión 06` - Mongoose](Sesion-06)
 
-- [`Sesión 07` - Controladores](Sesion-07)
+- [`Sesión 07` - Autenticación y manejo de sesiones](Sesion-07)
 
 - [`Sesión 08` - Deploy](Sesion-08)
 
