@@ -1,4 +1,4 @@
-# Sesión 6 - Fundamentos de Base de Datos NoSQL (Mongo)
+# Sesión 5 - Bases de dato NoSQL (MongoDB)
 
 🎯 **Objetivo:**
 

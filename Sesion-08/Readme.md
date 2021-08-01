@@ -1,4 +1,4 @@
-# Sesión 8 - Sequelize y Deploy
+# Sesión 8 - Deploy
 
 🎯 **Objetivo:**
 

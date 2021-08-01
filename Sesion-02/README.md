@@ -25,7 +25,7 @@ En todos esos momentos estamos usando API's sin darnos cuenta.
 
 Una API (Application Programming Interface) es un intermediario que le permite a dos aplicaciones interactuar entre sí.
 
-Es una aplicación que toma las peticiones hechas por lx clientx y le dice al sistema que es lo que tiene que hacer, cuando obtiene una respuesta en se la regresa al usuarix.
+Es una aplicación que toma las peticiones hechas por lx clientx y le dice al sistema qué es lo que tiene que hacer, y cuando obtiene una respuesta se la regresa al usuarix.
 
 ![](img/api2.png)
 

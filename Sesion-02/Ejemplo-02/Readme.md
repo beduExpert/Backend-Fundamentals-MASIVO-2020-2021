@@ -67,6 +67,6 @@ Para acceder a la *query string* desde el servicio se utiliza el atributo `req.q
 
 5. También podemos recibir información en el cuerpo de la petición, ésta es la forma mas segura de transferir información pues no viene directamente en la url sino que viene como parte de la petición. En este caso es el cliente el encargado de generar este cuerpo cuando hace su petición y para acceder a ella usamos el atributo `req.body`.
 
-En la primera sesión del módulo vimos como definir el body directamente en psotman. ENLACE AL EJEMPLO EN DONDE SE VE ESO.
+En la primera sesión del módulo vimos como definir el body directamente en psotman, para consultarlo ve al siguiente [enlace](../../Sesion-01/Ejemplo-02/Readme.md)
  
 [`Atrás`](../Reto-01) | [`Siguiente`](../Reto-02)
