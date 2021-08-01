@@ -38,7 +38,7 @@ Pero si queremos facilitar el escribir las consultas, lo mejor es usar un **ORM*
 ### Controladores
 
 - [`Ejemplo 3: Definición de los Controladores`](Ejemplo-03/)
-- [`Reto 01: Definición de los controladores restantes`](Reto-02/#reto-1)
+- [`Reto 02: Definición de los controladores restantes`](Reto-02/#reto-1)
 
 
 
