@@ -30,29 +30,16 @@ Pero si queremos facilitar el escribir las consultas, lo mejor es usar un **ORM*
 
 - [`Ejemplo 1: Configuración de Mongoose`](Ejemplo-01/)
 
+### Modelos
 
 - [`Ejemplo 2: Definición de los Modelos`](Ejemplo-02/)
 - [`Reto 01: Definición de los modelos restantes`](Reto-01/#reto-1)
 
+### Controladores
 
 - [`Ejemplo 3: Definición de los Controladores`](Ejemplo-03/)
 - [`Reto 01: Definición de los controladores restantes`](Reto-02/#reto-1)
 
-
-- [`Ejemplo 4: Routers`](Ejemplo-04/)
-- [`Reto 03: Probando los endpoints`](Reto-03/#reto-1)
-
-
-
-
-
-### Creando modelos y métodos
-
-- [`Ejemplo 2: Crear un nuevo modelo (Mascota) junto con la lógica de sus controladores`](Ejemplo-02/)
-<!-- - [`Reto 02: Crear el método modificarMascota`](Reto-02/#reto-2) -->
-<!-- 
-- [`Ejemplo 3: Crear un nuevo modelo (Solicitud) junto con la lógica de sus controladores`](Ejemplo-03/)
-- [`Reto 03: Crea el método modificarSolicitud`](Reto-03/#reto-3)
 
 
 ### Probando endpoints

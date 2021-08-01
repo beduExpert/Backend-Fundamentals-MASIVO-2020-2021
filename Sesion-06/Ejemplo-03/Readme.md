@@ -101,4 +101,57 @@ Ahora implementaremos los métodos que nos proporciona Mongoose en nuestro contr
   }
 ```
 
-[`Atrás: Reto 02`](../Reto-02) | [`Siguiente: Reto 03`](../Reto-03)
+### Populate
+
+El método populate nos sirve para *poblar* documentos que son integrados dentro de otros documentos.
+
+6. Cuando queramos obtener una mascota en específico, en el endpoint 'v1/mascotas/:id'. Será necesario mostrar la información de su anunciante, así que agregaremos una condición para que cuándo un id esté presente se agreguen los campos username, nombre, apellido, bio y foto del anunciante.
+
+- De nuevo, actualiza el controlador mascotas, es decir: `controllers/mascotas.js`, muestra los datos del anunciante de una mascota, modificando la función `obtenerMascotas` con el siguiente código:
+
+```jsx
+function obtenerMascotas(req, res, next) {
+  if(req.params.id){
+    Mascota.findById(req.params.id)
+      .populate('anunciante', 'username nombre apellido bio foto').then(mascotas => {
+        res.send(mascotas)
+      }).catch(next)
+  } else {
+    Mascota.find().then(mascotas=>{
+      res.send(mascotas)
+    }).catch(next)
+  }
+}
+```
+
+Obtendremos una respuesta como está:
+
+```json
+{
+  "categoria": [
+    "gato"
+  ],
+  "fotos": [
+    "https://images.app.goo.gl/MsX6R9aTWfQKjsvW6"
+  ],
+  "estado": [
+    "disponible"
+  ],
+  "_id": "5ee8f79d2ab51833d2147e26",
+  "nombre": "Kalita",
+  "descripcion": "Gatito bebé encontrado debajo de un carro necesita hogar",
+  "anunciante": {
+    "_id": "5ee7101ee584287c9d4d44ce",
+    "username": "karly",
+    "nombre": "Karla",
+    "apellido": "Ivonne",
+    "bio": "Yo soy Karly, look at me!",
+    "foto": "http://pictures/foto-de-perfil"
+  },
+  "createdAt": "2020-06-16T16:47:25.900Z",
+  "updatedAt": "2020-06-16T16:47:25.900Z",
+  "__v": 0
+}
+```
+
+[`Atrás: Reto 02`](../Reto-01) | [`Siguiente: Reto 03`](../Reto-02)
