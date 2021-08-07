@@ -1,83 +1,98 @@
 [`Backend Fundamentals`](../../README.md) > [`Sesión 04`](../README.md) > `Ejemplo 1`
 
-# Ejemplo 1 - Instalando MySQL
+## Ejemplo 1: Configuración de __MongoDB__ en la nube
 
-## Objetivo
+### 1. Objetivos :dart:
+- Que el alumno configure MongoDB en la nube
 
-Comprender que es una base de datos relacional e instalar un sevidor de bases de datos relacionales.
+### 2. Requisitos :clipboard:
+- Ninguno
 
-## Requerimientos
+### 3. Desarrollo :rocket:
+1. Para poder hacer uso de MongoDB en la nube se hará uso del servicio __Atlas__ proveeido por el propio equipo de MongoDB, abrir la siguiente url, llenar los campos del formulario y dar clic en el botón de __Get srtarted free__
 
-Contar con almacenamiento suficiente y conexión a internet para instalar MySQL.
+   URL: https://www.mongodb.com/cloud/atlas?jmp=docs
 
+   ![Registro en MongoDB atlas](imagenes/registro-mongodb-atlas.png)
 
+1. Llenamos el formulario con la información necesaria.
 
-# Instalar MySQL server
+   ![Formulario](imagenes/2form.png)
 
-## Instalación en Ubuntu
+1. En la siguiente ventana damos click en la opción __skip__ al final.
+    ![conf](imagenes/3lenguaje.png)
+1. Elegir el tipo de __Cluster__, en donde se seleccionará __Starter Clusters__ que es el que es libre de costo, dar clic en el botón __Create a Cluster__.
 
-Instala el paquete mysql-server y luego ejecuta el script de seguridad incluido.
+   ![Seleccionando cluster](imagenes/seleccionando-cluster.png)
+   Observar que con MongoDB Atlas se crean __Clusters__ y no __Servidores__.
 
-```bash
-# Se actualizan los paquetes de gestor
-sudo apt update
+1. Después se tienen que seleccionar las opciones para el __Starter Cluster__ y las opciones por omisión son las correctas (AWM Amazon, N. Virginia, M0 Sandbox, MongoDB 4.0, Cluster 0)
 
-# Se instala MySQL
-sudo apt install mysql-server
+   ![Configurando el Started Cluster](imagenes/configurando-cluster.png)
+   Y presionar en el botón __Create Cluster__, lo que va a crear un __Cluster__ de trabajo, acción que puede demorar unos 5 mins.
 
-# Se configura MySQL
-sudo mysql_secure_installation
+   ![Cluster creándose](imagenes/creando-cluster-01.png)
 
-# se inicializa MySQL
-sudo mysql
-```
+   Cuando el __Cluster__ ya está creado se observa la página como la siguiente:
 
-Y deberás ver una interfaz como esta
+   ![Cluster creado](imagenes/creando-cluster-02.png)
 
-![img/Screen_Shot_2020-06-08_at_6.58.16.png](img/Screen_Shot_2020-06-08_at_6.58.16.png)
+   Abrimos las opciones del cluster dando click en el botón con 3 puntos. Y seleccionamos __Load Sample Dataset__ para que agregue al cluster algunas bases de datos de ejemplo.
 
-## Instalación en MacOS
+   ![Sample](imagenes/4load.png)
 
-### Desde la terminal 
+1. Lo que sigue es una conexión al cluster de MongoDB en la nube, esto se realiza dando clic en el botón __CONNECT__
 
-```bash
-# se instala el paquete
-brew install mysql
+  ![Conectando al servidor MongoDB](imagenes/conectando-a-mongodb.png)
+  
+  MongoDB Atlas hace una validación y solicita definir que dirección IP se va a conectar a el servidor y que usuario.
 
-# se actualizan los servicios disponibles de homebrew
-brew tap homebrew/services
+  Así que dá clic en el botón __Add Your Current IP Address__
 
-# Se configura la contraseña para el ususario root de MySQL
-mysqladmin -u root password 'yourpassword'
+  ![Agregando ip](imagenes/agregando-ip.png)
+  
+  Se sugiere etiquetar la dirección IP, para llevar un registro de a quién corresponde cada IP y más adelante poder eliminar las direcciones que ya no sean necesarias.
 
-# Se inicializa MySQL con la contraseña seleccionada
-mysql -u root -p
-```
+  Introduce los datos que desees para ingresar a tu base de datos, por ejemplo:
 
-### Con un instalador
-1. Dirígete al siguiente [link para descargar MySQL server](https://dev.mysql.com/downloads/mysql/)
-2. Selecciona tu sistema operativo y descarga el archivo `.dmg`. Para instalar de esta manera tal vez sea necesario crear una cuenta en Oracle.
-3. Ejecuta el `.dmg` y sigue los pasos.
+  - Usuario: introabd
+  - Password: introabd1234
 
-## Instalación con Docker
+  **Recuerda el vídeo de contraseñas seguras `introabd1234` no es una contraseña muy segura que digamos...**
 
-Si tienes [docker](https://docs.docker.com/engine/install/) instalado puedes ejecutar Mysql desde un contenedor instalandolo con el siguiente comando:
+  ![Creando usuario](imagenes/creando-usuario.png)
+  
+  Y presionar en el botón __Create MongoDB User__
 
-```bash
-$ docker run -d -p 33060:3306 --name=mysql-db -e MYSQL_ROOT_PASSWORD=secret mysql
-```
+  Y posteriormente se dá clic en el botón __Choose a connection method__ donde se seleccionará __Compass__ para continuar en el siguiente ejemplo.
 
-- **-d**: Detached Mode es la forma en que indicamos que corra en segundo plano.
-- **-p** : Puerto, el contenedor corre en el puerto 3306 pero hacemos un *bind* para que lo escuchemos en Host el puerto 33061.
-- **–name** : Para no tener que hacer referencia al hash le asignamos un nombre.
-- **-e** : Environment le asignamos **la contraseña**.
+  ![Seleccionando Compass como método de conexión](imagenes/seleccionando-compass.png)
 
-Entra a Mysql con el siguiente comando:
+1. Una vez creada la configuración en __MongoDB Atlas__ se realiza la conexión por medio de __MongoDB Compass__, así que estándo en la página de MongoDB Atlas se da clic en la opción __Connect with MongoDB Compass__
 
-```bash
-docker exec -it mysql-db mysql -p
-```
+   ![Eligiendo conexión con MongoDB Compass](imagenes/eligiendo-compass.png)
 
+   Después de dar clic, se elige la opción donde ya tenemos __Compass__ instalado dando clic en __I have Compass__.
+
+   ![Eligiendo Compass instalado](imagenes/compass-instalado.png)
+   
+   En el punto 1 la opción actual es la correcta y en el punto 2 se dá clic en el botón __Copy__
+
+1. Si __MongoDB Compass__ está abierto es necesario cerrarlo y abrirlo nuevamente, al momento de iniciar, __Compass__ detecta la información copiada al portapapeles y pregunta si se desea usar la información para realizar la conexión:
+
+   ![Iniciando Compass](imagenes/iniciando-compass.png)
+   
+   Dar clic en el botón __Yes__ y __Compass__ en automático llena todos los campos de conexión, menos la clave, así que se teclea la clave y se da clic en el botón __CONNECT__.
+
+   ![Datos de conexión](imagenes/datos-de-conexion.png)
+   
+   Recuerda que los datos de conexión que ingresaste al principio.
+
+   __Nota:__ No uses los datos del ejemplo para colocar información sensible.
+
+   ![Compass conectado a MongoDB Atlas](imagenes/compass-conectado.png)
+   
+   En este punto ya __Compass__ ya estará conectado al __Cluster0__ que como se puede ver en la columna izquierda consta de 3 instancias de MongoDB corriendo en paralelo lo que se puede escalar según las necesidades.
 
 
 [`Atrás`](../README.md) | [`Siguiente`](../Ejemplo-02/Readme.md)

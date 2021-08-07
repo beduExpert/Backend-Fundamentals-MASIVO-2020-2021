@@ -18,11 +18,11 @@ Cuando se habla de REST API, significa utilizar una API para acceder a aplicacio
 
 REST es un acrónimo para **RE**presentational **S**tate **T**ransfer, fue pensada para sistemas dedicados a la distribución de *hypermedia*. En REST se siguen los siguientes principios:
 
-- Arquitectura cliente/servidor sin estado, es decir, no se almacena la información de las solicitudes, cada solicitud es independiente.
+- Arquitectura clientx/servidor sin estado, es decir, no se almacena la información de las solicitudes, cada solicitud es independiente.
 - Una interfaz uniforme entre los elementos, para que la información se transfiera de forma estandarizada.
 - Acciones concretas (POST, GET, PUT y DELETE) para la transferencia de datos.
 - Uso de formatos de transferencia para la comunicación. Para este caso en específico utilizaremos JSON como el formato para enviar respuestas y recibir peticiones de objetos. Se puede usar también XLT ó HTML
-- Un sistema en capas que organiza en jerarquías invisibles para el cliente y cada uno de los servidores  que participan en la recuperación de la información solicitada.
+- Un sistema en capas que organiza en jerarquías invisibles para lx clientx y cada uno de los servidores  que participan en la recuperación de la información solicitada.
 
 Si bien parece una arquitectura muy restrictiva, esto sirve para que su uso sea mas sencillo. 
 

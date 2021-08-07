@@ -54,7 +54,7 @@ Cuando entramos al navegador y colocamos la dirección de nuestro sitio web favo
 ### 🔐 Arquitectura Cliente-servidor
 
 - [`Ejemplo 01: Arquitectura cliente-servidor`](Ejemplo-01/)
-- [`Reto 01: Uso de Postman o Insomnia`](Reto-01/#reto-1)
+- [`Reto 01: Códigos de respuesta`](Reto-01/#reto-1)
 
 ### Peticiones a un servidor
 
