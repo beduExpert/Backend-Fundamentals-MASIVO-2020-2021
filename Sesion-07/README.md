@@ -19,7 +19,7 @@
 ### Routers seguros
 
 - [`Ejemplo 3: Crear un nuevo modelo (Solicitud) junto con la lógica de sus controladores`](Ejemplo-03/)
-- [`Reto 03: Ccompletando el modelo`](Reto-04/)
+- [`Reto 03: Ccompletando el modelo`](Reto-03/)
 
 ### Probando endpoints
 

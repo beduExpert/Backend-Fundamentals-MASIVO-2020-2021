@@ -5,4 +5,4 @@
 1. Siguiendo el ejemplo anterior define el modelo para la solicitud de adopción de una Mascota.
 
 
-[`Atrás: Ejemplo 01`](../Ejemplo-01) | [`Siguiente: Ejemplo 02`](../Ejemplo-02)
+[`Atrás`](../Ejemplo-01) | [`Siguiente`](../Ejemplo-02)

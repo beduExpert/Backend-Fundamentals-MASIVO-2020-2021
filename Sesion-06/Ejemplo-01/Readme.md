@@ -50,4 +50,4 @@ Nota:
 
 Hasta este punto solo configuramos Mongoose y le dijimos con que base de datos debe relacionarse. Sin embargo necesitamos un mecanismo que nos permita modelar los documentos de nuestra base de datos en el código de la API.
 
-[`Atrás: Sesión 07`](../README.md) | [`Siguiente: Reto 01`](../README.md)
+[`Atrás`](../README.md) | [`Siguiente`](../README.md)

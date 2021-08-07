@@ -9,4 +9,4 @@
 3. Recomendación: [`Pasa al Reto 4:`](../Reto-04)
 
 
-[`Atrás: Ejemplo 03`](../Ejemplo-03) | [`Siguiente: Reto 04`](../Reto-04)
+[`Atrás`](../Ejemplo-03) | [`Siguiente`](../Reto-04)

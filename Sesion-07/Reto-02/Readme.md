@@ -10,4 +10,4 @@
 
 
 
-[`Atrás: Ejemplo 02`](../Ejemplo-02) | [`Siguiente: Sesión 07`](../README.md)
+[`Atrás`](../Ejemplo-02) | [`Siguiente`](../README.md)

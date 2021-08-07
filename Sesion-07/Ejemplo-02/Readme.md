@@ -161,4 +161,4 @@ Obtendremos una respuesta como está:
 }
 ```
 
-[`Atrás: Reto 01`](../Reto-01) | [`Siguiente: Sesión 07`](../README.md)
+[`Atrás`](../Reto-01) | [`Siguiente`](../Reto-02)

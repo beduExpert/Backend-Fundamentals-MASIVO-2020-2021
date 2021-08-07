@@ -126,4 +126,4 @@ require('./models/Mascota');
 
 
 
-[`Atrás: Reto 01`](../README.md) | [`Siguiente: Sesión 07`](../Reto-01)
+[`Atrás`](../README.md) | [`Siguiente`](../Reto-01)

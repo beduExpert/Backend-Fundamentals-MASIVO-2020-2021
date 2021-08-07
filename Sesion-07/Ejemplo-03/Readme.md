@@ -206,4 +206,4 @@ Aquí está el resultado de una solicitud que ha sido aceptada:
 
 6. Recomendación: [`Pasa al Reto 2:`](../Reto-02)
 
-[`Atrás: Reto 02`](../Reto-02) | [`Siguiente: Reto 03`](../Reto-03)
+[`Atrás`](../Reto-02) | [`Siguiente`](../Reto-03)

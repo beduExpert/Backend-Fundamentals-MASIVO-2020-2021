@@ -156,4 +156,4 @@ Obtendremos una respuesta como está:
 }
 ```
 
-[`Atrás: Reto 02`](../Reto-01) | [`Siguiente: Reto 03`](../Reto-02)
+[`Atrás`](../Reto-01) | [`Siguiente`](../Reto-02)

@@ -442,4 +442,4 @@ Nota:
     ```
 - Analiza el código, observa en que endpoints será necesario el <b>JWT</b> (Su contenido definirá si un usuario tiene o no autorización sobre el endpoint, así como que información puede ver. )
 
-    [`Atrás: Sesión 07`](../README.md) | [`Siguiente: Reto 01`](../Reto-01)
+[`Atrás`](../README.md) | [`Siguiente`](../Reto-01)
