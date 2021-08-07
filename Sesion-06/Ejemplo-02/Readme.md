@@ -1,3 +1,5 @@
+[`Backend Fundamentals`](../../README.md) > [`Sesión 06`](../README.md) > `Ejemplo 2`
+
 # Ejemplo 2
 
 ## Objetivo

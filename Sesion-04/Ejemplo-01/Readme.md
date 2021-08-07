@@ -1,3 +1,5 @@
+[`Backend Fundamentals`](../../README.md) > [`Sesión 04`](../README.md) > `Ejemplo 1`
+
 # Ejemplo 1 - Instalando MySQL
 
 ## Objetivo

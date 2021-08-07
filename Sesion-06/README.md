@@ -41,7 +41,3 @@ Pero si queremos facilitar el escribir las consultas, lo mejor es usar un **ORM*
 - [`Reto 02: Definición de los controladores restantes`](Reto-02/#reto-1)
 
 
-
-### Probando endpoints
-
-- [`Reto 04: Probando endpoints.`](Reto-04/#reto-4) -->

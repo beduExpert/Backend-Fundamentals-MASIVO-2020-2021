@@ -1,6 +1,6 @@
-[`Introducción a Bases de Datos`](../../README.md) > [`Sesión 04`](../Readme.md) > Ejemplo 6
+[`Backend Fundamentals`](../../README.md) > [`Sesión 04`](../README.md) > `Ejemplo 3`
 
-## Ejemplo 6: Realizando operaciones con Colecciones e importando datos
+## Ejemplo 3: Realizando operaciones con Colecciones e importando datos
 
 ### 1. Objetivos :dart:
 - Que el alumno realice operaciones con Colecciones

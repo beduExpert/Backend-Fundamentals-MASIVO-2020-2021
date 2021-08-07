@@ -1,5 +1,6 @@
-[`Introducción a Bases de Datos`](../../README.md) > [`Sesión 04`](../Readme.md) > Ejemplo 5
-## Ejemplo 5: Operaciones con bases de datos
+[`Backend Fundamentals`](../../README.md) > [`Sesión 04`](../README.md) > `Ejemplo 2`
+
+## Ejemplo 2: Operaciones con bases de datos
 
 ### 1. Objetivos :dart:
 - Que el alumno se conecte a un servidor MongoDB

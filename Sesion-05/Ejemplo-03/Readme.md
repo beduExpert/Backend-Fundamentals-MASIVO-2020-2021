@@ -1,4 +1,4 @@
-[`Introducción a Bases de Datos`](../../README.md) > [`Sesión 06`](../Readme.md) > `Ejemplo 2`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 05`](../README.md) > `Ejemplo 3`
 
 ## Ejemplo 2: Notación Punto y arreglos
 

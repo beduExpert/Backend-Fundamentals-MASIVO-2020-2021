@@ -1,6 +1,6 @@
-[`Introducción a Bases de Datos`](../../README.md) > [`Sesión 04`](../Readme.md) > Ejemplo 7
+[`Backend Fundamentals`](../../README.md) > [`Sesión 04`](../README.md) > `Ejemplo 4`
 
-## Ejemplo 7: Realizando operaciones con Documentos
+## Ejemplo 4: Realizando operaciones con Documentos
 
 ### 1. Objetivos :dart:
 - Que el alumno agregue __Documentos__ en una __Colección__

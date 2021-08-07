@@ -1,6 +1,6 @@
-`Backend Fundamentals` > `S5 - Fundamentos de Base de Datos Relacionales(SQL)`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 04`](../README.md) > `Reto 3`
 
-### Reto 2
+### Reto 3
 
 Creación de la base de datos en SQL para Adoptapet.
 

@@ -1,5 +1,5 @@
-`Backend Fundamentals` > `S06 - Mongoose` 
-	
+[`Backend Fundamentals`](../../README.md) > [`Sesión 06`](../README.md) > `Reto 1`
+
 ### Reto 1
 
 1. Siguiendo el ejemplo anterior define el modelo para la solicitud de adopción de una Mascota.

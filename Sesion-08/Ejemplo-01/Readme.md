@@ -1,3 +1,5 @@
+[`Backend Fundamentals`](../../README.md) > [`Sesión 08`](../Readme.md) > `Ejemplo 1`
+
 # Ejemplo 1 - Preparando nuestra API para producción
 
 ## Objetivo

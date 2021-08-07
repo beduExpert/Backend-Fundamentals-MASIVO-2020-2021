@@ -1,4 +1,4 @@
-`Backend Fundamentals` > `S0 - Mongoose` 
+[`Backend Fundamentals`](../../README.md) > [`Sesión 06`](../README.md) > `Reto 2`
 	
 ## Reto 2
 

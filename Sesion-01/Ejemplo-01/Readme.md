@@ -1,6 +1,6 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 03: Arquitectura de software`](../README.md) > `Ejemplo 1`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 01`](../README.md) > `Ejemplo 1`
 
-# Arquitectura cliente-servidor
+# Ejemplo 1: Arquitectura cliente-servidor
 
 **Objetivo:**
 
