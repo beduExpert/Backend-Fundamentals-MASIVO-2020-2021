@@ -106,4 +106,4 @@ process.env.NOMBRE_VARIABLE
 - En estas líneas, estamos obteniendo la variable de entorno `SECRET` para verificar la autenticidad de los tokens de los usuarios con JWT. 
 - Más adelante cambiaremos este *secret* en producción por algo más seguro y que puedas recordar.
 
-[`Atrás: Sesión 08`](../Readme.md) | [`Siguiente: Reto 01`](../Reto-01)
+[`Atrás`](../Readme.md) | [`Siguiente`](../Reto-01)
