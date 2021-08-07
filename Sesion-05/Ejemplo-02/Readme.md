@@ -1,6 +1,6 @@
 [`Backend Fundamentals`](../../README.md) > [`Sesión 05`](../README.md) > `Ejemplo 2`
 
-## Ejemplo 1: Expresiones regulares
+## Ejemplo 2: Expresiones regulares
 
 <div style="text-align: justify;">
 

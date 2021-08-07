@@ -1,6 +1,6 @@
 [`Backend Fundamentals`](../../README.md) > [`Sesión 05`](../README.md) > `Ejemplo 3`
 
-## Ejemplo 2: Notación Punto y arreglos
+## Ejemplo 3: Notación Punto y arreglos
 
 <div style="text-align: justify;">
 

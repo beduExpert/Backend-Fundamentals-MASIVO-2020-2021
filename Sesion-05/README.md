@@ -20,8 +20,8 @@ Al igual que con las proyecciones, los filtros se construyen usando __JSON__. En
 {campo: "valor"}
 ```
 
-- [`Ejemplo 1: Filtros básicos`](Ejemplo-01/Readme.md)
-- [`Reto 1: Las primeras consultas`](Reto-01/Readme.md)
+- [`Ejemplo 1`](Ejemplo-01/Readme.md)
+- [`Reto 1`](Reto-01/Readme.md)
 
 ---
 
