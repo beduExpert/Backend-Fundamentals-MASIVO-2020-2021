@@ -1,6 +1,6 @@
 [`Backend Fundamentals`](../../README.md) > [`Sesión 08`](../Readme.md) > `Ejemplo 2`
 
-# Ejemplo 3 - Deploy con Heroku
+# Ejemplo 2 - Deploy con Heroku
 
 ## Objetivo
 

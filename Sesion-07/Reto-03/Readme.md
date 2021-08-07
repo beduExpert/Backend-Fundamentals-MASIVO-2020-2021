@@ -6,7 +6,6 @@
 
 2. Dado el ejercicio anterior, ¿es necesario crear un endpoint para eliminar solicitudes? ¿Cómo puede saber un usuario que su solicitud de adopción fue rechazada o aceptada?
 
-3. Recomendación: [`Pasa al Reto 4:`](../Reto-04)
 
 
 [`Atrás`](../Ejemplo-03) | [`Siguiente`](../Reto-04)
