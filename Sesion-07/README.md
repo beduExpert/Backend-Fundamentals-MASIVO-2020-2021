@@ -1,4 +1,4 @@
-# Sesión 7 - Autentiación y Manejo de sesiones
+# Sesión 7 - Autenticación y Manejo de sesiones
 
 🎯 **Objetivo:**
 
