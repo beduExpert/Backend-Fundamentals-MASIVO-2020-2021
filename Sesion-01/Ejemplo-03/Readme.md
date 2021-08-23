@@ -46,7 +46,7 @@ Vamos a traducir nuestra historia de usuario
 
 a un caso de uso que quedaría de la siguiente forma:
 
-<img src="img/use_case.png">
+<img src="img/use_case.jpg">
 
 
 
