@@ -101,6 +101,7 @@ Posteriormente estas historias se traducen a funcionalidades de nuestro sistema.
 - [`Reto 03: historias de usuario`](Reto-03/#reto-3)
 
 ### Casos de Uso
+<img src="https://d3n817fwly711g.cloudfront.net/uploads/2020/10/Tutorial-de-Diagramas-de-Casos-de-Uso-1540x680.png" alt="PostItHistoriaUsuario" align="right" width="450"> 
 
 El diagrama de caso de uso es un tipo de diagrama de comportamiento y se usa frecuentemente para analizar varios sistemas. Permiten visualizar los diferentes tipos de roles en un sistema y cómo esos roles interactúan con el sistema. Estos nos ayudarán a:
 
@@ -108,7 +109,8 @@ El diagrama de caso de uso es un tipo de diagrama de comportamiento y se usa fre
 - Para una visión de alto nivel del sistema.
 - Identificar los factores internos y externos que intervienen en el sistema
 
-<img src="https://d3n817fwly711g.cloudfront.net/uploads/2020/10/Tutorial-de-Diagramas-de-Casos-de-Uso-1540x680.png" alt="PostItHistoriaUsuario" > 
+- [`Ejemplo 03: Casos de uso`](Ejemplo-03/)
+- [`Reto 04: Casos de uso `](Reto-04/#reto-3)
 
 <!-- ### Modelo Vista Controlador
 
