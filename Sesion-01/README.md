@@ -95,10 +95,20 @@ Y son utilizadas por varias metodologías para poder comprender mejor los requer
 
 Posteriormente estas historias se traducen a funcionalidades de nuestro sistema.
 
-### Requerimientos de un proyecto
+
 
 <!-- - [`Ejemplo 02: AdoptaPet - Iniciando un nuevo proyecto`](Ejemplo-02/) -->
 - [`Reto 03: historias de usuario`](Reto-03/#reto-3)
+
+### Casos de Uso
+
+El diagrama de caso de uso es un tipo de diagrama de comportamiento y se usa frecuentemente para analizar varios sistemas. Permiten visualizar los diferentes tipos de roles en un sistema y cómo esos roles interactúan con el sistema. Estos nos ayudarán a:
+
+- Identificarlas funciones y la forma en que los roles interactúan con ellas.
+- Para una visión de alto nivel del sistema.
+- Identificar los factores internos y externos que intervienen en el sistema
+
+<img src="https://d3n817fwly711g.cloudfront.net/uploads/2020/10/Tutorial-de-Diagramas-de-Casos-de-Uso-1540x680.png" alt="PostItHistoriaUsuario" > 
 
 <!-- ### Modelo Vista Controlador
 
