@@ -109,8 +109,9 @@ El diagrama de caso de uso es un tipo de diagrama de comportamiento y se usa fre
 - Para una visión de alto nivel del sistema.
 - Identificar los factores internos y externos que intervienen en el sistema
 
-- [`Ejemplo 03: Casos de uso`](Ejemplo-03/)
-- [`Reto 04: Casos de uso `](Reto-04/#reto-3)
+
+[`Ejemplo 03: Casos de uso`](Ejemplo-03/)
+[`Reto 04: Casos de uso `](Reto-04/#reto-3)
 
 <!-- ### Modelo Vista Controlador
 
