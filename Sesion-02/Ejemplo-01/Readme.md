@@ -203,7 +203,7 @@ Server is listening on port 4001
 
 6. Prueba la petición que acabamos de definir usando Insomnia.
 
-<img src="img/isomina.png">
+<img src="img/insomnia.png">
 
 
 <!-- AQUI VA UN SS DE INSOMNIA CON LA PETICION -->
