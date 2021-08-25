@@ -147,7 +147,7 @@ app.use(express.static('public'));
 Por ejemplo, para nuestra aplicación sería
 
 ```
-localhost:400/gods
+localhost:4001/gods
 ```
 
 En donde `gods` es la ruta de petición. Como desarrolladoras y desarrolladores de la API es nuestra tarea decirle al servidor como debe responder en cada una de las rutas. Para esto Express tiene métodos definidos para cada uno de las peticiones HTTP, por ejemplo, si la petición es un GET, usamos el método `app.get()` que funciona de la siguiente forma:
@@ -188,7 +188,23 @@ En el código anterior estamos enviando como respuesta un arreglo que tiene los 
 
 Cuando se haga una petición `GET` a la ruta `/gods` Express buscara todas las definiciones de `app.get()` hasta encontrar una que haga match con la ruta `/gods` y cuando la encuentre ejecutará el callback definido.
 
-5. Prueba la petición que acabamos de definir usando Insomnia.
+5. Ahora vamos a correr la aplicación para poder probarla. Para correrla desde la terminal ejecutamos el siguiente comando:
+
+```bash
+npm star dev
+```
+
+De esta forma estamos inicializando nuestra aplicación en su modo de desarrollo. Y nos muestra el siguiente mensaje:
+
+```bash
+[nodemon] starting `node ./app.js`
+Server is listening on port 4001
+```
+
+6. Prueba la petición que acabamos de definir usando Insomnia.
+
+<img src="img/isomina.png">
+
 
 <!-- AQUI VA UN SS DE INSOMNIA CON LA PETICION -->
 
