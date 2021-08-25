@@ -28,34 +28,48 @@ El funcionamiento del servicio dependerá del tipo de petición, pero todos esto
 2. El servicio para modificar los dioses griegos que tenemos guardados seria:
 
 ```javascript
-app.put('/gods/:name', (req,res,next) => {
-  const god = req.query;
+app.put('/gods/:name', (req,res) => {
+  const god = req.body;
   gods[req.params.name] = god
-  res.send(god);
+  res.send(gods);
 })
 ```
 
-En este servicio suponemos que los nuevos valores nos los pasan como *query string* y el nombre del dios es parte de la ruta dinámica.
+En este servicio suponemos que los nuevos valores nos los pasan como parte del *body* y el nombre del dios es parte de la ruta dinámica.
+
+Para poder acceder al *body* es necesario definir un mecanismo que lo parsee para convertirlo en un objeto de JavaScript. Recordemos que la API se encarga también de la compatibilidad de los datos entre las aplicaciones. 
+
+Nosotros vamos a usar `body-parser` que es una biblioteca de JavaScript que traduce el *body* de un request. Para usarla agregamos las siguientes lineas antes de la definición de los servicios. 
+
+```javascript
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+```
 
 3. Para agregar un nuevo dios definimos el siguiente servicio:
 
 ```javascript
-app.post('/gods', (req, res, next) => {
+app.post('/gods', (req, res) => {
+  const name = req.query.name
   const newGod = req.body;
-  gods.push(newGod);
-  res.status(200).send(newGod);
+  gods[name] = newGod;
+  res.status(200).send(gods);
 })
 ```
 
-Para este servicio la información del dios que crearemos viene en el `body` de la petición
+Para este servicio la información del dios que crearemos viene en el `body` de la petición, ientras que el nombre está dado como *query string*.
 
 4. Por último definimos el servicio que elimina un dios.
 
 ```javascript
-app.delete('/goods/:name', (req, res, next) =>{
+app.delete('/gods/:name', (req, res) =>{
   const name = req.params.name;
-  deleteByKey(gods, name);
-  res.sed('God deleted.')
+  if (delete gods[name]){
+    res.send(gods)
+  } else {
+    res.status(500)
+  }
 })
 ```
 

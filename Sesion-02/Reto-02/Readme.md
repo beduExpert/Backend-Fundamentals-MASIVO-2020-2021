@@ -8,6 +8,10 @@
  - superficie
  - número estrellas
  - estrella mas brillante
+
+> Hint:
+> Define primero una función que busque un elemento dentro de un objeto por cierto atributo.
+
 2. Prueba que funcionen en Insomnia
 
 
