@@ -5,9 +5,6 @@
 1. Crea nuevos servicios **dinámicos** de búsqueda de constelaciones por:
  - nombre
  - abreviatura
- - superficie
- - número estrellas
- - estrella mas brillante
 
 > Hint:
 > Define primero una función que busque un elemento dentro de un objeto por cierto atributo.

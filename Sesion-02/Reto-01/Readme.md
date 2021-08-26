@@ -12,7 +12,7 @@ Andromeda : {
 	estr_mas_brillante : 'Alpheratz' 
 }
 ```
-1. Agrega 5 constelaciones.
+1. Agrega al menos 2 constelaciones.
 1. Define una nueva ruta para un `GET` de constelaciones con el nombre `constelaciones`.
 1. Define el servicio que regrese la lista de todas las constelaciones definida en el inciso 1.
 
