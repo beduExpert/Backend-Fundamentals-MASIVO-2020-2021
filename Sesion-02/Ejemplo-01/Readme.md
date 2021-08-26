@@ -191,7 +191,7 @@ Cuando se haga una petición `GET` a la ruta `/gods` Express buscara todas las d
 5. Ahora vamos a correr la aplicación para poder probarla. Para correrla desde la terminal ejecutamos el siguiente comando:
 
 ```bash
-npm star dev
+npm run dev
 ```
 
 De esta forma estamos inicializando nuestra aplicación en su modo de desarrollo. Y nos muestra el siguiente mensaje:
