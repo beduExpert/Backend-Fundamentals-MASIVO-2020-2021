@@ -106,4 +106,4 @@ Para que el sistema que desarrolle frontend se comunique con nuestro backend cre
 
 -------
 
-[`Atrás`](../README.md) | [`Siguiente`](../Reto-01)
+[`Atrás`](../README.md) | [`Siguiente`](../Ejemplo-02)
