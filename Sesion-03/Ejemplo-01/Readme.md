@@ -84,8 +84,6 @@ Los [wireframes](https://www.lucidchart.com/pages/es/que-es-un-wireframe-para-un
 
 Hablando estrictamente de la implementación en código, es posible entregar todas las vistas desde el backend por medio de funciones que generen y devuelvan al usuario un documento html o también ayudándonos de un motor de plantillas.
 
-Si por ejemplo, tenemos un servidor con las mismas características que el de la sesión pasada (ubuntu ejecutando Apache), podríamos configurar el lenguaje de programación PHP, crear nuestros modelos, controladores y generar de manera dinámica nuestras vistas, creando así nuestro propia implementación de MVC, o también podemos utilizar el framework Laravel para seguir el patrón MVC utilizando PHP y no *reinventar la rueda*.
-
 Actualmente es muy común que los *frontend developers* se encarguen de la responsabilidad de programar las vistas, esto de alguna manera nos hace replantearnos la arquitectura MVC y comenzar a utilizar arquitecturas mas complejas pero que nos den ventajas a la hora de trabajar en equipo.
 
 ### Controlador
