@@ -9,6 +9,10 @@
 - Ninguno
 
 ### 3. Desarrollo :rocket:
+1. Para poder administrar una base de datos del gestor Mongo vamos a usar el cliente __Compass__  que nos provee de una interfaz gráfica para crear, administrar o consultar bases de datos. Para descargar este cliente entra al siguiente [enlace](https://www.mongodb.com/try/download/compass).
+
+![Descarga](imagenes/descarga.png)
+
 1. Para poder hacer uso de MongoDB en la nube se hará uso del servicio __Atlas__ proveeido por el propio equipo de MongoDB, abrir la siguiente url, llenar los campos del formulario y dar clic en el botón de __Get srtarted free__
 
    URL: https://www.mongodb.com/cloud/atlas?jmp=docs
