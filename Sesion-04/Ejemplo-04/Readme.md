@@ -11,12 +11,12 @@
 ### 2. Requisitos :clipboard:
 1. MongoDB Compass instalado
 1. Datos de conexión al Servidor MongoDB
-1. Base de datos __MiNombre__ y Colecciones `users`, `movies` y `ratings` creadas
+1. Base de datos __Adoptapet__ 
 
 ### 3. Desarrollo :rocket:
 A continuación se realizaran las operaciones de agregar, modificar y eliminar un documento JSON en una Colección.
 
-1. Para agregar un Documento, dar clic sobre la base de datos __MiNombre__, luego dar clic sobre la colección __users__ y entonces dar clic sobre el botón __INSERT DOCUMENT__:
+1. Para agregar un Documento, dar clic sobre la base de datos __Adoptapet__, luego dar clic sobre la colección __users__ y entonces dar clic sobre el botón __INSERT DOCUMENT__:
 
    ![Insertando un documento](imagenes/insertando-documento.png)
 
@@ -24,12 +24,13 @@ A continuación se realizaran las operaciones de agregar, modificar y eliminar u
 
    ```json
    {
-     id:"7000",
-     gen:"M",
-     edad:"47",
-     ocup:"12",
-     cp:"06780"
-   }
+    "username": "juancho",
+    "nombre": "Juan",
+    "apellido": "Vega",
+    "email": "juan@vega.com",
+    "password": "abc",
+    "tipo": "Normal"
+  }
    ```
 
    ![Adicionando campos u objetos](imagenes/adicionando-datos.png)
@@ -38,11 +39,6 @@ A continuación se realizaran las operaciones de agregar, modificar y eliminar u
 
    Al final presionar el botón __INSERT__
 
-   Para poder observar nuestro documento en la lista hay que realizar un filtro para imprimir el documento con `id=7000`, esto se realiza agregando lo siguiente en la barra de `FILTER`:
-   ```json
-   {id:"7000"}
-   ```
-
    ![Documentos en la colección](imagenes/documentos-en-coleccion.png)
 
 1. Como __MongoDB__ es una base de datos __NoSQL__ se pueden insertar documentos que no tengan la misma estructura y además cada campo puede ser un tipo de dato complejo como un array o un objeto.
@@ -50,43 +46,23 @@ A continuación se realizaran las operaciones de agregar, modificar y eliminar u
    Agregar el siguiente documento JSON de un usuario:
    ```json
    {
-     id:"7001",
-     gen:"F",
-     edad:"36",
-     ocup:"10",
-     cp:"06780",
-     pelisValoradas: [
-       "One Flew Over the Cuckoo's Nest (1975)",
-       "James and the Giant Peach (1996)",
-       "My Fair Lady (1964)"       
-     ]
-   }
+    "id": 1,
+    "username": "luis",
+    "nombre": "Luis",
+    "apellido": "Rios",
+    "tipo": ["Normal", "Adoptante"]
+  }
    ```
-
-   ![Agregando otro documento](imagenes/adicionando-datos-2.png)
 
    Observa como en `MongoDB` cada campo puede ser un arreglo y cada elemento a su vez también puede ser un arreglo o un objeto y así indefinidamente.
 
-   Luego de presionar el botón __INSERT__ modifica la barra de `FILTER` con lo siguiente para observar nuestros dos documentos agregados:
-
-   ```json
-   {id: {$in: ["7000", "7001"]}}
-   ```
-
-   ![Lista de documentos en la colección](imagenes/documentos-en-coleccion-2.png)
+   Luego de presionar el botón __INSERT__ vamos a observar nuestros dos documentos agregados.
 
 1. Para modificar un documento, dar clic sobre el botón __Edit Document__
 
    ![Editar un documento](imagenes/editar-documento.png)
 
    Después de dar clic en el botón __Edit Document__ el documento cambia a estado editable y se puede modificar el contenido del documento.
-
-   Agregar el siguiente título de película a la lista de `pelisValoradas`:
-   ```json
-   Erin Brockovich (2000)
-   ```
-
-   ![Modificando documento](imagenes/modificando-documento.png)
    
    Da clic sobre el botón __UPDATE__ para guardar los cambios.
 

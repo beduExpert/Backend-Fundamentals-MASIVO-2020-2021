@@ -37,4 +37,4 @@ Se deberá de crear colecciones e importar los datos de los archivos `movies.csv
    Validar que cada campo tenga nombre y que estén todos los campos, además valida la cantidad de documentos, que en este caso debería de ser 1000209 documentos.
 
 
-[`Anterior`](../Ejemplo-02/Readme.md) | [`Siguiente`](../README.md)
+[`Anterior`](../Ejemplo-03/Readme.md) | [`Siguiente`](../README.md)

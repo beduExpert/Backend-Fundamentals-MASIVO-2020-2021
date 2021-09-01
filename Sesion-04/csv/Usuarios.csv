@@ -1,0 +1,6 @@
+ username, nombre, apellido, email, password, tipo
+ javi,Javier,Enriquez,j@b.com,abc123,Anunciante
+ valerie,Valeria,Jimenez,v@b.com,camila123,Normal
+ jjj,Jose,Vazquez,jv@c.com,password,Normal
+ ant,Antonio,Lopez,a@d.com,contrasena,Anunciante
+ mr,Manuel,Rivera,m@r.com,fff333,Normal

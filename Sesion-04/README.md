@@ -66,7 +66,6 @@ Lo único que solicita __MongoDB Compass__, a través de una interfaz gráfica, 
 Por cierto, __MongoDB Compass__ no es el único cliente de __MongoDB__, también existen otras herramientas como __Robo 3T__ o el *shell* de __MongoDB__.
 
 - [`Ejemplo 2: Creando bases de datos`](Ejemplo-02/Readme.md)
-- [`Reto 1: Creando bases de datos`](Reto-01/Readme.md)
 
 ---
 
@@ -76,7 +75,7 @@ Por cierto, __MongoDB Compass__ no es el único cliente de __MongoDB__, también
 Al igual que en __MySQL__ es posible cargar los datos usando formatos de intercambio de información como son __CSV__ o __JSON__. En el caso de __JSON__ se debe separar cada documento por comas.
 
 - [`Ejemplo 3: Poblando la base de datos`](Ejemplo-03/Readme.md)
-- [`Reto 2: Cargando sample datasets`](Reto-02/Readme.md)
+- [`Reto 1: Creando bases de datos`](Reto-01/Readme.md)
 
 ---
 
