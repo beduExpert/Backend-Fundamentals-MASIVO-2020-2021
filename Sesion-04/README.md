@@ -109,6 +109,6 @@ Para realizar consultas u otras operaciones en __MongoDB__ debe usarse este form
 - `{campo: 1}`
 
 - [`Ejemplo 5: Entendiendo la estructura de los datos`](Ejemplo-05/Readme.md)
-- [`Reto 4: Entendiendo la estructura de los datos`](Reto-04/Readme.md) 
+- [`Reto 2: Entendiendo la estructura de los datos`](Reto-04/Readme.md) 
 
 

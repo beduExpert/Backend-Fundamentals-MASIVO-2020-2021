@@ -1,6 +1,6 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 04`](../README.md) > `Reto 4`
+[`Backend Fundamentals`](../../README.md) > [`Sesión 04`](../README.md) > `Reto 2`
 	
-## Reto 4: Colecciones, Documentos y Proyecciones
+## Reto 2: Colecciones, Documentos y Proyecciones
 
 <div style="text-align: justify;">
 
