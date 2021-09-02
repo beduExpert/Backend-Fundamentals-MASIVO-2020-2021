@@ -30,7 +30,7 @@ A continuación se realizaran las operaciones de agregar, modificar y eliminar u
     "email": "juan@vega.com",
     "password": "abc",
     "tipo": "Normal"
-  }
+   }
    ```
 
    ![Adicionando campos u objetos](imagenes/adicionando-datos.png)
