@@ -51,7 +51,7 @@ A continuación se realizaran las operaciones de agregar, modificar y eliminar u
     "nombre": "Luis",
     "apellido": "Rios",
     "tipo": ["Normal", "Adoptante"]
-  }
+   }
    ```
 
    Observa como en `MongoDB` cada campo puede ser un arreglo y cada elemento a su vez también puede ser un arreglo o un objeto y así indefinidamente.
