@@ -33,6 +33,7 @@ Las expresiones regulares permiten reconocer patrones en un texto, de forma simi
 Existen distintos estándares que los lenguajes de programación y sistemas gestores de bases de datos deben seguir para definir expresiones regulares. El estándar que usa mongo es: [JavaScript RegExp Reference](https://www.w3schools.com/jsref/jsref_obj_regexp.asp).
 
 - [`Ejemplo 2`](Ejemplo-02/Readme.md)
+- [`Reto 2`](Reto-02/Readme.md)
 
 ---
 
