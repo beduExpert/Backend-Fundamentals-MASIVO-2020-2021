@@ -1,4 +1,4 @@
-[`Introducción a Bases de Datos`](../../Readme.md) > [`Sesión 06`](../Readme.md) > `Ejemplo 3`
+[`Backend Fundamentals`](../../Readme.md) > [`Sesión 05`](../Readme.md) > `Ejemplo 3`
 
 ## Ejemplo 3: Introducción a las agregaciones
 
@@ -68,6 +68,6 @@ Por ejemplo, queremos saber cuál es la propiedad con mayor número de servicios
    
    ![imagen](imagenes/s5e34.png)
 
-[`Anterior`](../Readme.md#introducción-a-las-agregaciones) | [`Siguiente`](../Reto-03/Readme.md)
+[`Anterior`](../README.md#introducción-a-las-agregaciones) | [`Siguiente`](../README.md)
 
 </div>

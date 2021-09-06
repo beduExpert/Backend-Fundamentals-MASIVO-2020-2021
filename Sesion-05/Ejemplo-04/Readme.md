@@ -1,4 +1,4 @@
-[`Introducción a Bases de Datos`](../../Readme.md) > [`Sesión 07`](../Readme.md) > `Ejemplo 1`
+[`Backend Fundamentals`](../../Readme.md) > [`Sesión 05`](../Readme.md) > `Ejemplo 1`
 
 ## Ejemplo 1: Agrupamientos
 
@@ -77,4 +77,4 @@ Ahora, para obtener el costo promedio, debemos dividir el total entre el número
    
    ![imagen](imagenes/s6e15.png)
    
-[`Anterior`](../Readme.md#agrupamientos) | [`Siguiente`](../Reto-01/Readme.md)   
+[`Anterior`](../Readme.md#agrupamientos) | [`Siguiente`](../Reto-04/Readme.md)   
