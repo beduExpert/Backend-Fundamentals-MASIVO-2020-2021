@@ -1,6 +1,6 @@
 [`Introducción a Bases de Datos`](../../Readme.md) > [`Sesión 07`](../Readme.md) > `Reto 2`
 	
-## Reto 2: Asociación de colecciones
+## Reto 5: Asociación de colecciones
 
 <div style="text-align: justify;">
 
