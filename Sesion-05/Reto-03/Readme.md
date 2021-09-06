@@ -1,6 +1,6 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 05`](../README.md) > `Reto 3`
-
-## Reto 3: Notación punto y arreglos
+[`Introducción a Bases de Datos`](../../Readme.md) > [`Sesión 06`](../Readme.md) > `Reto 3`
+	
+## Reto 3: Introducción a las agregaciones
 
 <div style="text-align: justify;">
 
@@ -14,10 +14,8 @@
 
 ### 3. Desarrollo :rocket:
 
-Usando la colección `sample_airbnb.listingsAndReviews`, agrega un filtro que permita obtener todas las publicaciones que tengan 50 o más comentarios, que la valoración sea mayor o igual a 80, que cuenten con conexión a Internet vía cable y estén ubicada en Brasil.
+Usando la colección `sample_airbnb.listingsAndReviews`, mediante el uso de agregaciones, encontrar el número de publicaciones que tienen conexión a Internet, sea desde Wifi o desde cable (Ethernet).
 
-<br/>
-
-[`Anterior`](../Ejemplo-03/Readme.md) | [`Siguiente`](../README.md)
+[`Anterior`](../Ejemplo-03/Readme.md) | [`Siguiente`](../Readme.md#3-proyecto-hammer)
 
 </div>

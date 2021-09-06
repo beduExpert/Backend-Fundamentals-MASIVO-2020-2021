@@ -33,20 +33,59 @@ Las expresiones regulares permiten reconocer patrones en un texto, de forma simi
 Existen distintos estándares que los lenguajes de programación y sistemas gestores de bases de datos deben seguir para definir expresiones regulares. El estándar que usa mongo es: [JavaScript RegExp Reference](https://www.w3schools.com/jsref/jsref_obj_regexp.asp).
 
 - [`Ejemplo 2`](Ejemplo-02/Readme.md)
-- [`Reto 2`](Reto-02/Readme.md)	
 
 ---
 
-### <ins>Notación punto y arreglos</ins>
-<img src="imagenes/imagen2.png" align="right" height="200" width="200">
+#### <ins>Introducción a las agregaciones</ins>
+<img src="imagenes/imagen3.png" align="right" height="200" width="300">
 
-La notación punto es ampliamente usada en los lenguajes de programación orientados a objetos y permite acceder a los atributos de los mismos. Por ejemplo, si tenemos un objeto persona, usando la notación punto, podemos acceder a su nombre, edad, peso, etc.
+Una agregación se compone de un conjunto de *capas* que en conjunto realizan consultas sobre una colección de documentos. Cada capa puede aplicar nuevos filtros o modificaciones a la capa anterior. Al flujo de cambios entre las distintas capas se le conoce como *pipeline*.
 
-Con esta notación podemos obtener los campos de un objeto representado en __JSON__. De la misma forma, podemos acceder a los elementos de un arreglo si se conoce su índice, tal y como se hace en distintos lenguajes de programación.
+El principio de cada *pipeline* siempre es la colección completa.
 
-- [`Ejemplo 3`](Ejemplo-03/Readme.md)
-- [`Reto 3`](Reto-03/Readme.md)	
+- [**`EJEMPLO 3`**](Ejemplo-03/Readme.md)
+- [**`RETO 3`**](Reto-03/Readme.md)	
 
+---
+
+#### <ins>Agrupamientos</ins>
+<img src="imagenes/imagen1.jpg" align="right" height="200" width="300">
+
+Al igual que en __SQL__ en __MongoDB__ podemos realizar agrupamientos. Se realizan mediante la agregación `$group` y tienen la siguiente sintaxis:
+
+```json
+{
+  $group:
+    {
+      _id: <expression>, // Group By Expression
+      <field1>: { <accumulator1> : <expression1> },
+      ...
+    }
+ }
+```
+
+- [**`EJEMPLO 4`**](Ejemplo-04/Readme.md)
+- [**`RETO 4`**](Reto-04/Readme.md)
+
+---
+#### <ins>Asociación de colecciones</ins>
+<img src="imagenes/imagen2.jpg" align="right" height="200" width="300">
+
+ En __MongoDB__ se tiene la operación `$lookup` que permite relacionar colecciones. Es una agregación y su sintaxis es la siguiente:
+
+```json
+{
+   $lookup:
+     {
+       from: <collection to join>,
+       localField: <field from the input documents>,
+       foreignField: <field from the documents of the "from" collection>,
+       as: <output array field>
+     }
+}
+```
+
+- [**`EJEMPLO 5`**](Ejemplo-05/Readme.md)
 
 
 

@@ -1,12 +1,12 @@
-[`Backend Fundamentals`](../../README.md) > [`Sesión 05`](../README.md) > `Ejemplo 3`
+[`Introducción a Bases de Datos`](../../Readme.md) > [`Sesión 06`](../Readme.md) > `Ejemplo 3`
 
-## Ejemplo 3: Notación Punto y arreglos
+## Ejemplo 3: Introducción a las agregaciones
 
 <div style="text-align: justify;">
 
 ### 1. Objetivos :dart: 
 
-- Utilizar la notación punto para acceder a objetos anidados dentro de arreglos u otros objetos.
+- Entender el concepto de agregación y su similitud con los agrupamientos y subconsultas de __SQL__.
 
 ### 2. Requisitos :clipboard:
 
@@ -14,69 +14,60 @@
 
 ### 3. Desarrollo :rocket:
 
-1. La notación punto es una técnica mediante la cual los lenguajes de programación orientados a objetos permiten acceder a los atributos de un determinado objeto. Por ejemplo, en la base de datos `sample_airbnb.listingsAndReviews` se tiene un campo llamado `address` que a su vez incluye un atributo llamado `country` para indicar el país de dicha propiedad.
+Cuando revisamos __SQL__ usamos agrupamientos que aplicaban una función a una columna reduciéndola a un valor que podía ser una suma, un conteo o calcular un promedio, por ejemplo. 
 
-   Con esto podemos busar todas las propiedades que se encuentren en España usando el siguiente filtro.
+En __MongoDB__ podemos realizar lo mismo mediante el uso de agregaciones. Las agregaciones, permiten realizar distintos filtros usando *capas*. Una capa es el resultado de la aplicación de algún filtro, proyección, agrupamiento, ordienamiento, etc. Cada capa puede usarse en una nueva capa. La primera capa siempre será la colección completa.
 
+Al conjunto de capas generadas en una agregación se le conoce como *pipeline*.
+
+Por ejemplo, queremos saber cuál es la propiedad con mayor número de servicios (`amenities`) de la colección `sample_airbnb.listingsAndReviews`. Para usar agregaciones, daremos clic en la pestaña `Aggregations` de Compass. 
+
+- Primero debemos obtener la longitud del arreglo `amenities` para saber el número de servicios de cada documento. Para esto, seleccionamos `addFields` en la primera capa.
+
+   Con `addFields` podemos agregar campos como resultado de aplicar funciones a otros campos de la colección. De esta forma agregaremos el tamaño del arreglo como columna.
+   
+   Llamaremos a este campo `servicios` y para calcularlo usaremos la función `$size`. 
+   
    ```json
-   {"address.country": "Spain"}
+   {
+      servicios: {$size: "$amenities"}
+   }
    ```
    
-   Es importante que observes que para usar la notación punto debemos colocar el nombre de los campos entre comillas dobles, de lo contrario, no funcionará el punto.   
-
-   ![imagen](imagenes/s5e21.png)
-
-2. De la misma forma podemos acceder a los elementos de un arreglo mediante sus índices. Por ejemplo, en la misma base de datos se tiene el arreglo `amenities`. Para acceder al segundo elemento usamos el índice 1. Los elementos comienzan a contarse a partir del 0. Más adelante mediante el uso de agregaciones obtendemos los elementos de un arreglo.
-
-   De momento, podemos usar la función `$in` que permite filtrar mediante los elementos contenidos en el arreglo, por ejemplo, queremos las propiedades que tengan cocina, para ello usamos el filtro:
+   ![imagen](imagenes/s5e31.png)
+   
+- Como el único dato que nos interesa es el número de servicios, sólo proyectaremos este resultado, para esto crearemos una nueva capa con `ADD STAGE` y elegiremos `$project`. Proyectamos el campo `name` y  `servicios` poniendo un `1` y quitamos el campo `_id` poniendo un 0.
 
    ```json
-   {amenities: {$in: ["Kitchen"]}}
+   {
+      name: 1,
+      servicios: 1,
+      _id: 0
+   }
    ```
    
-   ![imagen](imagenes/s5e22.png)
+   ![imagen](imagenes/s5e32.png)
+   
+- Ahora lo ordenamos añadiendo otra capa y usando `$sort`, recuerda -1 para descendente, 1 para ascendente.
 
-3. Ahora podemos aplicar un filtro que incluya todo lo que hemos aprendido. Por ejemplo, podemos obtener la lista de todas las publicaciones con un costo menor a 100, que se encuentren en España, con una valoración de 50 o más puntos, que cuenten con Internet o Wifi y que tegan Elevador.
-
-   Esta es una consulta más compleja que las anteriores, por lo que la construiremos por partes y luego la juntaremos.
-
-   - Publicaciones con un costo menor a 100.
-   
-      ```json
-      {price: {$lte: 100}}
-      ```
-   
-   - En españa.
-   
-      ```json
-      {"address.country_code": "ES"}
-      ```
-   
-   - Con una valoración de 50 o más puntos.
-   
-      ```json
-      {"review_scores.review_scores_rating": {$gte: 50}}
-      ```
-      
-   - Que cuenten con Internet o Wifi.
-   
-      ```json
-      {amenities: {$in: ["Internet, "Wifi"]}
-      ```
-      
-   - Que tengan elevador.
-      
-      ```json
-      {amenities: {$in: ["Elevator"]}}
-      ```
-      
-   - Integrando todo.
    ```json
-   {price: {$lte: 100}, "address.country_code": "ES", "review_scores.review_scores_rating":{$gte: 50}, amenities: {$in:["Internet", "Wifi"]}, amenities:{$in:["Elevator"]}}
+   {
+      servicios: -1
+   }
    ```
+   
+   ![imagen](imagenes/s5e33.png)
+   
+- Finalmente, limitamos la consulta a un registro usando `$limit`.
 
-   ![imagen](imagenes/s5e23.png)
+   ```json
+   {
+      1
+   }
+   ```
+   
+   ![imagen](imagenes/s5e34.png)
 
-[`Anterior`](../README.md) | [`Siguiente`](../Reto-03/Readme.md)
+[`Anterior`](../Readme.md#introducción-a-las-agregaciones) | [`Siguiente`](../Reto-03/Readme.md)
 
 </div>
