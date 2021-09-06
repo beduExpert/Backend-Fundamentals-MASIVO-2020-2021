@@ -1,6 +1,6 @@
-[`Introducción a Bases de Datos`](../../Readme.md) > [`Sesión 07`](../Readme.md) > `Reto 1`
+
 	
-## Reto 1: Agrupamientos
+## Reto 3: Agrupamientos
 
 <div style="text-align: justify;">
 
@@ -14,6 +14,6 @@
 
 ### 3. Desarrollo :rocket:
 
-Con base en el ejemplo 1, modifica el agrupamiento para que muestre el costo promedio por habitación por país de las propiedades de tipo casa.
+Con base en el ejemplo anterior, modifica el agrupamiento para que muestre el costo promedio por habitación por país de las propiedades de tipo casa.
 
-[`Anterior`](../Ejemplo-01/Readme.md) | [`Siguiente`](../Readme.md#asociación-de-colecciones)   
+[`Anterior`](../Ejemplo-01/Readme.md) | [`Siguiente`](../README.md#asociación-de-colecciones)   

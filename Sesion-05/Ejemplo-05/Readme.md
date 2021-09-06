@@ -1,4 +1,4 @@
-[`Introducción a Bases de Datos`](../../Readme.md) > [`Sesión 07`](../Readme.md) > `Ejemplo 2`
+[`Backend Fundamentals`](../../Readme.md) > [`Sesión 07`](../Readme.md) > `Ejemplo 2`
 
 ## Ejemplo 2: Asociación de colecciones
 
@@ -72,5 +72,5 @@ Elegimos únicamente los campos de interés, primero extrayendo el nombre del ob
 
 ![imagen](imagenes/s6e24.png)
 
-[`Anterior`](../Readme.md#asociación-de-colecciones) | [`Siguiente`](../Reto-02/Readme.md)   
+[`Anterior`](../Readme.md#asociación-de-colecciones) | [`Siguiente`](../README.md)   
 

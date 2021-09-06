@@ -33,6 +33,7 @@ Las expresiones regulares permiten reconocer patrones en un texto, de forma simi
 Existen distintos estándares que los lenguajes de programación y sistemas gestores de bases de datos deben seguir para definir expresiones regulares. El estándar que usa mongo es: [JavaScript RegExp Reference](https://www.w3schools.com/jsref/jsref_obj_regexp.asp).
 
 - [`Ejemplo 2`](Ejemplo-02/Readme.md)
+- [`Reto 1`](Reto-02/Readme.md)
 
 ---
 
@@ -44,12 +45,10 @@ Una agregación se compone de un conjunto de *capas* que en conjunto realizan co
 El principio de cada *pipeline* siempre es la colección completa.
 
 - [**`EJEMPLO 3`**](Ejemplo-03/Readme.md)
-- [**`RETO 3`**](Reto-03/Readme.md)	
-
 ---
 
 #### <ins>Agrupamientos</ins>
-<img src="imagenes/imagen1.jpg" align="right" height="200" width="300">
+<img src="imagenes/imagen6.jpg" align="right" height="200" width="300">
 
 Al igual que en __SQL__ en __MongoDB__ podemos realizar agrupamientos. Se realizan mediante la agregación `$group` y tienen la siguiente sintaxis:
 
@@ -65,11 +64,11 @@ Al igual que en __SQL__ en __MongoDB__ podemos realizar agrupamientos. Se realiz
 ```
 
 - [**`EJEMPLO 4`**](Ejemplo-04/Readme.md)
-- [**`RETO 4`**](Reto-04/Readme.md)
+- [**`RETO 3`**](Reto-04/Readme.md)
 
 ---
 #### <ins>Asociación de colecciones</ins>
-<img src="imagenes/imagen2.jpg" align="right" height="200" width="300">
+<img src="imagenes/imagen7.jpg" align="right" height="200" width="300">
 
  En __MongoDB__ se tiene la operación `$lookup` que permite relacionar colecciones. Es una agregación y su sintaxis es la siguiente:
 
