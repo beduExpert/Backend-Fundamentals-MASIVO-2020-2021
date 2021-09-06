@@ -37,7 +37,7 @@ Existen distintos estándares que los lenguajes de programación y sistemas gest
 ---
 
 #### <ins>Introducción a las agregaciones</ins>
-<img src="imagenes/imagen3.png" align="right" height="200" width="300">
+<img src="imagenes/imagen5.png" align="right" height="200" width="300">
 
 Una agregación se compone de un conjunto de *capas* que en conjunto realizan consultas sobre una colección de documentos. Cada capa puede aplicar nuevos filtros o modificaciones a la capa anterior. Al flujo de cambios entre las distintas capas se le conoce como *pipeline*.
 
