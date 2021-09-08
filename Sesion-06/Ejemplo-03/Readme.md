@@ -12,84 +12,85 @@ Contar con el código de la API que se encuentra en desarrollo desde la Sesión 
 
 ## Desarrollo
 
-1. Nuestros controladores hasta este momento no eran persistentes, lo que quiere decir que en realidad no alteraban el estado de mi programa, simplemente simulaban hacerlo. Lego la hora de volverlos persistentes gracias a nuestra base de datos.
+1. Nuestros controladores hasta este momento no eran persistentes, lo que quiere decir que en realidad no alteraban el estado de mi programa, simplemente simulaban hacerlo. Llego la hora de volverlos persistentes gracias a nuestra base de datos.
 
-Ahora implementaremos los métodos que nos proporciona Mongoose en nuestro controlador <b>usuarios</b>, es decir:  `controllers/usuarios.js`. 
+Ahora implementaremos los métodos que nos proporciona Mongoose en nuestro controlador <b>mascotas</b>, es decir:  `controllers/mascotas.js`. 
 
-- Abre el archivo <b>controllers/usuarios.js</b> y comenta el código.
-- Estudiaremos aquellas funciones que te permitirán hacer operaciones <b>CRUD</b> sobre tu modelo Usuario.
+- Estudiaremos aquellas funciones que te permitirán hacer operaciones <b>CRUD</b> sobre tu modelo Mascotas.
 - Recuerda: <b>C - Create, R - Read, U - Update, D - Delete</b>.
 
 
-1. Primero importamos `mongoose` y el modelos de usuario. 
+1. Primero importamos `mongoose` y el modelos de mascota que definimos en el ejemplo anterior. 
 
 ```jsx
-  const mongoose = require("mongoose")
-  const Usuario = mongoose.model("Usuario")
+const mongoose = require("mongoose")
+const Mascota = mongoose.model("Mascota")
 ```
 
-1. Definimos el **CRUD** Instanciaremos un nuevo usuario utilizando la clase usuario y luego lo guardaremos en la base de datos con la función `save()`.
+1. Definimos el **CRUD** Instanciaremos una nueva mascota utilizando el esquema que definimos y luego la guardaremos en la base de datos con la función `save()`.
 
-- `crearUsuario`
+- `crearMascota`
 
 ```jsx
-  function crearUsuario(req, res, next) {
-    const body = req.body
-
-    const usuario = new Usuario(body)
-    usuario.save().then(user => {                                        
-      return res.status(201).json(user.toAuthJSON())
+function crearMascota(req, res, next){
+  var mascota = new Mascota(req.body)
+    mascota.estado = 'disponible'
+    mascota.save().then(mascota => {
+      res.status(201).send(mascota)
     }).catch(next)
-  }
+}
 ```
 
-- `obtenerUsuario` Se busca el usuario con `findById()` y en caso de encontrarlo lo regresamos, en otro caso enviamso un error.
+- `obtenerMascota` Primero vemos si estamos recibiendo un `id` si es el caso se busca la mascota con `findById()` y en caso de encontrarla la regresamos, en otro caso enviamos un error. Si el cliente no nos pasa el `id` entonces regresamos todas las mascotas.
 
 ```jsx
-  function obtenerUsuarios(req, res, next) {                              
-    Usuario.findById(req.usuario.id, (err, user) => {
-      if (!user || err) {
-        return res.sendStatus(401)
-      }
-      return res.json(user.publicData());
-    }).catch(next);
-  }
+function obtenerMascota(req, res, next){
+  if(req.params.id){
+    Mascota.findById(req.params.id).then(mascota => {
+        res.send(mascota)
+      }).catch(next)
+  } else {
+    Mascota.find().then(mascotas => {
+      res.send(mascotas)
+    }).catch(next)
+  } 
+}
 ```
 
-- `modificarUsuario` Se busca al usuario, y se modifican los campos que se envían desde el front sobre el usuario, una vez que terminamos ese proceso, lo guardamos.
+- `modificarMascota` Se busca la mascota, y se modifican los campos que se envían desde el front sobre ella, una vez que terminamos ese proceso, lo guardamos.
 
 ```jsx
-  function modificarUsuario(req, res, next) {
-    Usuario.findById(req.usuario.id).then(user => {
-      if (!user) { return res.sendStatus(401); }
+function modificarMascota(req, res,next){
+   Mascota.findById(req.params.id).then(mascota => {
+      if (!mascota) { return res.sendStatus(401); }
       let nuevaInfo = req.body
-      if (typeof nuevaInfo.username !== 'undefined')
-        user.username = nuevaInfo.username
-      if (typeof nuevaInfo.bio !== 'undefined')
-        user.bio = nuevaInfo.bio
-      if (typeof nuevaInfo.foto !== 'undefined')
-        user.foto = nuevaInfo.foto
+      if (typeof nuevaInfo.nombre !== 'undefined')
+        mascota.nombre = nuevaInfo.nombre
+      if (typeof nuevaInfo.categoria !== 'undefined')
+        mascota.categoria = nuevaInfo.categoria
+      if (typeof nuevaInfo.fotos !== 'undefined')
+        mascota.fotos = nuevaInfo.fotos
+      if (typeof nuevaInfo.descripcion !== 'undefined')
+        mascota.descripcion = nuevaInfo.descripcion
+      if (typeof nuevaInfo.anunciante !== 'undefined')
+        mascota.anunciante = nuevaInfo.anunciante
       if (typeof nuevaInfo.ubicacion !== 'undefined')
-        user.ubicacion = nuevaInfo.ubicacion
-      if (typeof nuevaInfo.telefono !== 'undefined')
-        user.telefono = nuevaInfo.telefono
-      if (typeof nuevaInfo.password !== 'undefined')
-        user.password = nuevaInfo.password
-      user.save().then(updatedUser => {                                   
-        res.status(201).json(updatedUser.publicData())
+        mascota.ubicacion = nuevaInfo.ubicacion
+      mascota.save().then(updated => {                                   
+        res.status(201).json(updated.publicData())
       }).catch(next)
     }).catch(next)
-  }
+}
 ```
 
-- `eliminarUsuario` se usa la función `findOneAndDelete()` a la que se le pasa el `id` del usuario a eliminar.
+- `eliminarMascota` se usa la función `findOneAndDelete()` a la que se le pasa el `id` de la mascota a eliminar.
 
 ```jsx
-  function eliminarUsuario(req, res) {
-    Usuario.findOneAndDelete({ _id: req.usuario.id }).then(r => {
-      res.status(200).send(`Usuario ${req.params.id} eliminado: ${r}`);
+function eliminarMascota(req, res, next){
+  Mascota.findOneAndDelete({ _id: req.params.id }).then(r => {
+      res.status(200).send(`Mascota ${req.params.id} eliminada: ${r}`);
     })
-  }
+}
 ```
 
 1. Por último exportamos las funciones del **CRUD**.
@@ -103,57 +104,76 @@ Ahora implementaremos los métodos que nos proporciona Mongoose en nuestro contr
   }
 ```
 
-### Populate
+1. Hay que probar que todo funcione en insomnia o postman 😰.
 
-El método populate nos sirve para *poblar* documentos que son integrados dentro de otros documentos.
+## Agregaciones
 
-6. Cuando queramos obtener una mascota en específico, en el endpoint 'v1/mascotas/:id'. Será necesario mostrar la información de su anunciante, así que agregaremos una condición para que cuándo un id esté presente se agreguen los campos username, nombre, apellido, bio y foto del anunciante.
+En la sesión anterior hablamos de las agregaciones que son una herramienta en mongo que nos permite estructurar nuestras consultas. Esta herramienta puede usarse también a través de `mongoose` usando la función `aggregate()`.
 
-- De nuevo, actualiza el controlador mascotas, es decir: `controllers/mascotas.js`, muestra los datos del anunciante de una mascota, modificando la función `obtenerMascotas` con el siguiente código:
+1. Vamos a definir un servicio que nos regrese el total de mascotas que tenemos en una categoría especifica que vamos a recibir por parte del cliente. 
+
+1. Primero vamos a resolver esta consulta directamente en Compass usando agregaciones para el caso en particular de los gatos.
+
+  - Se hace un match para filtrar solo los documentos que corresponden con los gatos.
+  - Agrupamos todos los documentos sumando cuantos son. 
+
+> Nota 💡
+> se puede usar la instrucción `$count` en lugar de `$group` para contar los documentos.
+
+1. Ahora lo vamos a resolver directamente desde la API. Definimos una nueva función `count` en el controlador de mascotas.
+
+Para esta función vamos a usar `aggregate()` que es una función de `mongoose` y su único parámetro es el pipeline de nuestra agregación modelado como un arreglo de instrucciones y cada instrucción es un objeto de JavaScript.
+
+Por ejemplo la agregación que definimos es la siguiente:
 
 ```jsx
-function obtenerMascotas(req, res, next) {
-  if(req.params.id){
-    Mascota.findById(req.params.id)
-      .populate('anunciante', 'username nombre apellido bio foto').then(mascotas => {
-        res.send(mascotas)
-      }).catch(next)
-  } else {
-    Mascota.find().then(mascotas=>{
-      res.send(mascotas)
-    }).catch(next)
+[
+  {
+    '$match': {
+      'categoria': 'Gato'
+    }
+  }, {
+    '$count': 'total'
   }
+]
+```
+Entonces la definición de `count` queda es la siguiente.
+
+
+```jsx
+function count(req,res,next) {
+  var categoria = req.params.cat
+  Mascota.aggregate([
+    {'$match': { 'categoria': categoria}}, 
+    {'$count': 'total'}
+  ]).then(r => {
+    res.status(200).send(r)
+  })
 }
 ```
 
-Obtendremos una respuesta como está:
-
-```json
-{
-  "categoria": [
-    "gato"
-  ],
-  "fotos": [
-    "https://images.app.goo.gl/MsX6R9aTWfQKjsvW6"
-  ],
-  "estado": [
-    "disponible"
-  ],
-  "_id": "5ee8f79d2ab51833d2147e26",
-  "nombre": "Kalita",
-  "descripcion": "Gatito bebé encontrado debajo de un carro necesita hogar",
-  "anunciante": {
-    "_id": "5ee7101ee584287c9d4d44ce",
-    "username": "karly",
-    "nombre": "Karla",
-    "apellido": "Ivonne",
-    "bio": "Yo soy Karly, look at me!",
-    "foto": "http://pictures/foto-de-perfil"
-  },
-  "createdAt": "2020-06-16T16:47:25.900Z",
-  "updatedAt": "2020-06-16T16:47:25.900Z",
-  "__v": 0
+1. Hay que agregar la función `count` a las exportaciones del modulo:
+```jsx
+module.exports = {
+  crearMascota,
+  obtenerMascota,
+  modificarMascota,
+  eliminarMascota,
+  count
 }
 ```
+
+1. Por último vamos a agregar la ruta al archivo `routes/mascotas.js`. 
+
+```jsx
+router.get('/count/:cat', count);
+```
+ 
+Recuerda que es importante importar la función `count` desde el controlador. 
+
+También hay que notar que el orden en el que definimos las rutas si importa en el resultado de nuestra API.
+
+1. Probemos que funciona en insomnia.
+
 
 [`Atrás`](../Reto-01) | [`Siguiente`](../Reto-02)

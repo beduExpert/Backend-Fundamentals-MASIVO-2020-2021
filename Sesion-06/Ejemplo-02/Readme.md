@@ -36,11 +36,12 @@ Un **Schema** es un objeto que modela la estructura (los campos) que tienen los 
      bio: String,
      foto: String,
      tipo: String,
-   }, { timestamps: true });         
+   }, { timestamps: true, collection: 'usuarios' });         
   ```    
 
 - El modelo ahora no tiene un id ya que por defecto Mongoose le agrega el atributo `_id` a un documento cuando es creado.
 - La opción `{ timestamps: true }` agrega automáticamente la hora y fecha de creación (`createdAt` and `updatedAt`) cada que se crea o actualiza un documento.
+- `collection` es en donde se define la colección de la base de datos a donde apunta este esquema.
 
 1. Al definir un schema es necesario definir también una función llamada `publicData` para este, esta función devuelve únicamente los datos públicos del `Schema`. 
 
@@ -90,7 +91,7 @@ const MascotaSchema = new mongoose.Schema({
   anunciante: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario'}, // contacto con la persona que anuncia al animalito
   ubicacion: { type: String }, // muy importante
   estado:{type: String, enum:['adoptado', 'disponible', 'pendiente']},
-}, { timestamps: true })
+}, { timestamps: true , collection : 'mascotas'})
 
 MascotaSchema.methods.publicData = function(){
   return {
