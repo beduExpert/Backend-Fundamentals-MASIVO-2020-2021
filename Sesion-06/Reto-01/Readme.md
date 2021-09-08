@@ -9,4 +9,4 @@ Es importante notar que en este esquema se tienen que considerar las referencias
 Recordemos que cuando definimos la base de datos desde mongo, no creamos una colección para almacenar las solicitudes. Tomando esto en cuenta, discutan que creen que pasará al crear un documento para esta colección desde la API.
 
 
-[`Atrás`](../Ejemplo-01) | [`Siguiente`](../Ejemplo-02)
+[`Atrás`](../Ejemplo-01) | [`Siguiente`](../Ejemplo-03)
