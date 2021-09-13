@@ -2,35 +2,23 @@
 
 🎯 **Objetivo:**
 
-- Comprender la utilidad de un ORM. 
-- Modelar e Integrar nuestra API basada en Express con una base de datos por medio de Mongoose para MongoDB.
+- Definir la funcionalidad de la API con usuarios.
+- Proteger los datos confidenciales.
 
 
 ### Autenticación 
 
-- [`Ejemplo 1: Instalar Mongoose y crear nuestro primer modelo para integrar nuestra API`](Ejemplo-01/)
-- [`Reto 01: Probar los nuevos endpoints de la API`](Reto-01/#reto-1)
+- [`Ejemplo 1: Agregando Validaciones al esquema de Usuario.`](Ejemplo-01/)
 
 ### Seguridad
 
-- [`Ejemplo 2: Crear un nuevo modelo (Mascota) junto con la lógica de sus controladores`](Ejemplo-02/)
-- [`Reto 02: Crear el método modificarMascota`](Reto-02/#reto-2) 
+- [`Ejemplo 2: Autenticación y Cifrado de datos`](Ejemplo-02/)
 
 ### Routers seguros
 
-- [`Ejemplo 3: Crear un nuevo modelo (Solicitud) junto con la lógica de sus controladores`](Ejemplo-03/)
-- [`Reto 03: Ccompletando el modelo`](Reto-03/)
+- [`Ejemplo 3: Configuración de PassportJs`](Ejemplo-03/)
 
 ### Probando endpoints
 
-- [`Reto 04: Probando endpoints.`](Reto-04/#reto-4)
+- [`Ejemplo 04: Servicios por privilegios`](Ejemplo-04)
 
-## 🛡 Postwork
-
-**Objetivo:**
-
-- Desarrollar un nuevo feature sobre el código que se ha trabajado hasta ahora.
-
-**Desarrolla un nuevo feature para guardar mascotas favoritas**
-
-Recuerda que todo lo trabajado en tu prework, así como durante la sesión, puede ser aplicado a tu proyecto personal. Para lo cual, toma las siguientes consideraciones...[`leer más`](Postwork/#postwork)

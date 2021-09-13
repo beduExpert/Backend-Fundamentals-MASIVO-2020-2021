@@ -4,161 +4,116 @@
 
 ## Objetivo
 
-Crear un nuevo modelo (Mascota) junto con la lógica de sus controladores
+- Hacer un manejo de sesiones para los usuarios de nuesta aplicación
 
 ## Requerimientos
 
-Contar con el código de la API que se encuentra en desarrollo desde la lección 4.
+Contar con el código de la API
 
 ## Desarrollo
 
-1. Creando modelo Mascota:
+1. Para crear un nuevo usuario con password y autenticación añadiremos algunos <b>helper methods</b> a nuestro modelo. Estos nos permitirán:
 
-- Abre el archivo:`models/Mascota.js` 
-- En este archivo se encuentra la configuración del modelo <b>Mascota</b> previa a utilizar mongoose.
-- Comenta el código en el archivo e inserta la declaración del esquema <b>Mascota</b>: 
+- Crea y valida contraseñas, así como generar el <b>JWT</b>. 
+
+> **JWT** (JSON Web Tokens)
+> Recordemos que el JWT es un estándar para la creación de Tokens de autenticación en la web basados en el formato JSON.
+
+- Utilizar el algoritmo pbkdf2 econtrado en la biblioteca crypto de Node. Con el cual generaremos y validaremos hashes. Para guardar de forma segura la contraseña.
+
+- Para todos los **helper methods**, requeriremos algunos módulos. Añade las siguientes líneas en la parte alta de nuestro modelo <b>Usuarios</b>.
+
+    ```jsx
+    const crypto = require('crypto');                             
+    //Importando módulo crypto, pendiente de instalar.
+    const jwt = require('jsonwebtoken');                          
+    //Importando módulo jsonwebtoken, pendiente de instalar.
+    const secret = require('../config').secret;                   
+    // ???? es un misterio que resolveremos en la última sesión
+    ```
+2. Sera necesario definir los métodos de autenticación justo antes de la definición del modelo Usuario, es decir antes de la última línea.
+
+  - Primero vamos a definir un método que nos permita almacenar la contraseña del usuario en la base de datos, de tal forma que este protegida. Este método cifrará la contraseña usando una función *hash*. 
+
+```jsx 
+UsuarioSchema.methods.crearPassword = function (password) {
+  this.salt = crypto.randomBytes(16).toString("hex"); // generando una "sal" random para cada usuario
+  this.hash = crypto
+  .pbkdf2Sync(password, this.salt, 10000, 512, "sha512")
+  .toString("hex"); // generando un hash utilizando la salt
+};
+```
+
+  - Como la contraseña no está almacenada literalmente en la base de datos se define un método que verifica que la contraseña proporcionada en el proceso de inicio de sesión corresponda con la de la base de datos. Para esto cometemos la posible contraseña al mismo proceso de cifrado que la contraseña real antes de ser guardada y si el resultado es el mismo entonces sabemos que se trata de la misma cadena.
+
+```jsx 
+UsuarioSchema.methods.validarPassword = function (password) {
+  const hash = crypto
+    .pbkdf2Sync(password, this.salt, 10000, 512, "sha512")
+    .toString("hex");
+  return this.hash === hash;
+};
+```
+
+  - Definimos también un método que genera el **JWT** para el manejo de sesiones con un tiempo de caducidad de 60 días.
 
 ```jsx
-const mongoose = require("mongoose");
+UsuarioSchema.methods.generarJWT = function() {
+  const today = new Date();
+  const exp = new Date(today);
+  exp.setDate(today.getDate() + 60); // 60 días antes de expirar
 
-const MascotaSchema = new mongoose.Schema({
-  nombre: {type: String, required: true}, // nombre de la mascota (o titulo del anuncio)
-  categoria: { type: String, enum: ['perro', 'gato', 'otro'] }, // perro | gato | otro
-  fotos: [String], // links a las fotografías
-  descripcion: {type:String, required: true}, // descripción del anuncio
-  anunciante: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario'}, // contacto con la persona que anuncia al animalito
-  ubicacion: { type: String }, // muy importante
-  estado:{type: String, enum:['adoptado', 'disponible', 'pendiente']},
-}, { timestamps: true })
+  return jwt.sign({
+    id: this._id,
+    username: this.username,
+    exp: parseInt(exp.getTime() / 1000),
+  }, secret);
+};
+```
 
-MascotaSchema.methods.publicData = function(){
+  - Un método que nos regrese una representación en JSON del usuario ya autenticado.
+
+```jsx
+UsuarioSchema.methods.toAuthJSON = function(){
+      return {
+        username: this.username,
+        email: this.email,
+        token: this.generarJWT()
+      };
+    };
+```
+
+3. Por último de define el método `publicData()` y el modelo.
+
+```jsx
+
+/**
+* Devuelve la representación de un usuario, sólo datos públicos
+*/
+UsuarioSchema.methods.publicData = function(){
   return {
     id: this.id,
+    username: this.username,
+    email: this.email,
     nombre: this.nombre,
-    categoria: this.categoria,
-    fotos: this.fotos,
-    descripcion: this.descripcion,
-    anunciante: this.anunciante,
+    apellido: this.apellido,
+    bio: this.bio,
+    foto: this.foto,
+    tipo: this.tipo,
     ubicacion: this.ubicacion,
-    estado: this.estado
+    telefono: this.telefono,
+    createdAt: this.createdAt,
+    updatedAt: this.updatedAt
   };
 };
 
-mongoose.model('Mascota', MascotaSchema)
+mongoose.model("Usuario", UsuarioSchema);
 ```
 
-- Para la propiedad categoría utilizaremos un `enum` el cuál nos permite pasar únicamente los valores 'perro', 'gato' u 'otro'.
-- Para la propiedad anunciante, crearemos una referencia el modelo Usuario que contendrá el id de un usuario y nos servirá más adelante.
+4. Instalamos las dependencias necesarias.
 
-2. Recuerda importar el modelo en `app.js` debajo de dónde importamos el modelo Usuario.
-
-
-```jsx
-...
-require('./models/Usuario');
-require('./config/passport');
-require('./models/Mascota');
-...
+```bash
+npm install crypto jsonwebtoken passport passport-local express-jwt
 ```
 
-3. Modifica las rutas del archivo `routes/mascotas.js`,  agregar las siguientes autorizaciones:
-```jsx
-const router = require('express').Router();
-const {
-  crearMascota,
-  obtenerMascotas,
-  modificarMascota,
-  eliminarMascota
-} = require('../controllers/mascotas')
-var auth = require('./auth');
-
-router.get('/', auth.opcional,obtenerMascotas)
-router.get('/:id', auth.opcional, obtenerMascotas)// nuevo endpoint con todos los detalles de mascota
-router.post('/', auth.requerido, crearMascota)
-router.put('/:id',auth.requerido, modificarMascota)
-router.delete('/:id',auth.requerido, eliminarMascota)
-
-module.exports = router;
-```
-
-4. En el controlador mascotas, es decir: `controllers/mascotas.js`, actualiza la función `crearMascota` con el siguiente código:
-
-```jsx
-const mongoose = require('mongoose')
-const Mascota = mongoose.model('Mascota')
-
-function crearMascota(req, res, next) {
-  var mascota = new Mascota(req.body)
-  mascota.anunciante = req.usuario.id
-  mascota.estado = 'disponible'
-  mascota.save().then(mascota => {
-    res.status(201).send(mascota)
-  }).catch(next)
-}
-
-```
-
-5. En el controlador mascotas, es decir: `controllers/mascotas.js`, actualiza la función `obtenerMascotas` con el siguiente código:
-
-```jsx
-function obtenerMascotas(req, res, next) {
-  Mascota.find().then(mascotas=>{
-    res.send(mascotas)
-  }).catch(next)
-}
-```
-
-### Populate
-
-El método populate nos sirve para *poblar* documentos que son integrados dentro de otros documentos.
-
-6. Cuando queramos obtener una mascota en específico, en el endpoint 'v1/mascotas/:id'. Será necesario mostrar la información de su anunciante, así que agregaremos una condición para que cuándo un id esté presente se agreguen los campos username, nombre, apellido, bio y foto del anunciante.
-
-- De nuevo, actualiza el controlador mascotas, es decir: `controllers/mascotas.js`, muestra los datos del anunciante de una mascota, modificando la función `obtenerMascotas` con el siguiente código:
-
-```jsx
-function obtenerMascotas(req, res, next) {
-  if(req.params.id){
-    Mascota.findById(req.params.id)
-			.populate('anunciante', 'username nombre apellido bio foto').then(mascotas => {
-	      res.send(mascotas)
-	    }).catch(next)
-  } else {
-    Mascota.find().then(mascotas=>{
-      res.send(mascotas)
-    }).catch(next)
-  }
-}
-```
-
-Obtendremos una respuesta como está:
-
-```json
-{
-  "categoria": [
-    "gato"
-  ],
-  "fotos": [
-    "https://images.app.goo.gl/MsX6R9aTWfQKjsvW6"
-  ],
-  "estado": [
-    "disponible"
-  ],
-  "_id": "5ee8f79d2ab51833d2147e26",
-  "nombre": "Kalita",
-  "descripcion": "Gatito bebé encontrado debajo de un carro necesita hogar",
-  "anunciante": {
-    "_id": "5ee7101ee584287c9d4d44ce",
-    "username": "karly",
-    "nombre": "Karla",
-    "apellido": "Ivonne",
-    "bio": "Yo soy Karly, look at me!",
-    "foto": "http://pictures/foto-de-perfil"
-  },
-  "createdAt": "2020-06-16T16:47:25.900Z",
-  "updatedAt": "2020-06-16T16:47:25.900Z",
-  "__v": 0
-}
-```
-
-[`Atrás`](../Reto-01) | [`Siguiente`](../Reto-02)
+[`Atrás`](../Ejemplo-01) | [`Siguiente`](../Ejemplo-03)
