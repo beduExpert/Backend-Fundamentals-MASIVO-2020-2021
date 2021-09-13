@@ -21,4 +21,5 @@
 ### Probando endpoints
 
 - [`Ejemplo 04: Servicios por privilegios`](Ejemplo-04)
+- [`Reto 01: Probar los endpoints`](Reto-01)
 
