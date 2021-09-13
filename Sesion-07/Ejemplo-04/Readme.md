@@ -136,4 +136,4 @@ Contar con el código de la API que estaba en desarrollo desde la lección 4.
     ```
 - Analiza el código, observa en que endpoints será necesario el <b>JWT</b> (Su contenido definirá si un usuario tiene o no autorización sobre el endpoint, así como que información puede ver. )
 
-[`Atrás`](../Ejemplo-03) | [`Siguiente`](../README.md)
+[`Atrás`](../Ejemplo-03) | [`Siguiente`](../Reto-01)
