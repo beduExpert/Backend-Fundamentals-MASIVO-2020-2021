@@ -61,12 +61,12 @@ Los pasos que en la mayoría de los casos se siguen para lanzar a producción la
 ### 🚀 Launch 
 
 - [`Ejemplo 2: Deploy con Heroku`](Ejemplo-02/#ejemplo-2---deploy-con-heroku)
-- [`Reto 02: Deploy de tu API`](Reto-02/#reto-2) 
+<!-- - [`Reto 02: Deploy de tu API`](Reto-02/#reto-2)  -->
 
-###  Uso 
+<!-- ###  Uso 
 
 - [`Ejemplo 3: Demostración - Publicación en Dominio`](Ejemplo-03/#ejemplo-3---últimos-pasos)
-- [`Reto 03: Certificado SSL`](Reto-03/#reto-3)
+- [`Reto 03: Certificado SSL`](Reto-03/#reto-3) -->
 
 
 ## 🛡 Postwork

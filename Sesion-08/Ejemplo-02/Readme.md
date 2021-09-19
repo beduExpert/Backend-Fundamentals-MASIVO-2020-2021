@@ -64,4 +64,4 @@ En el método de deployment elige Github y conecta tu cuenta de Github.
 
     ![img/Untitled%206.png](img/Untitled%206.png)
 
-[`Atrás`](../Reto-01) | [`Siguiente`](../Reto-02)
+[`Atrás`](../Reto-01) | [`Siguiente`](../Readme.md)
