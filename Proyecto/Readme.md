@@ -9,7 +9,7 @@ Este proyecto sirve para la evaluación del módulo. Se debe desarrollar en equi
 Este reporte debe ser el archivo Readme.md del repositorio de GitHub en donde se encuentre el proyecto. Se deben abordar los siguientes puntos:
 
 - Definir detalladamente las especificaciones del proyecto.
-- Utilizar historias de usuario para definir el papel que jugaran.
+- Utilizar historias de usuario para definir el papel que jugarán.
 
 ### 👾 2. API
 
@@ -20,7 +20,7 @@ Se debe desarrollar una API con las siguientes características:
 - Como mínimo la API debe tener el CRUD completo con los siguientes servicios:
 	- Servicio para crear un nuevo registro en la base.
 	- Servicio para eliminar un registro.
-	- Servicio para modificar un registro, se debe de considerar los casos de modifica- ciones por atributo, es decir, si los registros tienen un atributo nombre el servi- cio debe ser capaz de solo modificar el nombre. Así como una modificación total, es decir, de todos los atributos. Se recomienda definir servicios por separado para cada caso.
+	- Servicio para modificar un registro, se debe de considerar los casos de modificaciones por atributo, es decir, si los registros tienen un atributo nombre el servicio debe ser capaz de solo modificar el nombre. Así como una modificación total, es decir, de todos los atributos. Se recomienda definir servicios por separado para cada caso.
 	- Consulta por id.
    	- Consulta de todos los registros.
 	- Consulta por coincidencia de atributos, es decir, si los registros tienen un campo nombre el servicio debe ser capaz de regresar todos los registros que compartan el valor de nombre. Y esto debe funcionar en general para todos los campos de la base.
@@ -28,7 +28,7 @@ Se debe desarrollar una API con las siguientes características:
 	- Servicio de consulta por campos, es decir, un servicio que solo regrese los campos que se piden por el usuario.
 - La API se debe desarrollar en Node.js.
 - Utilizar un ORM/ODM para la conexión con la base de datos. 
-- Hacer deploy de la API usando Heroku.
+- Hacer deploy de la API usando Fly.io.
 
 ### 👽 3. Swagger 
 
